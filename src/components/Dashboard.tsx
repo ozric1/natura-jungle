@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import {
-    TreePine,
     Map as MapIcon,
     Utensils,
     Moon,
