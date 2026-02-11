@@ -1,17 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
+  --color-jungle-green: #1A2F1A;
   --color-jungle-sage: #4F7942;
   --color-jungle-sand: #E5D3B3;
+  --color-sand-gold: #C5A059;
   --color-jungle-terracotta: #E2725B;
-  --color-jungle-dark: #1A2F1A;
   --color-jungle-cream: #F5F5DC;
   --color-jungle-light: #F0F4EF;
+  --color-egg-shell: #F9F7F2;
 
-  --font-organic: "Inter", "system-ui", "sans-serif";
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Montserrat", sans-serif;
+  --font-organic: "Montserrat", sans-serif;
 
   --animate-fade-in: fadeIn 0.5s ease-out;
   --animate-slide-up: slideUp 0.6s ease-out;
+  --animate-pulse-slow: pulseSlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
   @keyframes fadeIn {
     0% {
@@ -34,12 +40,26 @@
       opacity: 1;
     }
   }
+
+  @keyframes pulseSlow {
+
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
 }
 
 :root {
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: #F0F4EF;
-  color: #1A2F1A;
+  font-family: var(--font-sans);
+  background-color: var(--color-egg-shell);
+  color: var(--color-jungle-green);
 }
 
 body {
@@ -47,24 +67,51 @@ body {
   min-width: 320px;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 @layer base {
 
   h1,
   h2,
-  h3 {
-    @apply font-semibold tracking-tight text-jungle-dark;
+  h3,
+  h4 {
+    @apply font-serif font-semibold tracking-tight text-jungle-green;
   }
 }
 
 .glass-morphism {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(26, 47, 26, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .jungle-card {
   @apply rounded-3xl p-6 bg-white shadow-sm border border-jungle-sand/20;
+}
+
+.parallax-bg {
+  transform: translateZ(-1px) scale(2);
+  z-index: -1;
+}
+
+.gold-shadow {
+  box-shadow: 0 10px 30px -10px rgba(197, 160, 89, 0.4);
+}
+
+/* RTL Helpers */
+[dir="rtl"] .ltr-only {
+  display: none;
+}
+
+[dir="ltr"] .rtl-only {
+  display: none;
 }
