@@ -28,42 +28,42 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
             id: 'ducks',
             name: { en: 'Ducks', fr: 'Canards', ar: 'البط' },
             fact: { en: 'Our ducks love the central pond and are often the first to greet visitors.', fr: 'Nos canards adorent l\'étang central et sont souvent les premiers à saluer les visiteurs.', ar: 'تحب طيور البط لدينا البركة المركزية وغالباً ما تكون هي أول من يستقبل الزوار.' },
-            image: 'https://images.unsplash.com/photo-1530121223246-013ca6dd3438?q=80&w=800',
+            image: 'https://images.unsplash.com/photo-1459156491753-29405c5f4511?q=80&w=800',
             category: 'Avian'
         },
         {
             id: 'black-swan',
             name: { en: 'Black Swan', fr: 'Cygne Noir', ar: 'البجع الأسود' },
             fact: { en: 'Majestic and rare, the black swan is a symbol of elegance in our park.', fr: 'Majestueux et rare, le cygne noir est un symbole d\'élégance dans notre parc.', ar: 'مهيب ونادر، البجع الأسود هو رمز للأناقة في منتزهنا.' },
-            image: 'https://images.unsplash.com/photo-1549466699-db3730302b4e?q=80&w=800',
+            image: 'https://images.unsplash.com/photo-1541411136474-912f27021576?q=80&w=800',
             category: 'Avian'
         },
         {
             id: 'white-swan',
             name: { en: 'White Swan', fr: 'Cygne Blanc', ar: 'البجع الأبيض' },
             fact: { en: 'Often found gliding gracefully, they represent the serenity of Natura Jungle.', fr: 'Souvent vus glissant avec grâce, ils représentent la sérénité de Natura Jungle.', ar: 'غالباً ما يظهرون وهم يسبحون بنعمة، وهم يمثلون هدوء فطورا جانغل.' },
-            image: 'https://images.unsplash.com/photo-1511216113906-8f57bb83e776?q=80&w=800',
+            image: 'https://images.unsplash.com/photo-1551829141-947701710d2b?q=80&w=800',
             category: 'Avian'
         },
         {
             id: 'horses',
             name: { en: 'Horses', fr: 'Chevaux', ar: 'الخيول' },
             fact: { en: 'Our stables house gentle spirits ready for equestrian adventures.', fr: 'Nos écuries abritent des esprits doux prêts pour des aventures équestres.', ar: 'تضم اسطبلاتنا خيولاً لطيفة وجاهزة لمغامرات الفروسية.' },
-            image: 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?q=80&w=800',
+            image: 'https://images.unsplash.com/photo-1485463611174-f302f6a5c1c9?q=80&w=800',
             category: 'Mammal'
         },
         {
             id: 'ostrich',
             name: { en: 'Ostrich', fr: 'Autruche', ar: 'النعام' },
             fact: { en: 'The fastest bird on land, our ostriches are curious and impressive.', fr: 'L\'oiseau le plus rapide sur terre, nos autruches sont curieuses et impressionnantes.', ar: 'أسرع طائر على وجه الأرض، النعام لدينا فضولي ومثير للإعجاب.' },
-            image: 'https://images.unsplash.com/photo-1575550959106-5a7defe28b56?q=80&w=800',
+            image: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?q=80&w=800',
             category: 'Avian'
         },
         {
             id: 'tibet-goat',
             name: { en: 'Tibet Goat', fr: 'Chèvre du Tibet', ar: 'ماعز التبت' },
             fact: { en: 'Known for their soft coat and climbing skills.', fr: 'Connues pour leur pelage doux et leurs talents de grimpeur.', ar: 'معروفة بفرائها الناعم ومهاراتها في التسلق.' },
-            image: 'https://images.unsplash.com/photo-1621213303681-37d4529ec9d2?q=80&w=800',
+            image: 'https://images.unsplash.com/photo-1533167649158-6d508895b680?q=80&w=800',
             category: 'Mammal'
         },
         {
@@ -77,7 +77,7 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
             id: 'peacock',
             name: { en: 'Peacock', fr: 'Paon', ar: 'الطاووس' },
             fact: { en: 'A living masterpiece of nature, displaying vibrant "eyes" to dazzle.', fr: 'Un chef-d\'œuvre vivant de la nature, arborant des "yeux" vibrants pour éblouir.', ar: 'تحفة طبيعية حية، تظهر "عيوناً" ملونة للانبهار.' },
-            image: 'https://images.unsplash.com/photo-1521613271131-4876b3281165?q=80&w=800',
+            image: 'https://images.unsplash.com/photo-1453227588063-bb302b62f50b?q=80&w=800',
             category: 'Avian'
         },
         {
