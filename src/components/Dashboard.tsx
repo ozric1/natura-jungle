@@ -23,9 +23,11 @@ import { DigitalMenu, type CartItem } from './DigitalMenu';
 import { BungalowBooking } from './BungalowBooking';
 import { NightSkyMap } from './NightSkyMap';
 import { WildCircuitExhibition } from './WildCircuitExhibition';
+import { FunPlay } from './FunPlay';
 import cockatooImg from '../assets/park/cockatoo.jpg';
 import tentImg from '../assets/park/tent.jpg';
 import pondImg from '../assets/park/pond.jpg';
+import wallabyImg from '../assets/park/wallaby.jpg';
 
 export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
@@ -35,7 +37,7 @@ export interface DashboardProps {
 
 export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
     const isRTL = currentLanguage === 'ar';
-    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition'>('base');
+    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition' | 'fun'>('base');
     const [activeOrder, setActiveOrder] = useState<{ items: string[], total: string } | null>(null);
     const [hasBooked, setHasBooked] = useState(false);
 
@@ -53,9 +55,9 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "Respirez la Nature",
             about_text: "Nestled 11 km from Mohammedia, 10 km from Benslimane, and 8 km from Bouznika, just minutes from the Mensouria highway exit, Natura Jungle Park offers an immersive escape in the heart of nature. This peaceful haven charms with its idyllic setting, featuring a mini zoo, restaurant, children's play areas, equestrian adventures, thrilling quad excursions, and a refreshing swimming pool. For nature lovers, the park offers luxury bungalows for a harmonious night in this green oasis.",
             bundles: [
-                { id: 1, title: "The Wild Circuit", sub: "Species Discovery", color: "bg-emerald-900", icon: Palmtree, image: cockatooImg, action: () => setCurrentView('exhibition') },
-                { id: 4, title: "Fun & Play", sub: "Family Activities", color: "bg-orange-800", icon: Sparkles, image: "https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=800", action: () => { } },
-                { id: 2, title: "The Oasis", sub: "Poolside Serenity", color: "bg-blue-900", icon: Waves, image: pondImg, action: () => { } },
+                { id: 1, title: "The Wild Circuit", sub: "Species Discovery", color: "bg-emerald-900", icon: Palmtree, image: wallabyImg, action: () => setCurrentView('exhibition') },
+                { id: 4, title: "Fun & Play", sub: "Family Activities", color: "bg-orange-800", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => setCurrentView('fun') },
+                { id: 2, title: "The Oasis", sub: "Poolside Serenity", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800", action: () => { } },
                 { id: 3, title: "Jungle Stays", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
             ]
         },
@@ -91,9 +93,9 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "استنشق الطبيعة",
             about_text: "يقع منتزه نطورا جانغل على بعد ١١ كم من المحمدية، و١٠ كم من بنسليمان، و٨ كم من بوزنيقة، وعلى بعد دقائق قليلة من مخرج الطريق السيار المنصورية، ويوفر ملاذاً غامراً في قلب الطبيعة. يسحر هذا الملاذ الهادئ زواره بموقعه المثالي، حيث يضم حديقة حيوانات صغيرة، مطعماً، مساحات لعب للأطفال، مغامرات الفروسية، رحلات الكواد المثيرة، بالإضافة إلى مسبح منعش. لمحبي الطبيعة، يقدم المنتزه بناغل فاخرة لقضاء ليلة متناغمة في هذه الواحة الخضراء.",
             bundles: [
-                { id: 1, title: isRTL ? 'المسار البري' : 'Wild Path', sub: isRTL ? 'اكتشاف الأنواع' : 'Species Discovery', color: "bg-emerald-900", icon: Palmtree, image: cockatooImg, action: () => setCurrentView('exhibition') },
-                { id: 4, title: isRTL ? 'المرح واللعب' : 'Fun & Play', sub: isRTL ? 'أنشطة عائلية' : 'Family Activities', color: "bg-orange-800", icon: Sparkles, image: "https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=800", action: () => { } },
-                { id: 2, title: isRTL ? 'الالواحة' : 'The Oasis', sub: isRTL ? 'هدوء المسبح' : 'Poolside Serenity', color: "bg-blue-900", icon: Waves, image: pondImg, action: () => { } },
+                { id: 1, title: isRTL ? 'المسار البري' : 'Wild Path', sub: isRTL ? 'اكتشاف الأنواع' : 'Species Discovery', color: "bg-emerald-900", icon: Palmtree, image: wallabyImg, action: () => setCurrentView('exhibition') },
+                { id: 4, title: isRTL ? 'المرح واللعب' : 'Fun & Play', sub: isRTL ? 'أنشطة عائلية' : 'Family Activities', color: "bg-orange-800", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => setCurrentView('fun') },
+                { id: 2, title: isRTL ? 'الالواحة' : 'The Oasis', sub: isRTL ? 'هدوء المسبح' : 'Poolside Serenity', color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800", action: () => { } },
                 { id: 3, title: isRTL ? 'إقامات الغابة' : 'Jungle Stays', sub: isRTL ? 'بناغل وخيام' : 'Bungalows & Tents', color: "bg-amber-900", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
             ]
         }
@@ -394,8 +396,17 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     </motion.div>
                 )}
                 {currentView === 'exhibition' && (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[180]">
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[180] overflow-hidden">
                         <WildCircuitExhibition
+                            isRTL={isRTL}
+                            language={currentLanguage}
+                            onBack={() => setCurrentView('base')}
+                        />
+                    </motion.div>
+                )}
+                {currentView === 'fun' && (
+                    <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25 }} className="fixed inset-0 z-[190]">
+                        <FunPlay
                             isRTL={isRTL}
                             language={currentLanguage}
                             onBack={() => setCurrentView('base')}

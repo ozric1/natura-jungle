@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { ChevronLeft, Info, Bookmark, Share2, Sparkles, ArrowRight } from 'lucide-react';
-
+import pigsImg from '../assets/park/pigs.jpg';
+import cockatooImg from '../assets/park/cockatoo.jpg';
+import wallabyImg from '../assets/park/wallaby.jpg';
 
 interface AnimalExhibit {
     id: string;
@@ -23,7 +25,7 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
             id: 'ducks',
             name: { en: 'Ducks', fr: 'Canards', ar: 'البط' },
             fact: { en: 'Our ducks love the central pond and are often the first to greet visitors.', fr: 'Nos canards adorent l\'étang central et sont souvent les premiers à saluer les visiteurs.', ar: 'تحب طيور البط لدينا البركة المركزية وغالباً ما تكون هي أول من يستقبل الزوار.' },
-            image: 'https://images.unsplash.com/photo-1459156477724-4066191636c7?q=80&w=800',
+            image: 'https://images.unsplash.com/photo-1530121223246-013ca6dd3438?q=80&w=800',
             category: 'Avian'
         },
         {
@@ -76,30 +78,30 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
             category: 'Avian'
         },
         {
-            id: 'wild-cat',
-            name: { en: 'Wild Cat', fr: 'Chat Sauvage', ar: 'القط البري' },
-            fact: { en: 'Mysterious and agile, our wild cats are masters of the jungle shadows.', fr: 'Mystérieux et agiles, nos chats sauvages sont les maîtres des ombres de la jungle.', ar: 'غامضة ورشيقة، قططنا البرية هي أسياد ظلال الغابة.' },
-            image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=800',
+            id: 'kangaroo',
+            name: { en: 'Kangaroo (Wallaby)', fr: 'Kangourou (Wallaby)', ar: 'الكنغر (والابي)' },
+            fact: { en: 'Agile and alert, these marsupials are a joy to observe in their enclosure.', fr: 'Agiles et alertes, ces marsupiaux sont un plaisir à observer dans leur enclos.', ar: 'رشيقة ويقظة، هذه الجرابيات هي متعة لمراقبتها في حظيرتها.' },
+            image: wallabyImg,
             category: 'Mammal'
         },
         {
             id: 'small-pigs',
             name: { en: 'Small Pigs', fr: 'Petits Cochons', ar: 'الخنازير الصغيرة' },
             fact: { en: 'Intelligent and playful, they are a favorite among our younger guests.', fr: 'Intelligents et enjoués, ils sont les favoris de nos plus jeunes invités.', ar: 'ذكية ومرحة، وهي مفضلة لدى زوارنا الصغار.' },
-            image: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=800',
+            image: pigsImg,
             category: 'Farm'
         },
         {
             id: 'ivory-parrot',
-            name: { en: 'Ivory Parrot', fr: 'Perroquet Ivoire', ar: 'الببغاء العاجي' },
-            fact: { en: 'Vocal and colorful, the Ivory Parrot is the voice of the forest canopy.', fr: 'Vocal et coloré, le Perroquet Ivoire est la voix de la canopée de la forêt.', ar: 'صوت ملون، الببغاء العاجي هو صوت غطاء الغابة.' },
-            image: 'https://images.unsplash.com/photo-1552728089-57bdde30fc3e?q=80&w=800',
+            name: { en: 'Ivory Parrot (Cockatoo)', fr: 'Perroquet Ivoire (Cacatoès)', ar: 'الببغاء العاجي (كاكاتو)' },
+            fact: { en: 'Vocal and colorful, the Cockatoo is the voice of the forest canopy.', fr: 'Vocal et coloré, le Cacatoès est la voix de la canopée de la forêt.', ar: 'صوت ملون، الكاكاتو هو صوت غطاء الغابة.' },
+            image: cockatooImg,
             category: 'Avian'
         }
     ];
 
     return (
-        <div className="min-h-screen bg-egg-shell text-jungle-green overflow-y-auto pb-32 no-scrollbar" dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className="h-screen w-full bg-egg-shell text-jungle-green overflow-y-auto pb-32 no-scrollbar scroll-smooth" dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Header */}
             <header className="px-6 py-12 flex justify-between items-end sticky top-0 z-50 bg-egg-shell/80 backdrop-blur-xl border-b border-sand-gold/10">
                 <div>
