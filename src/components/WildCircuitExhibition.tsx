@@ -143,7 +143,11 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
                         <div className="flex flex-col md:flex-row gap-8 items-center">
                             {/* Image Container */}
                             <div className="relative w-full md:w-1/2 aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl gold-shadow group-hover:scale-[1.02] transition-transform duration-700">
-                                <img src={item.image} className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0" alt={item.name[language]} />
+                                <img
+                                    src={item.image}
+                                    className="w-full h-full object-cover grayscale saturate-50 transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110 group-hover:saturate-150"
+                                    alt={item.name[language]}
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-t from-jungle-green/80 via-transparent to-transparent opacity-60" />
 
                                 <div className="absolute top-6 left-6 glass-dark px-4 py-2 rounded-full border border-white/20">
