@@ -11,8 +11,7 @@ import {
     Waves,
     Moon,
     Sun,
-    Clock,
-    Award
+    Clock
 } from 'lucide-react';
 import { useState } from 'react';
 import { VIPOrderTracker } from './VIPOrderTracker';

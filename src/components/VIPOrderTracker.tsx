@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Utensils, Clock, MessageSquare, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -65,8 +65,8 @@ export const VIPOrderTracker = ({ status: initialStatus, orderId, items, total, 
                                     animate={isCurrent ? { scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] } : {}}
                                     transition={{ duration: 0.5, repeat: isCurrent ? Infinity : 0, repeatDelay: 2 }}
                                     className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${isCompleted
-                                            ? 'bg-sand-gold text-jungle-green shadow-lg shadow-sand-gold/20'
-                                            : 'bg-jungle-green/5 dark:bg-white/5 text-jungle-green/20 dark:text-white/10'
+                                        ? 'bg-sand-gold text-jungle-green shadow-lg shadow-sand-gold/20'
+                                        : 'bg-jungle-green/5 dark:bg-white/5 text-jungle-green/20 dark:text-white/10'
                                         }`}
                                 >
                                     <StepIcon className="w-6 h-6" />

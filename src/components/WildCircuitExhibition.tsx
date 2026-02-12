@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Info, Bookmark, Share2, Sparkles, ArrowRight, X } from 'lucide-react';
+import { ChevronLeft, Info, Bookmark, Share2, Sparkles, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { AnimalDiscovery } from './AnimalDiscovery';
 import pigsImg from '../assets/park/pigs.jpg';
