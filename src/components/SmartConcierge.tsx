@@ -20,7 +20,7 @@ export const SmartConcierge = ({ isRTL = false }: SmartConciergeProps) => {
         <div className="space-y-6">
             <div className="flex justify-between items-start">
                 <div>
-                    <h2 className="text-2xl font-serif">{isRTL ? 'الكونسيرج الذكي' : 'Smart Concierge'}</h2>
+                    <h2 className="text-2xl font-serif text-jungle-green dark:text-white transition-colors">{isRTL ? 'الكونسيرج الذكي' : 'Smart Concierge'}</h2>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-jungle-green/40 dark:text-white/40 mt-1">
                         {isRTL ? 'خدمة الضغط الواحدة - لضيوف البنغل فقط' : 'One tap service Bungalow Guest only'}
                     </p>

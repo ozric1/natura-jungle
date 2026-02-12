@@ -232,41 +232,6 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                 </div>
                             </section>
 
-                            {/* Interactive Park Map Snippet */}
-                            <section className="space-y-4">
-                                <h2 className="text-2xl font-serif text-jungle-green dark:text-white transition-colors">{text.map_title}</h2>
-                                <motion.div
-                                    whileTap={{ scale: 0.98 }}
-                                    onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')}
-                                    className="h-64 rounded-[3rem] relative overflow-hidden gold-shadow border border-sand-gold/10 bg-[url('https://images.unsplash.com/photo-1549466699-db3730302b4e?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center cursor-pointer group"
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-jungle-green/40 to-transparent group-hover:from-jungle-green/60 transition-colors" />
-                                    <div className="absolute top-6 right-6 flex items-center gap-2 glass-morphism px-4 py-2 rounded-full z-10">
-                                        <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                                        <span className="text-[10px] text-white font-bold uppercase tracking-widest">{text.map_status}</span>
-                                    </div>
-
-                                    <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between z-10">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-12 h-12 rounded-2xl bg-sand-gold flex items-center justify-center text-jungle-green shadow-lg">
-                                                <MapIcon className="w-6 h-6" />
-                                            </div>
-                                            <div className="text-white">
-                                                <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-60">Location Guide</p>
-                                                <p className="text-lg font-serif">Open in Google Maps</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex gap-2">
-                                            <motion.button
-                                                whileTap={{ scale: 0.9 }}
-                                                className="w-10 h-10 rounded-full glass-morphism flex items-center justify-center text-white"
-                                            >
-                                                <Globe className="w-5 h-5" />
-                                            </motion.button>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            </section>
 
                             {/* Jungle Kitchen Section */}
                             <section className="space-y-4">

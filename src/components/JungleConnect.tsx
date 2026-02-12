@@ -31,7 +31,7 @@ export const JungleConnect = ({ isRTL = false }: JungleConnectProps) => {
     return (
         <div className="space-y-6">
             <div className="flex justify-between items-end">
-                <h2 className="text-2xl font-serif">{isRTL ? 'جنجل كونكت' : 'Jungle Connect'}</h2>
+                <h2 className="text-2xl font-serif text-jungle-green dark:text-white transition-colors">{isRTL ? 'جنجل كونكت' : 'Jungle Connect'}</h2>
                 <div className="flex items-center gap-2 text-sand-gold">
                     <Camera className="w-4 h-4" />
                     <span className="text-[10px] font-bold uppercase tracking-widest">
