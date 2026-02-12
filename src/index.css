@@ -82,7 +82,7 @@ body {
   h2,
   h3,
   h4 {
-    @apply font-serif font-semibold tracking-tight text-jungle-green;
+    @apply font-serif font-semibold tracking-tight text-jungle-green dark:text-white;
   }
 }
 
@@ -108,7 +108,7 @@ body {
 }
 
 .jungle-card {
-  @apply rounded-[2.5rem] p-6 bg-white/80 backdrop-blur-sm shadow-xl border border-white/40;
+  @apply rounded-[2.5rem] p-6 bg-white/80 dark:bg-jungle-green/40 backdrop-blur-sm shadow-xl border border-white/40 dark:border-white/10;
 }
 
 .photo-overlay {

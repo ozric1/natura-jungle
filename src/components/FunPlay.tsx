@@ -45,18 +45,18 @@ export const FunPlay = ({ onBack, isRTL = false, language }: FunPlayProps) => {
     }
 
     return (
-        <div className="h-screen w-full bg-orange-50 text-orange-950 overflow-y-auto no-scrollbar scroll-smooth" dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className="h-screen w-full bg-orange-50 dark:bg-orange-950/20 text-orange-950 dark:text-orange-100 overflow-y-auto no-scrollbar scroll-smooth" dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Header */}
-            <header className="px-6 py-12 flex justify-between items-end sticky top-0 z-50 bg-orange-50/80 backdrop-blur-xl border-b border-orange-200">
+            <header className="px-6 py-12 flex justify-between items-end sticky top-0 z-50 bg-orange-50/80 dark:bg-orange-950/80 backdrop-blur-xl border-b border-orange-200">
                 <div>
                     <motion.button
                         whileTap={{ scale: 0.9 }}
                         onClick={onBack}
-                        className="w-10 h-10 flex items-center justify-center rounded-full bg-orange-900/5 text-orange-900 mb-4"
+                        className="w-10 h-10 flex items-center justify-center rounded-full bg-orange-900/5 dark:bg-white/10 text-orange-900 dark:text-white mb-4"
                     >
                         <ChevronLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
                     </motion.button>
-                    <h1 className="text-4xl font-serif italic text-orange-950">
+                    <h1 className="text-4xl font-serif italic text-orange-950 dark:text-white">
                         {language === 'ar' ? 'المرح واللعب' : language === 'fr' ? 'Fun & Jeux' : 'Fun & Play'}
                     </h1>
                     <p className="text-[10px] uppercase font-bold tracking-[0.3em] opacity-40 mt-2">

@@ -161,9 +161,9 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
     const filteredItems = menuItems.filter(item => item.category === activeCategory);
 
     return (
-        <div className={`min-h-screen ${isRTL ? 'text-right' : 'text-left'} bg-inherit`} dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className={`min-h-screen ${isRTL ? 'text-right' : 'text-left'} bg-inherit text-inherit`} dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Header */}
-            <header className="px-6 py-8 flex justify-between items-center glass-light border-b border-sand-gold/10 sticky top-0 z-50">
+            <header className="px-6 py-8 flex justify-between items-center glass-light dark:glass-dark border-b border-sand-gold/10 sticky top-0 z-50">
                 <motion.button
                     whileTap={{ scale: 0.9 }}
                     onClick={onBack}
@@ -203,7 +203,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                 onClick={() => setActiveCategory(cat.id as any)}
                                 className={`flex-none px-6 py-4 rounded-2xl flex items-center gap-3 transition-all duration-300 border ${isActive
                                     ? 'bg-sand-gold text-jungle-green border-sand-gold shadow-lg shadow-sand-gold/20'
-                                    : 'bg-jungle-green/5 text-jungle-green/60 border-jungle-green/10'
+                                    : 'bg-jungle-green/5 dark:bg-white/5 text-jungle-green/60 dark:text-white/40 border-jungle-green/10 dark:border-white/10'
                                     }`}
                             >
                                 <Icon className="w-5 h-5" />
@@ -226,16 +226,16 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                             {filteredItems.map((item) => {
                                 const cartItem = cart.find(i => i.id === item.id);
                                 return (
-                                    <div key={item.id} className="jungle-card p-4 flex gap-4 bg-white shadow-xl">
+                                    <div key={item.id} className="jungle-card p-4 flex gap-4 bg-white/80 dark:bg-white/5 shadow-xl">
                                         <div className="w-24 h-24 rounded-2xl overflow-hidden flex-none">
                                             <img src={item.image} className="w-full h-full object-cover" alt={item.name} />
                                         </div>
                                         <div className="flex-1 py-1">
                                             <div className="flex justify-between items-start mb-1">
-                                                <h3 className="text-lg font-serif">{item.name}</h3>
+                                                <h3 className="text-lg font-serif dark:text-white">{item.name}</h3>
                                                 <span className="text-sand-gold font-bold">{item.price} MAD</span>
                                             </div>
-                                            <p className="text-xs text-jungle-green/40 mb-3">{item.description}</p>
+                                            <p className="text-xs text-jungle-green/40 dark:text-white/40 mb-3">{item.description}</p>
 
                                             <div className="flex justify-end">
                                                 {cartItem ? (

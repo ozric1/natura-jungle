@@ -101,18 +101,18 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
     ];
 
     return (
-        <div className="h-screen w-full bg-egg-shell text-jungle-green overflow-y-auto pb-32 no-scrollbar scroll-smooth" dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className="h-screen w-full bg-egg-shell dark:bg-ink-black text-jungle-green dark:text-white overflow-y-auto pb-32 no-scrollbar scroll-smooth" dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Header */}
-            <header className="px-6 py-12 flex justify-between items-end sticky top-0 z-50 bg-egg-shell/80 backdrop-blur-xl border-b border-sand-gold/10">
+            <header className="px-6 py-12 flex justify-between items-end sticky top-0 z-50 bg-egg-shell/80 dark:bg-ink-black/80 backdrop-blur-xl border-b border-sand-gold/10">
                 <div>
                     <motion.button
                         whileTap={{ scale: 0.9 }}
                         onClick={onBack}
-                        className="w-10 h-10 flex items-center justify-center rounded-full bg-jungle-green/5 text-jungle-green mb-4"
+                        className="w-10 h-10 flex items-center justify-center rounded-full bg-jungle-green/5 dark:bg-white/10 text-jungle-green dark:text-white mb-4"
                     >
                         <ChevronLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
                     </motion.button>
-                    <h1 className="text-4xl font-serif italic text-jungle-green">
+                    <h1 className="text-4xl font-serif italic text-jungle-green dark:text-white">
                         {language === 'ar' ? 'المسار البري' : language === 'fr' ? 'Le Circuit Sauvage' : 'The Wild Circuit'}
                     </h1>
                     <p className="text-[10px] uppercase font-bold tracking-[0.3em] opacity-40 mt-2">
@@ -159,7 +159,7 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
                                 </div>
 
                                 <motion.div
-                                    className="p-8 bg-white/50 backdrop-blur-sm rounded-[2.5rem] border border-sand-gold/10 shadow-sm relative"
+                                    className="p-8 bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-[2.5rem] border border-sand-gold/10 shadow-sm relative"
                                 >
                                     <div className="absolute -top-3 left-8 w-6 h-6 bg-sand-gold rounded-full flex items-center justify-center text-jungle-green">
                                         <Info className="w-3 h-3" />
