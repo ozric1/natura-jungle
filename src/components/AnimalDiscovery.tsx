@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowLeft, Play, Heart, Share2, Volume2 } from 'lucide-react';
+import wallabyImg from '../assets/park/wallaby.jpg';
+import cockatooImg from '../assets/park/cockatoo.jpg';
 
 interface AnimalDiscoveryProps {
     animal: {
@@ -94,10 +96,10 @@ export const AnimalDiscovery = ({ animal, onBack, isRTL = false }: AnimalDiscove
                     <h3 className="text-2xl font-serif mb-8">{isRTL ? 'معرض الصور' : 'Species Gallery'}</h3>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="h-48 bg-jungle-green/5 rounded-[2rem] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1544979592-74892477383a?q=80&w=600" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Detail 1" />
+                            <img src={cockatooImg} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Detail 1" />
                         </div>
                         <div className="h-48 bg-jungle-green/5 rounded-[2rem] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=600" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Detail 2" />
+                            <img src={wallabyImg} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Detail 2" />
                         </div>
                     </div>
                 </div>

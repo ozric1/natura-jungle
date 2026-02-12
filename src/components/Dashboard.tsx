@@ -23,6 +23,9 @@ import { DigitalMenu } from './DigitalMenu';
 import { BungalowBooking } from './BungalowBooking';
 import { NightSkyMap } from './NightSkyMap';
 import { AnimatePresence } from 'framer-motion';
+import cockatooImg from '../assets/park/cockatoo.jpg';
+import tentImg from '../assets/park/tent.jpg';
+import pondImg from '../assets/park/pond.jpg';
 
 export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
@@ -38,11 +41,11 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
     const [hasBooked, setHasBooked] = useState(false);
 
     const dummyAnimal = {
-        name: currentLanguage === 'ar' ? 'الببغاء الذهبي' : 'Golden Cockatoo',
-        species: currentLanguage === 'ar' ? 'ببغاء استوائي' : 'Tropical Psittaciformes',
-        character: currentLanguage === 'ar' ? 'ذكي للغاية واجتماعي، يحب التفاعل مع الزوار.' : 'Highly intelligent and social, known for its vibrant personality and love for interaction.',
-        intelligence: currentLanguage === 'ar' ? 'يمكنه حل الألغاز المعقدة وتقليد أكثر من ٥٠ صوتاً مختلفاً.' : 'Capable of solving complex puzzles and mimicking over 50 distinct sounds in the wild.',
-        image: 'https://images.unsplash.com/photo-1544979592-74892477383a?q=80&w=2070&auto=format&fit=crop',
+        name: isRTL ? 'الكوكاتو الذهبي' : 'Golden Cockatoo',
+        species: isRTL ? 'كاكاتوا غاليريتا' : 'Cacatua galerita',
+        character: isRTL ? 'هذا الطائر الجميل لا يكتفي بجماله، بل هو رفيق مخلص يحب التفاعل مع الزوار.' : 'This beautiful bird is not just about looks; it is a loyal companion that loves interacting with visitors.',
+        intelligence: isRTL ? 'واحدة من أذكى الطيور، يمكنها محاكاة الأصوات وحل الألغاز البسيطة.' : 'One of the smartest birds, capable of mimicking sounds and solving simple puzzles.',
+        image: cockatooImg,
         audioSrc: '#'
     };
 
@@ -97,9 +100,9 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "استنشق الطبيعة",
             about_text: "يقع منتزه نطورا جانغل على بعد ١١ كم من المحمدية، و١٠ كم من بنسليمان، و٨ كم من بوزنيقة، وعلى بعد دقائق قليلة من مخرج الطريق السيار المنصورية، ويوفر ملاذاً غامراً في قلب الطبيعة. يسحر هذا الملاذ الهادئ زواره بموقعه المثالي، حيث يضم حديقة حيوانات صغيرة، مطعماً، مساحات لعب للأطفال، مغامرات الفروسية، رحلات الكواد المثيرة، بالإضافة إلى مسبح منعش. لمحبي الطبيعة، يقدم المنتزه بناغل فاخرة لقضاء ليلة متناغمة في هذه الواحة الخضراء.",
             bundles: [
-                { id: 1, title: "المسار البري", sub: "اكتشاف الأنواع", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setSelectedAnimal(dummyAnimal) },
-                { id: 2, title: "الالواحة", sub: "هدوء المسبح", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800", action: () => { } },
-                { id: 3, title: "إقامات الغابة", sub: "بناغل وخيام", color: "bg-amber-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setCurrentView('booking') }
+                { id: 1, title: isRTL ? 'المسار البري' : 'Wild Path', sub: isRTL ? 'اكتشاف الأنواع' : 'Species Discovery', color: "bg-emerald-900", icon: Palmtree, image: cockatooImg, action: () => setSelectedAnimal(dummyAnimal) },
+                { id: 2, title: isRTL ? 'الالواحة' : 'The Oasis', sub: isRTL ? 'هدوء المسبح' : 'Poolside Serenity', color: "bg-blue-900", icon: Waves, image: pondImg, action: () => { } },
+                { id: 3, title: isRTL ? 'إقامات الغابة' : 'Jungle Stays', sub: isRTL ? 'بناغل وخيام' : 'Bungalows & Tents', color: "bg-amber-900", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
             ]
         }
     };

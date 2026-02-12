@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Heart, MessageCircle, Share2, Camera } from 'lucide-react';
+import pigsImg from '../assets/park/pigs.jpg';
 
 interface JungleConnectProps {
     isRTL?: boolean;
@@ -10,7 +11,7 @@ export const JungleConnect = ({ isRTL = false }: JungleConnectProps) => {
         {
             id: 1,
             user: "Sarah M.",
-            image: "/assets/natura/pigs.jpg",
+            image: pigsImg,
             likes: "1.2k"
         },
         {
