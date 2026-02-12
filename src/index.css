@@ -94,21 +94,21 @@ body {
 }
 
 .glass-dark {
-  background: rgba(13, 22, 13, 0.6);
+  background: rgba(5, 8, 5, 0.95);
   backdrop-filter: blur(25px) saturate(160%);
   -webkit-backdrop-filter: blur(25px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .glass-light {
-  background: rgba(249, 247, 242, 0.8);
+  background: rgba(249, 247, 242, 0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 .jungle-card {
-  @apply rounded-[2.5rem] p-6 bg-white/80 dark:bg-jungle-green/40 backdrop-blur-sm shadow-xl border border-white/40 dark:border-white/10;
+  @apply rounded-[2.5rem] p-6 bg-white/95 dark:bg-jungle-green/90 backdrop-blur-sm shadow-xl border border-white/40 dark:border-white/10;
 }
 
 .photo-overlay {

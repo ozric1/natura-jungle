@@ -143,19 +143,20 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             </header>
 
             <main className="pb-32">
-                {currentView === 'menu' ? (
-                    <DigitalMenu
-                        language={currentLanguage}
-                        isRTL={isRTL}
-                        onBack={() => setCurrentView('base')}
-                        onOrderPlaced={(cart: CartItem[], total: number) => {
-                            setActiveOrder({
-                                items: cart.map(i => `${i.quantity}x ${i.name}`),
-                                total: `${total} MAD`
-                            });
-                            setCurrentView('tracker');
-                        }}
-                    />
+                {currentView === 'tracker' && activeOrder ? (
+                    <div className="px-6 py-4 animate-slide-up">
+                        <VIPOrderTracker
+                            status="preparing"
+                            orderId={`NJ-${Math.floor(1000 + Math.random() * 9000)}`}
+                            items={activeOrder.items}
+                            total={activeOrder.total}
+                            isRTL={isRTL}
+                            onReset={() => {
+                                setCurrentView('base');
+                                setActiveOrder(null);
+                            }}
+                        />
+                    </div>
                 ) : (
                     <>
                         {/* Hero Experience Carousel */}
@@ -338,53 +339,89 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                 )}
             </main>
 
-            {/* Premium Bottom Nav */}
-            <nav className="fixed bottom-0 left-0 right-0 h-24 flex justify-around items-center px-8 z-50 glass-dark">
+            {/* Premium Visitor Platform Bottom Nav */}
+            <nav className="fixed bottom-0 left-0 right-0 h-24 flex justify-around items-center px-8 z-50 glass-dark border-t border-white/5">
                 <motion.button
                     whileTap={{ y: -5 }}
                     onClick={() => setCurrentView('base')}
-                    className={`w-10 h-10 flex items-center justify-center ${currentView === 'base' ? 'text-sand-gold' : 'text-white/20'}`}
+                    className={`flex flex-col items-center gap-1 ${currentView === 'base' ? 'text-sand-gold' : 'text-white/40'}`}
                 >
-                    <Sparkles className="w-6 h-6" />
+                    <Sparkles className="w-5 h-5" />
+                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'الرئيسية' : 'Discover'}</span>
                 </motion.button>
+
                 <motion.button
                     whileTap={{ y: -5 }}
                     onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')}
-                    className="w-10 h-10 flex items-center justify-center text-white/20"
+                    className="flex flex-col items-center gap-1 text-white/40"
                 >
-                    <MapIcon className="w-6 h-6" />
+                    <MapIcon className="w-5 h-5" />
+                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'الخريطة' : 'Navigation'}</span>
                 </motion.button>
 
                 <div className="relative -mt-16">
                     <div className="absolute inset-0 bg-sand-gold blur-2xl opacity-40 rounded-full" />
                     <motion.button
                         whileTap={{ scale: 0.9 }}
-                        onClick={() => setCurrentView('menu')}
-                        className={`w-16 h-16 rounded-[1.5rem] bg-sand-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow ${currentView === 'menu' ? 'scale-110 ring-4 ring-sand-gold/20' : ''}`}
+                        onClick={() => setCurrentView('exhibition')}
+                        className={`w-16 h-16 rounded-[1.8rem] bg-sand-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow ${currentView === 'exhibition' ? 'scale-110 ring-4 ring-sand-gold/20' : ''}`}
                     >
-                        <Utensils className="w-8 h-8" />
+                        <Palmtree className="w-8 h-8" />
                     </motion.button>
                 </div>
 
                 <motion.button
                     whileTap={{ y: -5 }}
-                    className="w-10 h-10 flex items-center justify-center text-white/20"
+                    onClick={() => setCurrentView('menu')}
+                    className={`flex flex-col items-center gap-1 ${currentView === 'menu' ? 'text-sand-gold' : 'text-white/40'}`}
                 >
-                    <Award className="w-6 h-6" />
+                    <Utensils className="w-5 h-5" />
+                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'المطبخ' : 'Kitchen'}</span>
                 </motion.button>
+
                 <motion.button
                     whileTap={{ y: -5 }}
                     onClick={toggleNightMode}
-                    className={`w-10 h-10 flex items-center justify-center ${isNightMode ? 'text-sand-gold' : 'text-white/20'}`}
+                    className="flex flex-col items-center gap-1 text-white/40"
                 >
-                    <Moon className="w-6 h-6" />
+                    {isNightMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'الوضع' : 'Theme'}</span>
                 </motion.button>
             </nav>
 
             {/* View Transitions */}
             <AnimatePresence>
+                {currentView === 'menu' && (
+                    <motion.div
+                        initial={{ y: '100%' }}
+                        animate={{ y: 0 }}
+                        exit={{ y: '100%' }}
+                        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                        className="fixed inset-0 z-[200] bg-egg-shell dark:bg-ink-black overflow-y-auto"
+                    >
+                        <DigitalMenu
+                            language={currentLanguage}
+                            isRTL={isRTL}
+                            onBack={() => setCurrentView('base')}
+                            onOrderPlaced={(cart: CartItem[], total: number) => {
+                                setActiveOrder({
+                                    items: cart.map(i => `${i.quantity}x ${i.name}`),
+                                    total: `${total} MAD`
+                                });
+                                setCurrentView('tracker');
+                            }}
+                        />
+                    </motion.div>
+                )}
+
                 {currentView === 'booking' && (
-                    <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25 }} className="fixed inset-0 z-[150] bg-egg-shell">
+                    <motion.div
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '100%' }}
+                        transition={{ type: 'spring', damping: 25 }}
+                        className="fixed inset-0 z-[150] bg-egg-shell dark:bg-ink-black overflow-y-auto"
+                    >
                         <BungalowBooking
                             isRTL={isRTL}
                             onBack={() => setCurrentView('base')}
@@ -396,7 +433,12 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     </motion.div>
                 )}
                 {currentView === 'exhibition' && (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[180] overflow-hidden">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[180] bg-egg-shell dark:bg-ink-black overflow-hidden"
+                    >
                         <WildCircuitExhibition
                             isRTL={isRTL}
                             language={currentLanguage}
@@ -405,7 +447,13 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     </motion.div>
                 )}
                 {currentView === 'fun' && (
-                    <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25 }} className="fixed inset-0 z-[190]">
+                    <motion.div
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '100%' }}
+                        transition={{ type: 'spring', damping: 25 }}
+                        className="fixed inset-0 z-[190] bg-orange-50 dark:bg-[#1a0f05] overflow-y-auto"
+                    >
                         <FunPlay
                             isRTL={isRTL}
                             language={currentLanguage}
@@ -414,7 +462,12 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     </motion.div>
                 )}
                 {currentView === 'stargazer' && (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[200]">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[210] bg-black"
+                    >
                         <NightSkyMap isRTL={isRTL} onClose={() => setCurrentView('base')} />
                     </motion.div>
                 )}

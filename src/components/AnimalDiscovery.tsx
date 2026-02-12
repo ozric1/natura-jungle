@@ -18,9 +18,9 @@ interface AnimalDiscoveryProps {
 
 export const AnimalDiscovery = ({ animal, onBack, isRTL = false }: AnimalDiscoveryProps) => {
     return (
-        <div className="min-h-screen bg-egg-shell text-jungle-green font-sans pb-20" dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className="min-h-screen bg-egg-shell dark:bg-ink-black text-jungle-green dark:text-white font-sans pb-20 shadow-2xl z-[300]" dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Magazine Header Image */}
-            <div className="relative h-[60vh] w-full overflow-hidden">
+            <div className="relative h-[60vh] w-full overflow-hidden bg-egg-shell dark:bg-ink-black">
                 <motion.div
                     initial={{ scale: 1.2 }}
                     animate={{ scale: 1 }}
@@ -28,7 +28,7 @@ export const AnimalDiscovery = ({ animal, onBack, isRTL = false }: AnimalDiscove
                     className="w-full h-full bg-cover bg-center"
                     style={{ backgroundImage: `url(${animal.image})` }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-egg-shell via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-egg-shell dark:from-ink-black via-transparent to-transparent" />
 
                 {/* Back Button */}
                 <motion.button
@@ -79,13 +79,13 @@ export const AnimalDiscovery = ({ animal, onBack, isRTL = false }: AnimalDiscove
                 </div>
 
                 {/* Fun Facts Section */}
-                <div className="bg-white rounded-[3rem] p-10 shadow-xl border border-sand-gold/5 flex flex-col md:flex-row gap-12 items-center">
-                    <div className="w-24 h-24 rounded-full bg-sand-gold/10 flex items-center justify-center flex-shrink-0">
-                        <Play className="w-10 h-10 text-sand-gold fill-current" />
+                <div className="bg-white/95 dark:bg-white/5 rounded-[3rem] p-10 shadow-xl border border-sand-gold/10 flex flex-col md:flex-row gap-12 items-center">
+                    <div className="w-24 h-24 rounded-full bg-sand-gold/10 flex items-center justify-center flex-shrink-0 text-sand-gold">
+                        <Play className="w-10 h-10 fill-current" />
                     </div>
                     <div>
                         <h3 className="text-[10px] font-bold uppercase tracking-[0.4em] text-sand-gold mb-4">The Intelligence</h3>
-                        <p className="text-lg leading-relaxed text-jungle-green/70 italic">
+                        <p className="text-lg leading-relaxed text-jungle-green/70 dark:text-white/70 italic">
                             {animal.intelligence}
                         </p>
                     </div>

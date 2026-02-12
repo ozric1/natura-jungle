@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
-import { ChevronLeft, Info, Bookmark, Share2, Sparkles, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, Info, Bookmark, Share2, Sparkles, ArrowRight, X } from 'lucide-react';
+import { useState } from 'react';
+import { AnimalDiscovery } from './AnimalDiscovery';
 import pigsImg from '../assets/park/pigs.jpg';
 import cockatooImg from '../assets/park/cockatoo.jpg';
 import wallabyImg from '../assets/park/wallaby.jpg';
@@ -19,6 +21,7 @@ interface WildCircuitExhibitionProps {
 }
 
 export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildCircuitExhibitionProps) => {
+    const [selectedAnimal, setSelectedAnimal] = useState<AnimalExhibit | null>(null);
 
     const exhibits: AnimalExhibit[] = [
         {
@@ -103,12 +106,12 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
     return (
         <div className="h-screen w-full bg-egg-shell dark:bg-ink-black text-jungle-green dark:text-white overflow-y-auto pb-32 no-scrollbar scroll-smooth" dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Header */}
-            <header className="px-6 py-12 flex justify-between items-end sticky top-0 z-50 bg-egg-shell/80 dark:bg-ink-black/80 backdrop-blur-xl border-b border-sand-gold/10">
+            <header className="px-6 py-12 flex justify-between items-end sticky top-0 z-50 bg-egg-shell/95 dark:bg-ink-black/95 backdrop-blur-xl border-b border-sand-gold/10">
                 <div>
                     <motion.button
                         whileTap={{ scale: 0.9 }}
                         onClick={onBack}
-                        className="w-10 h-10 flex items-center justify-center rounded-full bg-jungle-green/5 dark:bg-white/10 text-jungle-green dark:text-white mb-4"
+                        className="w-10 h-10 flex items-center justify-center rounded-full bg-jungle-green/10 dark:bg-white/10 text-jungle-green dark:text-white mb-4"
                     >
                         <ChevronLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
                     </motion.button>
@@ -168,15 +171,31 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
                                         "{item.fact[language]}"
                                     </p>
 
-                                    <div className="mt-8 flex gap-4">
-                                        <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-sand-gold hover:text-jungle-green transition-colors">
-                                            <Bookmark className="w-4 h-4" />
-                                            Save
-                                        </button>
-                                        <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-all">
-                                            <Share2 className="w-4 h-4" />
-                                            Share
-                                        </button>
+                                    <div className="mt-8 flex flex-col gap-4">
+                                        <div className="flex gap-4">
+                                            <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-sand-gold hover:text-jungle-green transition-colors">
+                                                <Bookmark className="w-4 h-4" />
+                                                Save
+                                            </button>
+                                            <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-all">
+                                                <Share2 className="w-4 h-4" />
+                                                Share
+                                            </button>
+                                        </div>
+
+                                        <motion.button
+                                            whileTap={{ scale: 0.95 }}
+                                            onClick={() => setSelectedAnimal(item)}
+                                            className="w-full mt-4 flex items-center justify-between group/btn py-4 px-6 bg-sand-gold/10 rounded-2xl border border-sand-gold/20 hover:bg-sand-gold transition-all duration-300"
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <Sparkles className="w-4 h-4 text-sand-gold group-hover/btn:text-jungle-green" />
+                                                <span className="text-[10px] font-bold uppercase tracking-widest text-sand-gold group-hover/btn:text-jungle-green">
+                                                    {language === 'ar' ? 'اكتشف المزيد' : language === 'fr' ? 'Découvrir Plus' : 'Learn More'}
+                                                </span>
+                                            </div>
+                                            <ArrowRight className={`w-4 h-4 text-sand-gold group-hover/btn:text-jungle-green ${isRTL ? 'rotate-180' : ''}`} />
+                                        </motion.button>
                                     </div>
                                 </motion.div>
                             </div>
@@ -184,6 +203,30 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
                     </motion.div>
                 ))}
             </div>
+
+            <AnimatePresence>
+                {selectedAnimal && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 100 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 100 }}
+                        className="fixed inset-0 z-[1000] overflow-y-auto no-scrollbar"
+                    >
+                        <AnimalDiscovery
+                            animal={{
+                                name: selectedAnimal.name[language],
+                                species: selectedAnimal.category,
+                                character: selectedAnimal.fact[language],
+                                intelligence: "Intelligent and curious, this species plays a vital role in our park's ecosystem.",
+                                image: selectedAnimal.image,
+                                audioSrc: ""
+                            }}
+                            onBack={() => setSelectedAnimal(null)}
+                            isRTL={isRTL}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Bottom Call to Action */}
             <motion.div

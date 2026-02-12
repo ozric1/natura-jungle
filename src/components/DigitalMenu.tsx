@@ -226,7 +226,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                             {filteredItems.map((item) => {
                                 const cartItem = cart.find(i => i.id === item.id);
                                 return (
-                                    <div key={item.id} className="jungle-card p-4 flex gap-4 bg-white/80 dark:bg-white/5 shadow-xl">
+                                    <div key={item.id} className="jungle-card p-4 flex gap-4">
                                         <div className="w-24 h-24 rounded-2xl overflow-hidden flex-none">
                                             <img src={item.image} className="w-full h-full object-cover" alt={item.name} />
                                         </div>
