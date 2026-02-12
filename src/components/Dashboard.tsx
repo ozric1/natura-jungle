@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Menu,
-    Globe,
     ChevronRight,
     Map as MapIcon,
     Utensils,
