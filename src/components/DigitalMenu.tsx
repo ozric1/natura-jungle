@@ -161,9 +161,9 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
     const filteredItems = menuItems.filter(item => item.category === activeCategory);
 
     return (
-        <div className={`min-h-screen ${isRTL ? 'text-right' : 'text-left'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className={`min-h-screen ${isRTL ? 'text-right' : 'text-left'} bg-inherit`} dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Header */}
-            <header className="px-6 py-8 flex justify-between items-center bg-white/10 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
+            <header className="px-6 py-8 flex justify-between items-center glass-light border-b border-sand-gold/10 sticky top-0 z-50">
                 <motion.button
                     whileTap={{ scale: 0.9 }}
                     onClick={onBack}
@@ -203,7 +203,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                 onClick={() => setActiveCategory(cat.id as any)}
                                 className={`flex-none px-6 py-4 rounded-2xl flex items-center gap-3 transition-all duration-300 border ${isActive
                                     ? 'bg-sand-gold text-jungle-green border-sand-gold shadow-lg shadow-sand-gold/20'
-                                    : 'bg-white/5 text-white/40 border-white/10'
+                                    : 'bg-jungle-green/5 text-jungle-green/60 border-jungle-green/10'
                                     }`}
                             >
                                 <Icon className="w-5 h-5" />

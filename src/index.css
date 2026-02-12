@@ -10,6 +10,7 @@
   --color-jungle-cream: #F5F5DC;
   --color-jungle-light: #F0F4EF;
   --color-egg-shell: #F9F7F2;
+  --color-ink-black: #050805;
 
   --font-serif: "Playfair Display", serif;
   --font-sans: "Montserrat", sans-serif;
@@ -62,6 +63,11 @@
   color: var(--color-jungle-green);
 }
 
+.dark {
+  background-color: var(--color-ink-black);
+  color: white;
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -81,17 +87,24 @@ body {
 }
 
 .glass-morphism {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .glass-dark {
-  background: rgba(13, 22, 13, 0.4);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(13, 22, 13, 0.6);
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-light {
+  background: rgba(249, 247, 242, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 .jungle-card {

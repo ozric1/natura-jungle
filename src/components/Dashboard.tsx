@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
     Menu,
     Globe,
@@ -16,13 +16,13 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { VIPOrderTracker } from './VIPOrderTracker';
-import { AnimalDiscovery } from './AnimalDiscovery';
+
 import { SmartConcierge } from './SmartConcierge';
 import { JungleConnect } from './JungleConnect';
-import { DigitalMenu } from './DigitalMenu';
+import { DigitalMenu, type CartItem } from './DigitalMenu';
 import { BungalowBooking } from './BungalowBooking';
 import { NightSkyMap } from './NightSkyMap';
-import { AnimatePresence } from 'framer-motion';
+import { WildCircuitExhibition } from './WildCircuitExhibition';
 import cockatooImg from '../assets/park/cockatoo.jpg';
 import tentImg from '../assets/park/tent.jpg';
 import pondImg from '../assets/park/pond.jpg';
@@ -35,20 +35,9 @@ export interface DashboardProps {
 
 export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
     const isRTL = currentLanguage === 'ar';
-    const [selectedAnimal, setSelectedAnimal] = useState<any>(null);
-    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer'>('base');
+    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition'>('base');
     const [activeOrder, setActiveOrder] = useState<{ items: string[], total: string } | null>(null);
     const [hasBooked, setHasBooked] = useState(false);
-
-    const dummyAnimal = {
-        name: isRTL ? 'الكوكاتو الذهبي' : 'Golden Cockatoo',
-        species: isRTL ? 'كاكاتوا غاليريتا' : 'Cacatua galerita',
-        character: isRTL ? 'هذا الطائر الجميل لا يكتفي بجماله، بل هو رفيق مخلص يحب التفاعل مع الزوار.' : 'This beautiful bird is not just about looks; it is a loyal companion that loves interacting with visitors.',
-        intelligence: isRTL ? 'واحدة من أذكى الطيور، يمكنها محاكاة الأصوات وحل الألغاز البسيطة.' : 'One of the smartest birds, capable of mimicking sounds and solving simple puzzles.',
-        image: cockatooImg,
-        audioSrc: '#'
-    };
-
 
     const translations = {
         en: {
@@ -64,9 +53,10 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "Respirez la Nature",
             about_text: "Nestled 11 km from Mohammedia, 10 km from Benslimane, and 8 km from Bouznika, just minutes from the Mensouria highway exit, Natura Jungle Park offers an immersive escape in the heart of nature. This peaceful haven charms with its idyllic setting, featuring a mini zoo, restaurant, children's play areas, equestrian adventures, thrilling quad excursions, and a refreshing swimming pool. For nature lovers, the park offers luxury bungalows for a harmonious night in this green oasis.",
             bundles: [
-                { id: 1, title: "The Wild Circuit", sub: "Species Discovery", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setSelectedAnimal(dummyAnimal) },
-                { id: 2, title: "The Oasis", sub: "Poolside Serenity", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800", action: () => { } },
-                { id: 3, title: "Jungle Stays", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setCurrentView('booking') }
+                { id: 1, title: "The Wild Circuit", sub: "Species Discovery", color: "bg-emerald-900", icon: Palmtree, image: cockatooImg, action: () => setCurrentView('exhibition') },
+                { id: 4, title: "Fun & Play", sub: "Family Activities", color: "bg-orange-800", icon: Sparkles, image: "https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=800", action: () => { } },
+                { id: 2, title: "The Oasis", sub: "Poolside Serenity", color: "bg-blue-900", icon: Waves, image: pondImg, action: () => { } },
+                { id: 3, title: "Jungle Stays", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
             ]
         },
         fr: {
@@ -82,9 +72,10 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "Respirez la Nature",
             about_text: "Niché à 11 kilomètres de Mohammedia, à 10km de Benslimane et 8km de Bouznika, quelques kilomètres de la sortie autoroute Mensouria, le Parc Natura Jungle offre une escapade immersive en pleine nature. Ce havre de paix séduit par son cadre idyllique, abritant un mini zoo, un restaurant, des espaces de jeux dédiés aux enfants, des aventures équestres, des excursions en quad palpitantes, ainsi qu'une piscine rafraîchissante. Pour les amoureux de la nature, le parc propose des bungalows de luxe, invitant à une nuit harmonieuse au cœur de cette oasis verdoyante.",
             bundles: [
-                { id: 1, title: "Le Circuit Sauvage", sub: "Découverte des Espèces", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setSelectedAnimal(dummyAnimal) },
-                { id: 2, title: "L'Oasis", sub: "Sérénité au Bord de l'Eau", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800", action: () => { } },
-                { id: 3, title: "Séjours Jungle", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setCurrentView('booking') }
+                { id: 1, title: "Le Circuit Sauvage", sub: "Découverte des Espèces", color: "bg-emerald-900", icon: Palmtree, image: cockatooImg, action: () => setCurrentView('exhibition') },
+                { id: 4, title: "Fun & Jeux", sub: "Activités Familiales", color: "bg-orange-800", icon: Sparkles, image: "https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=800", action: () => { } },
+                { id: 2, title: "L'Oasis", sub: "Sérénité au Bord de l'Eau", color: "bg-blue-900", icon: Waves, image: pondImg, action: () => { } },
+                { id: 3, title: "Séjours Jungle", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
             ]
         },
         ar: {
@@ -100,7 +91,8 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "استنشق الطبيعة",
             about_text: "يقع منتزه نطورا جانغل على بعد ١١ كم من المحمدية، و١٠ كم من بنسليمان، و٨ كم من بوزنيقة، وعلى بعد دقائق قليلة من مخرج الطريق السيار المنصورية، ويوفر ملاذاً غامراً في قلب الطبيعة. يسحر هذا الملاذ الهادئ زواره بموقعه المثالي، حيث يضم حديقة حيوانات صغيرة، مطعماً، مساحات لعب للأطفال، مغامرات الفروسية، رحلات الكواد المثيرة، بالإضافة إلى مسبح منعش. لمحبي الطبيعة، يقدم المنتزه بناغل فاخرة لقضاء ليلة متناغمة في هذه الواحة الخضراء.",
             bundles: [
-                { id: 1, title: isRTL ? 'المسار البري' : 'Wild Path', sub: isRTL ? 'اكتشاف الأنواع' : 'Species Discovery', color: "bg-emerald-900", icon: Palmtree, image: cockatooImg, action: () => setSelectedAnimal(dummyAnimal) },
+                { id: 1, title: isRTL ? 'المسار البري' : 'Wild Path', sub: isRTL ? 'اكتشاف الأنواع' : 'Species Discovery', color: "bg-emerald-900", icon: Palmtree, image: cockatooImg, action: () => setCurrentView('exhibition') },
+                { id: 4, title: isRTL ? 'المرح واللعب' : 'Fun & Play', sub: isRTL ? 'أنشطة عائلية' : 'Family Activities', color: "bg-orange-800", icon: Sparkles, image: "https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=800", action: () => { } },
                 { id: 2, title: isRTL ? 'الالواحة' : 'The Oasis', sub: isRTL ? 'هدوء المسبح' : 'Poolside Serenity', color: "bg-blue-900", icon: Waves, image: pondImg, action: () => { } },
                 { id: 3, title: isRTL ? 'إقامات الغابة' : 'Jungle Stays', sub: isRTL ? 'بناغل وخيام' : 'Bungalows & Tents', color: "bg-amber-900", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
             ]
@@ -110,7 +102,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
     const text = translations[currentLanguage];
 
     return (
-        <div className={`min-h-screen font-sans transition-colors duration-1000 ${isNightMode ? 'bg-[#0D160D] text-white' : 'bg-egg-shell text-jungle-green'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className={`min-h-screen font-sans transition-colors duration-1000 ${isNightMode ? 'dark bg-[#0D160D] text-white' : 'bg-egg-shell text-jungle-green'}`} dir={isRTL ? 'rtl' : 'ltr'}>
 
             {/* Header: Concierge Bar */}
             <header className="px-6 py-8 flex justify-between items-center sticky top-0 z-50 bg-inherit/80 backdrop-blur-md">
@@ -154,7 +146,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                         language={currentLanguage}
                         isRTL={isRTL}
                         onBack={() => setCurrentView('base')}
-                        onOrderPlaced={(cart, total) => {
+                        onOrderPlaced={(cart: CartItem[], total: number) => {
                             setActiveOrder({
                                 items: cart.map(i => `${i.quantity}x ${i.name}`),
                                 total: `${total} MAD`
@@ -232,7 +224,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                 <motion.div
                                     whileTap={{ scale: 0.98 }}
                                     onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')}
-                                    className="h-64 rounded-[3rem] relative overflow-hidden gold-shadow border border-sand-gold/10 bg-[url(\'https://images.unsplash.com/photo-1549466699-db3730302b4e?q=80&w=2070&auto=format&fit=crop\')] bg-cover bg-center cursor-pointer group"
+                                    className="h-64 rounded-[3rem] relative overflow-hidden gold-shadow border border-sand-gold/10 bg-[url('https://images.unsplash.com/photo-1549466699-db3730302b4e?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center cursor-pointer group"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-tr from-jungle-green/40 to-transparent group-hover:from-jungle-green/60 transition-colors" />
                                     <div className="absolute top-6 right-6 flex items-center gap-2 glass-morphism px-4 py-2 rounded-full z-10">
@@ -389,13 +381,8 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
 
             {/* View Transitions */}
             <AnimatePresence>
-                {selectedAnimal && (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[120]">
-                        <AnimalDiscovery animal={selectedAnimal} onBack={() => setSelectedAnimal(null)} isRTL={isRTL} />
-                    </motion.div>
-                )}
                 {currentView === 'booking' && (
-                    <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25 }} className="fixed inset-0 z-[100] bg-egg-shell z-[150]">
+                    <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25 }} className="fixed inset-0 z-[150] bg-egg-shell">
                         <BungalowBooking
                             isRTL={isRTL}
                             onBack={() => setCurrentView('base')}
@@ -403,6 +390,15 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                 setHasBooked(true);
                                 setCurrentView('base');
                             }}
+                        />
+                    </motion.div>
+                )}
+                {currentView === 'exhibition' && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[180]">
+                        <WildCircuitExhibition
+                            isRTL={isRTL}
+                            language={currentLanguage}
+                            onBack={() => setCurrentView('base')}
                         />
                     </motion.div>
                 )}
@@ -415,4 +411,3 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
         </div>
     );
 };
-

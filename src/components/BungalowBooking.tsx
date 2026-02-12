@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Users, Star, ChevronLeft, CreditCard, CheckCircle2, Moon, Sparkles, Calendar as CalendarIcon, Info } from 'lucide-react';
+import { Users, Star, ChevronLeft, CheckCircle2, Moon, Sparkles, Calendar as CalendarIcon, Info } from 'lucide-react';
 import { useState, useMemo } from 'react';
 
 interface BungalowBookingProps {
@@ -11,13 +11,21 @@ interface BungalowBookingProps {
 export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: BungalowBookingProps) => {
     const [step, setStep] = useState<'details' | 'payment' | 'success'>('details');
     const [selectedDates, setSelectedDates] = useState<number[]>([]);
+    const [paymentData, setPaymentData] = useState({
+        cardName: '',
+        cardNumber: '',
+        expiry: '',
+        cvv: ''
+    });
     const pricePerNight = 1000;
 
-    // Simulate booked dates for urgency
-    const bookedDates = useMemo(() => [4, 5, 12, 13, 18, 19, 24, 25, 26], []);
+    // Simulation of occupancy
+    const bookedDates = useMemo(() => [4, 7, 11, 14, 18, 21, 25, 28], []);
+
+    const isDayDisabled = (day: number) => bookedDates.includes(day);
 
     const toggleDate = (day: number) => {
-        if (bookedDates.includes(day)) return;
+        if (isDayDisabled(day)) return;
         setSelectedDates(prev =>
             prev.includes(day) ? prev.filter(d => d !== day) : [...prev, day].sort((a, b) => a - b)
         );
@@ -26,6 +34,10 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
     const nights = selectedDates.length;
 
     const handlePayment = () => {
+        if (!paymentData.cardName || !paymentData.cardNumber || !paymentData.expiry || !paymentData.cvv) {
+            alert(isRTL ? 'يرجى إدخال جميع تفاصيل الدفع' : 'Please enter all payment details');
+            return;
+        }
         setStep('success');
         setTimeout(() => {
             onPaymentComplete();
@@ -45,17 +57,13 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                 <h2 className="text-4xl font-serif text-white mb-4">
                     {isRTL ? 'الحجز مؤكد!' : 'Booking Confirmed!'}
                 </h2>
-                <p className="text-sand-gold/60 mb-12">
+                <p className="text-sand-gold/60 mb-12 text-sm max-w-xs mx-auto">
                     {isRTL ? 'لقد تم فتح خريطة النجوم المتميزة لك.' : 'Your luxury night sky experience is now unlocked.'}
                 </p>
-                <motion.div
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    className="flex items-center gap-2 text-indigo-400 font-bold uppercase tracking-widest text-xs"
-                >
+                <div className="flex items-center gap-2 text-indigo-400 font-bold uppercase tracking-widest text-xs">
                     <Sparkles className="w-4 h-4" />
                     {isRTL ? 'جاري العودة...' : 'Redirecting...'}
-                </motion.div>
+                </div>
             </div>
         );
     }
@@ -75,12 +83,12 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
 
                     <button
                         onClick={onBack}
-                        className="absolute top-6 left-6 w-10 h-10 glass-morphism rounded-full flex items-center justify-center text-white z-10 shadow-lg"
+                        className="absolute top-6 left-6 w-10 h-10 glass-dark rounded-full flex items-center justify-center text-white z-10 shadow-lg"
                     >
                         <ChevronLeft className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
                     </button>
 
-                    <div className="absolute bottom-6 left-6 flex items-center gap-2 glass-morphism px-3 py-1.5 rounded-full border border-white/20">
+                    <div className="absolute bottom-6 left-6 flex items-center gap-2 glass-dark px-3 py-1.5 rounded-full border border-white/20">
                         <Star className="w-3 h-3 text-sand-gold fill-sand-gold" />
                         <span className="text-white text-[10px] font-bold">4.9 (124 reviews)</span>
                     </div>
@@ -96,32 +104,28 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                         </h1>
                     </div>
 
-                    {/* Features Row - Compact for Mobile */}
+                    {/* Features Row */}
                     <div className="grid grid-cols-3 gap-3">
-                        <div className="p-4 bg-white rounded-3xl border border-sand-gold/5 text-center">
+                        <div className="p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm">
                             <Users className="w-4 h-4 mx-auto text-sand-gold mb-1" />
                             <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{isRTL ? 'شخصين' : '2 Guests'}</p>
                         </div>
-                        <div className="p-4 bg-white rounded-3xl border border-sand-gold/5 text-center">
+                        <div className="p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm">
                             <Moon className="w-4 h-4 mx-auto text-sand-gold mb-1" />
-                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{isRTL ? 'ليلة واحدة' : 'Private'}</p>
+                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{isRTL ? 'خاص' : 'Private'}</p>
                         </div>
-                        <div className="p-4 bg-white rounded-3xl border border-sand-gold/5 text-center">
+                        <div className="p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm">
                             <Sparkles className="w-4 h-4 mx-auto text-sand-gold mb-1" />
-                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{isRTL ? 'خاص' : 'Stargazing'}</p>
+                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{isRTL ? 'استجمام' : 'Rest'}</p>
                         </div>
                     </div>
 
-                    {/* High Urgency Calendar */}
-                    <div className="bg-white rounded-[2.5rem] p-6 shadow-sm border border-sand-gold/5">
+                    {/* Restricted Calendar */}
+                    <div className="bg-white rounded-[2.5rem] p-6 shadow-sm border border-sand-gold/10">
                         <div className="flex justify-between items-center mb-6">
                             <div className="flex items-center gap-2">
                                 <CalendarIcon className="w-4 h-4 text-sand-gold" />
                                 <h3 className="text-sm font-bold uppercase tracking-widest">{isRTL ? 'اختر التواريخ' : 'Select Dates'}</h3>
-                            </div>
-                            <div className="flex items-center gap-4 text-[9px] font-bold uppercase tracking-wider">
-                                <span className="flex items-center gap-1 opacity-40"><div className="w-2 h-2 rounded-full bg-gray-200" /> {isRTL ? 'محجوز' : 'Booked'}</span>
-                                <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-sand-gold" /> {isRTL ? 'متاح' : 'Available'}</span>
                             </div>
                         </div>
 
@@ -130,50 +134,40 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                                 <span key={d} className="text-[10px] opacity-40 font-bold mb-2">{d}</span>
                             ))}
                             {Array.from({ length: 30 }, (_, i) => i + 1).map(day => {
-                                const isBooked = bookedDates.includes(day);
+                                const isDisabled = isDayDisabled(day);
                                 const isSelected = selectedDates.includes(day);
                                 return (
                                     <button
                                         key={day}
-                                        disabled={isBooked}
+                                        disabled={isDisabled}
                                         onClick={() => toggleDate(day)}
                                         className={`
-                                            h-10 w-10 flex items-center justify-center rounded-2xl text-xs font-serif transition-all duration-300
-                                            ${isBooked ? 'bg-gray-100 text-gray-300 cursor-not-allowed opacity-50 relative overflow-hidden' : ''}
+                                            h-10 w-10 flex items-center justify-center rounded-2xl text-xs font-serif transition-all duration-300 relative
+                                            ${isDisabled ? 'bg-gray-50 text-gray-200 cursor-not-allowed' : ''}
                                             ${isSelected ? 'bg-jungle-green text-white scale-110 shadow-lg' : 'hover:bg-sand-gold/10'}
-                                            ${!isBooked && !isSelected ? 'text-jungle-green/80' : ''}
+                                            ${!isDisabled && !isSelected ? 'text-jungle-green/80' : ''}
                                         `}
                                     >
                                         {day}
-                                        {isBooked && (
-                                            <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                                                <div className="w-full h-[1px] bg-black rotate-45" />
-                                            </div>
-                                        )}
                                     </button>
                                 );
                             })}
                         </div>
 
-                        <div className="mt-6 p-4 bg-amber-50 rounded-2xl flex items-center gap-3">
+                        <div className="mt-6 p-4 bg-jungle-green/5 rounded-2xl flex items-center gap-3 border border-sand-gold/10">
                             <Info className="w-4 h-4 text-sand-gold" />
-                            <p className="text-[10px] text-amber-900 font-medium leading-tight">
+                            <p className="text-[10px] text-jungle-green font-medium leading-tight">
                                 {isRTL
-                                    ? 'هناك طلب كبير على هذا البنغل. تم حجز ٧٠٪ من التواريخ بالفعل.'
-                                    : 'High demand for this bungalow. 70% of dates are already booked for this month.'}
+                                    ? 'تم حجز ٧٠٪ من التواريخ لهذا الشهر. احجز مبكراً لتجنب خيبة الأمل.'
+                                    : 'High demand for this bungalow. 70% of dates are already booked for this month. Secure yours today!'}
                             </p>
                         </div>
                     </div>
 
                     <div className="p-6 border-t border-sand-gold/10">
-                        <h3 className="text-sm font-bold uppercase tracking-widest mb-4">{isRTL ? 'نظرة عامة' : 'Booking Summary'}</h3>
                         <div className="flex justify-between text-xs mb-2">
                             <span className="opacity-60">{isRTL ? 'السعر لليلة' : 'Price per Night'}</span>
                             <span className="font-bold">{pricePerNight} MAD</span>
-                        </div>
-                        <div className="flex justify-between text-xs mb-4">
-                            <span className="opacity-60">{isRTL ? 'عدد الليالي' : `Nights selected`}</span>
-                            <span className="font-bold">{nights}</span>
                         </div>
                         <div className="flex justify-between items-end pt-4 border-t border-jungle-green/5">
                             <span className="text-lg font-serif italic">{isRTL ? 'المجموع' : 'Total Amount'}</span>
@@ -194,7 +188,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                         ${nights > 0 ? 'bg-jungle-green text-white' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}
                     `}
                 >
-                    {isRTL ? 'أتمم الحجز الآن' : nights === 0 ? 'Select Dates First' : 'Secure This Reservation'}
+                    {isRTL ? 'إدخال تفاصيل الدفع' : nights === 0 ? 'Select Dates First' : 'Continue to Payment'}
                 </motion.button>
             </div>
 
@@ -205,52 +199,77 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/80 backdrop-blur-2xl z-[500] flex items-end justify-center"
+                        className="fixed inset-0 bg-black/90 backdrop-blur-2xl z-[500] flex items-end justify-center px-4"
                     >
                         <motion.div
                             initial={{ y: '100dvh' }}
                             animate={{ y: 0 }}
                             exit={{ y: '100dvh' }}
-                            transition={{ type: 'spring', damping: 30, stiffness: 200 }}
                             className="w-full bg-white rounded-t-[3.5rem] p-8 pb-12 max-w-xl"
                         >
                             <div className="flex justify-between items-center mb-10">
-                                <h3 className="text-3xl font-serif italic">{isRTL ? 'الدفع الآمن' : 'Checkout'}</h3>
-                                <button onClick={() => setStep('details')} className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
-                                    <span className="text-lg">×</span>
-                                </button>
+                                <h3 className="text-3xl font-serif italic">{isRTL ? 'الدفع الآمن' : 'Guest Checkout'}</h3>
+                                <button onClick={() => setStep('details')} className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">×</button>
                             </div>
 
-                            <div className="space-y-8">
-                                <div className="p-6 bg-egg-shell rounded-3xl border border-sand-gold/5 flex items-center gap-5">
-                                    <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
-                                        <CreditCard className="w-6 h-6 text-sand-gold" />
+                            <div className="space-y-6">
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-4 mb-2 block">{isRTL ? 'اسم حامل البطاقة' : 'Cardholder Name'}</label>
+                                        <input
+                                            type="text"
+                                            placeholder="Sarah Mansouria"
+                                            className="w-full bg-egg-shell rounded-2xl px-6 py-4 border border-sand-gold/5 focus:border-sand-gold outline-none transition-all font-serif italic"
+                                            value={paymentData.cardName}
+                                            onChange={(e) => setPaymentData({ ...paymentData, cardName: e.target.value })}
+                                        />
                                     </div>
-                                    <div className="flex-1">
-                                        <p className="text-[9px] font-bold opacity-40 uppercase tracking-widest mb-1">Payment Method</p>
-                                        <p className="text-sm font-serif">Mastercard •••• 4242</p>
+                                    <div>
+                                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-4 mb-2 block">{isRTL ? 'رقم البطاقة' : 'Card Number'}</label>
+                                        <input
+                                            type="text"
+                                            placeholder="0000 0000 0000 0000"
+                                            className="w-full bg-egg-shell rounded-2xl px-6 py-4 border border-sand-gold/5 focus:border-sand-gold outline-none transition-all"
+                                            value={paymentData.cardNumber}
+                                            onChange={(e) => setPaymentData({ ...paymentData, cardNumber: e.target.value })}
+                                        />
                                     </div>
-                                    <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                                    <div className="flex gap-4">
+                                        <div className="flex-1">
+                                            <label className="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-4 mb-2 block">{isRTL ? 'انتهاء الصلاحية' : 'Expiry'}</label>
+                                            <input
+                                                type="text"
+                                                placeholder="MM/YY"
+                                                className="w-full bg-egg-shell rounded-2xl px-6 py-4 border border-sand-gold/5 focus:border-sand-gold outline-none transition-all text-center"
+                                                value={paymentData.expiry}
+                                                onChange={(e) => setPaymentData({ ...paymentData, expiry: e.target.value })}
+                                            />
+                                        </div>
+                                        <div className="flex-1">
+                                            <label className="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-4 mb-2 block">CVV</label>
+                                            <input
+                                                type="text"
+                                                placeholder="123"
+                                                className="w-full bg-egg-shell rounded-2xl px-6 py-4 border border-sand-gold/5 focus:border-sand-gold outline-none transition-all text-center"
+                                                value={paymentData.cvv}
+                                                onChange={(e) => setPaymentData({ ...paymentData, cvv: e.target.value })}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div className="flex justify-between items-center">
-                                    <div>
-                                        <p className="text-[10px] font-bold opacity-40 uppercase mb-1">Total Due</p>
-                                        <p className="text-3xl font-serif text-jungle-green">{nights * pricePerNight} <span className="text-sm font-sans font-bold text-sand-gold">MAD</span></p>
-                                    </div>
-                                    <div className="text-right">
-                                        <p className="text-[10px] font-bold opacity-40 uppercase mb-1">Stay Duration</p>
-                                        <p className="text-lg font-serif italic">{nights} {isRTL ? 'ليالي' : 'Nights'}</p>
-                                    </div>
+                                <div className="flex justify-between items-center py-4 border-t border-jungle-green/5">
+                                    <span className="text-lg font-serif italic opacity-60">Total</span>
+                                    <span className="text-2xl font-serif text-sand-gold">{nights * pricePerNight} MAD</span>
                                 </div>
 
                                 <motion.button
                                     whileTap={{ scale: 0.95 }}
                                     onClick={handlePayment}
-                                    className="w-full bg-sand-gold text-jungle-green py-6 rounded-[2.5rem] font-bold uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 shadow-xl"
+                                    className="w-full bg-jungle-green text-sand-gold py-6 rounded-[2.5rem] font-bold uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 shadow-xl"
                                 >
                                     <Sparkles className="w-4 h-4" />
-                                    {isRTL ? 'تأكيد ودفع' : 'Confirm & Pay 100%'}
+                                    {isRTL ? 'تأكيد الحجز' : 'Verify & Book'}
                                 </motion.button>
                             </div>
                         </motion.div>
