@@ -17,6 +17,8 @@ import {
 import { useState } from 'react';
 import { VIPOrderTracker } from './VIPOrderTracker';
 import { AnimalDiscovery } from './AnimalDiscovery';
+import { SmartConcierge } from './SmartConcierge';
+import { JungleConnect } from './JungleConnect';
 
 export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
@@ -45,49 +47,49 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
         en: {
             brand: "Natura Jungle",
             tagline: "The Wild Experience",
-            explore: "Experience Bundles",
-            map_title: "Interactive Park Map",
-            map_status: "Live in the Park",
-            kitchen: "Jungle Kitchen",
+            explore: "Experience Zones",
+            map_title: "The Wild Circuit",
+            map_status: "Live Tracking",
+            kitchen: "The Kitchen",
             kitchen_status: "Kitchen Open",
             kitchen_wait: "Est. Prep: 25 mins",
             order_btn: "Order to your Lounger",
             bundles: [
-                { id: 1, title: "Wild Encounters", sub: "Animals & Biozones", color: "bg-emerald-900", icon: Palmtree },
-                { id: 2, title: "Poolside Serenity", sub: "Water & Relaxation", color: "bg-blue-900", icon: Waves },
-                { id: 3, title: "Nature Explorer", sub: "Discovery Circuit", color: "bg-amber-900", icon: Sparkles }
+                { id: 1, title: "The Wild Circuit", sub: "Species Discovery", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800" },
+                { id: 2, title: "The Oasis", sub: "Poolside Serenity", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800" },
+                { id: 3, title: "Jungle Stays", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: "/assets/natura/tent.jpg" }
             ]
         },
         fr: {
             brand: "Natura Jungle",
             tagline: "L'expérience Sauvage",
-            explore: "Packs d'Expérience",
-            map_title: "Carte Interactive",
-            map_status: "En direct du Parc",
-            kitchen: "Cuisine de la Jungle",
+            explore: "Zones d'Expérience",
+            map_title: "Le Circuit Sauvage",
+            map_status: "Suivi en Direct",
+            kitchen: "La Cuisine",
             kitchen_status: "Cuisine Ouverte",
             kitchen_wait: "Prép. estimée: 25 min",
             order_btn: "Commander au Transat",
             bundles: [
-                { id: 1, title: "Rencontres Sauvages", sub: "Animaux & Biozones", color: "bg-emerald-900", icon: Palmtree },
-                { id: 2, title: "Sérénité Piscine", sub: "Eau & Détente", color: "bg-blue-900", icon: Waves },
-                { id: 3, title: "Explorateur Nature", sub: "Circuit Découverte", color: "bg-amber-900", icon: Sparkles }
+                { id: 1, title: "Le Circuit Sauvage", sub: "Découverte des Espèces", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800" },
+                { id: 2, title: "L'Oasis", sub: "Sérénité au Bord de l'Eau", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800" },
+                { id: 3, title: "Séjours Jungle", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: "/assets/natura/tent.jpg" }
             ]
         },
         ar: {
             brand: "نطورا جانغل",
             tagline: "تجربة برية",
-            explore: "باقات التجربة",
-            map_title: "خريطة الحديقة التفاعلية",
-            map_status: "مباشر من الحديقة",
-            kitchen: "مطبخ الغابة",
+            explore: "مناطق التجربة",
+            map_title: "المسار البري",
+            map_status: "تتبع مباشر",
+            kitchen: "المطبخ",
             kitchen_status: "المطبخ مفتوح",
             kitchen_wait: "مدة التحضير: ٢٥ دقيقة",
             order_btn: "اطلب الآن",
             bundles: [
-                { id: 1, title: "لقاءات برية", sub: "حيوانات ومناطق حيوية", color: "bg-emerald-900", icon: Palmtree },
-                { id: 2, title: "هدوء المسبح", sub: "ماء واسترخاء", color: "bg-blue-900", icon: Waves },
-                { id: 3, title: "مستكشف الطبيعة", sub: "مسار الاكتشاف", color: "bg-amber-900", icon: Sparkles }
+                { id: 1, title: "المسار البري", sub: "اكتشاف الأنواع", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800" },
+                { id: 2, title: "الالواحة", sub: "هدوء المسبح", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800" },
+                { id: 3, title: "إقامات الغابة", sub: "بناغل وخيام", color: "bg-amber-900", icon: Sparkles, image: "/assets/natura/tent.jpg" }
             ]
         }
     };
@@ -144,6 +146,11 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                     whileTap={{ scale: 0.95 }}
                                     className={`flex-none w-[280px] h-96 rounded-[2.5rem] relative overflow-hidden group shadow-2xl ${bundle.color}`}
                                 >
+                                    {bundle.image && (
+                                        <div className="absolute inset-0">
+                                            <img src={bundle.image} className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" alt={bundle.title} />
+                                        </div>
+                                    )}
                                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
@@ -180,13 +187,33 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                 <span className="text-[10px] text-white font-bold uppercase tracking-widest">{text.map_status}</span>
                             </div>
 
-                            <div className="absolute bottom-6 left-6 flex items-center gap-3">
-                                <div className="w-12 h-12 rounded-2xl bg-sand-gold flex items-center justify-center text-jungle-green shadow-lg">
-                                    <MapIcon className="w-6 h-6" />
+                            <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold flex items-center justify-center text-jungle-green shadow-lg">
+                                        <MapIcon className="w-6 h-6" />
+                                    </div>
+                                    <div className="text-white">
+                                        <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-60">Full Detail</p>
+                                        <p className="text-lg font-serif">Open Atlas</p>
+                                    </div>
                                 </div>
-                                <div className="text-white">
-                                    <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-60">Full Detail</p>
-                                    <p className="text-lg font-serif">Open Atlas</p>
+                                <div className="flex gap-2">
+                                    <motion.a
+                                        href="https://waze.com/ul?ll=33.6167,-7.1500&navigate=yes"
+                                        target="_blank"
+                                        whileTap={{ scale: 0.9 }}
+                                        className="w-10 h-10 rounded-full glass-morphism flex items-center justify-center text-white"
+                                    >
+                                        <img src="https://simpleicons.org/icons/waze.svg" className="w-5 h-5 invert" alt="Waze" />
+                                    </motion.a>
+                                    <motion.a
+                                        href="https://www.google.com/maps/dir/?api=1&destination=33.6167,-7.1500"
+                                        target="_blank"
+                                        whileTap={{ scale: 0.9 }}
+                                        className="w-10 h-10 rounded-full glass-morphism flex items-center justify-center text-white"
+                                    >
+                                        <Globe className="w-5 h-5" />
+                                    </motion.a>
                                 </div>
                             </div>
                         </motion.div>
@@ -226,10 +253,15 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                         <span className="text-lg font-serif">{isRTL ? 'اكتشف الببغاء الذهبي' : 'Meet the Golden Cockatoo'}</span>
                                     </div>
                                 </div>
-                                <ChevronRight className={`w-6 h-6 relative z-10 transition-transform group-hover:translate-x-2 ${isRTL ? 'rotate-180 group-hover:-translate-x-2' : ''}`} />
                             </motion.button>
                         </div>
                     </section>
+
+                    {/* Smart Concierge Section */}
+                    <SmartConcierge isRTL={isRTL} />
+
+                    {/* Jungle Connect Section */}
+                    <JungleConnect isRTL={isRTL} />
 
                     {/* Night Sky Feature (If applicable) */}
                     {(isNightMode || new Date().getHours() >= 18 || new Date().getHours() < 6) && (
