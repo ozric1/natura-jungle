@@ -11,7 +11,9 @@ import {
     Waves,
     Moon,
     Sun,
-    Clock
+    Clock,
+    Instagram,
+    Phone
 } from 'lucide-react';
 import { useState } from 'react';
 import { VIPOrderTracker } from './VIPOrderTracker';
@@ -23,6 +25,7 @@ import { BungalowBooking } from './BungalowBooking';
 import { NightSkyMap } from './NightSkyMap';
 import { WildCircuitExhibition } from './WildCircuitExhibition';
 import { FunPlay } from './FunPlay';
+import { ParkHours } from './ParkHours';
 import cockatooImg from '../assets/park/cockatoo.jpg';
 import tentImg from '../assets/park/tent.jpg';
 import pondImg from '../assets/park/pond.jpg';
@@ -36,7 +39,7 @@ export interface DashboardProps {
 
 export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
     const isRTL = currentLanguage === 'ar';
-    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition' | 'fun'>('base');
+    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition' | 'fun' | 'hours'>('base');
     const [activeOrder, setActiveOrder] = useState<{ items: string[], total: string } | null>(null);
     const [hasBooked, setHasBooked] = useState(false);
 
@@ -125,18 +128,27 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                 </div>
 
                 <div className="flex items-center gap-4">
+                    <motion.a
+                        href="https://www.instagram.com/naturajunglepark/"
+                        target="_blank"
+                        whileTap={{ scale: 0.9 }}
+                        className="w-8 h-8 flex items-center justify-center text-sand-gold/60 border border-sand-gold/20 rounded-full"
+                    >
+                        <Instagram className="w-4 h-4" />
+                    </motion.a>
+                    <motion.a
+                        href="tel:0605500058"
+                        whileTap={{ scale: 0.9 }}
+                        className="w-8 h-8 flex items-center justify-center text-sand-gold/60 border border-sand-gold/20 rounded-full"
+                    >
+                        <Phone className="w-4 h-4" />
+                    </motion.a>
                     <motion.button
                         onClick={toggleNightMode}
                         whileTap={{ scale: 0.9 }}
                         className="w-8 h-8 flex items-center justify-center text-sand-gold/60"
                     >
                         {isNightMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                    </motion.button>
-                    <motion.button
-                        whileTap={{ scale: 0.9 }}
-                        className="w-5 h-5 text-sand-gold/40"
-                    >
-                        <Globe className="w-full h-full" />
                     </motion.button>
                 </div>
             </header>
@@ -342,11 +354,11 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             <nav className="fixed bottom-0 left-0 right-0 h-24 flex justify-around items-center px-8 z-50 glass-dark border-t border-white/5">
                 <motion.button
                     whileTap={{ y: -5 }}
-                    onClick={() => setCurrentView('base')}
-                    className={`flex flex-col items-center gap-1 ${currentView === 'base' ? 'text-sand-gold' : 'text-white/40'}`}
+                    onClick={() => setCurrentView('hours')}
+                    className={`flex flex-col items-center gap-1 ${currentView === 'hours' ? 'text-sand-gold' : 'text-white/40'}`}
                 >
-                    <Sparkles className="w-5 h-5" />
-                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'الرئيسية' : 'Discover'}</span>
+                    <Clock className="w-5 h-5" />
+                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'المواعيد' : 'Hours'}</span>
                 </motion.button>
 
                 <motion.button
@@ -468,6 +480,17 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                         className="fixed inset-0 z-[210] bg-black"
                     >
                         <NightSkyMap isRTL={isRTL} onClose={() => setCurrentView('base')} />
+                    </motion.div>
+                )}
+                {currentView === 'hours' && (
+                    <motion.div
+                        initial={{ y: '100%' }}
+                        animate={{ y: 0 }}
+                        exit={{ y: '100%' }}
+                        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                        className="fixed inset-0 z-[250]"
+                    >
+                        <ParkHours isRTL={isRTL} onClose={() => setCurrentView('base')} />
                     </motion.div>
                 )}
             </AnimatePresence>
