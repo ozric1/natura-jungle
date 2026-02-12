@@ -1,6 +1,6 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import { Bell, Coffee, Utensils, Zap, HelpCircle } from 'lucide-react';
 import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
 
 interface SmartConciergeProps {
     isRTL?: boolean;

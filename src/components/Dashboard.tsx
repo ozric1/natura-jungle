@@ -115,7 +115,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     onClick={() => alert(isRTL ? 'القائمة قريباً' : 'Menu Coming Soon')}
                     className="w-10 h-10 flex items-center justify-center text-sand-gold"
                 >
-                    <Menu className="w-6 h-6" />
+                    <Menu className="w-6 h-6 text-jungle-green dark:text-sand-gold" />
                 </motion.button>
 
                 <div className="text-center">
@@ -132,23 +132,23 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                         href="https://www.instagram.com/naturajunglepark/"
                         target="_blank"
                         whileTap={{ scale: 0.9 }}
-                        className="w-8 h-8 flex items-center justify-center text-sand-gold/60 border border-sand-gold/20 rounded-full"
+                        className="w-8 h-8 flex items-center justify-center text-sand-gold/60 border border-sand-gold/20 rounded-full hover:bg-sand-gold/10 transition-colors"
                     >
-                        <Instagram className="w-4 h-4" />
+                        <Instagram className="w-4 h-4 text-jungle-green dark:text-sand-gold" />
                     </motion.a>
                     <motion.a
                         href="tel:0605500058"
                         whileTap={{ scale: 0.9 }}
-                        className="w-8 h-8 flex items-center justify-center text-sand-gold/60 border border-sand-gold/20 rounded-full"
+                        className="w-8 h-8 flex items-center justify-center text-sand-gold/60 border border-sand-gold/20 rounded-full hover:bg-sand-gold/10 transition-colors"
                     >
-                        <Phone className="w-4 h-4" />
+                        <Phone className="w-4 h-4 text-jungle-green dark:text-sand-gold" />
                     </motion.a>
                     <motion.button
                         onClick={toggleNightMode}
                         whileTap={{ scale: 0.9 }}
                         className="w-8 h-8 flex items-center justify-center text-sand-gold/60"
                     >
-                        {isNightMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                        {isNightMode ? <Sun className="w-5 h-5 text-sand-gold" /> : <Moon className="w-5 h-5 text-jungle-green" />}
                     </motion.button>
                 </div>
             </header>
@@ -173,7 +173,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                         {/* Hero Experience Carousel */}
                         <section className="mt-4 section-mask">
                             <div className="px-6 mb-4 flex justify-between items-end">
-                                <h2 className="text-2xl font-serif">{text.explore}</h2>
+                                <h2 className="text-2xl font-serif text-jungle-green dark:text-white transition-colors">{text.explore}</h2>
                                 <motion.button
                                     whileTap={{ scale: 0.95 }}
                                     className="text-sand-gold text-xs font-bold uppercase tracking-widest"
@@ -234,7 +234,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
 
                             {/* Interactive Park Map Snippet */}
                             <section className="space-y-4">
-                                <h2 className="text-2xl font-serif">{text.map_title}</h2>
+                                <h2 className="text-2xl font-serif text-jungle-green dark:text-white transition-colors">{text.map_title}</h2>
                                 <motion.div
                                     whileTap={{ scale: 0.98 }}
                                     onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')}
@@ -271,7 +271,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                             {/* Jungle Kitchen Section */}
                             <section className="space-y-4">
                                 <div className="flex justify-between items-end">
-                                    <h2 className="text-2xl font-serif">{text.kitchen}</h2>
+                                    <h2 className="text-2xl font-serif text-jungle-green dark:text-white transition-colors">{text.kitchen}</h2>
                                     <div className="flex items-center gap-2 text-jungle-terracotta bg-jungle-terracotta/5 px-3 py-1 rounded-full">
                                         <Clock className="w-3 h-3" />
                                         <span className="text-[10px] font-bold uppercase tracking-widest">{text.kitchen_wait}</span>
