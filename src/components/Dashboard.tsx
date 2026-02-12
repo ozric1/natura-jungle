@@ -19,6 +19,10 @@ import { VIPOrderTracker } from './VIPOrderTracker';
 import { AnimalDiscovery } from './AnimalDiscovery';
 import { SmartConcierge } from './SmartConcierge';
 import { JungleConnect } from './JungleConnect';
+import { DigitalMenu } from './DigitalMenu';
+import { BungalowBooking } from './BungalowBooking';
+import { NightSkyMap } from './NightSkyMap';
+import { AnimatePresence } from 'framer-motion';
 
 export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
@@ -29,6 +33,9 @@ export interface DashboardProps {
 export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
     const isRTL = currentLanguage === 'ar';
     const [selectedAnimal, setSelectedAnimal] = useState<any>(null);
+    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer'>('base');
+    const [activeOrder, setActiveOrder] = useState<{ items: string[], total: string } | null>(null);
+    const [hasBooked, setHasBooked] = useState(false);
 
     const dummyAnimal = {
         name: currentLanguage === 'ar' ? 'الببغاء الذهبي' : 'Golden Cockatoo',
@@ -39,9 +46,6 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
         audioSrc: '#'
     };
 
-    if (selectedAnimal) {
-        return <AnimalDiscovery animal={selectedAnimal} onBack={() => setSelectedAnimal(null)} isRTL={isRTL} />;
-    }
 
     const translations = {
         en: {
@@ -54,10 +58,12 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             kitchen_status: "Kitchen Open",
             kitchen_wait: "Est. Prep: 25 mins",
             order_btn: "Order to your Lounger",
+            about_title: "Respirez la Nature",
+            about_text: "Nestled 11 km from Mohammedia, 10 km from Benslimane, and 8 km from Bouznika, just minutes from the Mensouria highway exit, Natura Jungle Park offers an immersive escape in the heart of nature. This peaceful haven charms with its idyllic setting, featuring a mini zoo, restaurant, children's play areas, equestrian adventures, thrilling quad excursions, and a refreshing swimming pool. For nature lovers, the park offers luxury bungalows for a harmonious night in this green oasis.",
             bundles: [
-                { id: 1, title: "The Wild Circuit", sub: "Species Discovery", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800" },
-                { id: 2, title: "The Oasis", sub: "Poolside Serenity", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800" },
-                { id: 3, title: "Jungle Stays", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: "/assets/natura/tent.jpg" }
+                { id: 1, title: "The Wild Circuit", sub: "Species Discovery", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setSelectedAnimal(dummyAnimal) },
+                { id: 2, title: "The Oasis", sub: "Poolside Serenity", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800", action: () => { } },
+                { id: 3, title: "Jungle Stays", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setCurrentView('booking') }
             ]
         },
         fr: {
@@ -70,10 +76,12 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             kitchen_status: "Cuisine Ouverte",
             kitchen_wait: "Prép. estimée: 25 min",
             order_btn: "Commander au Transat",
+            about_title: "Respirez la Nature",
+            about_text: "Niché à 11 kilomètres de Mohammedia, à 10km de Benslimane et 8km de Bouznika, quelques kilomètres de la sortie autoroute Mensouria, le Parc Natura Jungle offre une escapade immersive en pleine nature. Ce havre de paix séduit par son cadre idyllique, abritant un mini zoo, un restaurant, des espaces de jeux dédiés aux enfants, des aventures équestres, des excursions en quad palpitantes, ainsi qu'une piscine rafraîchissante. Pour les amoureux de la nature, le parc propose des bungalows de luxe, invitant à une nuit harmonieuse au cœur de cette oasis verdoyante.",
             bundles: [
-                { id: 1, title: "Le Circuit Sauvage", sub: "Découverte des Espèces", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800" },
-                { id: 2, title: "L'Oasis", sub: "Sérénité au Bord de l'Eau", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800" },
-                { id: 3, title: "Séjours Jungle", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: "/assets/natura/tent.jpg" }
+                { id: 1, title: "Le Circuit Sauvage", sub: "Découverte des Espèces", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setSelectedAnimal(dummyAnimal) },
+                { id: 2, title: "L'Oasis", sub: "Sérénité au Bord de l'Eau", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800", action: () => { } },
+                { id: 3, title: "Séjours Jungle", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setCurrentView('booking') }
             ]
         },
         ar: {
@@ -86,10 +94,12 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             kitchen_status: "المطبخ مفتوح",
             kitchen_wait: "مدة التحضير: ٢٥ دقيقة",
             order_btn: "اطلب الآن",
+            about_title: "استنشق الطبيعة",
+            about_text: "يقع منتزه نطورا جانغل على بعد ١١ كم من المحمدية، و١٠ كم من بنسليمان، و٨ كم من بوزنيقة، وعلى بعد دقائق قليلة من مخرج الطريق السيار المنصورية، ويوفر ملاذاً غامراً في قلب الطبيعة. يسحر هذا الملاذ الهادئ زواره بموقعه المثالي، حيث يضم حديقة حيوانات صغيرة، مطعماً، مساحات لعب للأطفال، مغامرات الفروسية، رحلات الكواد المثيرة، بالإضافة إلى مسبح منعش. لمحبي الطبيعة، يقدم المنتزه بناغل فاخرة لقضاء ليلة متناغمة في هذه الواحة الخضراء.",
             bundles: [
-                { id: 1, title: "المسار البري", sub: "اكتشاف الأنواع", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800" },
-                { id: 2, title: "الالواحة", sub: "هدوء المسبح", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800" },
-                { id: 3, title: "إقامات الغابة", sub: "بناغل وخيام", color: "bg-amber-900", icon: Sparkles, image: "/assets/natura/tent.jpg" }
+                { id: 1, title: "المسار البري", sub: "اكتشاف الأنواع", color: "bg-emerald-900", icon: Palmtree, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setSelectedAnimal(dummyAnimal) },
+                { id: 2, title: "الالواحة", sub: "هدوء المسبح", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800", action: () => { } },
+                { id: 3, title: "إقامات الغابة", sub: "بناغل وخيام", color: "bg-amber-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800", action: () => setCurrentView('booking') }
             ]
         }
     };
@@ -97,12 +107,13 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
     const text = translations[currentLanguage];
 
     return (
-        <div className={`min-h-screen font-sans transition-colors duration-1000 ${isNightMode ? 'bg-jungle-green text-white' : 'bg-egg-shell text-jungle-green'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className={`min-h-screen font-sans transition-colors duration-1000 ${isNightMode ? 'bg-[#0D160D] text-white' : 'bg-egg-shell text-jungle-green'}`} dir={isRTL ? 'rtl' : 'ltr'}>
 
             {/* Header: Concierge Bar */}
             <header className="px-6 py-8 flex justify-between items-center sticky top-0 z-50 bg-inherit/80 backdrop-blur-md">
                 <motion.button
                     whileTap={{ scale: 0.9 }}
+                    onClick={() => alert(isRTL ? 'القائمة قريباً' : 'Menu Coming Soon')}
                     className="w-10 h-10 flex items-center justify-center text-sand-gold"
                 >
                     <Menu className="w-6 h-6" />
@@ -125,176 +136,225 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     >
                         {isNightMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                     </motion.button>
-                    <Globe className="w-5 h-5 text-sand-gold/40" />
+                    <motion.button
+                        whileTap={{ scale: 0.9 }}
+                        className="w-5 h-5 text-sand-gold/40"
+                    >
+                        <Globe className="w-full h-full" />
+                    </motion.button>
                 </div>
             </header>
 
             <main className="pb-32">
-                {/* Hero Experience Carousel */}
-                <section className="mt-4">
-                    <div className="px-6 mb-4 flex justify-between items-end">
-                        <h2 className="text-2xl font-serif">{text.explore}</h2>
-                        <span className="text-sand-gold text-xs font-bold uppercase tracking-widest">{isRTL ? 'عرض الكل' : 'View All'}</span>
-                    </div>
-
-                    <div className="flex overflow-x-auto gap-6 px-6 pb-8 no-scrollbar touch-pan-x">
-                        {text.bundles.map((bundle) => {
-                            const Icon = bundle.icon;
-                            return (
-                                <motion.div
-                                    key={bundle.id}
+                {currentView === 'menu' ? (
+                    <DigitalMenu
+                        language={currentLanguage}
+                        isRTL={isRTL}
+                        onBack={() => setCurrentView('base')}
+                        onOrderPlaced={(cart, total) => {
+                            setActiveOrder({
+                                items: cart.map(i => `${i.quantity}x ${i.name}`),
+                                total: `${total} MAD`
+                            });
+                            setCurrentView('tracker');
+                        }}
+                    />
+                ) : (
+                    <>
+                        {/* Hero Experience Carousel */}
+                        <section className="mt-4 section-mask">
+                            <div className="px-6 mb-4 flex justify-between items-end">
+                                <h2 className="text-2xl font-serif">{text.explore}</h2>
+                                <motion.button
                                     whileTap={{ scale: 0.95 }}
-                                    className={`flex-none w-[280px] h-96 rounded-[2.5rem] relative overflow-hidden group shadow-2xl ${bundle.color}`}
+                                    className="text-sand-gold text-xs font-bold uppercase tracking-widest"
                                 >
-                                    {bundle.image && (
-                                        <div className="absolute inset-0">
-                                            <img src={bundle.image} className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" alt={bundle.title} />
-                                        </div>
-                                    )}
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                                    {isRTL ? 'عرض الكل' : 'View All'}
+                                </motion.button>
+                            </div>
 
-                                    <div className="absolute inset-0 flex flex-col justify-end p-8">
-                                        <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
-                                            <Icon className="text-sand-gold w-6 h-6" />
-                                        </div>
-                                        <h3 className="text-2xl font-serif text-white mb-1 leading-tight">{bundle.title}</h3>
-                                        <p className="text-white/60 text-xs font-medium uppercase tracking-widest">{bundle.sub}</p>
+                            <div className="flex overflow-x-auto gap-6 px-6 pb-8 no-scrollbar touch-pan-x">
+                                {text.bundles.map((bundle) => {
+                                    const Icon = bundle.icon;
+                                    return (
+                                        <motion.div
+                                            key={bundle.id}
+                                            whileTap={{ scale: 0.95 }}
+                                            onClick={bundle.action}
+                                            className={`flex-none w-[280px] h-96 rounded-[2.5rem] relative overflow-hidden group shadow-2xl cursor-pointer ${bundle.color}`}
+                                        >
+                                            {bundle.image && (
+                                                <div className="absolute inset-0">
+                                                    <img src={bundle.image} className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" alt={bundle.title} />
+                                                </div>
+                                            )}
+                                            <div className="photo-overlay" />
+
+                                            <div className="absolute inset-0 flex flex-col justify-end p-8">
+                                                <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
+                                                    <Icon className="text-sand-gold w-6 h-6" />
+                                                </div>
+                                                <h3 className="text-2xl font-serif text-white mb-1 leading-tight">{bundle.title}</h3>
+                                                <p className="text-white/60 text-xs font-medium uppercase tracking-widest">{bundle.sub}</p>
+                                            </div>
+
+                                            <div className="absolute top-6 right-6">
+                                                <div className="w-10 h-10 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 shadow-lg">
+                                                    <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
+                            </div>
+                        </section>
+
+                        <div className="px-6 space-y-10">
+                            {/* About Section */}
+                            <section className="mt-4">
+                                <div className="glass-morphism rounded-[2.5rem] p-8 border border-sand-gold/10 relative overflow-hidden backdrop-blur-xl">
+                                    <div className="absolute -right-4 -top-4 opacity-5">
+                                        <Palmtree className="w-32 h-32" />
+                                    </div>
+                                    <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-sand-gold mb-4">{text.about_title}</h2>
+                                    <p className="text-lg font-serif leading-relaxed opacity-80 italic">
+                                        "{text.about_text}"
+                                    </p>
+                                </div>
+                            </section>
+
+                            {/* Interactive Park Map Snippet */}
+                            <section className="space-y-4">
+                                <h2 className="text-2xl font-serif">{text.map_title}</h2>
+                                <motion.div
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')}
+                                    className="h-64 rounded-[3rem] relative overflow-hidden gold-shadow border border-sand-gold/10 bg-[url(\'https://images.unsplash.com/photo-1549466699-db3730302b4e?q=80&w=2070&auto=format&fit=crop\')] bg-cover bg-center cursor-pointer group"
+                                >
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-jungle-green/40 to-transparent group-hover:from-jungle-green/60 transition-colors" />
+                                    <div className="absolute top-6 right-6 flex items-center gap-2 glass-morphism px-4 py-2 rounded-full z-10">
+                                        <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                                        <span className="text-[10px] text-white font-bold uppercase tracking-widest">{text.map_status}</span>
                                     </div>
 
-                                    <div className="absolute top-6 right-6">
-                                        <div className="w-10 h-10 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                            <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
+                                    <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between z-10">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-12 h-12 rounded-2xl bg-sand-gold flex items-center justify-center text-jungle-green shadow-lg">
+                                                <MapIcon className="w-6 h-6" />
+                                            </div>
+                                            <div className="text-white">
+                                                <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-60">Location Guide</p>
+                                                <p className="text-lg font-serif">Open in Google Maps</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-2">
+                                            <motion.button
+                                                whileTap={{ scale: 0.9 }}
+                                                className="w-10 h-10 rounded-full glass-morphism flex items-center justify-center text-white"
+                                            >
+                                                <Globe className="w-5 h-5" />
+                                            </motion.button>
                                         </div>
                                     </div>
                                 </motion.div>
-                            );
-                        })}
-                    </div>
-                </section>
+                            </section>
 
-                <div className="px-6 space-y-10">
-                    {/* Interactive Park Map Snippet */}
-                    <section className="space-y-4">
-                        <h2 className="text-2xl font-serif">{text.map_title}</h2>
-                        <motion.div
-                            whileTap={{ scale: 0.98 }}
-                            className="h-64 rounded-[3rem] relative overflow-hidden gold-shadow border border-sand-gold/10 bg-[url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-tr from-jungle-green/40 to-transparent" />
-                            <div className="absolute top-6 right-6 flex items-center gap-2 glass-morphism px-4 py-2 rounded-full">
-                                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                                <span className="text-[10px] text-white font-bold uppercase tracking-widest">{text.map_status}</span>
-                            </div>
-
-                            <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold flex items-center justify-center text-jungle-green shadow-lg">
-                                        <MapIcon className="w-6 h-6" />
-                                    </div>
-                                    <div className="text-white">
-                                        <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-60">Full Detail</p>
-                                        <p className="text-lg font-serif">Open Atlas</p>
+                            {/* Jungle Kitchen Section */}
+                            <section className="space-y-4">
+                                <div className="flex justify-between items-end">
+                                    <h2 className="text-2xl font-serif">{text.kitchen}</h2>
+                                    <div className="flex items-center gap-2 text-jungle-terracotta bg-jungle-terracotta/5 px-3 py-1 rounded-full">
+                                        <Clock className="w-3 h-3" />
+                                        <span className="text-[10px] font-bold uppercase tracking-widest">{text.kitchen_wait}</span>
                                     </div>
                                 </div>
-                                <div className="flex gap-2">
-                                    <motion.a
-                                        href="https://waze.com/ul?ll=33.6167,-7.1500&navigate=yes"
-                                        target="_blank"
-                                        whileTap={{ scale: 0.9 }}
-                                        className="w-10 h-10 rounded-full glass-morphism flex items-center justify-center text-white"
-                                    >
-                                        <img src="https://simpleicons.org/icons/waze.svg" className="w-5 h-5 invert" alt="Waze" />
-                                    </motion.a>
-                                    <motion.a
-                                        href="https://www.google.com/maps/dir/?api=1&destination=33.6167,-7.1500"
-                                        target="_blank"
-                                        whileTap={{ scale: 0.9 }}
-                                        className="w-10 h-10 rounded-full glass-morphism flex items-center justify-center text-white"
-                                    >
-                                        <Globe className="w-5 h-5" />
-                                    </motion.a>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </section>
 
-                    {/* Jungle Kitchen Section */}
-                    <section className="space-y-4">
-                        <div className="flex justify-between items-end">
-                            <h2 className="text-2xl font-serif">{text.kitchen}</h2>
-                            <div className="flex items-center gap-2 text-jungle-terracotta bg-jungle-terracotta/5 px-3 py-1 rounded-full">
-                                <Clock className="w-3 h-3" />
-                                <span className="text-[10px] font-bold uppercase tracking-widest">{text.kitchen_wait}</span>
-                            </div>
+                                <div className="space-y-6">
+                                    {currentView === 'tracker' && activeOrder ? (
+                                        <VIPOrderTracker
+                                            status="preparing"
+                                            orderId={`NJ-${Math.floor(1000 + Math.random() * 9000)}`}
+                                            items={activeOrder.items}
+                                            total={activeOrder.total}
+                                            isRTL={isRTL}
+                                            onReset={() => {
+                                                setCurrentView('base');
+                                                setActiveOrder(null);
+                                            }}
+                                        />
+                                    ) : (
+                                        <motion.button
+                                            onClick={() => setCurrentView('menu')}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="w-full bg-sand-gold text-jungle-green rounded-[3rem] p-8 flex items-center justify-between group overflow-hidden relative shadow-xl gold-shadow"
+                                        >
+                                            <div className="flex items-center gap-4 relative z-10">
+                                                <div className="w-14 h-14 rounded-2xl bg-jungle-green/10 flex items-center justify-center">
+                                                    <Utensils className="w-8 h-8" />
+                                                </div>
+                                                <div className="text-left">
+                                                    <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">{isRTL ? 'اطلب الآن' : 'Order Now'}</p>
+                                                    <span className="text-xl font-serif">{text.order_btn}</span>
+                                                </div>
+                                            </div>
+                                            <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
+                                        </motion.button>
+                                    )}
+                                </div>
+                            </section>
+
+                            {/* Smart Concierge Section */}
+                            <SmartConcierge isRTL={isRTL} />
+
+                            {/* Jungle Connect Section */}
+                            <JungleConnect isRTL={isRTL} />
+
+                            {/* Night Sky Feature (If paid) */}
+                            {hasBooked && (
+                                <motion.section
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="rounded-[3rem] p-8 bg-gradient-to-br from-[#0F172A] via-[#1E1B4B] to-black border border-indigo-500/20 text-white relative overflow-hidden"
+                                >
+                                    <div className="absolute top-0 right-0 p-8 opacity-10">
+                                        <Star className="w-32 h-32 fill-white" />
+                                    </div>
+                                    <div className="relative z-10 text-left">
+                                        <div className="flex items-center gap-2 text-indigo-400 mb-4">
+                                            <Moon className="w-4 h-4" />
+                                            <span className="text-[10px] font-bold uppercase tracking-[0.3em]">{isRTL ? 'تجربة ليلية متميزة' : 'Premium Night Sky'}</span>
+                                        </div>
+                                        <h3 className="text-3xl font-serif mb-2">{isRTL ? 'خريطة النجوم' : 'Stargazer Guide'}</h3>
+                                        <p className="text-sm text-white/40 mb-6 max-w-[200px]">{isRTL ? 'دليل النجوم والمجرات فوق منصورية.' : 'Live AR star map for the dark skies over Mansouria.'}</p>
+                                        <motion.button
+                                            whileTap={{ scale: 0.95 }}
+                                            onClick={() => setCurrentView('stargazer')}
+                                            className="bg-indigo-600/20 border border-indigo-400/30 text-indigo-100 px-6 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-indigo-600/40 transition-all font-sans"
+                                        >
+                                            {isRTL ? 'بدء العرض' : 'Launch AR View'}
+                                        </motion.button>
+                                    </div>
+                                </motion.section>
+                            )}
                         </div>
-
-                        <div className="space-y-6">
-                            <VIPOrderTracker
-                                status="preparing"
-                                orderId="NJ-7742"
-                                items={['Lamb Tagine', 'Mint Tea']}
-                                total="240 MAD"
-                                isRTL={isRTL}
-                            />
-
-                            <motion.button
-                                onClick={() => setSelectedAnimal(dummyAnimal)}
-                                whileTap={{ scale: 0.95 }}
-                                className="w-full bg-jungle-green border border-sand-gold/20 text-sand-gold rounded-[2rem] p-6 flex items-center justify-between group overflow-hidden relative"
-                            >
-                                <div className="absolute inset-0 bg-sand-gold/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                                <div className="flex items-center gap-4 relative z-10">
-                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/10 flex items-center justify-center">
-                                        <Sparkles className="w-6 h-6 text-sand-gold" />
-                                    </div>
-                                    <div className="text-left">
-                                        <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">{isRTL ? 'اكتشف المزيد' : 'Featured Story'}</p>
-                                        <span className="text-lg font-serif">{isRTL ? 'اكتشف الببغاء الذهبي' : 'Meet the Golden Cockatoo'}</span>
-                                    </div>
-                                </div>
-                            </motion.button>
-                        </div>
-                    </section>
-
-                    {/* Smart Concierge Section */}
-                    <SmartConcierge isRTL={isRTL} />
-
-                    {/* Jungle Connect Section */}
-                    <JungleConnect isRTL={isRTL} />
-
-                    {/* Night Sky Feature (If applicable) */}
-                    {(isNightMode || new Date().getHours() >= 18 || new Date().getHours() < 6) && (
-                        <motion.section
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="rounded-[3rem] p-8 bg-gradient-to-br from-[#0F172A] via-[#1E1B4B] to-black border border-indigo-500/20 text-white relative overflow-hidden"
-                        >
-                            <div className="absolute top-0 right-0 p-8 opacity-10">
-                                <Star className="w-32 h-32 fill-white" />
-                            </div>
-                            <div className="relative z-10">
-                                <div className="flex items-center gap-2 text-indigo-400 mb-4">
-                                    <Moon className="w-4 h-4" />
-                                    <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Overnight Experience</span>
-                                </div>
-                                <h3 className="text-3xl font-serif mb-2">Stargazer Guide</h3>
-                                <p className="text-sm text-white/40 mb-6 max-w-[200px]">Live AR star map for the dark skies over Mansouria.</p>
-                                <button className="bg-indigo-600/20 border border-indigo-400/30 text-indigo-100 px-6 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-indigo-600/40 transition-all">
-                                    Launch AR View
-                                </button>
-                            </div>
-                        </motion.section>
-                    )}
-                </div>
+                    </>
+                )}
             </main>
 
             {/* Premium Bottom Nav */}
             <nav className="fixed bottom-0 left-0 right-0 h-24 flex justify-around items-center px-8 z-50 glass-dark">
-                <motion.button whileTap={{ y: -5 }} className="w-10 h-10 flex items-center justify-center text-sand-gold">
+                <motion.button
+                    whileTap={{ y: -5 }}
+                    onClick={() => setCurrentView('base')}
+                    className={`w-10 h-10 flex items-center justify-center ${currentView === 'base' ? 'text-sand-gold' : 'text-white/20'}`}
+                >
                     <Sparkles className="w-6 h-6" />
                 </motion.button>
-                <motion.button whileTap={{ y: -5 }} className="w-10 h-10 flex items-center justify-center text-white/20">
+                <motion.button
+                    whileTap={{ y: -5 }}
+                    onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')}
+                    className="w-10 h-10 flex items-center justify-center text-white/20"
+                >
                     <MapIcon className="w-6 h-6" />
                 </motion.button>
 
@@ -302,19 +362,53 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     <div className="absolute inset-0 bg-sand-gold blur-2xl opacity-40 rounded-full" />
                     <motion.button
                         whileTap={{ scale: 0.9 }}
-                        className="w-16 h-16 rounded-[1.5rem] bg-sand-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow"
+                        onClick={() => setCurrentView('menu')}
+                        className={`w-16 h-16 rounded-[1.5rem] bg-sand-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow ${currentView === 'menu' ? 'scale-110 ring-4 ring-sand-gold/20' : ''}`}
                     >
                         <Utensils className="w-8 h-8" />
                     </motion.button>
                 </div>
 
-                <motion.button whileTap={{ y: -5 }} className="w-10 h-10 flex items-center justify-center text-white/20">
+                <motion.button
+                    whileTap={{ y: -5 }}
+                    className="w-10 h-10 flex items-center justify-center text-white/20"
+                >
                     <Award className="w-6 h-6" />
                 </motion.button>
-                <motion.button whileTap={{ y: -5 }} className="w-10 h-10 flex items-center justify-center text-white/20">
+                <motion.button
+                    whileTap={{ y: -5 }}
+                    onClick={toggleNightMode}
+                    className={`w-10 h-10 flex items-center justify-center ${isNightMode ? 'text-sand-gold' : 'text-white/20'}`}
+                >
                     <Moon className="w-6 h-6" />
                 </motion.button>
             </nav>
+
+            {/* View Transitions */}
+            <AnimatePresence>
+                {selectedAnimal && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[120]">
+                        <AnimalDiscovery animal={selectedAnimal} onBack={() => setSelectedAnimal(null)} isRTL={isRTL} />
+                    </motion.div>
+                )}
+                {currentView === 'booking' && (
+                    <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25 }} className="fixed inset-0 z-[100] bg-egg-shell z-[150]">
+                        <BungalowBooking
+                            isRTL={isRTL}
+                            onBack={() => setCurrentView('base')}
+                            onPaymentComplete={() => {
+                                setHasBooked(true);
+                                setCurrentView('base');
+                            }}
+                        />
+                    </motion.div>
+                )}
+                {currentView === 'stargazer' && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[200]">
+                        <NightSkyMap isRTL={isRTL} onClose={() => setCurrentView('base')} />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

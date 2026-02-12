@@ -8,16 +8,21 @@ interface VIPOrderTrackerProps {
     items: string[];
     total: string;
     isRTL?: boolean;
+    onReset?: () => void;
 }
 
-export const VIPOrderTracker = ({ status, orderId, items, total, isRTL = false }: VIPOrderTrackerProps) => {
+export const VIPOrderTracker = ({ status: initialStatus, orderId, items, total, isRTL = false, onReset }: VIPOrderTrackerProps) => {
     const [isPaid, setIsPaid] = useState(false);
+    const [status, setStatus] = useState(initialStatus);
 
     const handleWhatsAppPayment = () => {
         const message = `Order Ref: ${orderId}\nItems: ${items.join(', ')}\nTotal: ${total}\nStatus: Payment Requested`;
         const encoded = encodeURIComponent(message);
         window.open(`https://wa.me/212600000000?text=${encoded}`, '_blank');
         setIsPaid(true);
+
+        // Simulate progress for demo
+        setTimeout(() => setStatus('ready'), 3000);
     };
 
     const statusText = {
@@ -80,9 +85,17 @@ export const VIPOrderTracker = ({ status, orderId, items, total, isRTL = false }
             </div>
 
             <div className="mt-8 space-y-4">
-                <div className="flex justify-between text-sm">
-                    <span className="text-jungle-green/40 font-medium">{isRTL ? 'قائمة الطلبات' : 'Menu Summary'}</span>
-                    <span className="font-bold">{total}</span>
+                <div className="border-t border-jungle-green/5 pt-4 space-y-2">
+                    {items.map((item, idx) => (
+                        <div key={idx} className="flex justify-between text-[10px] uppercase tracking-widest font-bold opacity-40">
+                            <span>{item}</span>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="flex justify-between text-sm pt-2">
+                    <span className="text-jungle-green/40 font-medium">{isRTL ? 'المجموع' : 'Total'}</span>
+                    <span className="font-bold text-sand-gold">{total}</span>
                 </div>
 
                 {!isPaid ? (
@@ -92,13 +105,17 @@ export const VIPOrderTracker = ({ status, orderId, items, total, isRTL = false }
                         className="w-full bg-sand-gold text-jungle-green py-5 rounded-2xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 gold-shadow"
                     >
                         <MessageSquare className="w-4 h-4" />
-                        {isRTL ? 'الدفع عبر واتساب' : 'Pay & Confirm via WhatsApp'}
+                        {isRTL ? 'ادفع الآن لتأكيد الطلب' : 'Pay Now to Confirm'}
                     </motion.button>
                 ) : (
-                    <div className="w-full bg-emerald-500/10 text-emerald-600 py-5 rounded-2xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 border border-emerald-500/20">
+                    <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => onReset?.()}
+                        className="w-full bg-emerald-500 text-white py-5 rounded-2xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/20"
+                    >
                         <CheckCircle2 className="w-4 h-4" />
-                        {isRTL ? 'تم تأكيد الدفع' : 'Payment Confirmed'}
-                    </div>
+                        {status === 'ready' ? (isRTL ? 'إغلاق' : 'Finish & Return') : (isRTL ? 'تم الدفع - جاري التحضير' : 'Paid - Preparing')}
+                    </motion.button>
                 )}
             </div>
 

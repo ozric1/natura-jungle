@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-jungle-green: #1A2F1A;
+  --color-jungle-green: #0D160D;
   --color-jungle-sage: #4F7942;
   --color-jungle-sand: #E5D3B3;
   --color-sand-gold: #C5A059;
@@ -81,30 +81,40 @@ body {
 }
 
 .glass-morphism {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .glass-dark {
-  background: rgba(26, 47, 26, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(13, 22, 13, 0.4);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .jungle-card {
-  @apply rounded-3xl p-6 bg-white shadow-sm border border-jungle-sand/20;
+  @apply rounded-[2.5rem] p-6 bg-white/80 backdrop-blur-sm shadow-xl border border-white/40;
 }
 
-.parallax-bg {
-  transform: translateZ(-1px) scale(2);
-  z-index: -1;
+.photo-overlay {
+  @apply absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-jungle-green/60;
+}
+
+.section-mask {
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
 
 .gold-shadow {
-  box-shadow: 0 10px 30px -10px rgba(197, 160, 89, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(197, 160, 89, 0.3);
+}
+
+.nav-blur {
+  background: rgba(249, 247, 242, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 /* RTL Helpers */

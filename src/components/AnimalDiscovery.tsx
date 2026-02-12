@@ -29,12 +29,14 @@ export const AnimalDiscovery = ({ animal, onBack, isRTL = false }: AnimalDiscove
                 <div className="absolute inset-0 bg-gradient-to-t from-egg-shell via-transparent to-transparent" />
 
                 {/* Back Button */}
-                <button
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                     onClick={onBack}
-                    className="absolute top-8 left-8 w-12 h-12 glass-morphism rounded-full flex items-center justify-center text-white"
+                    className="absolute top-8 left-8 w-12 h-12 glass-morphism rounded-full flex items-center justify-center text-white z-50 shadow-lg"
                 >
                     <ArrowLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
-                </button>
+                </motion.button>
 
                 <div className="absolute bottom-12 left-8 right-8">
                     <motion.div
