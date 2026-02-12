@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { X, Clock, Instagram, Phone, MapPin } from 'lucide-react';
+import { X, Clock, Instagram, Phone } from 'lucide-react';
 
 interface ParkHoursProps {
     onClose: () => void;
