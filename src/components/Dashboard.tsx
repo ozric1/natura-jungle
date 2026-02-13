@@ -1,7 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Menu,
+    ChevronLeft,
     ChevronRight,
+    ArrowRight,
     Utensils,
     Sparkles,
     Star,
@@ -10,9 +12,11 @@ import {
     Moon,
     Sun,
     Clock,
-    Instagram,
-    Phone,
+    Home,
+    Tent,
     MapPin,
+    Phone,
+    Instagram,
     PartyPopper
 } from 'lucide-react';
 import { useState } from 'react';
@@ -27,7 +31,7 @@ import { WildCircuitExhibition } from './WildCircuitExhibition';
 import { FunPlay } from './FunPlay';
 import { ParkHours } from './ParkHours';
 import { CateringPartyservice } from './CateringPartyservice';
-import cockatooImg from '../assets/park/cockatoo.jpg';
+import { ExperienceShowcase } from './ExperienceShowcase';
 import tentImg from '../assets/park/tent.jpg';
 import pondImg from '../assets/park/pond.jpg';
 import wallabyImg from '../assets/park/wallaby.jpg';
@@ -41,7 +45,8 @@ export interface DashboardProps {
 
 export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
     const isRTL = currentLanguage === 'ar';
-    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition' | 'fun' | 'hours' | 'catering'>('base');
+    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition' | 'fun' | 'hours' | 'catering' | 'experience'>('base');
+    const [activeExperience, setActiveExperience] = useState<string | null>(null);
     const [activeOrder, setActiveOrder] = useState<{ items: string[], total: string } | null>(null);
     const [hasBooked, setHasBooked] = useState(false);
 
@@ -56,19 +61,25 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             kitchen_status: "Kitchen Open",
             kitchen_wait: "Est. Prep: 25 mins",
             order_btn: "Order to your Lounger",
-            about_title: "Respirez la Nature",
-            about_text: "Nestled 11 km from Mohammedia, 10 km from Benslimane, and 8 km from Bouznika, just minutes from the Mensouria highway exit, Natura Jungle Park offers an immersive escape in the heart of nature. This peaceful haven charms with its idyllic setting, featuring a mini zoo, restaurant, children's play areas, equestrian adventures, thrilling quad excursions, and a refreshing swimming pool. For nature lovers, the park offers luxury bungalows for a harmonious night in this green oasis.",
+            about_title: "Breathe in Nature",
+            about_text: "Nestled 11 km from Mohammedia, 10 km from Benslimane, and 8 km from Bouznika, just minutes from the Mensouria highway exit, Natura Jungle Park offers an immersive escape in the heart of nature. This peaceful haven charms with its idyllic setting, featuring a mini zoo, a gourmet restaurant, children's play areas, equestrian adventures, thrilling quad excursions, and a refreshing swimming pool. For nature lovers, the park offers luxury bungalows for a harmonious night in this green oasis.",
             bundles: [
-                { id: 1, title: "The Wild Circuit", sub: "Species Discovery", color: "from-emerald-900 to-emerald-950", icon: Palmtree, image: wallabyImg, action: () => setCurrentView('exhibition') },
-                { id: 4, title: "Fun & Play", sub: "Family Activities", color: "from-orange-800 to-orange-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => setCurrentView('fun') },
-                { id: 2, title: "L'Oasis", sub: "Poolside Serenity", color: "from-blue-900 to-blue-950", icon: Waves, image: pondImg, action: () => { } },
-                { id: 3, title: "Jungle Stays", sub: "Bungalows & Tents", color: "from-amber-900 to-amber-950", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
-            ]
+                { id: 1, title: "Jungle Bungalow", sub: "Luxury Stays", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800", action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
+                { id: 2, title: "Jungle Restaurant", sub: "Fine Dining", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: cateringImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
+                { id: 3, title: "Berber Tents", sub: "Authentic Experience", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: tentImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
+                { id: 4, title: "Animal Park", sub: "Wild Circuit", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: wallabyImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
+                { id: 5, title: "Kid's & Equitation", sub: "Family Fun", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
+                { id: 6, title: "Aqua Jungle", sub: "Poolside Serenity", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: pondImg, action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
+            ],
+            catering_title: "Catering & Events",
+            event_title: "Special Events",
+            event_book: "Book Your Special Event",
+            kitchen_order: "Open the Menu"
         },
         fr: {
             brand: "Natura Jungle",
             tagline: "L'expérience Sauvage",
-            explore: "Zones d'Expérience",
+            explore: "Exploration Sauvage",
             map_title: "Le Circuit Sauvage",
             map_status: "Suivi en Direct",
             kitchen: "La Cuisine",
@@ -76,32 +87,44 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             kitchen_wait: "Prép. estimée: 25 min",
             order_btn: "Commander au Transat",
             about_title: "Respirez la Nature",
-            about_text: "Niché à 11 kilomètres de Mohammedia, à 10km de Benslimane et 8km de Bouznika, quelques kilomètres de la sortie autoroute Mensouria, le Parc Natura Jungle offre une escapade immersive en pleine nature. Ce havre de paix séduit par son cadre idyllique, abritant un mini zoo, un restaurant, des espaces de jeux dédiés aux enfants, des aventures équestres, des excursions en quad palpitantes, ainsi qu'une piscine rafraîchissante. Pour les amoureux de la nature, le parc propose des bungalows de luxe, invitant à une nuit harmonieuse au cœur de cette oasis verdoyante.",
+            about_text: "Niché à 11 kilomètres de Mohammedia, à 10km de Benslimane et 8km de Bouznika, à quelques minutes de la sortie autoroute Mensouria, le Parc Natura Jungle offre une escapade immersive en pleine nature. Ce havre de paix séduit par son cadre idyllique, abritant un mini zoo, un restaurant gastronomique, des espaces de jeux dédiés aux enfants, des aventures équestres, des excursions en quad palpitantes, ainsi qu'une piscine rafraîchissante. Pour les amoureux de la nature, le parc propose des bungalows de luxe, invitant à une nuit harmonieuse au cœur de cette oasis verdoyante.",
             bundles: [
-                { id: 1, title: "Le Circuit Sauvage", sub: "Découverte des Espèces", color: "from-emerald-900 to-emerald-950", icon: Palmtree, image: cockatooImg, action: () => setCurrentView('exhibition') },
-                { id: 4, title: "Fun & Jeux", sub: "Activités Familiales", color: "from-orange-800 to-orange-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=800", action: () => { } },
-                { id: 2, title: "L'Oasis", sub: "Sérénité au Bord de l'Eau", color: "from-blue-900 to-blue-950", icon: Waves, image: pondImg, action: () => { } },
-                { id: 3, title: "Séjours Jungle", sub: "Bungalows & Tents", color: "from-amber-900 to-amber-950", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
-            ]
+                { id: 1, title: "Bungalow Jungle", sub: "Séjours de Luxe", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800", action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
+                { id: 2, title: "Restaurant Jungle", sub: "Gastronomie", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: cateringImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
+                { id: 3, title: "Tentes Berbères", sub: "Expérience Authentique", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: tentImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
+                { id: 4, title: "Parc Animalier", sub: "Circuit Sauvage", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: wallabyImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
+                { id: 5, title: "Enfants & Équitation", sub: "Plaisir en Famille", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
+                { id: 6, title: "Aqua Jungle", sub: "Sérénité au Bord de l'Eau", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: pondImg, action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
+            ],
+            catering_title: "Traiteur & Fêtes",
+            event_title: "Événements Spéciaux",
+            event_book: "Réservez Votre Événement",
+            kitchen_order: "Ouvrir le Menu"
         },
         ar: {
             brand: "نطورا جانغل",
-            tagline: "تجربة برية",
-            explore: "مناطق التجربة",
+            tagline: "تجربة برية لا تُنسى",
+            explore: "مناطق الاستكشاف",
             map_title: "المسار البري",
             map_status: "تتبع مباشر",
             kitchen: "المطبخ",
             kitchen_status: "المطبخ مفتوح",
-            kitchen_wait: "مدة التحضير: ٢٥ دقيقة",
-            order_btn: "اطلب الآن",
-            about_title: "استنشق الطبيعة",
-            about_text: "يقع منتزه نطورا جانغل على بعد ١١ كم من المحمدية، و١٠ كم من بنسليمان، و٨ كم من بوزنيقة، وعلى بعد دقائق قليلة من مخرج الطريق السيار المنصورية، ويوفر ملاذاً غامراً في قلب الطبيعة. يسحر هذا الملاذ الهادئ زواره بموقعه المثالي، حيث يضم حديقة حيوانات صغيرة، مطعماً، مساحات لعب للأطفال، مغامرات الفروسية، رحلات الكواد المثيرة، بالإضافة إلى مسبح منعش. لمحبي الطبيعة، يقدم المنتزه بناغل فاخرة لقضاء ليلة متناغمة في هذه الواحة الخضراء.",
+            kitchen_wait: "وقت التحضير: ٢٥ دقيقة",
+            order_btn: "اطلب الآن إلى مكانك",
+            about_title: "استنشق عبير الطبيعة",
+            about_text: "يقع منتزه نطورا جانغل على بُعد ١١ كم من المحمدية، و١٠ كم من بنسليمان، و٨ كم من بوزنيقة، مباشرة عند مخرج الطريق السيار المنصورية. يوفر ملاذاً غامراً في قلب الطبيعة، يضم حديقة حيوانات، مطعماً فاخراً، مساحات لعب للأطفال، مغامرات الفروسية، ورحلات الكواد. لمحبي الطبيعة، يقدم المنتزه بناغل فاخرة لقضاء ليلة هادئة في هذه الواحة الخضراء.",
             bundles: [
-                { id: 1, title: isRTL ? 'المسار البري' : 'Wild Path', sub: isRTL ? 'اكتشاف الأنواع' : 'Species Discovery', color: "from-emerald-900 to-emerald-950", icon: Palmtree, image: wallabyImg, action: () => setCurrentView('exhibition') },
-                { id: 4, title: isRTL ? 'المرح واللعب' : 'Fun & Play', sub: isRTL ? 'أنشطة عائلية' : 'Family Activities', color: "from-orange-800 to-orange-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => setCurrentView('fun') },
-                { id: 2, title: isRTL ? 'الواحة' : 'The Oasis', sub: isRTL ? 'هدوء المسبح' : 'Poolside Serenity', color: "from-blue-900 to-blue-950", icon: Waves, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800", action: () => { } },
-                { id: 3, title: isRTL ? 'إقامات الغابة' : 'Jungle Stays', sub: isRTL ? 'بناغل وخيام' : 'Bungalows & Tents', color: "from-amber-900 to-amber-950", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
-            ]
+                { id: 1, title: "بناغل الغابة", sub: "إقامات فاخرة", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800", action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
+                { id: 2, title: "مطعم الغابة", sub: "أرقى المأكولات", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: cateringImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
+                { id: 3, title: "خيام بربرية", sub: "أصالة وراحة", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: tentImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
+                { id: 4, title: "حديقة الحيوان", sub: "مسار الطبيعة", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: wallabyImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
+                { id: 5, title: "الأطفال والفروسية", sub: "مرح لكل العائلة", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
+                { id: 6, title: "أكوا جانغل", sub: "استرخاء المسبح", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: pondImg, action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
+            ],
+            catering_title: "خدمة الحفلات المتميزة",
+            event_title: "مناسبات خاصة",
+            event_book: "احجز مناسبتك الخاصة",
+            kitchen_order: "اطلب الآن"
         }
     };
 
@@ -196,53 +219,79 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     </div>
                 ) : (
                     <>
-                        {/* Hero Experience Carousel */}
-                        <section className="mt-4 section-mask">
-                            <div className="px-6 lg:px-12 mb-4 flex justify-between items-end">
-                                <h2 className="text-2xl font-serif text-sand-gold transition-colors">{text.explore}</h2>
-                                <motion.button
-                                    whileTap={{ scale: 0.95 }}
-                                    className="text-sand-gold text-xs font-bold uppercase tracking-widest"
+                        <div className="px-6 lg:px-12 mb-6 flex justify-between items-end">
+                            <div>
+                                <h2 className="text-3xl font-serif text-luxury-gold tracking-tight">{text.explore}</h2>
+                                <div className="h-1 w-12 bg-luxury-gold mt-2 rounded-full" />
+                            </div>
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={() => {
+                                        const container = document.getElementById('experience-zones-container');
+                                        if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
+                                    }}
+                                    className="w-10 h-10 rounded-full border border-luxury-gold/20 flex items-center justify-center text-luxury-gold hover:bg-luxury-gold/10 transition-colors"
                                 >
-                                    {isRTL ? 'عرض الكل' : 'View All'}
-                                </motion.button>
+                                    <ChevronLeft className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        const container = document.getElementById('experience-zones-container');
+                                        if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
+                                    }}
+                                    className="w-10 h-10 rounded-full border border-luxury-gold/20 flex items-center justify-center text-luxury-gold hover:bg-luxury-gold/10 transition-colors"
+                                >
+                                    <ChevronRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+                                </button>
                             </div>
+                        </div>
 
-                            <div className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-6 px-6 lg:px-12 pb-8 no-scrollbar touch-pan-x">
-                                {text.bundles.map((bundle) => {
-                                    const Icon = bundle.icon;
-                                    return (
-                                        <motion.div
-                                            key={bundle.id}
-                                            whileTap={{ scale: 0.95 }}
-                                            onClick={bundle.action}
-                                            className="flex-none w-[280px] lg:w-auto h-96 rounded-[2.5rem] relative overflow-hidden group shadow-2xl cursor-pointer"
-                                        >
-                                            {bundle.image && (
-                                                <div className="absolute inset-0">
-                                                    <img src={bundle.image} className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" alt={bundle.title} />
-                                                </div>
-                                            )}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-
-                                            <div className="absolute inset-0 flex flex-col justify-end p-8">
-                                                <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
-                                                    <Icon className="text-sand-gold w-6 h-6" />
-                                                </div>
-                                                <h3 className="text-2xl font-serif text-white mb-1 leading-tight">{bundle.title}</h3>
-                                                <p className="text-white/60 text-xs font-medium uppercase tracking-widest">{bundle.sub}</p>
+                        <div
+                            id="experience-zones-container"
+                            className="flex overflow-x-auto lg:grid lg:grid-cols-3 xl:grid-cols-6 gap-6 px-6 lg:px-12 pb-12 no-scrollbar touch-pan-x snap-x snap-mandatory"
+                        >
+                            {text.bundles.map((bundle) => {
+                                const Icon = bundle.icon;
+                                return (
+                                    <motion.div
+                                        key={bundle.id}
+                                        whileHover={{ y: -12, scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        animate={{
+                                            y: [0, -5, 0],
+                                            transition: {
+                                                duration: 4,
+                                                repeat: Infinity,
+                                                delay: bundle.id * 0.4,
+                                                ease: "easeInOut"
+                                            }
+                                        }}
+                                        onClick={bundle.action}
+                                        className="flex-none w-[300px] lg:w-auto h-[450px] rounded-[3rem] relative overflow-hidden group shadow-2xl cursor-pointer border border-white/5 snap-center"
+                                    >
+                                        {bundle.image && (
+                                            <div className="absolute inset-0">
+                                                <img src={bundle.image} className="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-1000" alt={bundle.title} />
                                             </div>
+                                        )}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep via-jungle-deep/20 to-transparent opacity-90" />
 
-                                            <div className="absolute top-6 right-6">
-                                                <div className="w-10 h-10 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 shadow-lg">
-                                                    <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
-                                                </div>
+                                        <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                                            <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 border border-white/20 group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-500">
+                                                <Icon className="w-7 h-7" />
                                             </div>
-                                        </motion.div>
-                                    );
-                                })}
-                            </div>
-                        </section>
+                                            <h3 className="text-2xl font-serif text-pure-nature mb-2 leading-tight group-hover:text-luxury-gold transition-colors">{bundle.title}</h3>
+                                            <p className="text-pure-nature/60 text-[10px] font-bold uppercase tracking-[0.2em]">{bundle.sub}</p>
+
+                                            <div className="mt-8 flex items-center gap-2 text-luxury-gold opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                                                <span className="text-[10px] font-bold uppercase tracking-widest">{isRTL ? 'استكشف' : 'Explore'}</span>
+                                                <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
 
                         <div className="px-6 lg:px-12 space-y-10">
                             {/* About Section */}
@@ -262,7 +311,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                             <section className="space-y-4">
                                 <div className="flex justify-between items-end">
                                     <h2 className="text-2xl font-serif text-sand-gold transition-colors">
-                                        {currentLanguage === 'ar' ? 'خدمة الحفلات' : currentLanguage === 'fr' ? 'Traiteur & Fêtes' : 'Catering & Party'}
+                                        {(text as any).catering_title}
                                     </h2>
                                 </div>
                                 <motion.div
@@ -282,10 +331,10 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                             <PartyPopper className="w-6 h-6 text-sand-gold" />
                                         </div>
                                         <h3 className="text-2xl font-serif text-white mb-1">
-                                            {currentLanguage === 'ar' ? 'مناسبات خاصة' : currentLanguage === 'fr' ? 'Événements Spéciaux' : 'Special Events'}
+                                            {(text as any).event_title}
                                         </h3>
                                         <p className="text-white/60 text-xs font-bold uppercase tracking-widest">
-                                            {currentLanguage === 'ar' ? 'احجز مناسبتك' : currentLanguage === 'fr' ? 'Réservez Votre Événement' : 'Book Your Event'}
+                                            {(text as any).event_book}
                                         </p>
                                     </div>
 
@@ -329,7 +378,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                                     <Utensils className="w-8 h-8 text-sand-gold" />
                                                 </div>
                                                 <div className="text-left">
-                                                    <p className="text-[10px] uppercase tracking-widest opacity-70 font-bold">{isRTL ? 'اطلب الآن' : 'Order Now'}</p>
+                                                    <p className="text-[10px] uppercase tracking-widest opacity-70 font-bold">{(text as any).kitchen_order}</p>
                                                     <span className="text-xl font-serif">{text.order_btn}</span>
                                                 </div>
                                             </div>
@@ -522,6 +571,14 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                 )}
                 {currentView === 'catering' && (
                     <CateringPartyservice language={currentLanguage} onClose={() => setCurrentView('base')} />
+                )}
+                {currentView === 'experience' && activeExperience && (
+                    <ExperienceShowcase
+                        type={activeExperience}
+                        language={currentLanguage}
+                        onClose={() => { setActiveExperience(null); setCurrentView('base'); }}
+                        onAction={(target) => setCurrentView(target as any)}
+                    />
                 )}
             </AnimatePresence>
         </div>

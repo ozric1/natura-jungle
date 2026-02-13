@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import pondHero from '../assets/park/pond.jpg';
 
 interface LanguageSelectorProps {
     onSelect: (lang: 'en' | 'fr' | 'ar') => void;
@@ -18,18 +17,17 @@ export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
             <div className="absolute inset-0 z-0">
                 <motion.div
                     initial={{ scale: 1.2, opacity: 0 }}
-                    animate={{ scale: 1.05, opacity: 1 }}
-                    transition={{ duration: 2.5, ease: "easeOut" }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 3, ease: "easeOut" }}
                     className="w-full h-full relative"
                 >
                     <img
-                        src={pondHero}
-                        className="w-full h-full object-cover"
-                        alt="Natura Jungle Pond"
+                        src="https://images.unsplash.com/photo-1544124499-58b122dd8338?q=80&w=2000"
+                        className="w-full h-full object-cover opacity-60"
+                        alt="Natura Jungle Entry"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40 z-10" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)] z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-jungle-deep/80 via-transparent to-jungle-deep z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-jungle-deep/40 via-transparent to-jungle-deep/40 z-10" />
                 </motion.div>
             </div>
 
@@ -41,66 +39,78 @@ export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
                     transition={{ duration: 1.5, ease: [0.19, 1, 0.22, 1], delay: 0.5 }}
                     className="w-full"
                 >
-                    <div className="mb-16">
+                    <div className="mb-20">
                         <motion.div
-                            initial={{ opacity: 0, letterSpacing: '0.5em' }}
-                            animate={{ opacity: 1, letterSpacing: '0.8em' }}
-                            transition={{ duration: 2, delay: 1 }}
-                            className="text-sand-gold font-serif italic text-sm md:text-lg mb-4 uppercase font-bold text-shadow-lg"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1.5, delay: 1 }}
+                            className="flex items-center gap-4 mb-6"
                         >
-                            Natura Jungle Park
+                            <div className="h-[1px] w-12 bg-luxury-gold/50" />
+                            <span className="text-luxury-gold font-bold uppercase tracking-[0.4em] text-[10px]">
+                                Premium Nature Sanctuary
+                            </span>
                         </motion.div>
-                        <h1 className="text-white font-serif text-6xl md:text-9xl leading-[0.9] font-bold tracking-tighter mb-4 drop-shadow-2xl">
-                            The Wild <br />
-                            <span className="text-sand-gold italic">Experience.</span>
+                        <h1 className="text-pure-nature font-serif text-7xl md:text-[10rem] lg:text-[12rem] leading-[0.85] font-bold tracking-tighter mb-8 max-w-4xl">
+                            Natura <br />
+                            <span className="text-luxury-gold italic">Jungle.</span>
                         </h1>
-                        <p className="text-white/40 text-[10px] uppercase tracking-[0.6em] font-bold mt-4">
-                            Premium Nature Sanctuary • Mohammedia
-                        </p>
+                        <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+                            <p className="text-pure-nature/40 text-[11px] uppercase tracking-[0.5em] font-bold">
+                                Mohammedia • Morocco
+                            </p>
+                            <div className="w-1.5 h-1.5 rounded-full bg-luxury-gold/30" />
+                            <p className="text-pure-nature/40 text-[11px] uppercase tracking-[0.5em] font-bold">
+                                Est. 2024
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
                         {languages.map((lang, index) => (
                             <motion.button
                                 key={lang.code}
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{
-                                    delay: 1.5 + index * 0.15,
+                                    delay: 1.8 + index * 0.15,
                                     duration: 1.2,
                                     ease: [0.19, 1, 0.22, 1]
                                 }}
-                                whileHover={{ y: -10 }}
+                                whileHover={{ y: -12 }}
                                 onClick={() => onSelect(lang.code as any)}
                                 className="group relative text-left outline-none"
                                 dir={lang.dir || 'ltr'}
                             >
-                                <div className="glass-morphism h-48 md:h-56 p-8 flex flex-col justify-between transition-all duration-700 bg-white/5 group-hover:bg-white/10 border-white/5 group-hover:border-sand-gold/30 relative z-10 shadow-2xl overflow-hidden rounded-[2rem]">
-                                    {/* Animated Background Pulse */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-sand-gold/0 to-sand-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                <div className="glass-jungle-deep h-56 md:h-64 p-10 flex flex-col justify-between transition-all duration-700 bg-jungle-deep/40 group-hover:bg-jungle-deep/60 border-luxury-gold/5 group-hover:border-luxury-gold/30 relative z-10 shadow-3xl overflow-hidden rounded-[3rem]">
+                                    {/* Animated Background Gradient */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-luxury-gold/0 via-transparent to-luxury-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                                     <div className="relative z-10">
-                                        <span className="text-sand-gold/60 text-[10px] uppercase tracking-[0.3em] font-bold block mb-6 transition-colors group-hover:text-sand-gold">
-                                            {lang.name}
-                                        </span>
+                                        <div className="flex justify-between items-center mb-8">
+                                            <span className="text-luxury-gold/60 text-[10px] uppercase tracking-[0.4em] font-bold transition-colors group-hover:text-luxury-gold">
+                                                {lang.name}
+                                            </span>
+                                            <div className="w-1 h-1 rounded-full bg-luxury-gold/40 group-hover:w-8 transition-all duration-500" />
+                                        </div>
                                         <div className={lang.dir === 'rtl' ? 'text-right' : 'text-left'}>
-                                            <p className="text-white text-2xl md:text-3xl font-serif mb-2 leading-tight">
+                                            <p className="text-pure-nature text-3xl md:text-4xl font-serif mb-3 leading-tight tracking-tight">
                                                 {lang.label}
                                             </p>
-                                            <p className="text-white/40 text-[11px] tracking-widest font-medium uppercase group-hover:text-white/60 transition-colors">
+                                            <p className="text-pure-nature/30 text-[10px] tracking-[0.2em] font-bold uppercase group-hover:text-pure-nature/60 transition-colors">
                                                 {lang.sub}
                                             </p>
                                         </div>
                                     </div>
 
-                                    <div className={`mt-auto flex ${lang.dir === 'rtl' ? 'justify-start' : 'justify-end'} opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0`}>
-                                        <div className="w-10 h-10 rounded-full bg-sand-gold flex items-center justify-center text-black">
-                                            <span className={`text-xl font-bold ${lang.dir === 'rtl' ? 'rotate-180' : ''}`}>→</span>
+                                    <div className={`mt-auto flex ${lang.dir === 'rtl' ? 'justify-start' : 'justify-end'} opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0`}>
+                                        <div className="w-14 h-14 rounded-2xl bg-luxury-gold text-jungle-deep flex items-center justify-center shadow-xl shadow-luxury-gold/20">
+                                            <span className={`text-2xl font-bold ${lang.dir === 'rtl' ? 'rotate-180' : ''}`}>→</span>
                                         </div>
                                     </div>
                                 </div>
                                 <motion.div
-                                    className="absolute -inset-1 rounded-[2.2rem] bg-gradient-to-tr from-sand-gold/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-md -z-10"
+                                    className="absolute -inset-1 rounded-[3.2rem] bg-gradient-to-tr from-luxury-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-xl -z-10"
                                     initial={false}
                                 />
                             </motion.button>
@@ -129,24 +139,27 @@ export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
 
             {/* Floating Dust Particles (Subtle Texture) */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
-                {[...Array(20)].map((_, i) => (
+                {[...Array(25)].map((_, i) => (
                     <motion.div
                         key={i}
                         initial={{
                             x: Math.random() * 100 + '%',
                             y: Math.random() * 100 + '%',
-                            opacity: 0
+                            opacity: 0,
+                            scale: Math.random() * 0.5 + 0.5
                         }}
                         animate={{
                             y: [null, '-20%', '120%'],
-                            opacity: [0, 0.4, 0]
+                            opacity: [0, 0.3, 0],
+                            x: (Math.random() - 0.5) * 20 + '%'
                         }}
                         transition={{
-                            duration: 10 + Math.random() * 20,
+                            duration: 15 + Math.random() * 25,
                             repeat: Infinity,
-                            delay: Math.random() * 10
+                            delay: Math.random() * 10,
+                            ease: "linear"
                         }}
-                        className="absolute w-1 h-1 bg-sand-gold/20 rounded-full blur-[1px]"
+                        className="absolute w-1.5 h-1.5 bg-luxury-gold/15 rounded-full blur-[2px]"
                     />
                 ))}
             </div>

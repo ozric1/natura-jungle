@@ -163,21 +163,23 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
     return (
         <div className={`min-h-screen ${isRTL ? 'text-right' : 'text-left'} bg-inherit text-inherit max-w-7xl mx-auto`} dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Header */}
-            <header className="px-6 py-8 flex justify-between items-center glass-light dark:glass-dark border-b border-sand-gold/10 sticky top-0 z-50">
+            <header className="px-6 lg:px-12 py-10 flex justify-between items-center glass-pure-nature dark:glass-jungle-deep border-b border-luxury-gold/10 sticky top-0 z-50">
                 <motion.button
                     whileTap={{ scale: 0.9 }}
                     onClick={onBack}
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-sand-gold/10 text-sand-gold"
+                    className="w-12 h-12 flex items-center justify-center rounded-2xl bg-luxury-gold/10 text-luxury-gold border border-luxury-gold/10"
                 >
                     <ChevronLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
                 </motion.button>
                 <div className="text-center">
-                    <h1 className="text-xl font-serif font-bold tracking-widest uppercase text-sand-gold">
+                    <h1 className="text-2xl font-serif font-bold tracking-widest uppercase text-luxury-gold">
                         {language === 'ar' ? 'قائمة الطلبات' : 'Digital Menu'}
                     </h1>
                 </div>
                 <div className="relative">
-                    <ShoppingCart className="w-6 h-6 text-sand-gold" />
+                    <div className="w-12 h-12 rounded-2xl bg-luxury-gold text-jungle-deep flex items-center justify-center shadow-lg gold-shadow">
+                        <ShoppingCart className="w-6 h-6" />
+                    </div>
                     {cartCount > 0 && (
                         <motion.span
                             initial={{ scale: 0 }}
@@ -202,12 +204,12 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => setActiveCategory(cat.id as any)}
                                 className={`flex-none px-6 py-4 rounded-2xl flex items-center gap-3 transition-all duration-300 border ${isActive
-                                    ? 'bg-sand-gold text-jungle-green border-sand-gold shadow-lg shadow-sand-gold/20'
-                                    : 'bg-jungle-green/5 dark:bg-white/5 text-jungle-green/60 dark:text-white/40 border-jungle-green/10 dark:border-white/10'
+                                    ? 'bg-luxury-gold text-jungle-deep border-luxury-gold shadow-xl shadow-luxury-gold/20'
+                                    : 'bg-jungle-leaf/5 dark:bg-white/5 text-jungle-deep/60 dark:text-pure-nature/40 border-jungle-leaf/10 dark:border-white/10'
                                     }`}
                             >
-                                <Icon className="w-5 h-5" />
-                                <span className="text-xs font-bold uppercase tracking-widest">{cat.label}</span>
+                                <Icon className={`w-5 h-5 ${isActive ? 'text-jungle-deep' : 'text-luxury-gold'}`} />
+                                <span className="text-[10px] font-bold uppercase tracking-widest">{cat.label}</span>
                             </motion.button>
                         );
                     })}
@@ -226,16 +228,16 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                             {filteredItems.map((item) => {
                                 const cartItem = cart.find(i => i.id === item.id);
                                 return (
-                                    <div key={item.id} className="jungle-card p-4 flex gap-4">
-                                        <div className="w-24 h-24 rounded-2xl overflow-hidden flex-none">
-                                            <img src={item.image} className="w-full h-full object-cover" alt={item.name} />
+                                    <div key={item.id} className="jungle-card p-5 flex gap-5 bg-pure-nature dark:bg-jungle-leaf/5 rounded-[2rem] border border-luxury-gold/5 group hover:border-luxury-gold/20 transition-all">
+                                        <div className="w-28 h-28 rounded-2xl overflow-hidden flex-none shadow-lg">
+                                            <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={item.name} />
                                         </div>
                                         <div className="flex-1 py-1">
-                                            <div className="flex justify-between items-start mb-1">
-                                                <h3 className="text-lg font-serif dark:text-white">{item.name}</h3>
-                                                <span className="text-sand-gold font-bold">{item.price} MAD</span>
+                                            <div className="flex justify-between items-start mb-2">
+                                                <h3 className="text-xl font-serif text-jungle-deep dark:text-pure-nature">{item.name}</h3>
+                                                <span className="text-luxury-gold font-bold text-lg">{item.price} MAD</span>
                                             </div>
-                                            <p className="text-xs text-jungle-green/40 dark:text-white/40 mb-3">{item.description}</p>
+                                            <p className="text-xs text-jungle-deep/50 dark:text-pure-nature/40 mb-4 line-clamp-2">{item.description}</p>
 
                                             <div className="flex justify-end">
                                                 {cartItem ? (
@@ -243,15 +245,15 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                                         <motion.button
                                                             whileTap={{ scale: 0.8 }}
                                                             onClick={(e) => { e.stopPropagation(); removeFromCart(item.id); }}
-                                                            className="w-8 h-8 flex items-center justify-center rounded-lg bg-white text-jungle-green shadow-sm"
+                                                            className="w-10 h-10 flex items-center justify-center rounded-xl bg-pure-nature dark:bg-jungle-deep text-luxury-gold shadow-sm border border-luxury-gold/10"
                                                         >
                                                             <Minus className="w-4 h-4" />
                                                         </motion.button>
-                                                        <span className="text-sm font-bold w-4 text-center">{cartItem.quantity}</span>
+                                                        <span className="text-sm font-bold w-6 text-center text-jungle-deep dark:text-luxury-gold">{cartItem.quantity}</span>
                                                         <motion.button
                                                             whileTap={{ scale: 0.8 }}
                                                             onClick={(e) => { e.stopPropagation(); addToCart(item); }}
-                                                            className="w-8 h-8 flex items-center justify-center rounded-lg bg-sand-gold text-jungle-green shadow-sm"
+                                                            className="w-10 h-10 flex items-center justify-center rounded-xl bg-luxury-gold text-jungle-deep shadow-lg gold-shadow"
                                                         >
                                                             <Plus className="w-4 h-4" />
                                                         </motion.button>
@@ -260,7 +262,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                                     <motion.button
                                                         whileTap={{ scale: 0.95 }}
                                                         onClick={() => addToCart(item)}
-                                                        className="px-4 py-2 bg-jungle-green text-sand-gold rounded-xl text-xs font-bold uppercase tracking-widest border border-sand-gold/20"
+                                                        className="px-6 py-2.5 bg-jungle-deep dark:bg-luxury-gold text-luxury-gold dark:text-jungle-deep rounded-xl text-[10px] font-bold uppercase tracking-widest border border-luxury-gold/20 shadow-md active:scale-95 transition-all"
                                                     >
                                                         {language === 'ar' ? 'إضافة' : 'Add to Cart'}
                                                     </motion.button>
@@ -284,20 +286,20 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                         exit={{ y: 100 }}
                         className="fixed bottom-0 left-0 right-0 p-6 z-[60]"
                     >
-                        <div className="bg-jungle-green border border-sand-gold/30 rounded-[2.5rem] p-6 shadow-2xl gold-shadow flex items-center justify-between">
-                            <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-2xl bg-sand-gold/10 flex items-center justify-center text-sand-gold">
-                                    <ShoppingBag className="w-6 h-6" />
+                        <div className="bg-jungle-deep border border-luxury-gold/30 rounded-[3rem] p-8 shadow-2xl gold-shadow flex items-center justify-between">
+                            <div className="flex items-center gap-6">
+                                <div className="w-14 h-14 rounded-2xl bg-luxury-gold/10 flex items-center justify-center text-luxury-gold">
+                                    <ShoppingBag className="w-7 h-7" />
                                 </div>
-                                <div className="text-white">
-                                    <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">{cartCount} {language === 'ar' ? 'عناصر' : 'Items'}</p>
-                                    <p className="text-xl font-serif text-sand-gold">{cartTotal} MAD</p>
+                                <div className="text-pure-nature">
+                                    <p className="text-[10px] uppercase tracking-[0.3em] opacity-50 font-bold mb-1">{cartCount} {language === 'ar' ? 'عناصر' : 'Items'}</p>
+                                    <p className="text-3xl font-serif text-luxury-gold">{cartTotal} MAD</p>
                                 </div>
                             </div>
                             <motion.button
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => onOrderPlaced(cart, cartTotal)}
-                                className="bg-sand-gold text-jungle-green px-8 py-4 rounded-2xl font-bold uppercase tracking-widest text-xs shadow-lg"
+                                className="bg-luxury-gold text-jungle-deep px-12 py-5 rounded-2xl font-bold uppercase tracking-widest text-xs shadow-xl gold-shadow active:scale-105 transition-transform"
                             >
                                 {language === 'ar' ? 'ادفع الآن' : 'Pay Now'}
                             </motion.button>

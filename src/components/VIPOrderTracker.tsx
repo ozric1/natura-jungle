@@ -38,21 +38,28 @@ export const VIPOrderTracker = ({ status: initialStatus, orderId, items, total, 
     };
 
     return (
-        <div className="jungle-card bg-white dark:bg-ink-black/80 shadow-2xl border-sand-gold/10 p-8 relative overflow-hidden">
-            <div className="flex justify-between items-start mb-10">
-                <div className="flex-1">
-                    <h3 className="text-2xl font-serif mb-1 dark:text-white">{statusText[status]}</h3>
-                    <p className="text-xs font-bold uppercase tracking-widest text-sand-gold/60">
+        <div className="jungle-card bg-pure-nature dark:bg-jungle-deep shadow-2xl border-luxury-gold/10 p-10 relative overflow-hidden rounded-[3rem]">
+            <div className="absolute top-0 left-0 w-full h-1.5 bg-luxury-gold/10 overflow-hidden">
+                <motion.div
+                    animate={{ x: ['-100%', '100%'] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    className="h-full w-1/3 bg-luxury-gold shadow-[0_0_15px_rgba(191,160,90,0.8)]"
+                />
+            </div>
+            <div className={`flex justify-between items-start mb-12 ${isRTL ? 'flex-row-reverse' : 'flex-row'}`}>
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                    <h3 className="text-3xl font-serif mb-2 text-jungle-deep dark:text-pure-nature leading-tight">{statusText[status]}</h3>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-gold/80">
                         {isRTL ? 'رقم الطلب' : 'Order Ref'}: #{orderId}
                     </p>
                 </div>
-                <div className="w-14 h-14 rounded-2xl bg-sand-gold/10 flex items-center justify-center text-sand-gold">
-                    <Utensils className="w-7 h-7" />
+                <div className="w-16 h-16 rounded-2xl bg-luxury-gold text-jungle-deep flex items-center justify-center shadow-lg gold-shadow">
+                    <Utensils className="w-8 h-8" />
                 </div>
             </div>
 
             {/* Professional Progress Bar */}
-            <div className="mb-12 relative">
+            <div className="mb-14 relative">
                 <div className="flex justify-between relative z-10">
                     {steps.map((step, idx) => {
                         const isCompleted = steps.findIndex(s => s.id === status) >= idx;
@@ -60,18 +67,18 @@ export const VIPOrderTracker = ({ status: initialStatus, orderId, items, total, 
                         const StepIcon = step.icon;
 
                         return (
-                            <div key={step.id} className="flex flex-col items-center gap-3">
+                            <div key={step.id} className="flex flex-col items-center gap-4">
                                 <motion.div
-                                    animate={isCurrent ? { scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] } : {}}
-                                    transition={{ duration: 0.5, repeat: isCurrent ? Infinity : 0, repeatDelay: 2 }}
-                                    className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${isCompleted
-                                        ? 'bg-sand-gold text-jungle-green shadow-lg shadow-sand-gold/20'
-                                        : 'bg-jungle-green/5 dark:bg-white/5 text-jungle-green/20 dark:text-white/10'
+                                    animate={isCurrent ? { scale: [1, 1.1, 1] } : {}}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                    className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-700 ${isCompleted
+                                        ? 'bg-luxury-gold text-jungle-deep shadow-xl shadow-luxury-gold/30'
+                                        : 'bg-jungle-leaf/10 dark:bg-white/5 text-jungle-deep/20 dark:text-pure-nature/10'
                                         }`}
                                 >
-                                    <StepIcon className="w-6 h-6" />
+                                    <StepIcon className="w-7 h-7" />
                                 </motion.div>
-                                <span className={`text-[10px] font-bold uppercase tracking-widest ${isCompleted ? 'text-sand-gold' : 'text-jungle-green/20 dark:text-white/10'
+                                <span className={`text-[10px] font-bold uppercase tracking-[0.2em] ${isCompleted ? 'text-luxury-gold' : 'text-jungle-deep/30 dark:text-pure-nature/20'
                                     }`}>
                                     {step.label}
                                 </span>
@@ -81,11 +88,11 @@ export const VIPOrderTracker = ({ status: initialStatus, orderId, items, total, 
                 </div>
 
                 {/* Connecting Lines */}
-                <div className="absolute top-6 left-8 right-8 h-[2px] bg-jungle-green/5 dark:bg-white/5 -z-0">
+                <div className={`absolute top-7 ${isRTL ? 'left-10 right-10' : 'left-10 right-10'} h-0.5 bg-jungle-leaf/10 dark:bg-white/5 -z-0`}>
                     <motion.div
                         initial={{ width: '0%' }}
                         animate={{ width: status === 'preparing' ? '0%' : status === 'ready' ? '50%' : '100%' }}
-                        className="h-full bg-sand-gold shadow-[0_0_10px_rgba(197,160,89,0.5)]"
+                        className={`h-full bg-luxury-gold shadow-[0_0_15px_rgba(191,160,90,0.6)] ${isRTL ? 'float-right' : 'float-left'}`}
                     />
                 </div>
             </div>

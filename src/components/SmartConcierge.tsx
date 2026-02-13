@@ -56,12 +56,12 @@ export const SmartConcierge = ({ language }: SmartConciergeProps) => {
         <div className="space-y-6">
             <div className="flex justify-between items-start">
                 <div>
-                    <h2 className="text-2xl font-serif text-sand-gold transition-colors">{content.title[language]}</h2>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-jungle-green/40 dark:text-white/40 mt-1">
+                    <h2 className="text-3xl font-serif text-luxury-gold tracking-tight">{content.title[language]}</h2>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-jungle-deep/40 dark:text-pure-nature/40 mt-2">
                         {content.subtitle[language]}
                     </p>
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-sand-gold animate-pulse">
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-gold animate-pulse">
                     {content.live[language]}
                 </span>
             </div>
@@ -70,7 +70,7 @@ export const SmartConcierge = ({ language }: SmartConciergeProps) => {
             <motion.div
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="rounded-[2rem] p-8 relative overflow-hidden group border border-white/5 cursor-pointer bg-gradient-to-r from-emerald-900 to-black shadow-2xl"
+                className="rounded-[2.5rem] p-10 relative overflow-hidden group border border-luxury-gold/10 cursor-pointer bg-gradient-to-br from-jungle-deep to-[#1a2f1a] shadow-2xl"
             >
                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
                     <Utensils className="w-24 h-24 text-white" />
@@ -84,7 +84,7 @@ export const SmartConcierge = ({ language }: SmartConciergeProps) => {
                     </p>
                     <button
                         onClick={(e) => { e.stopPropagation(); setIsExpanded(!isExpanded); }}
-                        className="bg-sand-gold text-jungle-green px-6 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-sand-gold/20 flex items-center gap-2"
+                        className="bg-luxury-gold text-jungle-deep px-8 py-4 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl shadow-luxury-gold/20 flex items-center gap-3 active:scale-95 transition-all"
                     >
                         {isExpanded
                             ? content.hideOptions[language]
@@ -110,13 +110,13 @@ export const SmartConcierge = ({ language }: SmartConciergeProps) => {
                                         key={service.id}
                                         whileTap={{ scale: 0.95 }}
                                         onClick={() => handleServiceClick(service.message[language])}
-                                        className="premium-card p-4 text-left flex items-center gap-4 group hover:border-sand-gold/20"
+                                        className={`premium-card p-6 flex items-center gap-5 group hover:border-luxury-gold/30 bg-pure-nature dark:bg-jungle-leaf/5 rounded-3xl transition-all ${isRTL ? 'text-right flex-row-reverse' : 'text-left flex-row'}`}
                                         dir={isRTL ? 'rtl' : 'ltr'}
                                     >
-                                        <div className="w-12 h-12 rounded-xl bg-sand-gold/10 flex items-center justify-center text-sand-gold group-hover:scale-110 transition-transform flex-shrink-0">
-                                            <Icon className="w-6 h-6" />
+                                        <div className="w-14 h-14 rounded-2xl bg-luxury-gold text-jungle-deep flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg gold-shadow">
+                                            <Icon className="w-7 h-7" />
                                         </div>
-                                        <span className="text-sm font-bold text-sand-gold">
+                                        <span className="text-sm font-bold text-jungle-deep dark:text-luxury-gold uppercase tracking-widest leading-relaxed">
                                             {service.label[language]}
                                         </span>
                                     </motion.button>

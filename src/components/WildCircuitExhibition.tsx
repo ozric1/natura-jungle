@@ -2,6 +2,10 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { ChevronLeft, Info, Bookmark, Share2, Sparkles, ArrowRight, Search } from 'lucide-react';
 import { useState, useRef, type MouseEvent } from 'react';
 import { AnimalDiscovery } from './AnimalDiscovery';
+import lamaImg from '../assets/park/lama_update.jpg';
+import deerImg from '../assets/park/deer_update.jpg';
+import wildCatImg from '../assets/park/wildcat_update.jpg';
+import wallabyImg from '../assets/park/wallaby_update.jpg';
 import pigsImg from '../assets/park/pigs.jpg';
 import duckImg from '../assets/park/duck_update.jpg';
 import blackSwanImg from '../assets/park/black_swan_update.jpg';
@@ -9,10 +13,6 @@ import horseImg from '../assets/park/horse_update.jpg';
 import ostrichImg from '../assets/park/ostrich_update.jpg';
 import tibetGoatImg from '../assets/park/tibet_goat_update.jpg';
 import peacockImg from '../assets/park/peacock_update.jpg';
-import wallabyImg from '../assets/park/wallaby_update.jpg';
-import lamaImg from '../assets/park/lama_update.jpg';
-import deerImg from '../assets/park/deer_update.jpg';
-import wildCatImg from '../assets/park/wildcat_update.jpg';
 
 interface AnimalExhibit {
     id: string;
@@ -77,10 +77,10 @@ const InteractiveImage = ({ src, alt, category }: { src: string; alt: string; ca
 
             {/* Custom Lens / Zoom Indicator */}
             <motion.div
-                className="absolute w-24 h-24 border-2 border-sand-gold rounded-full pointer-events-none opacity-0 group-hover:opacity-100 backdrop-blur-sm -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center"
+                className="absolute w-24 h-24 border-2 border-luxury-gold rounded-full pointer-events-none opacity-0 group-hover:opacity-100 backdrop-blur-sm -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center"
                 style={{ left: lensX, top: lensY }}
             >
-                <Search className="w-4 h-4 text-sand-gold" />
+                <Search className="w-5 h-5 text-luxury-gold" />
             </motion.div>
 
             <div className="absolute inset-0 bg-gradient-to-t from-jungle-green/80 via-transparent to-transparent opacity-60 pointer-events-none" />
@@ -180,16 +180,16 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
         <div className="min-h-screen bg-black text-white relative overflow-x-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
 
             {/* Header */}
-            <div className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center bg-gradient-to-b from-black/90 to-transparent">
-                <button onClick={onBack} className="w-12 h-12 rounded-full glass-morphism flex items-center justify-center hover:scale-110 transition-transform group">
-                    <ChevronLeft className={`w-6 h-6 text-white group-hover:text-sand-gold ${isRTL ? 'rotate-180' : ''}`} />
+            <div className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center bg-gradient-to-b from-jungle-deep/95 to-transparent backdrop-blur-md border-b border-luxury-gold/10">
+                <button onClick={onBack} className="w-12 h-12 rounded-2xl glass-pure-nature flex items-center justify-center hover:scale-110 transition-transform group border border-luxury-gold/20 shadow-lg">
+                    <ChevronLeft className={`w-6 h-6 text-pure-nature group-hover:text-luxury-gold ${isRTL ? 'rotate-180' : ''}`} />
                 </button>
                 <div className="text-center">
-                    <h1 className="text-2xl font-serif text-white">The Wild Circuit</h1>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-sand-gold">Species Discovery Exhibition</p>
+                    <h1 className="text-3xl font-serif text-pure-nature tracking-tight">The Wild Circuit</h1>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-gold">Species Discovery Exhibition</p>
                 </div>
-                <div className="w-12 h-12 rounded-full glass-morphism flex items-center justify-center border border-sand-gold/20">
-                    <Sparkles className="w-5 h-5 text-sand-gold animate-pulse" />
+                <div className="w-12 h-12 rounded-2xl bg-luxury-gold text-jungle-deep flex items-center justify-center shadow-lg gold-shadow">
+                    <Sparkles className="w-6 h-6 animate-pulse" />
                 </div>
             </div>
 
@@ -224,23 +224,24 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
                                 </div>
 
                                 <motion.div
-                                    className="p-8 bg-white/5 backdrop-blur-sm rounded-[2.5rem] border border-sand-gold/10 shadow-sm relative"
+                                    className="p-10 bg-pure-nature/5 dark:bg-jungle-leaf/5 backdrop-blur-xl rounded-[3rem] border border-luxury-gold/20 shadow-2xl relative"
                                 >
-                                    <div className="absolute -top-3 left-8 w-6 h-6 bg-sand-gold rounded-full flex items-center justify-center text-jungle-green">
-                                        <Info className="w-3 h-3" />
+                                    <div className="absolute -top-4 left-10 w-8 h-8 bg-luxury-gold rounded-2xl flex items-center justify-center text-jungle-deep shadow-lg">
+                                        <Info className="w-4 h-4" />
                                     </div>
-                                    <p className="text-lg font-serif italic text-white/80 leading-relaxed">
+                                    <p className="text-2xl font-serif italic text-pure-nature/90 leading-relaxed dark:text-pure-nature">
                                         "{item.fact[language]}"
                                     </p>
 
-                                    <div className="mt-8 flex flex-col gap-4">
-                                        <div className="flex gap-4">
-                                            <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-sand-gold hover:text-white transition-colors">
-                                                <Bookmark className="w-4 h-4" />
+                                    <div className="mt-10 flex flex-col gap-6">
+                                        <div className="flex gap-6 items-center">
+                                            <button className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-luxury-gold hover:text-pure-nature transition-colors">
+                                                <Bookmark className="w-5 h-5" />
                                                 Save
                                             </button>
-                                            <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-all text-white">
-                                                <Share2 className="w-4 h-4" />
+                                            <div className="w-1 h-1 rounded-full bg-luxury-gold/40" />
+                                            <button className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-all text-pure-nature">
+                                                <Share2 className="w-5 h-5" />
                                                 Share
                                             </button>
                                         </div>
@@ -248,15 +249,15 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
                                         <motion.button
                                             whileTap={{ scale: 0.95 }}
                                             onClick={() => setSelectedAnimal(item)}
-                                            className="w-full mt-4 flex items-center justify-between group/btn py-4 px-6 bg-sand-gold/10 rounded-2xl border border-sand-gold/20 hover:bg-sand-gold transition-all duration-300"
+                                            className="w-full mt-4 flex items-center justify-between group/btn py-6 px-10 bg-luxury-gold/10 rounded-3xl border border-luxury-gold/30 hover:bg-luxury-gold transition-all duration-500 gold-shadow-sm"
                                         >
-                                            <div className="flex items-center gap-3">
-                                                <Sparkles className="w-4 h-4 text-sand-gold group-hover/btn:text-jungle-green" />
-                                                <span className="text-[10px] font-bold uppercase tracking-widest text-sand-gold group-hover/btn:text-jungle-green">
+                                            <div className="flex items-center gap-4">
+                                                <Sparkles className="w-5 h-5 text-luxury-gold group-hover/btn:text-jungle-deep" />
+                                                <span className="text-xs font-bold uppercase tracking-[0.2em] text-luxury-gold group-hover/btn:text-jungle-deep">
                                                     {language === 'ar' ? 'اكتشف المزيد' : language === 'fr' ? 'Découvrir Plus' : 'Learn More'}
                                                 </span>
                                             </div>
-                                            <ArrowRight className={`w-4 h-4 text-sand-gold group-hover/btn:text-jungle-green ${isRTL ? 'rotate-180' : ''}`} />
+                                            <ArrowRight className={`w-5 h-5 text-luxury-gold group-hover/btn:text-jungle-deep transition-transform duration-500 group-hover/btn:translate-x-2 ${isRTL ? 'rotate-180' : ''}`} />
                                         </motion.button>
                                     </div>
                                 </motion.div>
@@ -294,16 +295,16 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                className="mt-20 px-6 text-center"
+                className="mt-32 px-6 pb-24 text-center"
             >
-                <div className="max-w-xl mx-auto p-12 bg-jungle-green rounded-[3rem] text-white overflow-hidden relative shadow-2xl gold-shadow">
-                    <div className="absolute inset-0 opacity-10 blur-3xl bg-sand-gold" />
-                    <Sparkles className="w-12 h-12 text-sand-gold mx-auto mb-6" />
-                    <h3 className="text-3xl font-serif mb-4">Want to meet them?</h3>
-                    <p className="text-white/60 mb-10 text-sm">Experience the magic in person. Book your tour or stay today.</p>
-                    <button onClick={onBack} className="bg-sand-gold text-jungle-green px-10 py-5 rounded-2xl font-bold uppercase tracking-widest text-xs flex items-center gap-3 mx-auto">
+                <div className="max-w-xl mx-auto p-16 bg-jungle-deep rounded-[4rem] text-pure-nature overflow-hidden relative shadow-2xl gold-shadow border border-luxury-gold/20">
+                    <div className="absolute inset-0 opacity-10 blur-3xl bg-luxury-gold" />
+                    <Sparkles className="w-16 h-16 text-luxury-gold mx-auto mb-8" />
+                    <h3 className="text-4xl font-serif mb-6 text-luxury-gold">Want to meet them?</h3>
+                    <p className="text-pure-nature/60 mb-12 text-lg leading-relaxed">Experience the magic in person. Book your tour or stay today.</p>
+                    <button onClick={onBack} className="bg-luxury-gold text-jungle-deep px-12 py-6 rounded-3xl font-bold uppercase tracking-widest text-sm flex items-center gap-4 mx-auto gold-shadow hover:scale-105 transition-transform">
                         Return to Dashboard
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
                     </button>
                 </div>
             </motion.div>

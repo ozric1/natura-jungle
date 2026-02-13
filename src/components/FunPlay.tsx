@@ -45,26 +45,24 @@ export const FunPlay = ({ onBack, isRTL = false, language }: FunPlayProps) => {
     }
 
     return (
-        <div className="h-screen w-full bg-orange-50 dark:bg-[#1a0f05] text-orange-950 dark:text-orange-50 overflow-y-auto no-scrollbar scroll-smooth" dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className="h-screen w-full bg-pure-nature dark:bg-jungle-deep text-jungle-deep dark:text-pure-nature overflow-y-auto no-scrollbar scroll-smooth" dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Header */}
-            <header className="px-6 py-12 flex justify-between items-end sticky top-0 z-50 bg-orange-50/95 dark:bg-[#1a0f05]/95 backdrop-blur-xl border-b border-orange-200/30 dark:border-orange-900/30">
+            <header className="px-6 lg:px-12 py-12 flex justify-between items-end sticky top-0 z-50 bg-pure-nature/90 dark:bg-jungle-deep/90 backdrop-blur-xl border-b border-jungle-leaf/10">
                 <div>
                     <motion.button
                         whileTap={{ scale: 0.9 }}
                         onClick={onBack}
-                        className="w-10 h-10 flex items-center justify-center rounded-full bg-orange-900/10 dark:bg-white/10 text-orange-900 dark:text-white mb-4"
+                        className="w-12 h-12 flex items-center justify-center rounded-2xl bg-jungle-leaf/10 text-jungle-deep dark:text-luxury-gold mb-6 border border-jungle-leaf/10"
                     >
                         <ChevronLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
                     </motion.button>
-                    <h1 className="text-4xl font-serif italic text-orange-950 dark:text-white">
+                    <h1 className="text-4xl lg:text-6xl font-serif text-jungle-deep dark:text-luxury-gold tracking-tight">
                         {language === 'ar' ? 'المرح واللعب' : language === 'fr' ? 'Fun & Jeux' : 'Fun & Play'}
                     </h1>
-                    <p className="text-[10px] uppercase font-bold tracking-[0.3em] opacity-40 mt-2">
-                        {language === 'ar' ? 'أنشطة عائلية' : language === 'fr' ? 'Activités Familiales' : 'Family & Teen Activities'}
-                    </p>
+                    <div className="h-1.5 w-16 bg-luxury-gold mt-4 rounded-full" />
                 </div>
-                <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
-                    <Smile className="w-6 h-6" />
+                <div className="w-16 h-16 rounded-[2rem] bg-luxury-gold text-jungle-deep flex items-center justify-center shadow-lg gold-shadow">
+                    <Smile className="w-8 h-8" />
                 </div>
             </header>
 
@@ -103,11 +101,15 @@ export const FunPlay = ({ onBack, isRTL = false, language }: FunPlayProps) => {
                 ))}
             </div>
 
-            <footer className="p-12 text-center bg-orange-900 text-white rounded-t-[4rem] mt-20">
-                <Smile className="w-12 h-12 mx-auto mb-6 text-orange-300" />
-                <h3 className="text-3xl font-serif mb-4">Ready for the challenge?</h3>
-                <p className="text-orange-200/60 mb-10 max-w-md mx-auto">Join us in the activities zone. Safe equipment, professional supervision, and endless fun for everyone.</p>
-                <button onClick={onBack} className="bg-orange-100 text-orange-950 px-10 py-5 rounded-2xl font-bold uppercase tracking-widest text-xs">
+            <footer className="p-16 text-center bg-jungle-deep text-pure-nature rounded-t-[4rem] mt-32 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-luxury-gold/50 to-transparent" />
+                <Smile className="w-16 h-16 mx-auto mb-8 text-luxury-gold" />
+                <h3 className="text-4xl lg:text-5xl font-serif mb-6 text-luxury-gold">Ready for the challenge?</h3>
+                <p className="text-pure-nature/60 mb-12 max-w-lg mx-auto text-lg leading-relaxed">Join us in the activities zone. Safe equipment, professional supervision, and endless fun for everyone.</p>
+                <button
+                    onClick={onBack}
+                    className="bg-luxury-gold text-jungle-deep px-12 py-6 rounded-3xl font-bold uppercase tracking-widest text-sm gold-shadow hover:scale-105 transition-transform"
+                >
                     Back to Dashboard
                 </button>
             </footer>
