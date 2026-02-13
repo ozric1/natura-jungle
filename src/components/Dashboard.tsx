@@ -172,7 +172,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                         {/* Hero Experience Carousel */}
                         <section className="mt-4 section-mask">
                             <div className="px-6 mb-4 flex justify-between items-end">
-                                <h2 className="text-2xl font-serif text-jungle-green dark:text-white transition-colors">{text.explore}</h2>
+                                <h2 className="text-2xl font-serif text-sand-gold transition-colors">{text.explore}</h2>
                                 <motion.button
                                     whileTap={{ scale: 0.95 }}
                                     className="text-sand-gold text-xs font-bold uppercase tracking-widest"
@@ -235,7 +235,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                             {/* Jungle Kitchen Section */}
                             <section className="space-y-4">
                                 <div className="flex justify-between items-end">
-                                    <h2 className="text-2xl font-serif text-jungle-green dark:text-white transition-colors">{text.kitchen}</h2>
+                                    <h2 className="text-2xl font-serif text-sand-gold transition-colors">{text.kitchen}</h2>
                                     <div className="flex items-center gap-2 text-jungle-terracotta bg-jungle-terracotta/5 px-3 py-1 rounded-full">
                                         <Clock className="w-3 h-3" />
                                         <span className="text-[10px] font-bold uppercase tracking-widest">{text.kitchen_wait}</span>
@@ -259,11 +259,11 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                         <motion.button
                                             onClick={() => setCurrentView('menu')}
                                             whileTap={{ scale: 0.95 }}
-                                            className="w-full bg-sand-gold text-jungle-green rounded-[3rem] p-8 flex items-center justify-between group overflow-hidden relative shadow-xl gold-shadow"
+                                            className="w-full bg-gradient-to-r from-emerald-900 to-black text-white rounded-[3rem] p-8 flex items-center justify-between group overflow-hidden relative shadow-xl gold-shadow"
                                         >
                                             <div className="flex items-center gap-4 relative z-10">
-                                                <div className="w-14 h-14 rounded-2xl bg-jungle-green/10 flex items-center justify-center">
-                                                    <Utensils className="w-8 h-8" />
+                                                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
+                                                    <Utensils className="w-8 h-8 text-sand-gold" />
                                                 </div>
                                                 <div className="text-left">
                                                     <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">{isRTL ? 'اطلب الآن' : 'Order Now'}</p>
