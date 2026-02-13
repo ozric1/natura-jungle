@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowLeft, Play, Heart, Share2, Volume2 } from 'lucide-react';
-import wallabyImg from '../assets/park/wallaby.jpg';
-import cockatooImg from '../assets/park/cockatoo.jpg';
+const wallabyImg = '/assets/natura/wallaby.jpg';
+const cockatooImg = '/assets/natura/cockatoo.jpg';
 
 interface AnimalDiscoveryProps {
     animal: {

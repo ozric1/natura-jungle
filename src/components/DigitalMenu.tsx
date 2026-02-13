@@ -43,81 +43,82 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
 
     const menuItems: MenuItem[] = [
         // Petit Déjeuner
-        { id: 'pt1', name: language === 'ar' ? 'فطور كونتيننتال' : 'Continental', description: 'Jus d\'orange, viennoiserie, corbeille de notre boulanger, confiture, miel, beurre, café au thé.', price: 40, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=400' },
-        { id: 'pt2', name: language === 'ar' ? 'فطور غيورماند' : 'Gourmand', description: 'Jus d\'orange, viennoiserie, misemmen, omelette fromage, corbeille de notre boulanger, confiture, beurre, café ou thé.', price: 60, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=400' },
-        { id: 'pt3', name: language === 'ar' ? 'فطور تقليدي' : 'Traditionnel', description: 'Jus d\'orange, m\'semmen, harcha, corbeille de notre boulanger, olives et amlou, jben, miel, huile d\'olive, café ou thé.', price: 50, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1549466699-db3730302b4e?q=80&w=400' },
-        { id: 'pt4', name: language === 'ar' ? 'فطور مغربي' : 'Marocain', description: 'Jus d\'orange, m\'semmen, oeufs au khlii, corbeille de notre boulanger, café ou thé.', price: 55, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1506084868730-3423e9339e05?q=80&w=400' },
+        { id: 'pt1', name: language === 'ar' ? 'فطور كونتيننتال' : 'Continental', description: 'Jus d\'orange, viennoiserie, corbeille de notre boulanger, confiture, miel, beurre, café au thé.', price: 40, category: 'Petit Déjeuner', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'pt2', name: language === 'ar' ? 'فطور غيورماند' : 'Gourmand', description: 'Jus d\'orange, viennoiserie, misemmen, omelette fromage, corbeille de notre boulanger, confiture, beurre, café ou thé.', price: 60, category: 'Petit Déjeuner', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'pt3', name: language === 'ar' ? 'فطور تقليدي' : 'Traditionnel', description: 'Jus d\'orange, m\'semmen, harcha, corbeille de notre boulanger, olives et amlou, jben, miel, huile d\'olive, café ou thé.', price: 50, category: 'Petit Déjeuner', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'pt4', name: language === 'ar' ? 'فطور مغربي' : 'Marocain', description: 'Jus d\'orange, m\'semmen, oeufs au khlii, corbeille de notre boulanger, café ou thé.', price: 55, category: 'Petit Déjeuner', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
 
         // Salades
-        { id: 'sl1', name: language === 'ar' ? 'سلطة مغربية' : 'Salade Marocaine', description: 'Authentic Moroccan salad', price: 30, category: 'Salades', image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=400' },
-        { id: 'sl2', name: language === 'ar' ? 'سلطة نيسواز' : 'Salade Nicoise', description: 'Classic Niçoise salad', price: 40, category: 'Salades', image: 'https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?q=80&w=400' },
-        { id: 'sl3', name: language === 'ar' ? 'سلطة مكسيكية' : 'Salade Mexicaine', description: 'Spicy Mexican flavors', price: 40, category: 'Salades', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400' },
-        { id: 'sl4', name: language === 'ar' ? 'سلطة بيشور' : 'Salade Pêcheur', description: 'Ocean fresh seafood salad', price: 60, category: 'Salades', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400' },
-        { id: 'sl5', name: language === 'ar' ? 'سلطة نطورا جانغل' : 'Salade Natura Jungle', description: 'Signature home salad', price: 50, category: 'Salades', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400' },
+        { id: 'sl1', name: language === 'ar' ? 'سلطة مغربية' : 'Salade Marocaine', description: 'Authentic Moroccan salad', price: 30, category: 'Salades', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'sl2', name: language === 'ar' ? 'سلطة نيسواز' : 'Salade Nicoise', description: 'Classic Niçoise salad', price: 40, category: 'Salades', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'sl3', name: language === 'ar' ? 'سلطة مكسيكية' : 'Salade Mexicaine', description: 'Spicy Mexican flavors', price: 40, category: 'Salades', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'sl4', name: language === 'ar' ? 'سلطة بيشور' : 'Salade Pêcheur', description: 'Ocean fresh seafood salad', price: 60, category: 'Salades', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'sl5', name: language === 'ar' ? 'سلطة نطورا جانغل' : 'Salade Natura Jungle', description: 'Signature home salad', price: 50, category: 'Salades', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'sl6', name: language === 'ar' ? 'سلطة سيزر' : 'Salade Cesar', description: 'Classic Caesar salad', price: 45, category: 'Salades', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
 
         // Tagines
-        { id: 'tg1', name: language === 'ar' ? 'طاجين لحم بالبرقوق' : 'Tagine Viande Pruneaux', description: 'Slow-cooked tradition', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=80&w=400' },
-        { id: 'tg2', name: language === 'ar' ? 'طاجين دجاج بلدي' : 'Tagine Poulet Beldi', description: 'Free-range chicken tagine', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=80&w=400' },
-        { id: 'tg3', name: language === 'ar' ? 'طاجين السمان' : 'Tagine de Cailles', description: 'Delicate quail tagine', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=80&w=400' },
-        { id: 'tg4', name: language === 'ar' ? 'طاجين خضار' : 'Tagine Legumes', description: 'Seasonal vegetable mix', price: 115, category: 'Tagines', image: 'https://images.unsplash.com/photo-1464454709131-ffd692591ee5?q=80&w=400' },
-        { id: 'tg5', name: language === 'ar' ? 'طاجين لحم مفروم' : 'Tagine Viande Hachée', description: 'Minced meat with eggs', price: 125, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=80&w=400' },
-        { id: 'tg6', name: language === 'ar' ? 'طاجين معيز' : 'Tagine Chevreaux', description: 'Tender goat meat tagine', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=80&w=400' },
+        { id: 'tg1', name: language === 'ar' ? 'طاجين لحم بالبرقوق' : 'Tagine Viande Pruneaux', description: 'Slow-cooked tradition', price: 135, category: 'Tagines', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
+        { id: 'tg2', name: language === 'ar' ? 'طاجين دجاج بلدي' : 'Tagine Poulet Beldi', description: 'Free-range chicken tagine', price: 135, category: 'Tagines', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'tg3', name: language === 'ar' ? 'طاجين السمان' : 'Tagine de Cailles', description: 'Delicate quail tagine', price: 135, category: 'Tagines', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'tg4', name: language === 'ar' ? 'طاجين خضار' : 'Tagine Legumes', description: 'Seasonal vegetable mix', price: 115, category: 'Tagines', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'tg5', name: language === 'ar' ? 'طاجين لحم مفروم' : 'Tagine Viande Hachée', description: 'Minced meat with eggs', price: 125, category: 'Tagines', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'tg6', name: language === 'ar' ? 'طاجين معيز' : 'Tagine Chevreaux', description: 'Tender goat meat tagine', price: 135, category: 'Tagines', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
 
         // Plats
-        { id: 'pl1', name: language === 'ar' ? 'صحن لحم مفروم' : 'Plat Viande Hachée', description: 'Accompagnés par des frites et salade', price: 80, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl2', name: language === 'ar' ? 'صحن بروشيت مشكل' : 'Plat Brochettes Mixte', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl3', name: language === 'ar' ? 'صحن بروشيت دجاج' : 'Plat Brochettes de Poulet', description: 'Accompagnés par des frites et salade', price: 75, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl4', name: language === 'ar' ? 'صحن ريش لحم' : 'Plat Côtelettes d\'Agneau', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl5', name: language === 'ar' ? 'صحن صوصيص' : 'Plat Saucisse', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl6', name: language === 'ar' ? 'صحن مشكل' : 'Plat Mixte', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl7', name: language === 'ar' ? 'صحن ناجتس' : 'Plat Nugets', description: 'Accompagnés par des frites et salade', price: 70, category: 'Plats', image: 'https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=400' },
+        { id: 'pl1', name: language === 'ar' ? 'صحن لحم مفروم' : 'Plat Viande Hachée', description: 'Accompagnés par des frites et salade', price: 80, category: 'Plats', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'pl2', name: language === 'ar' ? 'صحن بروشيت مشكل' : 'Plat Brochettes Mixte', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'pl3', name: language === 'ar' ? 'صحن بروشيت دجاج' : 'Plat Brochettes de Poulet', description: 'Accompagnés par des frites et salade', price: 75, category: 'Plats', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'pl4', name: language === 'ar' ? 'صحن ريش لحم' : 'Plat Côtelettes d\'Agneau', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'pl5', name: language === 'ar' ? 'صحن صوصيص' : 'Plat Saucisse', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'pl6', name: language === 'ar' ? 'صحن مشكل' : 'Plat Mixte', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
+        { id: 'pl7', name: language === 'ar' ? 'صحن ناجتس' : 'Plat Nugets', description: 'Accompagnés par des frites et salade', price: 70, category: 'Plats', image: '/assets/natura/Jungle restaurant.jpeg' },
 
         // Sandwiches
-        { id: 'sw1', name: language === 'ar' ? 'ساندويتش لحم مفروم' : 'Sandwich Viande Hachée', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1502035618526-642f1f5b9049?q=80&w=400' },
-        { id: 'sw2', name: language === 'ar' ? 'ساندويتش ديك رومي' : 'Sandwich Dinde', description: 'Accompagner de Frites', price: 45, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1502035618526-642f1f5b9049?q=80&w=400' },
-        { id: 'sw3', name: language === 'ar' ? 'ساندويتش مشكل' : 'Sandwich Mixte', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1502035618526-642f1f5b9049?q=80&w=400' },
-        { id: 'sw4', name: language === 'ar' ? 'هامبرغر' : 'Hamburger', description: 'Accompagner de Frites', price: 45, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400' },
-        { id: 'sw5', name: language === 'ar' ? 'تشيز برجر' : 'Cheeseburger', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400' },
+        { id: 'sw1', name: language === 'ar' ? 'ساندويتش لحم مفروم' : 'Sandwich Viande Hachée', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
+        { id: 'sw2', name: language === 'ar' ? 'ساندويتش ديك رومي' : 'Sandwich Dinde', description: 'Accompagner de Frites', price: 45, category: 'Sandwiches', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'sw3', name: language === 'ar' ? 'ساندويتش مشكل' : 'Sandwich Mixte', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'sw4', name: language === 'ar' ? 'هامبرغر' : 'Hamburger', description: 'Accompagner de Frites', price: 45, category: 'Sandwiches', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'sw5', name: language === 'ar' ? 'تشيز برجر' : 'Cheeseburger', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle restau 2.jpeg' },
 
         // Pizza
-        { id: 'pz1', name: language === 'ar' ? 'بيتزا لحم مفروم' : 'Pizza Viande Hachée', description: 'Tomato sauce, minced meat, cheese', price: 70, category: 'Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400' },
-        { id: 'pz2', name: language === 'ar' ? 'بيتزا دجاج' : 'Pizza Poulet', description: 'Tomato sauce, chicken, cheese', price: 70, category: 'Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400' },
-        { id: 'pz3', name: language === 'ar' ? 'بيتزا فواكه البحر' : 'Pizza Fruit de Mer', description: 'Assorted seafood and cheese', price: 80, category: 'Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400' },
-        { id: 'pz4', name: language === 'ar' ? 'بيتزا تونة' : 'Pizza Thon', description: 'Tuna, olives, and onions', price: 65, category: 'Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400' },
-        { id: 'pz5', name: language === 'ar' ? 'بيتزا ٤ أجبان' : 'Pizza 4 Fromages', description: 'Mozzarella, Roquefort, Edam, Cheddar', price: 65, category: 'Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400' },
+        { id: 'pz1', name: language === 'ar' ? 'بيتزا لحم مفروم' : 'Pizza Viande Hachée', description: 'Tomato sauce, minced meat, cheese', price: 70, category: 'Pizza', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'pz2', name: language === 'ar' ? 'بيتزا دجاج' : 'Pizza Poulet', description: 'Tomato sauce, chicken, cheese', price: 70, category: 'Pizza', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'pz3', name: language === 'ar' ? 'بيتزا فواكه البحر' : 'Pizza Fruit de Mer', description: 'Assorted seafood and cheese', price: 80, category: 'Pizza', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'pz4', name: language === 'ar' ? 'بيتزا تونة' : 'Pizza Thon', description: 'Tuna, olives, and onions', price: 65, category: 'Pizza', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'pz5', name: language === 'ar' ? 'بيتزا ٤ أجبان' : 'Pizza 4 Fromages', description: 'Mozzarella, Roquefort, Edam, Cheddar', price: 65, category: 'Pizza', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
 
         // Boissons
-        { id: 'bs1', name: language === 'ar' ? 'صودا' : 'Soda', description: 'Various flavors', price: 15, category: 'Boissons', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=400' },
-        { id: 'bs2', name: language === 'ar' ? 'ماء معدني' : 'Eau Minérale (P)', description: 'Still water small', price: 12, category: 'Boissons', image: 'https://images.unsplash.com/photo-1523362628242-f513a005271d?q=80&w=400' },
-        { id: 'bs3', name: language === 'ar' ? 'ماء فوار' : 'Eau Gazeuse', description: 'Sparkling water', price: 17, category: 'Boissons', image: 'https://images.unsplash.com/photo-1523362628242-f513a005271d?q=80&w=400' },
-        { id: 'bs4', name: language === 'ar' ? 'لويزة' : 'Verveine', description: 'Herbal tea', price: 17, category: 'Boissons', image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=400' },
-        { id: 'bs5', name: language === 'ar' ? 'شاي مغربي' : 'Thé Marocain (P)', description: 'Traditional mint tea', price: 15, category: 'Boissons', image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=400' },
-        { id: 'bs6', name: language === 'ar' ? 'قهوة' : 'Café', description: 'Black coffee', price: 17, category: 'Boissons', image: 'https://images.unsplash.com/photo-1541167760496-162955ed8a9f?q=80&w=400' },
-        { id: 'bs7', name: language === 'ar' ? 'قهوة بالحليب' : 'Café au Lait', description: 'Coffee with milk', price: 17, category: 'Boissons', image: 'https://images.unsplash.com/photo-1541167760496-162955ed8a9f?q=80&w=400' },
-        { id: 'bs8', name: language === 'ar' ? 'حليب بالشوكولاتة' : 'Lait au Chocolat', description: 'Hot chocolate milk', price: 17, category: 'Boissons', image: 'https://images.unsplash.com/photo-1541167760496-162955ed8a9f?q=80&w=400' },
-        { id: 'bs9', name: language === 'ar' ? 'كابتشينو' : 'Cappuccino', description: 'Frothy coffee', price: 17, category: 'Boissons', image: 'https://images.unsplash.com/photo-1541167760496-162955ed8a9f?q=80&w=400' },
+        { id: 'bs1', name: language === 'ar' ? 'صودا' : 'Soda', description: 'Various flavors', price: 15, category: 'Boissons', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
+        { id: 'bs2', name: language === 'ar' ? 'ماء معدني' : 'Eau Minérale (P)', description: 'Still water small', price: 12, category: 'Boissons', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'bs3', name: language === 'ar' ? 'ماء فوار' : 'Eau Gazeuse', description: 'Sparkling water', price: 17, category: 'Boissons', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'bs4', name: language === 'ar' ? 'لويزة' : 'Verveine', description: 'Herbal tea', price: 17, category: 'Boissons', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'bs5', name: language === 'ar' ? 'شاي مغربي' : 'Thé Marocain (P)', description: 'Traditional mint tea', price: 15, category: 'Boissons', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'bs6', name: language === 'ar' ? 'قهوة' : 'Café', description: 'Black coffee', price: 17, category: 'Boissons', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'bs7', name: language === 'ar' ? 'قهوة بالحليب' : 'Café au Lait', description: 'Coffee with milk', price: 17, category: 'Boissons', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'bs8', name: language === 'ar' ? 'حليب بالشوكولاتة' : 'Lait au Chocolat', description: 'Hot chocolate milk', price: 17, category: 'Boissons', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'bs9', name: language === 'ar' ? 'كابتشينو' : 'Cappuccino', description: 'Frothy coffee', price: 17, category: 'Boissons', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
 
         // Jus
-        { id: 'js1', name: language === 'ar' ? 'نكتار برتقال' : 'Nectars Jus d\'Orange', description: '100% natural', price: 15, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
-        { id: 'js2', name: language === 'ar' ? 'عصير فواكه حمراء' : 'Jus de Fruits Rouge', description: 'Berry mix', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
-        { id: 'js3', name: language === 'ar' ? 'عصير تفاح' : 'Jus de Pomme', description: 'Fresh apple juice', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
-        { id: 'js4', name: language === 'ar' ? 'عصير مانجو' : 'Jus de Mangue', description: 'Fresh mango juice', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
-        { id: 'js5', name: language === 'ar' ? 'عصير أناناس' : 'Jus de Ananas', description: 'Fresh pineapple juice', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
-        { id: 'js6', name: language === 'ar' ? 'عصير فواكه استوائية' : 'Jus Exotique', description: 'Tropical mix', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
+        { id: 'js1', name: language === 'ar' ? 'نكتار برتقال' : 'Nectars Jus d\'Orange', description: '100% natural', price: 15, category: 'Jus', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'js2', name: language === 'ar' ? 'عصير فواكه حمراء' : 'Jus de Fruits Rouge', description: 'Berry mix', price: 17, category: 'Jus', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'js3', name: language === 'ar' ? 'عصير تفاح' : 'Jus de Pomme', description: 'Fresh apple juice', price: 17, category: 'Jus', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'js4', name: language === 'ar' ? 'عصير مانجو' : 'Jus de Mangue', description: 'Fresh mango juice', price: 17, category: 'Jus', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'js5', name: language === 'ar' ? 'عصير أناناس' : 'Jus de Ananas', description: 'Fresh pineapple juice', price: 17, category: 'Jus', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'js6', name: language === 'ar' ? 'عصير فواكه استوائية' : 'Jus Exotique', description: 'Tropical mix', price: 17, category: 'Jus', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
 
         // Desserts
-        { id: 'ds1', name: language === 'ar' ? 'سلطة فواكه' : 'Salade de Fruits', description: 'Fresh seasonal fruit mix', price: 30, category: 'Desserts', image: 'https://images.unsplash.com/photo-1490474418144-942824f2b931?q=80&w=400' },
-        { id: 'ds2', name: language === 'ar' ? 'فلان' : 'Flan', description: 'Caramel custard', price: 25, category: 'Desserts', image: 'https://images.unsplash.com/photo-1528975604071-b4dc52a2d18c?q=80&w=400' },
+        { id: 'ds1', name: language === 'ar' ? 'سلطة فواكه' : 'Salade de Fruits', description: 'Fresh seasonal fruit mix', price: 30, category: 'Desserts', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'ds2', name: language === 'ar' ? 'فلان' : 'Flan', description: 'Caramel custard', price: 25, category: 'Desserts', image: '/assets/natura/Jungle restau 2.jpeg' },
 
         // Menu Enfants
-        { id: 'me1', name: language === 'ar' ? 'وجبة أطفال' : 'Menu Enfants', description: 'Nugget ou Hamburger + Frite', price: 40, category: 'Menu Enfants', image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=400' },
+        { id: 'me1', name: language === 'ar' ? 'وجبة أطفال' : 'Menu Enfants', description: 'Nugget ou Hamburger + Frite', price: 40, category: 'Menu Enfants', image: '/assets/natura/detente berber.jpeg' },
 
         // Suppléments
-        { id: 'sp1', name: language === 'ar' ? 'مسمن' : 'Msemen', description: 'Extra unit', price: 5, category: 'Suppléments', image: 'https://images.unsplash.com/photo-1589113110374-279262e3d30b?q=80&w=400' },
-        { id: 'sp2', name: language === 'ar' ? 'حرشة' : 'Harcha', description: 'Extra unit', price: 5, category: 'Suppléments', image: 'https://images.unsplash.com/photo-1589113110374-279262e3d30b?q=80&w=400' },
-        { id: 'sp3', name: language === 'ar' ? 'كرواسون' : 'Croissant', description: 'Extra unit', price: 5, category: 'Suppléments', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400' },
-        { id: 'sp4', name: language === 'ar' ? 'أومليت' : 'Omelette', description: 'Extra unit', price: 15, category: 'Suppléments', image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=400' },
-        { id: 'sp5', name: language === 'ar' ? 'جبن' : 'Fromage', description: 'Extra serving', price: 5, category: 'Suppléments', image: 'https://images.unsplash.com/photo-1485962391942-d698143973b1?q=80&w=400' },
+        { id: 'sp1', name: language === 'ar' ? 'مسمن' : 'Msemen', description: 'Extra unit', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'sp2', name: language === 'ar' ? 'حرشة' : 'Harcha', description: 'Extra unit', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'sp3', name: language === 'ar' ? 'كرواسون' : 'Croissant', description: 'Extra unit', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'sp4', name: language === 'ar' ? 'أومليت' : 'Omelette', description: 'Extra unit', price: 15, category: 'Suppléments', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
+        { id: 'sp5', name: language === 'ar' ? 'جبن' : 'Fromage', description: 'Extra serving', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle restaurant.jpeg' },
 
     ];
 

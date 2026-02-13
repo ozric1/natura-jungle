@@ -2,17 +2,17 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { ChevronLeft, Info, Bookmark, Share2, Sparkles, ArrowRight, Search } from 'lucide-react';
 import { useState, useRef, type MouseEvent } from 'react';
 import { AnimalDiscovery } from './AnimalDiscovery';
-import lamaImg from '../assets/park/lama_update.jpg';
-import deerImg from '../assets/park/deer_update.jpg';
-import wildCatImg from '../assets/park/wildcat_update.jpg';
-import wallabyImg from '../assets/park/wallaby_update.jpg';
-import pigsImg from '../assets/park/pigs.jpg';
-import duckImg from '../assets/park/duck_update.jpg';
-import blackSwanImg from '../assets/park/black_swan_update.jpg';
-import horseImg from '../assets/park/horse_update.jpg';
-import ostrichImg from '../assets/park/ostrich_update.jpg';
-import tibetGoatImg from '../assets/park/tibet_goat_update.jpg';
-import peacockImg from '../assets/park/peacock_update.jpg';
+const lamaImg = '/assets/natura/lama_update.jpg';
+const deerImg = '/assets/natura/deer_update.jpg';
+const wildCatImg = '/assets/natura/wildcat_update.jpg';
+const wallabyImg = '/assets/natura/wallaby_update.jpg';
+const pigsImg = '/assets/natura/pigs.jpg';
+const duckImg = '/assets/natura/duck_update.jpg';
+const blackSwanImg = '/assets/natura/black_swan_update.jpg';
+const horseImg = '/assets/natura/horse_update.jpg';
+const ostrichImg = '/assets/natura/ostrich_update.jpg';
+const tibetGoatImg = '/assets/natura/tibet_goat_update.jpg';
+const peacockImg = '/assets/natura/peacock_update.jpg';
 
 interface AnimalExhibit {
     id: string;

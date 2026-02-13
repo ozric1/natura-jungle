@@ -17,7 +17,7 @@ export const KnowledgeCircuit = () => {
         personality: 'The shy sunbather',
         rating: 7,
         funFact: 'Wallabies have specially adapted feet that act like springs, allowing them to jump great distances without using much energy!',
-        image: 'https://images.unsplash.com/photo-1516233501032-2d03c0defed3?auto=format&fit=crop&q=80&w=800'
+        image: '/assets/natura/wallaby_update.jpg'
     };
 
     return (

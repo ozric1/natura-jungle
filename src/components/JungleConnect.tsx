@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Heart, MessageCircle, Share2, Camera } from 'lucide-react';
-import pigsImg from '../assets/park/pigs.jpg';
+const pigsImg = '/assets/natura/pigs.jpg';
+const parkViewImg = '/assets/natura/park_view.jpg';
+const pondImg = '/assets/natura/pond_update.jpg';
 
 interface JungleConnectProps {
     isRTL?: boolean;
@@ -17,13 +19,13 @@ export const JungleConnect = ({ isRTL = false }: JungleConnectProps) => {
         {
             id: 2,
             user: "Ahmed K.",
-            image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=400",
+            image: parkViewImg,
             likes: "2.4k"
         },
         {
             id: 3,
             user: "Elena G.",
-            image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=400",
+            image: pondImg,
             likes: "850"
         }
     ];

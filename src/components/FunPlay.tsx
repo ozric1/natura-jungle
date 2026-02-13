@@ -15,34 +15,34 @@ interface FunPlayProps {
     language: 'en' | 'fr' | 'ar';
 }
 
+const boxingImg = '/assets/natura/Jungle RESTAURANT 5.jpeg';
+const trampolineImg = '/assets/natura/pool.jpeg';
+const jumpRopeImg = '/assets/natura/park_view.jpg';
+
 export const FunPlay = ({ onBack, isRTL = false, language }: FunPlayProps) => {
     const activities: Activity[] = [
         {
             id: 'boxing',
             name: { en: 'Boxing Machine', fr: 'Machine de Boxe', ar: 'آلة الملاكمة' },
             desc: { en: 'Test your strength and speed on our pro-grade punch machines.', fr: 'Testez votre force et votre rapidité sur nos machines de frappe professionnelles.', ar: 'اختبر قوتك وسرعتك على آلات الملاكمة الاحترافية لدينا.' },
-            image: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800',
+            image: boxingImg,
             icon: Trophy
         },
         {
             id: 'trampoline',
             name: { en: 'Giant Trampoline', fr: 'Trampoline Géant', ar: 'ترامبولين عملاق' },
             desc: { en: 'Reach for the sky in our safe, high-elasticity jumping zone.', fr: 'Touchez le ciel dans notre zone de saut sécurisée à haute élasticité.', ar: 'صل إلى السماء في منطقة القفز الآمنة وذات المرونة العالية.' },
-            image: 'https://images.unsplash.com/photo-1627443105652-520e7e16946a?q=80&w=800',
+            image: trampolineImg,
             icon: Zap
         },
         {
             id: 'jump-rope',
             name: { en: 'Jumping Rope', fr: 'Corde à Sauter', ar: 'حبل القفز' },
             desc: { en: 'Classic fun to keep you active and energized.', fr: 'Un divertissement classique pour rester actif et énergisé.', ar: 'متعة كلاسيكية لتبقيك نشيطاً وحيوياً.' },
-            image: 'https://images.unsplash.com/photo-1596333123244-c7a52317300c?q=80&w=800',
-            icon: InlineSVG
+            image: jumpRopeImg,
+            icon: Sparkles
         }
     ];
-
-    function InlineSVG() {
-        return <Sparkles className="w-5 h-5" />;
-    }
 
     return (
         <div className="h-screen w-full bg-pure-nature dark:bg-jungle-deep text-jungle-deep dark:text-pure-nature overflow-y-auto no-scrollbar scroll-smooth" dir={isRTL ? 'rtl' : 'ltr'}>

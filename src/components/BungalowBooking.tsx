@@ -75,7 +75,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                 {/* Gallery Header */}
                 <div className="relative h-[35vh] w-full overflow-hidden">
                     <img
-                        src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=2070&auto=format&fit=crop"
+                        src="/assets/natura/bugalow.jpeg"
                         className="w-full h-full object-cover"
                         alt="Bungalow"
                     />

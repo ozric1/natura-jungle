@@ -22,7 +22,7 @@ export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
                     className="w-full h-full relative"
                 >
                     <img
-                        src="https://images.unsplash.com/photo-1544124499-58b122dd8338?q=80&w=2000"
+                        src="/assets/natura/Natura sky view MAIN PAGE BKGRND TWO.jpeg"
                         className="w-full h-full object-cover opacity-60"
                         alt="Natura Jungle Entry"
                     />
