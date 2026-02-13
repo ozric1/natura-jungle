@@ -15,6 +15,26 @@ interface Slide {
     desc: { [key: string]: string };
 }
 
+const bungalowInsideImg = '/assets/natura/bungalow inside.jpeg';
+const bungalowNightImg = '/assets/natura/bungalow at night.jpeg';
+const bungalowMoreImg = '/assets/natura/more bungalow at night.jpeg';
+
+const restau2Img = '/assets/natura/Jungle restau 2.jpeg';
+const restau3Img = '/assets/natura/Jungle Restaurant 3.jpeg';
+const tajineImg = '/assets/natura/Jungle restaurant Tajine.jpeg';
+
+const tentNightImg = '/assets/natura/berber tent at night.jpeg';
+const berberTentImg = '/assets/natura/BERBER TENT.jpeg';
+
+const pigsImg = '/assets/natura/pigs.jpg';
+const parkViewImg = '/assets/natura/Natura view from above MAIN PAGE BCKGRND.jpeg';
+
+const detenteImg = '/assets/natura/detente berber.jpeg';
+const gitImg = '/assets/natura/git.jpeg';
+
+const aquaPoolImg = '/assets/natura/Aqua pool.jpeg';
+const restau4Img = '/assets/natura/Jungle RESTAURENT 4.jpeg';
+
 export const ExperienceShowcase = ({ type, language, onClose, onAction }: ExperienceShowcaseProps) => {
     const [page, setPage] = useState(0);
     const isRTL = language === 'ar';
@@ -23,17 +43,17 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         bungalow: {
             slides: [
                 {
-                    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200",
+                    image: bungalowInsideImg,
                     title: { en: "Luxury Bungalows", fr: "Bungalows de Luxe", ar: "بناغل فاخرة" },
                     desc: { en: "Experience nature with premium comfort.", fr: "Vivez la nature avec un confort premium.", ar: "استمتع بالطبيعة مع راحة متميزة." }
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1544124499-58b122dd8338?q=80&w=1200",
+                    image: bungalowNightImg,
                     title: { en: "Serene Interiors", fr: "Intérieurs Sereins", ar: "تصميمات داخلية هادئة" },
                     desc: { en: "Elegant design meets forest tranquility.", fr: "Le design élégant rencontre la tranquillité de la forêt.", ar: "تصميم أنيق يلتقي بهدوء الغابة." }
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200",
+                    image: bungalowMoreImg,
                     title: { en: "The Premises", fr: "Les Prémisses", ar: "المرافق" },
                     desc: { en: "Stunning views from every corner.", fr: "Des vues imprenables de chaque coin.", ar: "مناظر خلابة من كل زاوية." }
                 }
@@ -44,17 +64,17 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         restaurant: {
             slides: [
                 {
-                    image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200",
+                    image: restau2Img,
                     title: { en: "The Artist Kitchen", fr: "La Cuisine d'Artiste", ar: "مطبخ الفنان" },
                     desc: { en: "Where our chef prepares your gourmet meals.", fr: "Où notre chef prépare vos repas gastronomiques.", ar: "حيث يحضر الشيف وجباتك الفاخرة." }
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200",
+                    image: restau3Img,
                     title: { en: "Elegant Premises", fr: "Cadre Élégant", ar: "مرافق أنيقة" },
                     desc: { en: "Dine under the stars and the trees.", fr: "Dînez sous les étoiles et les arbres.", ar: "تناول الطعام تحت النجوم والأشجار." }
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?q=80&w=1200",
+                    image: tajineImg,
                     title: { en: "Signature Dishes", fr: "Plats Signature", ar: "أطباقنا المتميزة" },
                     desc: { en: "Authentic flavors with a modern twist.", fr: "Saveurs authentiques avec une touche moderne.", ar: "نكهات أصيلة بلمسة عصرية." }
                 }
@@ -65,12 +85,12 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         tents: {
             slides: [
                 {
-                    image: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?q=80&w=1200",
+                    image: tentNightImg,
                     title: { en: "Berber Spirit", fr: "L'Esprit Berbère", ar: "الروح البربرية" },
                     desc: { en: "Authentic living in the heart of the jungle.", fr: "Vivre l'authentique au cœur de la jungle.", ar: "حياة أصيلة في قلب الغابة." }
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=1200",
+                    image: berberTentImg,
                     title: { en: "Natural Comfort", fr: "Confort Naturel", ar: "راحة طبيعية" },
                     desc: { en: "Wake up to the sounds of nature.", fr: "Réveillez-vous aux sons de la nature.", ar: "استيقظ على أنغام الطبيعة." }
                 }
@@ -79,12 +99,12 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         park: {
             slides: [
                 {
-                    image: "https://images.unsplash.com/photo-1533910534207-90f31029a78e?q=80&w=1200",
+                    image: pigsImg,
                     title: { en: "Wild Circuit", fr: "Circuit Sauvage", ar: "المسار البري" },
-                    desc: { en: "Meet our exotic residents.", fr: "Rencontrez nos résidents exotiques.", ar: "قابل سكاننا المتميزين." }
+                    desc: { en: "Meet our farm friends.", fr: "Rencontrez nos amis de la ferme.", ar: "قابل أصدقاء المزرعة." }
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1484406566174-9da000ce6478?q=80&w=1200",
+                    image: parkViewImg,
                     title: { en: "Animal Discovery", fr: "Découverte Animale", ar: "اكتشاف الحيوانات" },
                     desc: { en: "Learn about the wildlife of the region.", fr: "Apprenez-en plus sur la faune de la région.", ar: "تعرف على الحياة البرية في المنطقة." }
                 }
@@ -95,12 +115,12 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         kids: {
             slides: [
                 {
-                    image: "https://images.unsplash.com/photo-1566454544259-f4b94c3d758c?q=80&w=1200",
+                    image: detenteImg,
                     title: { en: "Kids Playground", fr: "Aire de Jeux", ar: "مساحة لعب الأطفال" },
                     desc: { en: "Safety and fun for everyone.", fr: "Sécurité et plaisir pour tous.", ar: "الأمان والمتعة للجميع." }
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1553334417-991e57696a5c?q=80&w=1200",
+                    image: gitImg,
                     title: { en: "Equitation Academy", fr: "Académie d'Équitation", ar: "أكاديمية الفروسية" },
                     desc: { en: "Start your horse riding adventure.", fr: "Commencez votre aventure équestre.", ar: "ابدأ مغامرتك في الفروسية." }
                 }
@@ -111,12 +131,12 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         pool: {
             slides: [
                 {
-                    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1200",
+                    image: aquaPoolImg,
                     title: { en: "Aqua Oasis", fr: "Oasis Aqua", ar: "واحة أكوا" },
                     desc: { en: "A refreshing paradise with crystal waters.", fr: "Un paradis rafraîchissant aux eaux cristallines.", ar: "جنة منعشة بمياه كريستالية." }
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1200",
+                    image: restau4Img,
                     title: { en: "Serene Surrounding", fr: "Environnement Serein", ar: "محيط هادئ" },
                     desc: { en: "Relax in the peaceful jungle atmosphere.", fr: "Détendez-vous dans l'atmosphère paisible de la jungle.", ar: "استرخ في أجواء الغابة الهادئة." }
                 }
