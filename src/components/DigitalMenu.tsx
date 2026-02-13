@@ -161,7 +161,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
     const filteredItems = menuItems.filter(item => item.category === activeCategory);
 
     return (
-        <div className={`min-h-screen ${isRTL ? 'text-right' : 'text-left'} bg-inherit text-inherit`} dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className={`min-h-screen ${isRTL ? 'text-right' : 'text-left'} bg-inherit text-inherit max-w-7xl mx-auto`} dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Header */}
             <header className="px-6 py-8 flex justify-between items-center glass-light dark:glass-dark border-b border-sand-gold/10 sticky top-0 z-50">
                 <motion.button
@@ -192,7 +192,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
 
             <main className="pb-40">
                 {/* Category Picker */}
-                <div className="flex gap-4 overflow-x-auto px-6 py-6 no-scrollbar">
+                <div className="flex gap-4 overflow-x-auto lg:flex-wrap px-6 lg:px-12 py-6 no-scrollbar">
                     {categories.map((cat) => {
                         const Icon = cat.icon;
                         const isActive = activeCategory === cat.id;
@@ -214,14 +214,14 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                 </div>
 
                 {/* Items Grid */}
-                <div className="px-6 space-y-6">
+                <div className="px-6 lg:px-12 space-y-6">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeCategory}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            className="grid gap-6"
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                         >
                             {filteredItems.map((item) => {
                                 const cartItem = cart.find(i => i.id === item.id);

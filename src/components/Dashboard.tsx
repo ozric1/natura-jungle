@@ -110,8 +110,32 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
     return (
         <div className={`min-h-screen font-sans transition-colors duration-1000 ${isNightMode ? 'dark bg-[#050805] text-white' : 'bg-egg-shell text-neutral-900'}`} dir={isRTL ? 'rtl' : 'ltr'}>
 
+            {/* Desktop Top Nav — hidden on mobile */}
+            <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-[60] desktop-nav h-14 items-center justify-center gap-8 px-8">
+                <button onClick={() => setCurrentView('hours')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'hours' ? 'text-sand-gold' : 'text-white/60 hover:text-white'}`}>
+                    <Clock className="w-4 h-4" />
+                    {isRTL ? 'المواعيد' : 'Hours'}
+                </button>
+                <button onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')} className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors">
+                    <MapPin className="w-4 h-4" />
+                    {isRTL ? 'الخريطة' : 'Map'}
+                </button>
+                <button onClick={() => setCurrentView('exhibition')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'exhibition' ? 'text-sand-gold' : 'text-white/60 hover:text-white'}`}>
+                    <Palmtree className="w-4 h-4" />
+                    {isRTL ? 'الحيوانات' : 'Circuit'}
+                </button>
+                <button onClick={() => setCurrentView('menu')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'menu' ? 'text-sand-gold' : 'text-white/60 hover:text-white'}`}>
+                    <Utensils className="w-4 h-4" />
+                    {isRTL ? 'المطبخ' : 'Kitchen'}
+                </button>
+                <button onClick={toggleNightMode} className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors">
+                    {isNightMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                    {isRTL ? 'الوضع' : 'Theme'}
+                </button>
+            </nav>
+
             {/* Header: Concierge Bar */}
-            <header className="px-6 py-8 flex justify-between items-center sticky top-0 z-50 bg-inherit/80 backdrop-blur-md">
+            <header className="px-6 lg:px-12 py-8 lg:pt-20 flex justify-between items-center sticky top-0 z-50 bg-inherit/80 backdrop-blur-md max-w-7xl mx-auto w-full">
                 <motion.button
                     whileTap={{ scale: 0.9 }}
                     onClick={() => alert(isRTL ? 'القائمة قريباً' : 'Menu Coming Soon')}
@@ -124,7 +148,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     <h1 className="text-xl font-serif font-bold tracking-widest uppercase text-sand-gold">
                         {text.brand}
                     </h1>
-                    <p className="text-[8px] uppercase tracking-[0.3em] font-bold opacity-40">
+                    <p className="text-[8px] uppercase tracking-[0.3em] font-bold opacity-60">
                         {text.tagline}
                     </p>
                 </div>
@@ -155,7 +179,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                 </div>
             </header>
 
-            <main className="pb-32">
+            <main className="pb-32 lg:pb-16 max-w-7xl mx-auto">
                 {currentView === 'tracker' && activeOrder ? (
                     <div className="px-6 py-4 animate-slide-up">
                         <VIPOrderTracker
@@ -174,7 +198,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     <>
                         {/* Hero Experience Carousel */}
                         <section className="mt-4 section-mask">
-                            <div className="px-6 mb-4 flex justify-between items-end">
+                            <div className="px-6 lg:px-12 mb-4 flex justify-between items-end">
                                 <h2 className="text-2xl font-serif text-sand-gold transition-colors">{text.explore}</h2>
                                 <motion.button
                                     whileTap={{ scale: 0.95 }}
@@ -184,7 +208,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                 </motion.button>
                             </div>
 
-                            <div className="flex overflow-x-auto gap-6 px-6 pb-8 no-scrollbar touch-pan-x">
+                            <div className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-6 px-6 lg:px-12 pb-8 no-scrollbar touch-pan-x">
                                 {text.bundles.map((bundle) => {
                                     const Icon = bundle.icon;
                                     return (
@@ -192,7 +216,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                             key={bundle.id}
                                             whileTap={{ scale: 0.95 }}
                                             onClick={bundle.action}
-                                            className="flex-none w-[280px] h-96 rounded-[2.5rem] relative overflow-hidden group shadow-2xl cursor-pointer"
+                                            className="flex-none w-[280px] lg:w-auto h-96 rounded-[2.5rem] relative overflow-hidden group shadow-2xl cursor-pointer"
                                         >
                                             {bundle.image && (
                                                 <div className="absolute inset-0">
@@ -220,7 +244,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                             </div>
                         </section>
 
-                        <div className="px-6 space-y-10">
+                        <div className="px-6 lg:px-12 space-y-10">
                             {/* About Section */}
                             <section className="mt-4">
                                 <div className="glass-morphism rounded-[2.5rem] p-8 border border-sand-gold/10 relative overflow-hidden backdrop-blur-xl">
@@ -228,7 +252,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                         <Palmtree className="w-32 h-32" />
                                     </div>
                                     <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-sand-gold mb-4">{text.about_title}</h2>
-                                    <p className="text-lg font-serif leading-relaxed opacity-80 italic">
+                                    <p className="text-lg font-serif leading-relaxed opacity-90 italic">
                                         "{text.about_text}"
                                     </p>
                                 </div>
@@ -305,7 +329,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                                     <Utensils className="w-8 h-8 text-sand-gold" />
                                                 </div>
                                                 <div className="text-left">
-                                                    <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">{isRTL ? 'اطلب الآن' : 'Order Now'}</p>
+                                                    <p className="text-[10px] uppercase tracking-widest opacity-70 font-bold">{isRTL ? 'اطلب الآن' : 'Order Now'}</p>
                                                     <span className="text-xl font-serif">{text.order_btn}</span>
                                                 </div>
                                             </div>
@@ -354,7 +378,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             </main>
 
             {/* Premium Visitor Platform Bottom Nav */}
-            <nav className="fixed bottom-6 left-6 right-6 h-20 nav-island flex justify-around items-center px-6 z-50">
+            <nav className="fixed bottom-6 left-6 right-6 h-20 nav-island flex lg:hidden justify-around items-center px-6 z-50">
                 <motion.button
                     whileTap={{ y: -5 }}
                     onClick={() => setCurrentView('hours')}
