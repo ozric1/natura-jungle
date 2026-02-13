@@ -116,7 +116,7 @@ export const SmartConcierge = ({ language }: SmartConciergeProps) => {
                                         <div className="w-12 h-12 rounded-xl bg-sand-gold/10 flex items-center justify-center text-sand-gold group-hover:scale-110 transition-transform flex-shrink-0">
                                             <Icon className="w-6 h-6" />
                                         </div>
-                                        <span className="text-sm font-bold text-neutral-900 dark:text-white/90">
+                                        <span className="text-sm font-bold text-sand-gold">
                                             {service.label[language]}
                                         </span>
                                     </motion.button>
