@@ -237,7 +237,9 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                             {/* Catering & Party Service Section */}
                             <section className="space-y-4">
                                 <div className="flex justify-between items-end">
-                                    <h2 className="text-2xl font-serif text-sand-gold transition-colors">{isRTL ? 'خدمة الحفلات' : 'Catering & Party'}</h2>
+                                    <h2 className="text-2xl font-serif text-sand-gold transition-colors">
+                                        {currentLanguage === 'ar' ? 'خدمة الحفلات' : currentLanguage === 'fr' ? 'Traiteur & Fêtes' : 'Catering & Party'}
+                                    </h2>
                                 </div>
                                 <motion.div
                                     whileTap={{ scale: 0.98 }}
@@ -255,8 +257,12 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                         <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
                                             <PartyPopper className="w-6 h-6 text-sand-gold" />
                                         </div>
-                                        <h3 className="text-2xl font-serif text-white mb-1">{isRTL ? 'مناسبات خاصة' : 'Special Events'}</h3>
-                                        <p className="text-white/60 text-xs font-bold uppercase tracking-widest">{isRTL ? 'احجز مناسبتك' : 'Book Your Event'}</p>
+                                        <h3 className="text-2xl font-serif text-white mb-1">
+                                            {currentLanguage === 'ar' ? 'مناسبات خاصة' : currentLanguage === 'fr' ? 'Événements Spéciaux' : 'Special Events'}
+                                        </h3>
+                                        <p className="text-white/60 text-xs font-bold uppercase tracking-widest">
+                                            {currentLanguage === 'ar' ? 'احجز مناسبتك' : currentLanguage === 'fr' ? 'Réservez Votre Événement' : 'Book Your Event'}
+                                        </p>
                                     </div>
 
                                     <div className="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500">
@@ -491,7 +497,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     </motion.div>
                 )}
                 {currentView === 'catering' && (
-                    <CateringPartyservice isRTL={isRTL} onClose={() => setCurrentView('base')} />
+                    <CateringPartyservice language={currentLanguage} onClose={() => setCurrentView('base')} />
                 )}
             </AnimatePresence>
         </div>
