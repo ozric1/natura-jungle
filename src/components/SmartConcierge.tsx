@@ -45,13 +45,13 @@ export const SmartConcierge = ({ isRTL = false }: SmartConciergeProps) => {
                                     <motion.button
                                         key={service.id}
                                         whileTap={{ scale: 0.95 }}
-                                        className="bg-white dark:bg-white/5 rounded-[2rem] p-6 text-left border border-sand-gold/5 shadow-lg shadow-sand-gold/5 flex flex-col gap-4 group hover:border-sand-gold/20 transition-all"
+                                        className="premium-card p-6 text-left flex flex-col gap-4 group hover:border-sand-gold/20"
                                         dir={isRTL ? 'rtl' : 'ltr'}
                                     >
                                         <div className="w-10 h-10 rounded-xl bg-sand-gold/10 flex items-center justify-center text-sand-gold group-hover:scale-110 transition-transform">
                                             <Icon className="w-5 h-5" />
                                         </div>
-                                        <span className="text-xs font-bold uppercase tracking-widest text-jungle-green/60 dark:text-white/60">
+                                        <span className="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-white/80">
                                             {service.label}
                                         </span>
                                     </motion.button>
@@ -65,7 +65,7 @@ export const SmartConcierge = ({ isRTL = false }: SmartConciergeProps) => {
             <motion.div
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="bg-jungle-green dark:bg-black/40 rounded-[2rem] p-8 relative overflow-hidden group border border-white/5 cursor-pointer"
+                className="rounded-[2rem] p-8 relative overflow-hidden group border border-white/5 cursor-pointer bg-gradient-to-r from-emerald-900 to-black shadow-2xl"
             >
                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
                     <Utensils className="w-24 h-24 text-white" />
@@ -74,7 +74,7 @@ export const SmartConcierge = ({ isRTL = false }: SmartConciergeProps) => {
                     <h3 className="text-white text-xl font-serif mb-2">
                         {isRTL ? 'نظام الخدمة السريع' : 'One-Tap Service'}
                     </h3>
-                    <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-6">
+                    <p className="text-white/60 text-[10px] uppercase tracking-widest font-bold mb-6">
                         {isRTL ? 'خاص بضيوف البنغل' : 'Bungalow Guests Only'}
                     </p>
                     <button

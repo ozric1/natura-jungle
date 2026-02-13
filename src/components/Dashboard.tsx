@@ -2,7 +2,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
     Menu,
     ChevronRight,
-    Map as MapIcon,
     Utensils,
     Sparkles,
     Star,
@@ -12,7 +11,8 @@ import {
     Sun,
     Clock,
     Instagram,
-    Phone
+    Phone,
+    MapPin
 } from 'lucide-react';
 import { useState } from 'react';
 import { VIPOrderTracker } from './VIPOrderTracker';
@@ -56,10 +56,10 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "Respirez la Nature",
             about_text: "Nestled 11 km from Mohammedia, 10 km from Benslimane, and 8 km from Bouznika, just minutes from the Mensouria highway exit, Natura Jungle Park offers an immersive escape in the heart of nature. This peaceful haven charms with its idyllic setting, featuring a mini zoo, restaurant, children's play areas, equestrian adventures, thrilling quad excursions, and a refreshing swimming pool. For nature lovers, the park offers luxury bungalows for a harmonious night in this green oasis.",
             bundles: [
-                { id: 1, title: "The Wild Circuit", sub: "Species Discovery", color: "bg-emerald-900", icon: Palmtree, image: wallabyImg, action: () => setCurrentView('exhibition') },
-                { id: 4, title: "Fun & Play", sub: "Family Activities", color: "bg-orange-800", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => setCurrentView('fun') },
-                { id: 2, title: "The Oasis", sub: "Poolside Serenity", color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800", action: () => { } },
-                { id: 3, title: "Jungle Stays", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
+                { id: 1, title: "The Wild Circuit", sub: "Species Discovery", color: "from-emerald-900 to-emerald-950", icon: Palmtree, image: wallabyImg, action: () => setCurrentView('exhibition') },
+                { id: 4, title: "Fun & Play", sub: "Family Activities", color: "from-orange-800 to-orange-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => setCurrentView('fun') },
+                { id: 2, title: "The Oasis", sub: "Poolside Serenity", color: "from-blue-900 to-blue-950", icon: Waves, image: pondImg, action: () => { } },
+                { id: 3, title: "Jungle Stays", sub: "Bungalows & Tents", color: "from-amber-900 to-amber-950", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
             ]
         },
         fr: {
@@ -75,10 +75,10 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "Respirez la Nature",
             about_text: "Niché à 11 kilomètres de Mohammedia, à 10km de Benslimane et 8km de Bouznika, quelques kilomètres de la sortie autoroute Mensouria, le Parc Natura Jungle offre une escapade immersive en pleine nature. Ce havre de paix séduit par son cadre idyllique, abritant un mini zoo, un restaurant, des espaces de jeux dédiés aux enfants, des aventures équestres, des excursions en quad palpitantes, ainsi qu'une piscine rafraîchissante. Pour les amoureux de la nature, le parc propose des bungalows de luxe, invitant à une nuit harmonieuse au cœur de cette oasis verdoyante.",
             bundles: [
-                { id: 1, title: "Le Circuit Sauvage", sub: "Découverte des Espèces", color: "bg-emerald-900", icon: Palmtree, image: cockatooImg, action: () => setCurrentView('exhibition') },
-                { id: 4, title: "Fun & Jeux", sub: "Activités Familiales", color: "bg-orange-800", icon: Sparkles, image: "https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=800", action: () => { } },
-                { id: 2, title: "L'Oasis", sub: "Sérénité au Bord de l'Eau", color: "bg-blue-900", icon: Waves, image: pondImg, action: () => { } },
-                { id: 3, title: "Séjours Jungle", sub: "Bungalows & Tents", color: "bg-amber-900", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
+                { id: 1, title: "Le Circuit Sauvage", sub: "Découverte des Espèces", color: "from-emerald-900 to-emerald-950", icon: Palmtree, image: cockatooImg, action: () => setCurrentView('exhibition') },
+                { id: 4, title: "Fun & Jeux", sub: "Activités Familiales", color: "from-orange-800 to-orange-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=800", action: () => { } },
+                { id: 2, title: "L'Oasis", sub: "Sérénité au Bord de l'Eau", color: "from-blue-900 to-blue-950", icon: Waves, image: pondImg, action: () => { } },
+                { id: 3, title: "Séjours Jungle", sub: "Bungalows & Tents", color: "from-amber-900 to-amber-950", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
             ]
         },
         ar: {
@@ -94,10 +94,10 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "استنشق الطبيعة",
             about_text: "يقع منتزه نطورا جانغل على بعد ١١ كم من المحمدية، و١٠ كم من بنسليمان، و٨ كم من بوزنيقة، وعلى بعد دقائق قليلة من مخرج الطريق السيار المنصورية، ويوفر ملاذاً غامراً في قلب الطبيعة. يسحر هذا الملاذ الهادئ زواره بموقعه المثالي، حيث يضم حديقة حيوانات صغيرة، مطعماً، مساحات لعب للأطفال، مغامرات الفروسية، رحلات الكواد المثيرة، بالإضافة إلى مسبح منعش. لمحبي الطبيعة، يقدم المنتزه بناغل فاخرة لقضاء ليلة متناغمة في هذه الواحة الخضراء.",
             bundles: [
-                { id: 1, title: isRTL ? 'المسار البري' : 'Wild Path', sub: isRTL ? 'اكتشاف الأنواع' : 'Species Discovery', color: "bg-emerald-900", icon: Palmtree, image: wallabyImg, action: () => setCurrentView('exhibition') },
-                { id: 4, title: isRTL ? 'المرح واللعب' : 'Fun & Play', sub: isRTL ? 'أنشطة عائلية' : 'Family Activities', color: "bg-orange-800", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => setCurrentView('fun') },
-                { id: 2, title: isRTL ? 'الالواحة' : 'The Oasis', sub: isRTL ? 'هدوء المسبح' : 'Poolside Serenity', color: "bg-blue-900", icon: Waves, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800", action: () => { } },
-                { id: 3, title: isRTL ? 'إقامات الغابة' : 'Jungle Stays', sub: isRTL ? 'بناغل وخيام' : 'Bungalows & Tents', color: "bg-amber-900", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
+                { id: 1, title: isRTL ? 'المسار البري' : 'Wild Path', sub: isRTL ? 'اكتشاف الأنواع' : 'Species Discovery', color: "from-emerald-900 to-emerald-950", icon: Palmtree, image: wallabyImg, action: () => setCurrentView('exhibition') },
+                { id: 4, title: isRTL ? 'المرح واللعب' : 'Fun & Play', sub: isRTL ? 'أنشطة عائلية' : 'Family Activities', color: "from-orange-800 to-orange-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => setCurrentView('fun') },
+                { id: 2, title: isRTL ? 'الواحة' : 'The Oasis', sub: isRTL ? 'هدوء المسبح' : 'Poolside Serenity', color: "from-blue-900 to-blue-950", icon: Waves, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800", action: () => { } },
+                { id: 3, title: isRTL ? 'إقامات الغابة' : 'Jungle Stays', sub: isRTL ? 'بناغل وخيام' : 'Bungalows & Tents', color: "from-amber-900 to-amber-950", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
             ]
         }
     };
@@ -105,16 +105,16 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
     const text = translations[currentLanguage];
 
     return (
-        <div className={`min-h-screen font-sans transition-colors duration-1000 ${isNightMode ? 'dark bg-[#0D160D] text-white' : 'bg-egg-shell text-jungle-green'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className={`min-h-screen font-sans transition-colors duration-1000 ${isNightMode ? 'dark bg-[#050805] text-white' : 'bg-egg-shell text-neutral-900'}`} dir={isRTL ? 'rtl' : 'ltr'}>
 
             {/* Header: Concierge Bar */}
             <header className="px-6 py-8 flex justify-between items-center sticky top-0 z-50 bg-inherit/80 backdrop-blur-md">
                 <motion.button
                     whileTap={{ scale: 0.9 }}
                     onClick={() => alert(isRTL ? 'القائمة قريباً' : 'Menu Coming Soon')}
-                    className="w-10 h-10 flex items-center justify-center text-sand-gold"
+                    className="w-10 h-10 flex items-center justify-center text-jungle-green dark:text-sand-gold"
                 >
-                    <Menu className="w-6 h-6 text-jungle-green dark:text-sand-gold" />
+                    <Menu className="w-6 h-6" />
                 </motion.button>
 
                 <div className="text-center">
@@ -145,9 +145,9 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     <motion.button
                         onClick={toggleNightMode}
                         whileTap={{ scale: 0.9 }}
-                        className="w-8 h-8 flex items-center justify-center text-sand-gold/60"
+                        className="w-8 h-8 flex items-center justify-center text-jungle-green dark:text-sand-gold/60"
                     >
-                        {isNightMode ? <Sun className="w-5 h-5 text-sand-gold" /> : <Moon className="w-5 h-5 text-jungle-green" />}
+                        {isNightMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                     </motion.button>
                 </div>
             </header>
@@ -189,14 +189,14 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                             key={bundle.id}
                                             whileTap={{ scale: 0.95 }}
                                             onClick={bundle.action}
-                                            className={`flex-none w-[280px] h-96 rounded-[2.5rem] relative overflow-hidden group shadow-2xl cursor-pointer ${bundle.color}`}
+                                            className="flex-none w-[280px] h-96 rounded-[2.5rem] relative overflow-hidden group shadow-2xl cursor-pointer"
                                         >
                                             {bundle.image && (
                                                 <div className="absolute inset-0">
                                                     <img src={bundle.image} className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" alt={bundle.title} />
                                                 </div>
                                             )}
-                                            <div className="photo-overlay" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
                                             <div className="absolute inset-0 flex flex-col justify-end p-8">
                                                 <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
@@ -315,7 +315,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             </main>
 
             {/* Premium Visitor Platform Bottom Nav */}
-            <nav className="fixed bottom-0 left-0 right-0 h-24 flex justify-around items-center px-8 z-50 glass-dark border-t border-white/5">
+            <nav className="fixed bottom-6 left-6 right-6 h-20 nav-island flex justify-around items-center px-6 z-50">
                 <motion.button
                     whileTap={{ y: -5 }}
                     onClick={() => setCurrentView('hours')}
@@ -330,16 +330,16 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')}
                     className="flex flex-col items-center gap-1 text-white/40"
                 >
-                    <MapIcon className="w-5 h-5" />
-                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'الخريطة' : 'Navigation'}</span>
+                    <MapPin className="w-5 h-5" />
+                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'الخريطة' : 'Map'}</span>
                 </motion.button>
 
-                <div className="relative -mt-16">
+                <div className="relative -mt-12">
                     <div className="absolute inset-0 bg-sand-gold blur-2xl opacity-40 rounded-full" />
                     <motion.button
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setCurrentView('exhibition')}
-                        className={`w-16 h-16 rounded-[1.8rem] bg-sand-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow ${currentView === 'exhibition' ? 'scale-110 ring-4 ring-sand-gold/20' : ''}`}
+                        className={`w-16 h-16 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow ${currentView === 'exhibition' ? 'scale-110 ring-4 ring-sand-gold/20' : ''}`}
                     >
                         <Palmtree className="w-8 h-8" />
                     </motion.button>
