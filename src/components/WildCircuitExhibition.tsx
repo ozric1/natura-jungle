@@ -5,6 +5,7 @@ import { AnimalDiscovery } from './AnimalDiscovery';
 import pigsImg from '../assets/park/pigs.jpg';
 import cockatooImg from '../assets/park/cockatoo.jpg';
 import wallabyImg from '../assets/park/wallaby.jpg';
+import horseImg from '../assets/park/horse_update.jpg';
 
 interface AnimalExhibit {
     id: string;
@@ -49,7 +50,7 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
             id: 'horses',
             name: { en: 'Horses', fr: 'Chevaux', ar: 'الخيول' },
             fact: { en: 'Our stables house gentle spirits ready for equestrian adventures.', fr: 'Nos écuries abritent des esprits doux prêts pour des aventures équestres.', ar: 'تضم اسطبلاتنا خيولاً لطيفة وجاهزة لمغامرات الفروسية.' },
-            image: 'https://images.unsplash.com/photo-1485463611174-f302f6a5c1c9?q=80&w=800',
+            image: horseImg,
             category: 'Mammal'
         },
         {

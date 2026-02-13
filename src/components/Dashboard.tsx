@@ -12,7 +12,8 @@ import {
     Clock,
     Instagram,
     Phone,
-    MapPin
+    MapPin,
+    PartyPopper
 } from 'lucide-react';
 import { useState } from 'react';
 import { VIPOrderTracker } from './VIPOrderTracker';
@@ -25,10 +26,12 @@ import { NightSkyMap } from './NightSkyMap';
 import { WildCircuitExhibition } from './WildCircuitExhibition';
 import { FunPlay } from './FunPlay';
 import { ParkHours } from './ParkHours';
+import { CateringPartyservice } from './CateringPartyservice';
 import cockatooImg from '../assets/park/cockatoo.jpg';
 import tentImg from '../assets/park/tent.jpg';
 import pondImg from '../assets/park/pond.jpg';
 import wallabyImg from '../assets/park/wallaby.jpg';
+import cateringImg from '../assets/park/catering_bg.jpg';
 
 export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
@@ -38,7 +41,7 @@ export interface DashboardProps {
 
 export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
     const isRTL = currentLanguage === 'ar';
-    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition' | 'fun' | 'hours'>('base');
+    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition' | 'fun' | 'hours' | 'catering'>('base');
     const [activeOrder, setActiveOrder] = useState<{ items: string[], total: string } | null>(null);
     const [hasBooked, setHasBooked] = useState(false);
 
@@ -58,7 +61,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             bundles: [
                 { id: 1, title: "The Wild Circuit", sub: "Species Discovery", color: "from-emerald-900 to-emerald-950", icon: Palmtree, image: wallabyImg, action: () => setCurrentView('exhibition') },
                 { id: 4, title: "Fun & Play", sub: "Family Activities", color: "from-orange-800 to-orange-900", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => setCurrentView('fun') },
-                { id: 2, title: "The Oasis", sub: "Poolside Serenity", color: "from-blue-900 to-blue-950", icon: Waves, image: pondImg, action: () => { } },
+                { id: 2, title: "L'Oasis", sub: "Poolside Serenity", color: "from-blue-900 to-blue-950", icon: Waves, image: pondImg, action: () => { } },
                 { id: 3, title: "Jungle Stays", sub: "Bungalows & Tents", color: "from-amber-900 to-amber-950", icon: Sparkles, image: tentImg, action: () => setCurrentView('booking') }
             ]
         },
@@ -231,6 +234,36 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                 </div>
                             </section>
 
+                            {/* Catering & Party Service Section */}
+                            <section className="space-y-4">
+                                <div className="flex justify-between items-end">
+                                    <h2 className="text-2xl font-serif text-sand-gold transition-colors">{isRTL ? 'خدمة الحفلات' : 'Catering & Party'}</h2>
+                                </div>
+                                <motion.div
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={() => setCurrentView('catering')}
+                                    className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
+                                >
+                                    <img
+                                        src={cateringImg}
+                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        alt="Catering"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+
+                                    <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
+                                        <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
+                                            <PartyPopper className="w-6 h-6 text-sand-gold" />
+                                        </div>
+                                        <h3 className="text-2xl font-serif text-white mb-1">{isRTL ? 'مناسبات خاصة' : 'Special Events'}</h3>
+                                        <p className="text-white/60 text-xs font-bold uppercase tracking-widest">{isRTL ? 'احجز مناسبتك' : 'Book Your Event'}</p>
+                                    </div>
+
+                                    <div className="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500">
+                                        <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
+                                    </div>
+                                </motion.div>
+                            </section>
 
                             {/* Jungle Kitchen Section */}
                             <section className="space-y-4">
@@ -456,6 +489,9 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     >
                         <ParkHours isRTL={isRTL} onClose={() => setCurrentView('base')} />
                     </motion.div>
+                )}
+                {currentView === 'catering' && (
+                    <CateringPartyservice isRTL={isRTL} onClose={() => setCurrentView('base')} />
                 )}
             </AnimatePresence>
         </div>
