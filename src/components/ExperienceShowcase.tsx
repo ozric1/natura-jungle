@@ -139,8 +139,8 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     transition={{ duration: 0.8 }}
                     className="absolute inset-0 z-0"
                 >
-                    <img src={currentSlide.image} className="w-full h-full object-cover opacity-50" alt="Showcase" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep via-transparent to-black/40" />
+                    <img src={currentSlide.image} className="w-full h-full object-cover opacity-80" alt="Showcase" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 </motion.div>
             </AnimatePresence>
 
@@ -168,10 +168,10 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                         animate={{ y: 0, opacity: 1 }}
                         className="space-y-4"
                     >
-                        <h2 className="text-4xl lg:text-6xl font-serif text-pure-nature leading-tight">
+                        <h2 className="text-4xl lg:text-6xl font-serif text-white leading-tight drop-shadow-lg">
                             {currentSlide.title[language]}
                         </h2>
-                        <p className="text-lg text-pure-nature/60 font-medium">
+                        <p className="text-lg text-white/90 font-medium drop-shadow-md">
                             {currentSlide.desc[language]}
                         </p>
                     </motion.div>

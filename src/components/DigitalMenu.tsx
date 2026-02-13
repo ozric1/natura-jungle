@@ -43,48 +43,48 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
 
     const menuItems: MenuItem[] = [
         // Petit Déjeuner
-        { id: 'pt1', name: language === 'ar' ? 'فطور كونتيننتال' : 'Continental', description: 'Jus d\'orange, viennoiserie, corbeille de notre boulanger, confiture, miel, beurre, café au thé.', price: 40, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=400' },
-        { id: 'pt2', name: language === 'ar' ? 'فطور غيورماند' : 'Gourmand', description: 'Jus d\'orange, viennoiserie, misemmen, omelette fromage, corbeille de notre boulanger, confiture, beurre, café ou thé.', price: 60, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=400' },
-        { id: 'pt3', name: language === 'ar' ? 'فطور تقليدي' : 'Traditionnel', description: 'Jus d\'orange, m\'semmen, harcha, corbeille de notre boulanger, olives et amlou, jben, miel, huile d\'olive, café ou thé.', price: 50, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1549466699-db3730302b4e?q=80&w=400' },
-        { id: 'pt4', name: language === 'ar' ? 'فطور مغربي' : 'Marocain', description: 'Jus d\'orange, m\'semmen, oeufs au khlii, corbeille de notre boulanger, café ou thé.', price: 55, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1506084868730-3423e9339e05?q=80&w=400' },
+        { id: 'pt1', name: language === 'ar' ? 'فطور كونتيننتال' : 'Continental', description: 'Orange juice, pastries, baker\'s basket, jam, honey, butter, coffee or tea.', price: 40, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=90&w=800' },
+        { id: 'pt2', name: language === 'ar' ? 'فطور غيورماند' : 'Gourmand', description: 'Orange juice, pastries, msemmen, cheese omelette, baker\'s basket, jam, butter, coffee or tea.', price: 60, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1496042399014-97ef44e37608?q=90&w=800' },
+        { id: 'pt3', name: language === 'ar' ? 'فطور تقليدي' : 'Traditionnel', description: 'Orange juice, msemmen, harcha, baker\'s basket, olives, amlou, jben, honey, olive oil, coffee or tea.', price: 50, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1549466699-db3730302b4e?q=90&w=800' },
+        { id: 'pt4', name: language === 'ar' ? 'فطور مغربي' : 'Marocain', description: 'Orange juice, msemmen, eggs with khlii, baker\'s basket, coffee or tea.', price: 55, category: 'Petit Déjeuner', image: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=90&w=800' },
 
         // Salades
-        { id: 'sl1', name: language === 'ar' ? 'سلطة مغربية' : 'Salade Marocaine', description: 'Authentic Moroccan salad', price: 30, category: 'Salades', image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=400' },
-        { id: 'sl2', name: language === 'ar' ? 'سلطة نيسواز' : 'Salade Nicoise', description: 'Classic Niçoise salad', price: 40, category: 'Salades', image: 'https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?q=80&w=400' },
-        { id: 'sl3', name: language === 'ar' ? 'سلطة مكسيكية' : 'Salade Mexicaine', description: 'Spicy Mexican flavors', price: 40, category: 'Salades', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400' },
-        { id: 'sl4', name: language === 'ar' ? 'سلطة بيشور' : 'Salade Pêcheur', description: 'Ocean fresh seafood salad', price: 60, category: 'Salades', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400' },
-        { id: 'sl5', name: language === 'ar' ? 'سلطة نطورا جانغل' : 'Salade Natura Jungle', description: 'Signature home salad', price: 50, category: 'Salades', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400' },
+        { id: 'sl1', name: language === 'ar' ? 'سلطة مغربية' : 'Salade Marocaine', description: 'Fresh tomatoes, crisp cucumbers, fine onions, and fresh parsley with olive oil.', price: 30, category: 'Salades', image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=90&w=800' },
+        { id: 'sl2', name: language === 'ar' ? 'سلطة نيسواز' : 'Salade Nicoise', description: 'Tuna, hard-boiled eggs, green beans, and potatoes on a bed of fresh greens.', price: 40, category: 'Salades', image: 'https://images.unsplash.com/photo-1546793665-c74683f339c1?q=90&w=800' },
+        { id: 'sl3', name: language === 'ar' ? 'سلطة مكسيكية' : 'Salade Mexicaine', description: 'Corn, beans, avocado, and spicy chicken with a zesty lime dressing.', price: 40, category: 'Salades', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=90&w=800' },
+        { id: 'sl4', name: language === 'ar' ? 'سلطة بيشور' : 'Salade Pêcheur', description: 'Sautéed shrimp, calamari, and white fish over a fresh garden medley.', price: 60, category: 'Salades', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=90&w=800' },
+        { id: 'sl5', name: language === 'ar' ? 'سلطة نطورا جانغل' : 'Salade Natura Jungle', description: 'Signature house blend with wild herbs, goat cheese, and roasted nuts.', price: 50, category: 'Salades', image: 'https://images.unsplash.com/photo-1505253716362-afaba1d32ba7?q=90&w=800' },
 
         // Tagines
-        { id: 'tg1', name: language === 'ar' ? 'طاجين لحم بالبرقوق' : 'Tagine Viande Pruneaux', description: 'Slow-cooked tradition', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=80&w=400' },
-        { id: 'tg2', name: language === 'ar' ? 'طاجين دجاج بلدي' : 'Tagine Poulet Beldi', description: 'Free-range chicken tagine', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=80&w=400' },
-        { id: 'tg3', name: language === 'ar' ? 'طاجين السمان' : 'Tagine de Cailles', description: 'Delicate quail tagine', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=80&w=400' },
-        { id: 'tg4', name: language === 'ar' ? 'طاجين خضار' : 'Tagine Legumes', description: 'Seasonal vegetable mix', price: 115, category: 'Tagines', image: 'https://images.unsplash.com/photo-1464454709131-ffd692591ee5?q=80&w=400' },
-        { id: 'tg5', name: language === 'ar' ? 'طاجين لحم مفروم' : 'Tagine Viande Hachée', description: 'Minced meat with eggs', price: 125, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=80&w=400' },
-        { id: 'tg6', name: language === 'ar' ? 'طاجين معيز' : 'Tagine Chevreaux', description: 'Tender goat meat tagine', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=80&w=400' },
+        { id: 'tg1', name: language === 'ar' ? 'طاجين لحم بالبرقوق' : 'Tagine Viande Pruneaux', description: 'Premium lamb, sweet prunes, toasted almonds, and organic honey.', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=90&w=800' },
+        { id: 'tg2', name: language === 'ar' ? 'طاجين دجاج بلدي' : 'Tagine Poulet Beldi', description: 'Free-range chicken, preserved lemons, red olives, and traditional spices.', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1647619124290-00fb73663001?q=90&w=800' },
+        { id: 'tg3', name: language === 'ar' ? 'طاجين السمان' : 'Tagine de Cailles', description: 'Delicate quails slow-cooked with caramelized onions and raisins.', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1582234372722-50d7ccc30e5a?q=90&w=800' },
+        { id: 'tg4', name: language === 'ar' ? 'طاجين خضار' : 'Tagine Legumes', description: 'Market-fresh seasonal vegetables, organic herbs, and cold-pressed olive oil.', price: 115, category: 'Tagines', image: 'https://images.unsplash.com/photo-1464454709131-ffd692591ee5?q=90&w=800' },
+        { id: 'tg5', name: language === 'ar' ? 'طاجين لحم مفروم' : 'Tagine Viande Hachée', description: 'Kefta meatballs in zesty tomato sauce with organic farmhouse eggs.', price: 125, category: 'Tagines', image: 'https://images.unsplash.com/photo-1662116212108-99933f2da71c?q=90&w=800' },
+        { id: 'tg6', name: language === 'ar' ? 'طاجين معيز' : 'Tagine Chevreaux', description: 'Tender baby goat, mountain herbs, and local garden vegetables.', price: 135, category: 'Tagines', image: 'https://images.unsplash.com/photo-1541518763669-279f00ed51ca?q=90&w=800' },
 
         // Plats
-        { id: 'pl1', name: language === 'ar' ? 'صحن لحم مفروم' : 'Plat Viande Hachée', description: 'Accompagnés par des frites et salade', price: 80, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl2', name: language === 'ar' ? 'صحن بروشيت مشكل' : 'Plat Brochettes Mixte', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl3', name: language === 'ar' ? 'صحن بروشيت دجاج' : 'Plat Brochettes de Poulet', description: 'Accompagnés par des frites et salade', price: 75, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl4', name: language === 'ar' ? 'صحن ريش لحم' : 'Plat Côtelettes d\'Agneau', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl5', name: language === 'ar' ? 'صحن صوصيص' : 'Plat Saucisse', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl6', name: language === 'ar' ? 'صحن مشكل' : 'Plat Mixte', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=400' },
-        { id: 'pl7', name: language === 'ar' ? 'صحن ناجتس' : 'Plat Nugets', description: 'Accompagnés par des frites et salade', price: 70, category: 'Plats', image: 'https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=400' },
+        { id: 'pl1', name: language === 'ar' ? 'صحن لحم مفروم' : 'Plat Viande Hachée', description: 'Grilled kefta served with golden fries, crisp garden salad, and house dip.', price: 80, category: 'Plats', image: 'https://images.unsplash.com/photo-1529692236671-f1f6e9460272?q=90&w=800' },
+        { id: 'pl2', name: language === 'ar' ? 'صحن بروشيت مشكل' : 'Plat Brochettes Mixte', description: 'A variety of lamb and beef skewers served with fries and salad.', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=90&w=800' },
+        { id: 'pl3', name: language === 'ar' ? 'صحن بروشيت دجاج' : 'Plat Brochettes de Poulet', description: 'Marinated chicken breast skewers with fries and a fresh side.', price: 75, category: 'Plats', image: 'https://images.unsplash.com/photo-1598514983318-296258af4b51?q=90&w=800' },
+        { id: 'pl4', name: language === 'ar' ? 'صحن ريش لحم' : 'Plat Côtelettes d\'Agneau', description: 'Tender lamb chops grilled with rosemary and served with garden sides.', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=90&w=800' },
+        { id: 'pl5', name: language === 'ar' ? 'صحن صوصيص' : 'Plat Saucisse', description: 'Traditional beef sausages served with crispy fries and salad.', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=90&w=800' },
+        { id: 'pl6', name: language === 'ar' ? 'صحن مشكل' : 'Plat Mixte', description: 'The ultimate grill plate with skewers, kefta, and chops.', price: 85, category: 'Plats', image: 'https://images.unsplash.com/photo-1544124499-58b122dd8338?q=90&w=800' },
+        { id: 'pl7', name: language === 'ar' ? 'صحن ناجتس' : 'Plat Nugets', description: 'Golden chicken nuggets with fries, a family favorite.', price: 70, category: 'Plats', image: 'https://images.unsplash.com/photo-1562967914-608f82629710?q=90&w=800' },
 
         // Sandwiches
-        { id: 'sw1', name: language === 'ar' ? 'ساندويتش لحم مفروم' : 'Sandwich Viande Hachée', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1502035618526-642f1f5b9049?q=80&w=400' },
-        { id: 'sw2', name: language === 'ar' ? 'ساندويتش ديك رومي' : 'Sandwich Dinde', description: 'Accompagner de Frites', price: 45, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1502035618526-642f1f5b9049?q=80&w=400' },
-        { id: 'sw3', name: language === 'ar' ? 'ساندويتش مشكل' : 'Sandwich Mixte', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1502035618526-642f1f5b9049?q=80&w=400' },
-        { id: 'sw4', name: language === 'ar' ? 'هامبرغر' : 'Hamburger', description: 'Accompagner de Frites', price: 45, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400' },
-        { id: 'sw5', name: language === 'ar' ? 'تشيز برجر' : 'Cheeseburger', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400' },
+        { id: 'sw1', name: language === 'ar' ? 'ساندويتش لحم مفروم' : 'Sandwich Viande Hachée', description: 'Toasted baguette with kefta, fresh veggies, and golden fries.', price: 50, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1509722747041-619f38175631?q=90&w=800' },
+        { id: 'sw2', name: language === 'ar' ? 'ساندويتش ديك رومي' : 'Sandwich Dinde', description: 'Smoked turkey slices with light mayo and crisp lettuce with fries.', price: 45, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?q=90&w=800' },
+        { id: 'sw3', name: language === 'ar' ? 'ساندويتش مشكل' : 'Sandwich Mixte', description: 'A hearty blend of turkey and beef in a toasted bun with fries.', price: 50, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1502035618526-642f1f5b9049?q=90&w=800' },
+        { id: 'sw4', name: language === 'ar' ? 'هامبرغر' : 'Hamburger', description: 'Classic beef patty with fresh toppings and a side of fries.', price: 45, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=90&w=800' },
+        { id: 'sw5', name: language === 'ar' ? 'تشيز برجر' : 'Cheeseburger', description: 'Golden melted cheese over a juicy beef patty with fries.', price: 50, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=90&w=800' },
 
         // Pizza
-        { id: 'pz1', name: language === 'ar' ? 'بيتزا لحم مفروم' : 'Pizza Viande Hachée', description: 'Tomato sauce, minced meat, cheese', price: 70, category: 'Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400' },
-        { id: 'pz2', name: language === 'ar' ? 'بيتزا دجاج' : 'Pizza Poulet', description: 'Tomato sauce, chicken, cheese', price: 70, category: 'Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400' },
-        { id: 'pz3', name: language === 'ar' ? 'بيتزا فواكه البحر' : 'Pizza Fruit de Mer', description: 'Assorted seafood and cheese', price: 80, category: 'Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400' },
-        { id: 'pz4', name: language === 'ar' ? 'بيتزا تونة' : 'Pizza Thon', description: 'Tuna, olives, and onions', price: 65, category: 'Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400' },
-        { id: 'pz5', name: language === 'ar' ? 'بيتزا ٤ أجبان' : 'Pizza 4 Fromages', description: 'Mozzarella, Roquefort, Edam, Cheddar', price: 65, category: 'Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400' },
+        { id: 'pz1', name: language === 'ar' ? 'بيتزا لحم مفروم' : 'Pizza Viande Hachée', description: 'Stone-baked dough with herb tomato sauce and seasoned kefta.', price: 70, category: 'Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=90&w=800' },
+        { id: 'pz2', name: language === 'ar' ? 'بيتزا دجاج' : 'Pizza Poulet', description: 'Roasted chicken strips with mozzarella and garden oregano.', price: 70, category: 'Pizza', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=90&w=800' },
+        { id: 'pz3', name: language === 'ar' ? 'بيتزا فواكه البحر' : 'Pizza Fruit de Mer', description: 'Atlantic seafood medley with secret chef white sauce.', price: 80, category: 'Pizza', image: 'https://images.unsplash.com/photo-1574071318508-1cdbad80ad50?q=90&w=800' },
+        { id: 'pz4', name: language === 'ar' ? 'بيتزا تونة' : 'Pizza Thon', description: 'Mediterranean tuna flakes with black olives and onions.', price: 65, category: 'Pizza', image: 'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?q=90&w=800' },
+        { id: 'pz5', name: language === 'ar' ? 'بيتزا ٤ أجبان' : 'Pizza 4 Fromages', description: 'A harmony of Mozzarella, Gorgonzola, Edam, and local goat cheese.', price: 65, category: 'Pizza', image: 'https://images.unsplash.com/photo-1573821663912-56990544c382?q=90&w=800' },
 
         // Boissons
         { id: 'bs1', name: language === 'ar' ? 'صودا' : 'Soda', description: 'Various flavors', price: 15, category: 'Boissons', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=400' },
@@ -98,19 +98,19 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
         { id: 'bs9', name: language === 'ar' ? 'كابتشينو' : 'Cappuccino', description: 'Frothy coffee', price: 17, category: 'Boissons', image: 'https://images.unsplash.com/photo-1541167760496-162955ed8a9f?q=80&w=400' },
 
         // Jus
-        { id: 'js1', name: language === 'ar' ? 'نكتار برتقال' : 'Nectars Jus d\'Orange', description: '100% natural', price: 15, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
-        { id: 'js2', name: language === 'ar' ? 'عصير فواكه حمراء' : 'Jus de Fruits Rouge', description: 'Berry mix', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
-        { id: 'js3', name: language === 'ar' ? 'عصير تفاح' : 'Jus de Pomme', description: 'Fresh apple juice', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
-        { id: 'js4', name: language === 'ar' ? 'عصير مانجو' : 'Jus de Mangue', description: 'Fresh mango juice', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
-        { id: 'js5', name: language === 'ar' ? 'عصير أناناس' : 'Jus de Ananas', description: 'Fresh pineapple juice', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
-        { id: 'js6', name: language === 'ar' ? 'عصير فواكه استوائية' : 'Jus Exotique', description: 'Tropical mix', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400' },
+        { id: 'js1', name: language === 'ar' ? 'نكتار برتقال' : 'Nectars Jus d\'Orange', description: 'Freshly squeezed sun-ripened oranges.', price: 15, category: 'Jus', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=90&w=800' },
+        { id: 'js2', name: language === 'ar' ? 'عصير فواكه حمراء' : 'Jus de Fruits Rouge', description: 'Antioxidant-rich blend of summer berries.', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=90&w=800' },
+        { id: 'js3', name: language === 'ar' ? 'عصير تفاح' : 'Jus de Pomme', description: 'Crisp, refreshing cold-pressed apples.', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?q=90&w=800' },
+        { id: 'js4', name: language === 'ar' ? 'عصير مانجو' : 'Jus de Mangue', description: 'Smooth, tropical alphanso mango nectar.', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=90&w=800' },
+        { id: 'js5', name: language === 'ar' ? 'عصير أناناس' : 'Jus de Ananas', description: 'Tangy and sweet golden pineapple juice.', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1600266185084-37a9a675f294?q=90&w=800' },
+        { id: 'js6', name: language === 'ar' ? 'عصير فواكه استوائية' : 'Jus Exotique', description: 'A vibrant medley of exotic island fruits.', price: 17, category: 'Jus', image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=90&w=800' },
 
         // Desserts
-        { id: 'ds1', name: language === 'ar' ? 'سلطة فواكه' : 'Salade de Fruits', description: 'Fresh seasonal fruit mix', price: 30, category: 'Desserts', image: 'https://images.unsplash.com/photo-1490474418144-942824f2b931?q=80&w=400' },
-        { id: 'ds2', name: language === 'ar' ? 'فلان' : 'Flan', description: 'Caramel custard', price: 25, category: 'Desserts', image: 'https://images.unsplash.com/photo-1528975604071-b4dc52a2d18c?q=80&w=400' },
+        { id: 'ds1', name: language === 'ar' ? 'سلطة فواكه' : 'Salade de Fruits', description: 'Assorted seasonal fruits carved fresh and served in its own juice.', price: 30, category: 'Desserts', image: 'https://images.unsplash.com/photo-1490474418144-942824f2b931?q=90&w=800' },
+        { id: 'ds2', name: language === 'ar' ? 'فلان' : 'Flan', description: 'Silky smooth caramel custard with a light burnt sugar top.', price: 25, category: 'Desserts', image: 'https://images.unsplash.com/photo-1528975604071-b4dc52a2d18c?q=90&w=800' },
 
         // Menu Enfants
-        { id: 'me1', name: language === 'ar' ? 'وجبة أطفال' : 'Menu Enfants', description: 'Nugget ou Hamburger + Frite', price: 40, category: 'Menu Enfants', image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=400' },
+        { id: 'me1', name: language === 'ar' ? 'للأطفال' : 'Menu Enfants', description: 'Choice of golden nuggets or a mini burger with a side of small fries.', price: 40, category: 'Menu Enfants', image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=90&w=800' },
 
         // Suppléments
         { id: 'sp1', name: language === 'ar' ? 'مسمن' : 'Msemen', description: 'Extra unit', price: 5, category: 'Suppléments', image: 'https://images.unsplash.com/photo-1589113110374-279262e3d30b?q=80&w=400' },
@@ -154,8 +154,8 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
         { id: 'Boissons', icon: CupSoda, label: language === 'ar' ? 'مشروبات' : 'Boissons' },
         { id: 'Jus', icon: GlassWater, label: language === 'ar' ? 'عصائر' : 'Jus' },
         { id: 'Desserts', icon: Cookie, label: language === 'ar' ? 'حلويات' : 'Desserts' },
-        { id: 'Menu Enfants', icon: Baby, label: language === 'ar' ? 'قائمة الأطفال' : 'Menu Enfants' },
-        { id: 'Suppléments', icon: Plus, label: language === 'ar' ? 'إضافات' : 'Suppléments' },
+        { id: 'Menu Enfants', icon: Baby, label: language === 'ar' ? 'للأطفال' : 'Enfants' },
+        { id: 'Suppléments', icon: Plus, label: language === 'ar' ? 'إضافات' : 'Extras' },
     ];
 
     const filteredItems = menuItems.filter(item => item.category === activeCategory);
@@ -229,15 +229,15 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                 const cartItem = cart.find(i => i.id === item.id);
                                 return (
                                     <div key={item.id} className="jungle-card p-5 flex gap-5 bg-pure-nature dark:bg-jungle-leaf/5 rounded-[2rem] border border-luxury-gold/5 group hover:border-luxury-gold/20 transition-all">
-                                        <div className="w-28 h-28 rounded-2xl overflow-hidden flex-none shadow-lg">
-                                            <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={item.name} />
+                                        <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-2xl overflow-hidden flex-none shadow-premium bg-luxury-gold/5">
+                                            <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt={item.name} loading="lazy" />
                                         </div>
-                                        <div className="flex-1 py-1">
-                                            <div className="flex justify-between items-start mb-2">
-                                                <h3 className="text-xl font-serif text-jungle-deep dark:text-pure-nature">{item.name}</h3>
-                                                <span className="text-luxury-gold font-bold text-lg">{item.price} MAD</span>
+                                        <div className="flex-1 min-w-0 py-1">
+                                            <div className="flex justify-between items-start gap-2 mb-2">
+                                                <h3 className="text-lg lg:text-xl font-serif text-jungle-deep dark:text-pure-nature leading-tight">{item.name}</h3>
+                                                <span className="text-luxury-gold font-bold text-base lg:text-lg whitespace-nowrap">{item.price} MAD</span>
                                             </div>
-                                            <p className="text-xs text-jungle-deep/50 dark:text-pure-nature/40 mb-4 line-clamp-2">{item.description}</p>
+                                            <p className="text-[10px] lg:text-xs text-jungle-deep/50 dark:text-pure-nature/40 mb-4 line-clamp-3 lg:line-clamp-2 leading-relaxed">{item.description}</p>
 
                                             <div className="flex justify-end">
                                                 {cartItem ? (

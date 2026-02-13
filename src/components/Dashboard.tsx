@@ -32,10 +32,7 @@ import { FunPlay } from './FunPlay';
 import { ParkHours } from './ParkHours';
 import { CateringPartyservice } from './CateringPartyservice';
 import { ExperienceShowcase } from './ExperienceShowcase';
-import tentImg from '../assets/park/tent.jpg';
-import pondImg from '../assets/park/pond.jpg';
-import wallabyImg from '../assets/park/wallaby.jpg';
-import cateringImg from '../assets/park/catering_bg.jpg';
+
 
 export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
@@ -64,12 +61,12 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "Breathe in Nature",
             about_text: "Nestled 11 km from Mohammedia, 10 km from Benslimane, and 8 km from Bouznika, just minutes from the Mensouria highway exit, Natura Jungle Park offers an immersive escape in the heart of nature. This peaceful haven charms with its idyllic setting, featuring a mini zoo, a gourmet restaurant, children's play areas, equestrian adventures, thrilling quad excursions, and a refreshing swimming pool. For nature lovers, the park offers luxury bungalows for a harmonious night in this green oasis.",
             bundles: [
-                { id: 1, title: "Jungle Bungalow", sub: "Luxury Stays", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800", action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
-                { id: 2, title: "Jungle Restaurant", sub: "Fine Dining", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: cateringImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
-                { id: 3, title: "Berber Tents", sub: "Authentic Experience", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: tentImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
-                { id: 4, title: "Animal Park", sub: "Wild Circuit", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: wallabyImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
-                { id: 5, title: "Kid's & Equitation", sub: "Family Fun", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
-                { id: 6, title: "Aqua Jungle", sub: "Poolside Serenity", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: pondImg, action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
+                { id: 1, title: "Jungle Bungalow", sub: "Luxury Stays", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=90&w=1200", action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
+                { id: 2, title: "Jungle Restaurant", sub: "Fine Dining", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: "https://images.unsplash.com/photo-1550966841-3ee39bd2289c?q=90&w=1200", action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
+                { id: 3, title: "Berber Tents", sub: "Authentic Experience", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: "https://images.unsplash.com/photo-1542332213-31f87348057f?q=90&w=1200", action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
+                { id: 4, title: "Animal Park", sub: "Wild Circuit", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: "https://images.unsplash.com/photo-1516422317778-93527ac336fb?q=90&w=1200", action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
+                { id: 5, title: "Kid's & Equitation", sub: "Family Fun", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: "https://images.unsplash.com/photo-1506169400263-d100d00925e0?q=90&w=1200", action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
+                { id: 6, title: "Aqua Jungle", sub: "Poolside Serenity", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=90&w=1200", action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
             ],
             catering_title: "Catering & Events",
             event_title: "Special Events",
@@ -89,12 +86,12 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "Respirez la Nature",
             about_text: "Niché à 11 kilomètres de Mohammedia, à 10km de Benslimane et 8km de Bouznika, à quelques minutes de la sortie autoroute Mensouria, le Parc Natura Jungle offre une escapade immersive en pleine nature. Ce havre de paix séduit par son cadre idyllique, abritant un mini zoo, un restaurant gastronomique, des espaces de jeux dédiés aux enfants, des aventures équestres, des excursions en quad palpitantes, ainsi qu'une piscine rafraîchissante. Pour les amoureux de la nature, le parc propose des bungalows de luxe, invitant à une nuit harmonieuse au cœur de cette oasis verdoyante.",
             bundles: [
-                { id: 1, title: "Bungalow Jungle", sub: "Séjours de Luxe", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800", action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
-                { id: 2, title: "Restaurant Jungle", sub: "Gastronomie", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: cateringImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
-                { id: 3, title: "Tentes Berbères", sub: "Expérience Authentique", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: tentImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
-                { id: 4, title: "Parc Animalier", sub: "Circuit Sauvage", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: wallabyImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
-                { id: 5, title: "Enfants & Équitation", sub: "Plaisir en Famille", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
-                { id: 6, title: "Aqua Jungle", sub: "Sérénité au Bord de l'Eau", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: pondImg, action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
+                { id: 1, title: "Bungalow Jungle", sub: "Séjours de Luxe", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=90&w=1200", action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
+                { id: 2, title: "Restaurant Jungle", sub: "Gastronomie", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: "https://images.unsplash.com/photo-1550966841-3ee39bd2289c?q=90&w=1200", action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
+                { id: 3, title: "Tentes Berbères", sub: "Expérience Authentique", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: "https://images.unsplash.com/photo-1542332213-31f87348057f?q=90&w=1200", action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
+                { id: 4, title: "Parc Animalier", sub: "Circuit Sauvage", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: "https://images.unsplash.com/photo-1516422317778-93527ac336fb?q=90&w=1200", action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
+                { id: 5, title: "Enfants & Équitation", sub: "Plaisir en Famille", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: "https://images.unsplash.com/photo-1506169400263-d100d00925e0?q=90&w=1200", action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
+                { id: 6, title: "Aqua Jungle", sub: "Sérénité au Bord de l'Eau", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=90&w=1200", action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
             ],
             catering_title: "Traiteur & Fêtes",
             event_title: "Événements Spéciaux",
@@ -114,12 +111,12 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             about_title: "استنشق عبير الطبيعة",
             about_text: "يقع منتزه نطورا جانغل على بُعد ١١ كم من المحمدية، و١٠ كم من بنسليمان، و٨ كم من بوزنيقة، مباشرة عند مخرج الطريق السيار المنصورية. يوفر ملاذاً غامراً في قلب الطبيعة، يضم حديقة حيوانات، مطعماً فاخراً، مساحات لعب للأطفال، مغامرات الفروسية، ورحلات الكواد. لمحبي الطبيعة، يقدم المنتزه بناغل فاخرة لقضاء ليلة هادئة في هذه الواحة الخضراء.",
             bundles: [
-                { id: 1, title: "بناغل الغابة", sub: "إقامات فاخرة", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800", action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
-                { id: 2, title: "مطعم الغابة", sub: "أرقى المأكولات", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: cateringImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
-                { id: 3, title: "خيام بربرية", sub: "أصالة وراحة", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: tentImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
-                { id: 4, title: "حديقة الحيوان", sub: "مسار الطبيعة", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: wallabyImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
-                { id: 5, title: "الأطفال والفروسية", sub: "مرح لكل العائلة", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800", action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
-                { id: 6, title: "أكوا جانغل", sub: "استرخاء المسبح", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: pondImg, action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
+                { id: 1, title: "بناغل الغابة", sub: "إقامات فاخرة", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=90&w=1200", action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
+                { id: 2, title: "مطعم الغابة", sub: "أرقى المأكولات", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: "https://images.unsplash.com/photo-1550966841-3ee39bd2289c?q=90&w=1200", action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
+                { id: 3, title: "خيام بربرية", sub: "أصالة وراحة", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: "https://images.unsplash.com/photo-1542332213-31f87348057f?q=90&w=1200", action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
+                { id: 4, title: "حديقة الحيوان", sub: "مسار الطبيعة", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: "https://images.unsplash.com/photo-1516422317778-93527ac336fb?q=90&w=1200", action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
+                { id: 5, title: "الأطفال والفروسية", sub: "مرح لكل العائلة", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: "https://images.unsplash.com/photo-1506169400263-d100d00925e0?q=90&w=1200", action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
+                { id: 6, title: "أكوا جانغل", sub: "استرخاء المسبح", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=90&w=1200", action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
             ],
             catering_title: "خدمة الحفلات المتميزة",
             event_title: "مناسبات خاصة",
@@ -267,14 +264,14 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                             }
                                         }}
                                         onClick={bundle.action}
-                                        className="flex-none w-[300px] lg:w-auto h-[450px] rounded-[3rem] relative overflow-hidden group shadow-2xl cursor-pointer border border-white/5 snap-center"
+                                        className="flex-none w-[280px] lg:w-auto h-[320px] lg:h-[450px] rounded-[3rem] relative overflow-hidden group shadow-2xl cursor-pointer border border-white/5 snap-center"
                                     >
                                         {bundle.image && (
                                             <div className="absolute inset-0">
-                                                <img src={bundle.image} className="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-1000" alt={bundle.title} />
+                                                <img src={bundle.image} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" alt={bundle.title} />
                                             </div>
                                         )}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep via-jungle-deep/20 to-transparent opacity-90" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep via-jungle-deep/20 to-transparent group-hover:via-transparent transition-all duration-500" />
 
                                         <div className="absolute inset-0 p-8 flex flex-col justify-end">
                                             <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 border border-white/20 group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-500">
@@ -301,7 +298,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                         <Palmtree className="w-32 h-32" />
                                     </div>
                                     <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-sand-gold mb-4">{text.about_title}</h2>
-                                    <p className="text-lg font-serif leading-relaxed opacity-90 italic">
+                                    <p className="text-lg font-serif leading-relaxed italic text-jungle-green dark:text-white/90">
                                         "{text.about_text}"
                                     </p>
                                 </div>
@@ -320,7 +317,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                     className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
                                 >
                                     <img
-                                        src={cateringImg}
+                                        src="https://images.unsplash.com/photo-1519225421980-715cb0202128?q=90&w=1200"
                                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         alt="Catering"
                                     />
