@@ -20,7 +20,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
     const pricePerNight = 1000;
 
     // Simulation of occupancy
-    const bookedDates = useMemo(() => [4, 7, 11, 14, 18, 21, 25, 28], []);
+    const bookedDates: number[] = useMemo(() => [], []);
 
     const isDayDisabled = (day: number) => bookedDates.includes(day);
 

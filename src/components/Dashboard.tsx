@@ -44,6 +44,8 @@ export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
     isNightMode: boolean;
     toggleNightMode: () => void;
+    // Simulation of occupancy
+    bookedDates: number[];
 }
 
 export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
@@ -64,8 +66,8 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             kitchen_status: "Kitchen Open",
             kitchen_wait: "Est. Prep: 25 mins",
             order_btn: "Order to your Lounger",
-            about_title: "Breathe in Nature",
-            about_text: "Nestled 11 km from Mohammedia, 10 km from Benslimane, and 8 km from Bouznika, just minutes from the Mensouria highway exit, Natura Jungle Park offers an immersive escape in the heart of nature. This peaceful haven charms with its idyllic setting, featuring a mini zoo, a gourmet restaurant, children's play areas, equestrian adventures, thrilling quad excursions, and a refreshing swimming pool. For nature lovers, the park offers luxury bungalows for a harmonious night in this green oasis.",
+            about_title: "Breathe in Nature | Natura Jungle Park",
+            about_text: "Natura Jungle Park is an immersive green escape located just minutes from the Mohammedia/Mansouria highway exit. Our eco-resort features a mini-zoo, gourmet restaurant, kids' playground, equestrian academy, and luxury bungalows. Whether you're seeking a family adventure, a refreshing pool day, or a peaceful night in a luxury bungalow, our park offers the perfect harmony of nature and comfort near Casablanca and Rabat.",
             bundles: [
                 { id: 1, title: "Jungle Bungalow", sub: "Luxury Stays", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "Jungle Restaurant", sub: "Fine Dining", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
@@ -89,8 +91,8 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             kitchen_status: "Cuisine Ouverte",
             kitchen_wait: "Prép. estimée: 25 min",
             order_btn: "Commander au Transat",
-            about_title: "Respirez la Nature",
-            about_text: "Niché à 11 kilomètres de Mohammedia, à 10km de Benslimane et 8km de Bouznika, à quelques minutes de la sortie autoroute Mensouria, le Parc Natura Jungle offre une escapade immersive en pleine nature. Ce havre de paix séduit par son cadre idyllique, abritant un mini zoo, un restaurant gastronomique, des espaces de jeux dédiés aux enfants, des aventures équestres, des excursions en quad palpitantes, ainsi qu'une piscine rafraîchissante. Pour les amoureux de la nature, le parc propose des bungalows de luxe, invitant à une nuit harmonieuse au cœur de cette oasis verdoyante.",
+            about_title: "Respirez la Nature | Natura Jungle Park",
+            about_text: "Le Parc Natura Jungle est une escapade immersive en pleine nature située à quelques minutes de la sortie d'autoroute Mohammedia/Mansouria. Notre éco-complexe propose un mini-zoo, un restaurant gastronomique, des aires de jeux pour enfants, une académie d'équitation et des bungalows de luxe. Que vous recherchiez une aventure en famille, une journée de détente au bord de la piscine ou une nuit paisible dans un bungalow de luxe, notre parc offre l'harmonie parfaite entre nature et confort.",
             bundles: [
                 { id: 1, title: "Bungalow Jungle", sub: "Séjours de Luxe", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "Restaurant Jungle", sub: "Gastronomie", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
@@ -114,8 +116,8 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             kitchen_status: "المطبخ مفتوح",
             kitchen_wait: "وقت التحضير: ٢٥ دقيقة",
             order_btn: "اطلب الآن إلى مكانك",
-            about_title: "استنشق عبير الطبيعة",
-            about_text: "يقع منتزه نطورا جانغل على بُعد ١١ كم من المحمدية، و١٠ كم من بنسليمان، و٨ كم من بوزنيقة، مباشرة عند مخرج الطريق السيار المنصورية. يوفر ملاذاً غامراً في قلب الطبيعة، يضم حديقة حيوانات، مطعماً فاخراً، مساحات لعب للأطفال، مغامرات الفروسية، ورحلات الكواد. لمحبي الطبيعة، يقدم المنتزه بناغل فاخرة لقضاء ليلة هادئة في هذه الواحة الخضراء.",
+            about_title: "استنشق عبير الطبيعة | منتزه نطورا جانغل",
+            about_text: "يعد منتزه نطورا جانغل ملاذاً طبيعياً ساحراً يقع على بعد دقائق من مخرج الطريق السيار المحمدية/المنصورية. يضم منتجعنا البيئي حديقة حيوانات، مطعماً فاخراً، مساحات لعب للأطفال، وأكاديمية للفروسية، بالإضافة إلى بناغل فاخرة. سواء كنت تبحث عن مغامرة عائلية، يوم استرخاء بجانب المسبح، أو ليلة هادئة في قلب الطبيعة، فإن منتزهنا يوفر مزيجاً مثالياً من الراحة والجمال الطبيعي بالقرب من الدار البيضاء والرباط.",
             bundles: [
                 { id: 1, title: "بناغل الغابة", sub: "إقامات فاخرة", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "مطعم الغابة", sub: "أرقى المأكولات", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },

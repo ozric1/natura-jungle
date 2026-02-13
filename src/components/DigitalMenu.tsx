@@ -230,8 +230,8 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                 const cartItem = cart.find(i => i.id === item.id);
                                 return (
                                     <div key={item.id} className="jungle-card p-5 flex gap-5 bg-pure-nature dark:bg-jungle-leaf/5 rounded-[2rem] border border-luxury-gold/5 group hover:border-luxury-gold/20 transition-all">
-                                        <div className="w-28 h-28 rounded-2xl overflow-hidden flex-none shadow-lg">
-                                            <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={item.name} />
+                                        <div className="w-28 h-28 rounded-2xl overflow-hidden flex-none shadow-lg border border-luxury-gold/5 group-hover:border-luxury-gold/20 transition-all">
+                                            <img src={item.image} className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-1000 ease-out" alt={item.name} />
                                         </div>
                                         <div className="flex-1 py-1">
                                             <div className="flex justify-between items-start mb-2">

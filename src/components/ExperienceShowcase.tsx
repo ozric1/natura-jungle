@@ -13,6 +13,7 @@ interface Slide {
     image: string;
     title: { [key: string]: string };
     desc: { [key: string]: string };
+    zoomType?: 'dish' | 'playground';
 }
 
 const bungalowInsideImg = '/assets/natura/bungalow inside.jpeg';
@@ -26,14 +27,14 @@ const tajineImg = '/assets/natura/Jungle restaurant Tajine.jpeg';
 const tentNightImg = '/assets/natura/berber tent at night.jpeg';
 const berberTentImg = '/assets/natura/BERBER TENT.jpeg';
 
-const pigsImg = '/assets/natura/pigs.jpg';
 const parkViewImg = '/assets/natura/Natura view from above MAIN PAGE BCKGRND.jpeg';
 
-const detenteImg = '/assets/natura/detente berber.jpeg';
-const gitImg = '/assets/natura/git.jpeg';
-
-const aquaPoolImg = '/assets/natura/Aqua pool.jpeg';
+const aquaPoolImg = '/assets/natura/pool.jpeg';
 const restau4Img = '/assets/natura/Jungle RESTAURENT 4.jpeg';
+const restau5Img = '/assets/natura/JUNGLE RESTAURANT 5.jpeg';
+const friendlyAnimalsImg = '/assets/natura/WhatsApp Image 2026-02-13 at 13.42.27.jpeg';
+const playgroundAerialImg = '/assets/natura/Natura view from above MAIN PAGE BCKGRND.jpeg';
+const pondUpdateImg = '/assets/natura/pond_update.jpg';
 
 export const ExperienceShowcase = ({ type, language, onClose, onAction }: ExperienceShowcaseProps) => {
     const [page, setPage] = useState(0);
@@ -74,9 +75,21 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     desc: { en: "Dine under the stars and the trees.", fr: "Dînez sous les étoiles et les arbres.", ar: "تناول الطعام تحت النجوم والأشجار." }
                 },
                 {
+                    image: restau5Img,
+                    title: { en: "The Chef's Selection", fr: "La Sélection du Chef", ar: "اختيارات الشيف" },
+                    desc: { en: "Our finest gourmet creations, presented with precision.", fr: "Nos plus belles créations gastronomiques, présentées avec précision.", ar: "أروع إبداعاتنا الفاخرة، مقدمة بكل دقة." },
+                    zoomType: "dish"
+                },
+                {
+                    image: restau4Img,
+                    title: { en: "Ambient Dining", fr: "Ambiance Gastronomique", ar: "أجواء الطعام" },
+                    desc: { en: "Elegant table settings for an unforgettable evening.", fr: "Des tables élégantes pour une soirée inoubliable.", ar: "طاولات أنيقة لأمسية لا تُنسى." }
+                },
+                {
                     image: tajineImg,
                     title: { en: "Signature Dishes", fr: "Plats Signature", ar: "أطباقنا المتميزة" },
-                    desc: { en: "Authentic flavors with a modern twist.", fr: "Saveurs authentiques avec une touche moderne.", ar: "نكهات أصيلة بلمسة عصرية." }
+                    desc: { en: "Authentic flavors with a modern twist.", fr: "Saveurs authentiques avec une touche moderne.", ar: "نكهات أصيلة بلمسة عصرية." },
+                    zoomType: "dish"
                 }
             ],
             actionLabel: { en: "Explore Menu", fr: "Explorer le Menu", ar: "استكشف القائمة" },
@@ -99,9 +112,9 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         park: {
             slides: [
                 {
-                    image: pigsImg,
-                    title: { en: "Wild Circuit", fr: "Circuit Sauvage", ar: "المسار البري" },
-                    desc: { en: "Meet our farm friends.", fr: "Rencontrez nos amis de la ferme.", ar: "قابل أصدقاء المزرعة." }
+                    image: friendlyAnimalsImg,
+                    title: { en: "Friendly Animals", fr: "Animaux Amicaux", ar: "حيوانات أليفة" },
+                    desc: { en: "Gentle encounters in their natural habitat.", fr: "Rencontres douces dans leur habitat naturel.", ar: "لقاءات هادئة في بيئتها الطبيعية." }
                 },
                 {
                     image: parkViewImg,
@@ -115,12 +128,13 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         kids: {
             slides: [
                 {
-                    image: detenteImg,
+                    image: playgroundAerialImg,
                     title: { en: "Kids Playground", fr: "Aire de Jeux", ar: "مساحة لعب الأطفال" },
-                    desc: { en: "Safety and fun for everyone.", fr: "Sécurité et plaisir pour tous.", ar: "الأمان والمتعة للجميع." }
+                    desc: { en: "Safety and fun for everyone.", fr: "Sécurité et plaisir pour tous.", ar: "الأمان والمتعة للجميع." },
+                    zoomType: "playground"
                 },
                 {
-                    image: gitImg,
+                    image: pondUpdateImg,
                     title: { en: "Equitation Academy", fr: "Académie d'Équitation", ar: "أكاديمية الفروسية" },
                     desc: { en: "Start your horse riding adventure.", fr: "Commencez votre aventure équestre.", ar: "ابدأ مغامرتك في الفروسية." }
                 }
@@ -153,14 +167,27 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
             <AnimatePresence mode="wait">
                 <motion.div
                     key={page}
-                    initial={{ scale: 1.1, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 1.05, opacity: 0 }}
-                    transition={{ duration: 0.8 }}
+                    initial={{
+                        scale: (currentSlide as any).zoomType === 'dish' ? 1.5 : (currentSlide as any).zoomType === 'playground' ? 1.5 : 1.1,
+                        opacity: 0,
+                        x: 0,
+                        y: 0
+                    }}
+                    animate={{
+                        scale: 1,
+                        opacity: 1
+                    }}
+                    exit={{
+                        opacity: 0
+                    }}
+                    transition={{ duration: 2.5, ease: "easeOut" }}
+                    style={{
+                        transformOrigin: (currentSlide as any).zoomType === 'playground' ? 'bottom left' : 'center'
+                    }}
                     className="absolute inset-0 z-0"
                 >
                     <img src={currentSlide.image} className="w-full h-full object-cover opacity-80" alt="Showcase" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                 </motion.div>
             </AnimatePresence>
 
