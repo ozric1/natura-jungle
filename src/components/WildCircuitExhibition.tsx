@@ -1,18 +1,25 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Info, Bookmark, Share2, Sparkles, ArrowRight } from 'lucide-react';
-import { useState } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { ChevronLeft, Info, Bookmark, Share2, Sparkles, ArrowRight, Search } from 'lucide-react';
+import { useState, useRef, type MouseEvent } from 'react';
 import { AnimalDiscovery } from './AnimalDiscovery';
 import pigsImg from '../assets/park/pigs.jpg';
-import cockatooImg from '../assets/park/cockatoo.jpg';
-import wallabyImg from '../assets/park/wallaby.jpg';
+import duckImg from '../assets/park/duck_update.jpg';
+import blackSwanImg from '../assets/park/black_swan_update.jpg';
 import horseImg from '../assets/park/horse_update.jpg';
+import ostrichImg from '../assets/park/ostrich_update.jpg';
+import tibetGoatImg from '../assets/park/tibet_goat_update.jpg';
+import peacockImg from '../assets/park/peacock_update.jpg';
+import wallabyImg from '../assets/park/wallaby_update.jpg';
+import lamaImg from '../assets/park/lama_update.jpg';
+import deerImg from '../assets/park/deer_update.jpg';
+import wildCatImg from '../assets/park/wildcat_update.jpg';
 
 interface AnimalExhibit {
     id: string;
     name: { en: string; fr: string; ar: string };
     fact: { en: string; fr: string; ar: string };
     image: string;
-    category: 'Avian' | 'Mammal' | 'Farm';
+    category: 'Avian' | 'Mammal' | 'Farm' | 'Wild';
 }
 
 interface WildCircuitExhibitionProps {
@@ -20,6 +27,71 @@ interface WildCircuitExhibitionProps {
     isRTL?: boolean;
     language: 'en' | 'fr' | 'ar';
 }
+
+// Creative Zoom Interaction Component
+const InteractiveImage = ({ src, alt, category }: { src: string; alt: string; category: string }) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+    const scale = useSpring(1, { stiffness: 300, damping: 30 });
+    const xSpring = useSpring(x, { stiffness: 300, damping: 30 });
+    const ySpring = useSpring(y, { stiffness: 300, damping: 30 });
+
+    const handleMouseMove = (e: MouseEvent) => {
+        if (!ref.current) return;
+        const rect = ref.current.getBoundingClientRect();
+        const xPos = (e.clientX - rect.left) / rect.width;
+        const yPos = (e.clientY - rect.top) / rect.height;
+
+        x.set(xPos);
+        y.set(yPos);
+    };
+
+    const handleMouseEnter = () => scale.set(1.5);
+    const handleMouseLeave = () => {
+        scale.set(1);
+        x.set(0.5);
+        y.set(0.5);
+    };
+
+    // Transform logic for the "Lens" effect
+    const lensX = useTransform(xSpring, [0, 1], ['0%', '100%']);
+    const lensY = useTransform(ySpring, [0, 1], ['0%', '100%']);
+
+    return (
+        <div
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="w-full h-full relative overflow-hidden cursor-crosshair group"
+        >
+            <motion.img
+                src={src}
+                alt={alt}
+                className="w-full h-full object-cover transition-all duration-500"
+                style={{ scale, transformOrigin: `${x.get() * 100}% ${y.get() * 100}%` }}
+                initial={{ filter: 'grayscale(100%) saturate(50%)' }}
+                whileHover={{ filter: 'grayscale(0%) saturate(120%)' }}
+            />
+
+            {/* Custom Lens / Zoom Indicator */}
+            <motion.div
+                className="absolute w-24 h-24 border-2 border-sand-gold rounded-full pointer-events-none opacity-0 group-hover:opacity-100 backdrop-blur-sm -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center"
+                style={{ left: lensX, top: lensY }}
+            >
+                <Search className="w-4 h-4 text-sand-gold" />
+            </motion.div>
+
+            <div className="absolute inset-0 bg-gradient-to-t from-jungle-green/80 via-transparent to-transparent opacity-60 pointer-events-none" />
+
+            <div className="absolute top-6 left-6 glass-dark px-4 py-2 rounded-full border border-white/20 pointer-events-none z-10">
+                <span className="text-[10px] text-white font-bold uppercase tracking-widest">{category}</span>
+            </div>
+        </div>
+    );
+};
+
 
 export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildCircuitExhibitionProps) => {
     const [selectedAnimal, setSelectedAnimal] = useState<AnimalExhibit | null>(null);
@@ -29,21 +101,21 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
             id: 'ducks',
             name: { en: 'Ducks', fr: 'Canards', ar: 'البط' },
             fact: { en: 'Our ducks love the central pond and are often the first to greet visitors.', fr: 'Nos canards adorent l\'étang central et sont souvent les premiers à saluer les visiteurs.', ar: 'تحب طيور البط لدينا البركة المركزية وغالباً ما تكون هي أول من يستقبل الزوار.' },
-            image: 'https://images.unsplash.com/photo-1459156491753-29405c5f4511?q=80&w=800',
+            image: duckImg,
             category: 'Avian'
         },
         {
             id: 'black-swan',
             name: { en: 'Black Swan', fr: 'Cygne Noir', ar: 'البجع الأسود' },
             fact: { en: 'Majestic and rare, the black swan is a symbol of elegance in our park.', fr: 'Majestueux et rare, le cygne noir est un symbole d\'élégance dans notre parc.', ar: 'مهيب ونادر، البجع الأسود هو رمز للأناقة في منتزهنا.' },
-            image: 'https://images.unsplash.com/photo-1541411136474-912f27021576?q=80&w=800',
+            image: blackSwanImg,
             category: 'Avian'
         },
         {
-            id: 'white-swan',
-            name: { en: 'White Swan', fr: 'Cygne Blanc', ar: 'البجع الأبيض' },
-            fact: { en: 'Often found gliding gracefully, they represent the serenity of Natura Jungle.', fr: 'Souvent vus glissant avec grâce, ils représentent la sérénité de Natura Jungle.', ar: 'غالباً ما يظهرون وهم يسبحون بنعمة، وهم يمثلون هدوء فطورا جانغل.' },
-            image: 'https://images.unsplash.com/photo-1551829141-947701710d2b?q=80&w=800',
+            id: 'peacock',
+            name: { en: 'Peacock', fr: 'Paon', ar: 'الطاووس' },
+            fact: { en: 'A living masterpiece of nature, displaying vibrant "eyes" to dazzle.', fr: 'Un chef-d\'œuvre vivant de la nature, arborant des "yeux" vibrants pour éblouir.', ar: 'تحفة طبيعية حية، تظهر "عيوناً" ملونة للانبهار.' },
+            image: peacockImg,
             category: 'Avian'
         },
         {
@@ -57,36 +129,43 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
             id: 'ostrich',
             name: { en: 'Ostrich', fr: 'Autruche', ar: 'النعام' },
             fact: { en: 'The fastest bird on land, our ostriches are curious and impressive.', fr: 'L\'oiseau le plus rapide sur terre, nos autruches sont curieuses et impressionnantes.', ar: 'أسرع طائر على وجه الأرض، النعام لدينا فضولي ومثير للإعجاب.' },
-            image: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?q=80&w=800',
+            image: ostrichImg,
             category: 'Avian'
         },
         {
             id: 'tibet-goat',
             name: { en: 'Tibet Goat', fr: 'Chèvre du Tibet', ar: 'ماعز التبت' },
             fact: { en: 'Known for their soft coat and climbing skills.', fr: 'Connues pour leur pelage doux et leurs talents de grimpeur.', ar: 'معروفة بفرائها الناعم ومهاراتها في التسلق.' },
-            image: 'https://images.unsplash.com/photo-1533167649158-6d508895b680?q=80&w=800',
+            image: tibetGoatImg,
             category: 'Mammal'
         },
         {
-            id: 'tibet-sheep',
-            name: { en: 'Tibet Sheep', fr: 'Mouton du Tibet', ar: 'خروف التبت' },
-            fact: { en: 'Hardy and peaceful, they thrive in the hilly sections of the circuit.', fr: 'Robustes et paisibles, ils s\'épanouissent dans les sections vallonnées du circuit.', ar: 'قوية وهادئة، تزدهر في الأجزاء التلية من المسار.' },
-            image: 'https://images.unsplash.com/photo-1484557918186-7b4e571d4b12?q=80&w=800',
-            category: 'Mammal'
-        },
-        {
-            id: 'peacock',
-            name: { en: 'Peacock', fr: 'Paon', ar: 'الطاووس' },
-            fact: { en: 'A living masterpiece of nature, displaying vibrant "eyes" to dazzle.', fr: 'Un chef-d\'œuvre vivant de la nature, arborant des "yeux" vibrants pour éblouir.', ar: 'تحفة طبيعية حية، تظهر "عيوناً" ملونة للانبهار.' },
-            image: 'https://images.unsplash.com/photo-1453227588063-bb302b62f50b?q=80&w=800',
-            category: 'Avian'
-        },
-        {
-            id: 'kangaroo',
+            id: 'wallaby',
             name: { en: 'Kangaroo (Wallaby)', fr: 'Kangourou (Wallaby)', ar: 'الكنغر (والابي)' },
             fact: { en: 'Agile and alert, these marsupials are a joy to observe in their enclosure.', fr: 'Agiles et alertes, ces marsupiaux sont un plaisir à observer dans leur enclos.', ar: 'رشيقة ويقظة، هذه الجرابيات هي متعة لمراقبتها في حظيرتها.' },
             image: wallabyImg,
             category: 'Mammal'
+        },
+        {
+            id: 'lama',
+            name: { en: 'Lama', fr: 'Lama', ar: 'اللاما' },
+            fact: { en: 'Gentle and curious, they often hum when they are happy and content.', fr: 'Doux et curieux, ils fredonnent souvent lorsqu\'ils sont heureux et satisfaits.', ar: 'لطيفة وفضولية، غالباً ما تدندن عندما تكون سعيدة وراضية.' },
+            image: lamaImg,
+            category: 'Mammal'
+        },
+        {
+            id: 'deer',
+            name: { en: 'Deer', fr: 'Cerf', ar: 'الغزلان' },
+            fact: { en: 'Graceful runners that represent the gentle soul of the forest.', fr: 'Coureurs gracieux qui représentent l\'âme douce de la forêt.', ar: 'عدائين رشيقين يمثلون الروح اللطيفة للغابة.' },
+            image: deerImg,
+            category: 'Mammal'
+        },
+        {
+            id: 'wild-cat',
+            name: { en: 'Wild Cats', fr: 'Chats Sauvages', ar: 'القطط البرية' },
+            fact: { en: 'Agile hunters with keen senses, distinct from their domestic cousins.', fr: 'Chasseurs agiles aux sens aiguisés, distincts de leurs cousins domestiques.', ar: 'صيادون رشيقون ذوو حواس حادة، يختلفون عن أبناء عمومتهم الأليفة.' },
+            image: wildCatImg,
+            category: 'Wild'
         },
         {
             id: 'small-pigs',
@@ -95,65 +174,39 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
             image: pigsImg,
             category: 'Farm'
         },
-        {
-            id: 'ivory-parrot',
-            name: { en: 'Ivory Parrot (Cockatoo)', fr: 'Perroquet Ivoire (Cacatoès)', ar: 'الببغاء العاجي (كاكاتو)' },
-            fact: { en: 'Vocal and colorful, the Cockatoo is the voice of the forest canopy.', fr: 'Vocal et coloré, le Cacatoès est la voix de la canopée de la forêt.', ar: 'صوت ملون، الكاكاتو هو صوت غطاء الغابة.' },
-            image: cockatooImg,
-            category: 'Avian'
-        }
     ];
 
     return (
-        <div className="h-screen w-full bg-egg-shell dark:bg-ink-black text-jungle-green dark:text-white overflow-y-auto pb-32 no-scrollbar scroll-smooth" dir={isRTL ? 'rtl' : 'ltr'}>
-            {/* Header */}
-            <header className="px-6 py-12 flex justify-between items-end sticky top-0 z-50 bg-egg-shell/95 dark:bg-ink-black/95 backdrop-blur-xl border-b border-sand-gold/10">
-                <div>
-                    <motion.button
-                        whileTap={{ scale: 0.9 }}
-                        onClick={onBack}
-                        className="w-10 h-10 flex items-center justify-center rounded-full bg-jungle-green/10 dark:bg-white/10 text-jungle-green dark:text-white mb-4"
-                    >
-                        <ChevronLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
-                    </motion.button>
-                    <h1 className="text-4xl font-serif italic text-jungle-green dark:text-white">
-                        {language === 'ar' ? 'المسار البري' : language === 'fr' ? 'Le Circuit Sauvage' : 'The Wild Circuit'}
-                    </h1>
-                    <p className="text-[10px] uppercase font-bold tracking-[0.3em] opacity-40 mt-2">
-                        {language === 'ar' ? 'استكشاف الأنواع' : language === 'fr' ? 'Découverte des Espèces' : 'Species Discovery Exhibition'}
-                    </p>
-                </div>
-                <div className="flex gap-3">
-                    <div className="w-12 h-12 rounded-full border border-sand-gold/20 flex items-center justify-center text-sand-gold relative">
-                        <Sparkles className="w-6 h-6 animate-pulse" />
-                    </div>
-                </div>
-            </header>
+        <div className="min-h-screen bg-black text-white relative overflow-x-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
 
-            {/* Interactive Scroll List */}
-            <div className="px-6 space-y-20 mt-12 pb-20">
+            {/* Header */}
+            <div className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center bg-gradient-to-b from-black/90 to-transparent">
+                <button onClick={onBack} className="w-12 h-12 rounded-full glass-morphism flex items-center justify-center hover:scale-110 transition-transform group">
+                    <ChevronLeft className={`w-6 h-6 text-white group-hover:text-sand-gold ${isRTL ? 'rotate-180' : ''}`} />
+                </button>
+                <div className="text-center">
+                    <h1 className="text-2xl font-serif text-white">The Wild Circuit</h1>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-sand-gold">Species Discovery Exhibition</p>
+                </div>
+                <div className="w-12 h-12 rounded-full glass-morphism flex items-center justify-center border border-sand-gold/20">
+                    <Sparkles className="w-5 h-5 text-sand-gold animate-pulse" />
+                </div>
+            </div>
+
+            <div className="pt-32 pb-40 space-y-32">
                 {exhibits.map((item, index) => (
                     <motion.div
                         key={item.id}
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.8, delay: index % 3 * 0.1 }}
-                        className="group relative"
+                        className="relative px-6"
                     >
-                        <div className="flex flex-col md:flex-row gap-8 items-center">
-                            {/* Image Container */}
-                            <div className="relative w-full md:w-1/2 aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl gold-shadow group-hover:scale-[1.02] transition-transform duration-700">
-                                <img
-                                    src={item.image}
-                                    className="w-full h-full object-cover grayscale saturate-50 transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110 group-hover:saturate-150"
-                                    alt={item.name[language]}
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-jungle-green/80 via-transparent to-transparent opacity-60" />
+                        <div className={`max-w-6xl mx-auto flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}>
 
-                                <div className="absolute top-6 left-6 glass-dark px-4 py-2 rounded-full border border-white/20">
-                                    <span className="text-[10px] text-white font-bold uppercase tracking-widest">{item.category}</span>
-                                </div>
+                            {/* Image Container with Lens Effect */}
+                            <div className="w-full md:w-1/2 h-64 md:h-[500px] rounded-[2.5rem] overflow-hidden relative group shadow-2xl gold-shadow">
+                                <InteractiveImage src={item.image} alt={item.name[language]} category={item.category} />
                             </div>
 
                             {/* Info Container */}
@@ -161,28 +214,32 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
                                 <div className="space-y-2">
                                     <div className="flex items-center gap-4">
                                         <div className="w-10 h-[1px] bg-sand-gold/40" />
-                                        <span className="text-sand-gold text-[10px] font-bold uppercase tracking-widest">0{index + 1} / {exhibits.length}</span>
+                                        <span className="text-sand-gold text-[10px] font-bold uppercase tracking-widest">
+                                            {String(index + 1).padStart(2, '0')} / {exhibits.length}
+                                        </span>
                                     </div>
-                                    <h2 className="text-5xl font-serif text-jungle-green group-hover:text-sand-gold transition-colors duration-500">{item.name[language]}</h2>
+                                    <h2 className="text-5xl font-serif text-jungle-green group-hover:text-sand-gold transition-colors duration-500 text-white">
+                                        {item.name[language]}
+                                    </h2>
                                 </div>
 
                                 <motion.div
-                                    className="p-8 bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-[2.5rem] border border-sand-gold/10 shadow-sm relative"
+                                    className="p-8 bg-white/5 backdrop-blur-sm rounded-[2.5rem] border border-sand-gold/10 shadow-sm relative"
                                 >
                                     <div className="absolute -top-3 left-8 w-6 h-6 bg-sand-gold rounded-full flex items-center justify-center text-jungle-green">
                                         <Info className="w-3 h-3" />
                                     </div>
-                                    <p className="text-lg font-serif italic text-jungle-green/80 leading-relaxed">
+                                    <p className="text-lg font-serif italic text-white/80 leading-relaxed">
                                         "{item.fact[language]}"
                                     </p>
 
                                     <div className="mt-8 flex flex-col gap-4">
                                         <div className="flex gap-4">
-                                            <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-sand-gold hover:text-jungle-green transition-colors">
+                                            <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-sand-gold hover:text-white transition-colors">
                                                 <Bookmark className="w-4 h-4" />
                                                 Save
                                             </button>
-                                            <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-all">
+                                            <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-all text-white">
                                                 <Share2 className="w-4 h-4" />
                                                 Share
                                             </button>
