@@ -44,8 +44,6 @@ export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
     isNightMode: boolean;
     toggleNightMode: () => void;
-    // Simulation of occupancy
-    bookedDates: number[];
 }
 
 export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
