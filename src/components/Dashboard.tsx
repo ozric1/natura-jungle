@@ -316,7 +316,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                             </section>
 
                             {/* Smart Concierge Section */}
-                            <SmartConcierge isRTL={isRTL} />
+                            <SmartConcierge language={currentLanguage} />
 
                             {/* Jungle Connect Section */}
                             <JungleConnect isRTL={isRTL} />
