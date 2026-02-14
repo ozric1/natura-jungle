@@ -31,6 +31,7 @@ function App() {
           >
             <Dashboard
               language={activeLanguage}
+              setLanguage={setActiveLanguage}
               isNightMode={isNightMode}
               toggleNightMode={() => setIsNightMode(!isNightMode)}
             />

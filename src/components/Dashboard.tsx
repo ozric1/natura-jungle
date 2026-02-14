@@ -43,11 +43,12 @@ const skyViewImg = '/assets/natura/Natura sky view MAIN PAGE BKGRND TWO.jpeg';
 
 export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
+    setLanguage: (lang: 'en' | 'fr' | 'ar') => void;
     isNightMode: boolean;
     toggleNightMode: () => void;
 }
 
-export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
+export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
     const isRTL = currentLanguage === 'ar';
     const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition' | 'fun' | 'hours' | 'catering' | 'teambuilding' | 'school' | 'experience'>('base');
     const [activeExperience, setActiveExperience] = useState<string | null>(null);
@@ -428,6 +429,19 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                 </div>
 
                 <div className="flex-1 flex justify-end items-center gap-4">
+                    {/* Language Switcher */}
+                    <div className="hidden md:flex items-center gap-3 mr-2">
+                        {['fr', 'en', 'ar'].filter(lang => lang !== currentLanguage).map((lang) => (
+                            <button
+                                key={lang}
+                                onClick={() => setLanguage(lang as any)}
+                                className="text-[10px] font-bold tracking-widest text-white/40 hover:text-luxury-gold transition-colors uppercase"
+                            >
+                                {lang === 'ar' ? 'AR' : lang.toUpperCase()}
+                            </button>
+                        ))}
+                    </div>
+
                     <motion.button
                         onClick={toggleNightMode}
                         whileTap={{ scale: 0.9 }}
