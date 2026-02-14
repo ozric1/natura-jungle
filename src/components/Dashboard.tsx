@@ -329,14 +329,19 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                         <div className="px-6 lg:px-12 space-y-10">
                             {/* About Section */}
                             <section className="mt-4">
-                                <div className="glass-morphism rounded-[2.5rem] p-8 border border-sand-gold/10 relative overflow-hidden backdrop-blur-xl">
-                                    <div className="absolute -right-4 -top-4 opacity-5">
-                                        <Palmtree className="w-32 h-32" />
+                                <div className="bg-white dark:bg-jungle-green/20 rounded-[3rem] p-10 lg:p-16 border border-sand-gold/10 relative overflow-hidden shadow-2xl">
+                                    <div className="absolute -right-8 -bottom-8 opacity-[0.03] rotate-12">
+                                        <Palmtree className="w-64 h-64 text-jungle-green" />
                                     </div>
-                                    <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-sand-gold mb-4">{text.about_title}</h2>
-                                    <p className="text-lg font-serif leading-relaxed italic text-black dark:text-white/90">
-                                        "{text.about_text}"
-                                    </p>
+                                    <div className="relative z-10 max-w-4xl">
+                                        <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-sand-gold mb-6 flex items-center gap-3">
+                                            <div className="h-px w-8 bg-sand-gold/30" />
+                                            {text.about_title}
+                                        </h2>
+                                        <p className="text-xl lg:text-3xl font-serif leading-relaxed text-neutral-950 dark:text-pure-nature/90 italic">
+                                            "{text.about_text}"
+                                        </p>
+                                    </div>
                                 </div>
                             </section>
 
