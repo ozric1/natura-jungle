@@ -23,11 +23,11 @@ export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
                 >
                     <img
                         src="/assets/natura/Natura sky view MAIN PAGE BKGRND TWO.jpeg"
-                        className="w-full h-full object-cover opacity-60"
+                        className="w-full h-full object-cover opacity-80"
                         alt="Natura Jungle Entry"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-jungle-deep/80 via-transparent to-jungle-deep z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-jungle-deep/40 via-transparent to-jungle-deep/40 z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 z-10" />
                 </motion.div>
             </div>
 
@@ -51,16 +51,16 @@ export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
                                 Premium Nature Sanctuary
                             </span>
                         </motion.div>
-                        <h1 className="text-pure-nature font-serif text-7xl md:text-[10rem] lg:text-[12rem] leading-[0.85] font-bold tracking-tighter mb-8 max-w-4xl">
+                        <h1 className="text-white font-serif text-7xl md:text-[8rem] lg:text-[10rem] leading-[0.85] font-bold tracking-tighter mb-8 max-w-4xl drop-shadow-2xl">
                             Natura <br />
                             <span className="text-luxury-gold italic">Jungle.</span>
                         </h1>
                         <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-                            <p className="text-pure-nature/40 text-[11px] uppercase tracking-[0.5em] font-bold">
+                            <p className="text-white/40 text-[11px] uppercase tracking-[0.5em] font-bold">
                                 Mohammedia • Morocco
                             </p>
                             <div className="w-1.5 h-1.5 rounded-full bg-luxury-gold/30" />
-                            <p className="text-pure-nature/40 text-[11px] uppercase tracking-[0.5em] font-bold">
+                            <p className="text-white/40 text-[11px] uppercase tracking-[0.5em] font-bold">
                                 Est. 2024
                             </p>
                         </div>
@@ -82,7 +82,7 @@ export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
                                 className="group relative text-left outline-none"
                                 dir={lang.dir || 'ltr'}
                             >
-                                <div className="glass-jungle-deep h-56 md:h-64 p-10 flex flex-col justify-between transition-all duration-700 bg-jungle-deep/40 group-hover:bg-jungle-deep/60 border-luxury-gold/5 group-hover:border-luxury-gold/30 relative z-10 shadow-3xl overflow-hidden rounded-[3rem]">
+                                <div className="h-56 md:h-64 p-10 flex flex-col justify-between transition-all duration-700 bg-black/20 backdrop-blur-md group-hover:bg-black/40 border border-white/10 group-hover:border-luxury-gold/30 relative z-10 shadow-3xl overflow-hidden rounded-[3rem]">
                                     {/* Animated Background Gradient */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-luxury-gold/0 via-transparent to-luxury-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
@@ -94,10 +94,10 @@ export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
                                             <div className="w-1 h-1 rounded-full bg-luxury-gold/40 group-hover:w-8 transition-all duration-500" />
                                         </div>
                                         <div className={lang.dir === 'rtl' ? 'text-right' : 'text-left'}>
-                                            <p className="text-pure-nature text-3xl md:text-4xl font-serif mb-3 leading-tight tracking-tight">
+                                            <p className="text-white text-3xl md:text-4xl font-serif mb-3 leading-tight tracking-tight drop-shadow-lg">
                                                 {lang.label}
                                             </p>
-                                            <p className="text-pure-nature/30 text-[10px] tracking-[0.2em] font-bold uppercase group-hover:text-pure-nature/60 transition-colors">
+                                            <p className="text-white/40 text-[10px] tracking-[0.2em] font-bold uppercase group-hover:text-white/60 transition-colors">
                                                 {lang.sub}
                                             </p>
                                         </div>
@@ -110,7 +110,7 @@ export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
                                     </div>
                                 </div>
                                 <motion.div
-                                    className="absolute -inset-1 rounded-[3.2rem] bg-gradient-to-tr from-luxury-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-xl -z-10"
+                                    className="absolute -inset-1 rounded-[3.2rem] bg-gradient-to-tr from-luxury-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-xl -z-10"
                                     initial={false}
                                 />
                             </motion.button>

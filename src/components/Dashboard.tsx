@@ -1,7 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useAnimationFrame } from 'framer-motion';
 import {
     Menu,
-    ChevronLeft,
     ChevronRight,
     ArrowRight,
     Utensils,
@@ -19,7 +18,7 @@ import {
     Instagram,
     PartyPopper
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { VIPOrderTracker } from './VIPOrderTracker';
 
 import { SmartConcierge } from './SmartConcierge';
@@ -53,6 +52,12 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
     const [activeOrder, setActiveOrder] = useState<{ items: string[], total: string } | null>(null);
     const [hasBooked, setHasBooked] = useState(false);
 
+    // Carousel State & Logic
+    const [isDragging, setIsDragging] = useState(false);
+    const x = useMotionValue(0);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [baseWidth, setBaseWidth] = useState(0);
+
     const translations = {
         en: {
             brand: "Natura Jungle",
@@ -60,10 +65,11 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             explore: "Experience Zones",
             map_title: "The Wild Circuit",
             map_status: "Live Tracking",
-            kitchen: "The Kitchen",
+            kitchen: "In-Place Order",
             kitchen_status: "Kitchen Open",
             kitchen_wait: "Est. Prep: 25 mins",
-            order_btn: "Order to your Lounger",
+            kitchen_desc: "Relax in your tent or by the pool. Place your order, confirm it, and we'll notify you when it's ready for pickup.",
+            order_btn: "Start Your Order",
             about_title: "Breathe in Nature | Natura Jungle Park",
             about_text: "Escape the city buzz and rediscover your wild side at Natura Jungle Park, the ultimate eco-friendly sanctuary just a stone's throw from Casablanca and Rabat. Whether you're a family seeking magical memories for your kids, a company looking to inspire your team with immersive events, or a school planning an educational nature adventure, our park is your perfect canvas. Spend a revitalizing day by the pool, enjoy gourmet ranch-to-table dining, and stay to experience the enchanting mystery of a Jungle night in our luxury bungalows. Your escape to serene nature starts here.",
             bundles: [
@@ -95,10 +101,11 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             explore: "Exploration Sauvage",
             map_title: "Le Circuit Sauvage",
             map_status: "Suivi en Direct",
-            kitchen: "La Cuisine",
+            kitchen: "Commande sur Place",
             kitchen_status: "Cuisine Ouverte",
             kitchen_wait: "Prép. estimée: 25 min",
-            order_btn: "Commander au Transat",
+            kitchen_desc: "Détendez-vous dans votre tente ou au bord de la piscine. Passez commande et nous vous préviendrons dès qu'elle est prête.",
+            order_btn: "Lancer ma Commande",
             about_title: "Respirez la Nature | Natura Jungle Park",
             about_text: "Évadez-vous du tumulte urbain et reconnectez-vous à la nature sauvage au Natura Jungle Park, votre sanctuaire éco-responsable à deux pas de Casablanca et Rabat. Que vous soyez une famille en quête de moments magiques pour vos enfants, une entreprise souhaitant inspirer ses équipes avec des événements immersifs, ou une école organisant une aventure éducative en plein air, notre parc est votre destination idéale. Passez une journée ressourçante au bord de la piscine, savourez une cuisine gastronomique locale et prolongez l'expérience pour vivre le mystère d'une nuit en Jungle dans nos bungalows de luxe. Votre parenthèse de sérénité vous attend.",
             bundles: [
@@ -130,10 +137,11 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             explore: "مناطق الاستكشاف",
             map_title: "المسار البري",
             map_status: "تتبع مباشر",
-            kitchen: "المطبخ",
+            kitchen: "طلب من مكانك",
             kitchen_status: "المطبخ مفتوح",
             kitchen_wait: "وقت التحضير: ٢٥ دقيقة",
-            order_btn: "اطلب الآن إلى مكانك",
+            kitchen_desc: "استرخِ في خيمتك أو بجانب المسبح. اطلب، أكد طلبك، وسنخطرك فور جاهزيته لتستلمه وتستمتع به.",
+            order_btn: "ابدأ الطلب الآن",
             about_title: "استنشق عبير الطبيعة | منتزه نطورا جانغل",
             about_text: "اهرب من صخب المدينة واستعد تواصلك مع الطبيعة في منتزه 'نطورا جانغل'، ملاذك البيئي الساحر القريب من الدار البيضاء والرباط. سواء كنت تبحث عن لحظات عائلية لا تُنسى لأطفالك، أو كنت شركة تسعى لإلهام فريق عملك بفعاليات متميزة، أو مدرسة تخطط لرحلة تعليمية في قلب الطبيعة، فإن منتزهنا هو وجهتك المثالية. استمتع بيوم من الاسترخاء بجانب المسبح، وتذوق أشهى الأطباق الفاخرة، ولا تفوت فرصة تجربة سحر ليالي الغابة في بناغلنا الفاخرة. رحلتك نحو السكينة والجمال تبدأ من هنا.",
             bundles: [
@@ -162,6 +170,40 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
     };
 
     const text = translations[currentLanguage];
+
+    // Animation loop for slow rotation
+    useAnimationFrame((_, delta) => {
+        if (!isDragging && baseWidth > 0) {
+            const moveBy = (delta / 1000) * 40; // 40px per second
+            const currentX = x.get();
+            let newX = isRTL ? currentX + moveBy : currentX - moveBy;
+
+            // Wrapping logic
+            if (isRTL) {
+                if (newX > 0) newX -= baseWidth;
+            } else {
+                if (newX < -baseWidth) newX += baseWidth;
+            }
+            x.set(newX);
+        }
+    });
+
+    useEffect(() => {
+        const calculateWidth = () => {
+            if (containerRef.current) {
+                // Since we triple the cards, baseWidth is 1/3 of total scroll width
+                const fullWidth = containerRef.current.scrollWidth;
+                setBaseWidth(fullWidth / 3);
+            }
+        };
+
+        // Initial calculation
+        setTimeout(calculateWidth, 500);
+        window.addEventListener('resize', calculateWidth);
+        return () => window.removeEventListener('resize', calculateWidth);
+    }, [currentLanguage]);
+
+    const displayBundles = [...text.bundles, ...text.bundles, ...text.bundles];
 
     return (
         <div className={`min-h-screen font-sans transition-colors duration-1000 ${isNightMode ? 'dark bg-[#050805] text-white' : 'bg-egg-shell text-neutral-900'}`} dir={isRTL ? 'rtl' : 'ltr'}>
@@ -257,73 +299,71 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                 <h2 className="text-3xl font-serif text-luxury-gold tracking-tight">{text.explore}</h2>
                                 <div className="h-1 w-12 bg-luxury-gold mt-2 rounded-full" />
                             </div>
-                            <div className="flex gap-2">
-                                <button
-                                    onClick={() => {
-                                        const container = document.getElementById('experience-zones-container');
-                                        if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
-                                    }}
-                                    className="w-10 h-10 rounded-full border border-luxury-gold/20 flex items-center justify-center text-luxury-gold hover:bg-luxury-gold/10 transition-colors"
-                                >
-                                    <ChevronLeft className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        const container = document.getElementById('experience-zones-container');
-                                        if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
-                                    }}
-                                    className="w-10 h-10 rounded-full border border-luxury-gold/20 flex items-center justify-center text-luxury-gold hover:bg-luxury-gold/10 transition-colors"
-                                >
-                                    <ChevronRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
-                                </button>
-                            </div>
                         </div>
 
-                        <div
-                            id="experience-zones-container"
-                            className="flex overflow-x-auto lg:grid lg:grid-cols-3 xl:grid-cols-6 gap-6 px-6 lg:px-12 pb-12 no-scrollbar touch-pan-x snap-x snap-mandatory"
-                        >
-                            {text.bundles.map((bundle) => {
-                                const Icon = bundle.icon;
-                                return (
-                                    <motion.div
-                                        key={bundle.id}
-                                        whileHover={{ y: -12, scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        animate={{
-                                            y: [0, -5, 0],
-                                            transition: {
-                                                duration: 4,
-                                                repeat: Infinity,
-                                                delay: bundle.id * 0.4,
-                                                ease: "easeInOut"
-                                            }
-                                        }}
-                                        onClick={bundle.action}
-                                        className="flex-none w-[85vw] sm:w-[350px] lg:w-auto h-[320px] lg:h-[450px] rounded-[2rem] lg:rounded-[3rem] relative overflow-hidden group shadow-2xl cursor-pointer border border-white/5 snap-center scroll-ml-6"
-                                    >
-                                        {bundle.image && (
-                                            <div className="absolute inset-0">
-                                                <img src={bundle.image} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" alt={bundle.title} />
-                                            </div>
-                                        )}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep via-jungle-deep/40 to-transparent opacity-80" />
+                        <div className="relative overflow-hidden mb-12">
+                            <motion.div
+                                ref={containerRef}
+                                style={{ x }}
+                                drag="x"
+                                dragConstraints={{ left: -baseWidth * 2, right: 0 }}
+                                onDragStart={() => setIsDragging(true)}
+                                onDragEnd={() => {
+                                    setIsDragging(false);
+                                    // Ensure wrapping logic is applied after drag
+                                    const currentX = x.get();
+                                    if (isRTL) {
+                                        if (currentX > 0) x.set(currentX - baseWidth);
+                                        if (currentX < -baseWidth) x.set(currentX + baseWidth);
+                                    } else {
+                                        if (currentX < -baseWidth * 2) x.set(currentX + baseWidth);
+                                        if (currentX > -baseWidth) x.set(currentX - baseWidth);
+                                    }
+                                }}
+                                className="flex gap-6 px-6 cursor-grab active:cursor-grabbing"
+                            >
+                                {displayBundles.map((bundle, idx) => {
+                                    const Icon = bundle.icon;
+                                    return (
+                                        <motion.div
+                                            key={`${bundle.id}-${idx}`}
+                                            whileHover={{ y: -12, scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            animate={{
+                                                y: [0, -5, 0],
+                                                transition: {
+                                                    duration: 4,
+                                                    repeat: Infinity,
+                                                    delay: (idx % 6) * 0.4,
+                                                    ease: "easeInOut"
+                                                }
+                                            }}
+                                            onClick={bundle.action}
+                                            className="flex-none w-[280px] sm:w-[320px] lg:w-[350px] xl:w-[400px] 2xl:w-[450px] h-[350px] lg:h-[480px] rounded-[2rem] lg:rounded-[3rem] relative overflow-hidden group shadow-2xl border border-white/5"
+                                        >
+                                            {bundle.image && (
+                                                <div className="absolute inset-0">
+                                                    <img src={bundle.image} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" alt={bundle.title} />
+                                                </div>
+                                            )}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep via-jungle-deep/40 to-transparent opacity-80" />
 
-                                        <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                                            <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 border border-white/20 group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-500">
-                                                <Icon className="w-7 h-7" />
-                                            </div>
-                                            <h3 className="text-2xl font-serif text-pure-nature mb-2 leading-tight group-hover:text-luxury-gold transition-colors">{bundle.title}</h3>
-                                            <p className="text-pure-nature/60 text-[10px] font-bold uppercase tracking-[0.2em]">{bundle.sub}</p>
+                                            <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                                                <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 border border-white/20 group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-500">
+                                                    <Icon className="w-7 h-7" />
+                                                </div>
+                                                <h3 className="text-2xl font-serif text-pure-nature mb-2 leading-tight group-hover:text-luxury-gold transition-colors">{bundle.title}</h3>
+                                                <p className="text-pure-nature/60 text-[10px] font-bold uppercase tracking-[0.2em]">{bundle.sub}</p>
 
-                                            <div className="mt-8 flex items-center gap-2 text-luxury-gold opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                                                <span className="text-[10px] font-bold uppercase tracking-widest">{isRTL ? 'استكشف' : 'Explore'}</span>
-                                                <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+                                                <div className="mt-8 flex items-center gap-2 text-luxury-gold opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                                                    <span className="text-[10px] font-bold uppercase tracking-widest">{isRTL ? 'استكشف' : 'Explore'}</span>
+                                                    <ArrowRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} />
+                                                </div>
                                             </div>
-                                        </div>
-                                    </motion.div>
-                                );
-                            })}
+                                        </motion.div>
+                                    );
+                                })}
+                            </motion.div>
                         </div>
 
                         <div className="px-6 lg:px-12 space-y-10">
@@ -418,34 +458,63 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                 </div>
                             </section>
 
-                            {/* Jungle Kitchen Section */}
-                            <section className="space-y-4">
+                            {/* In-Place Order Section */}
+                            <section className="space-y-6">
                                 <div className="flex justify-between items-end">
-                                    <h2 className="text-2xl font-serif text-sand-gold transition-colors">{text.kitchen}</h2>
-                                    <div className="flex items-center gap-2 text-jungle-terracotta bg-jungle-terracotta/5 px-3 py-1 rounded-full">
-                                        <Clock className="w-3 h-3" />
+                                    <h2 className="text-3xl font-serif text-luxury-gold tracking-tight">{text.kitchen}</h2>
+                                    <div className="flex items-center gap-2 text-luxury-gold bg-luxury-gold/10 px-4 py-2 rounded-full border border-luxury-gold/20">
+                                        <Clock className="w-4 h-4" />
                                         <span className="text-[10px] font-bold uppercase tracking-widest">{text.kitchen_wait}</span>
                                     </div>
                                 </div>
 
-                                <div className="space-y-6">
-                                    <motion.button
-                                        onClick={() => setCurrentView('menu')}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="w-full bg-gradient-to-r from-emerald-900 to-black text-white rounded-[3rem] p-8 flex items-center justify-between group overflow-hidden relative shadow-xl gold-shadow"
-                                    >
-                                        <div className="flex items-center gap-4 relative z-10">
-                                            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
-                                                <Utensils className="w-8 h-8 text-sand-gold" />
-                                            </div>
-                                            <div className="text-left">
-                                                <p className="text-[10px] uppercase tracking-widest opacity-70 font-bold">{(text as any).kitchen_order}</p>
-                                                <span className="text-xl font-serif">{text.order_btn}</span>
+                                <motion.div
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={() => setCurrentView('menu')}
+                                    className="relative h-72 lg:h-80 rounded-[3rem] overflow-hidden group cursor-pointer shadow-2xl border border-white/10"
+                                >
+                                    <img
+                                        src="/assets/natura/Jungle restaurant.jpeg"
+                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-110"
+                                        alt="In-Place Order"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep/90 via-jungle-deep/40 to-transparent" />
+
+                                    <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-end">
+                                        <div className="max-w-md space-y-4">
+                                            <p className="text-white/80 text-sm lg:text-base font-serif leading-relaxed italic">
+                                                {(text as any).kitchen_desc}
+                                            </p>
+
+                                            <div className="flex items-center gap-6 pt-2">
+                                                <button className="bg-luxury-gold text-jungle-deep px-8 py-4 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl gold-shadow flex items-center gap-3 group/btn">
+                                                    <Utensils className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" />
+                                                    {text.order_btn}
+                                                    <ChevronRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} />
+                                                </button>
+
+                                                <div className="hidden sm:flex items-center gap-4 text-white/40">
+                                                    <div className="flex flex-col items-center">
+                                                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold">1</div>
+                                                    </div>
+                                                    <div className="w-8 h-px bg-white/10" />
+                                                    <div className="flex flex-col items-center">
+                                                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold">2</div>
+                                                    </div>
+                                                    <div className="w-8 h-px bg-white/10" />
+                                                    <div className="flex flex-col items-center">
+                                                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold">3</div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
-                                    </motion.button>
-                                </div>
+                                    </div>
+
+                                    {/* Glassmorphic Badge */}
+                                    <div className="absolute top-8 right-8 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                                        <span className="text-[10px] font-bold text-white uppercase tracking-widest">Available anywhere</span>
+                                    </div>
+                                </motion.div>
                             </section>
 
                             {/* Smart Concierge Section */}
@@ -511,7 +580,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     <motion.button
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setCurrentView('exhibition')}
-                        className={`w-16 h-16 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow ${currentView === 'exhibition' ? 'scale-110 ring-4 ring-sand-gold/20' : ''}`}
+                        className={`w-16 h-16 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow ${currentView === 'exhibition' ? 'scale-110 ring-4 ring-sand-gold/20' : ""}`}
                     >
                         <Palmtree className="w-8 h-8" />
                     </motion.button>
