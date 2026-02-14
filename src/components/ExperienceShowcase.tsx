@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronRight, ChevronLeft, ArrowRight } from 'lucide-react';
+import { X, ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 interface ExperienceShowcaseProps {
@@ -251,16 +251,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                 )}
 
                 {/* Navigation and Dots Container - pushed to bottom corners or sides */}
-                <div className="absolute inset-x-0 bottom-0 p-8 flex justify-between items-end pointer-events-none">
-                    <div className="pointer-events-auto">
-                        <button
-                            onClick={() => setPage(page === 0 ? currentContent.slides.length - 1 : page - 1)}
-                            className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors bg-black/20 backdrop-blur-sm"
-                        >
-                            <ChevronLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
-                        </button>
-                    </div>
-
+                <div className="absolute inset-x-0 bottom-0 p-8 flex justify-center items-end pointer-events-none">
                     {/* Pagination Dots */}
                     <div className="flex gap-3 pointer-events-auto pb-6">
                         {currentContent.slides.map((_, i) => (
@@ -270,15 +261,6 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                                 className={`h-1.5 transition-all duration-300 rounded-full shadow-lg ${i === page ? 'w-12 bg-luxury-gold' : 'w-4 bg-white/40 hover:bg-white/60'}`}
                             />
                         ))}
-                    </div>
-
-                    <div className="pointer-events-auto">
-                        <button
-                            onClick={() => setPage((page + 1) % currentContent.slides.length)}
-                            className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors bg-black/20 backdrop-blur-sm"
-                        >
-                            <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
-                        </button>
                     </div>
                 </div>
             </div>

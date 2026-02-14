@@ -40,6 +40,7 @@ const tentDayImg = '/assets/natura/berber tent at day.jpeg';
 const lamaImg = '/assets/natura/animal circuit Lama.jpeg';
 const poolImg = '/assets/natura/pool.jpeg';
 const skyViewImg = '/assets/natura/Natura sky view MAIN PAGE BKGRND TWO.jpeg';
+const packDayImg = '/assets/natura/WhatsApp Image 2026-02-13 at 13.42.27.jpeg';
 
 export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
@@ -107,6 +108,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 teambuilding: 'Organize an unforgettable team experience.',
                 school: 'Educational and fun adventures for students.'
             },
+            packDay: {
+                title: "Pack Day Offers",
+                subtitle: "Experience the full magic of Natura.",
+                button: "View Offers",
+                tag: "Limited Time"
+            },
             menu: {
                 mission: "Our Mission",
                 story: "Our Story",
@@ -150,6 +157,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 teambuilding: 'Organisez une expérience d\'équipe inoubliable.',
                 school: 'Aventures éducatives et ludiques pour les élèves.'
             },
+            packDay: {
+                title: "Offres Pack Journée",
+                subtitle: "Vivez toute la magie de Natura.",
+                button: "Voir les Offres",
+                tag: "Temps Limité"
+            },
             menu: {
                 mission: "Notre Mission",
                 story: "Notre Histoire",
@@ -192,6 +205,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 catering: 'خطط لمناسبتك معنا',
                 teambuilding: 'نظم تجربة فريق لا تُنسى',
                 school: 'مغامرات تعليمية وممتعة للطلاب'
+            },
+            packDay: {
+                title: "عروض باقة اليوم",
+                subtitle: "عش سحر ناتورا الكامل.",
+                button: "عرض العروض",
+                tag: "وقت محدود"
             },
             menu: {
                 mission: "مهمتنا",
@@ -633,61 +652,49 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                 </div>
                             </section>
 
-                            {/* In-Place Order Section */}
+                            {/* Pack Day Section */}
                             <section className="space-y-6">
-                                <div className="flex justify-between items-end">
-                                    <h2 className="text-3xl font-serif text-luxury-gold tracking-tight">{text.kitchen}</h2>
-                                    <div className="flex items-center gap-2 text-luxury-gold bg-luxury-gold/10 px-4 py-2 rounded-full border border-luxury-gold/20">
-                                        <Clock className="w-4 h-4" />
-                                        <span className="text-[10px] font-bold uppercase tracking-widest">{text.kitchen_wait}</span>
-                                    </div>
-                                </div>
-
                                 <motion.div
                                     whileTap={{ scale: 0.98 }}
-                                    onClick={() => setCurrentView('menu')}
+                                    onClick={() => console.log("Pack Day Offers clicked")}
                                     className="relative h-72 lg:h-80 rounded-[3rem] overflow-hidden group cursor-pointer shadow-2xl border border-white/10"
                                 >
                                     <img
-                                        src="/assets/natura/Jungle restaurant.jpeg"
+                                        src={packDayImg}
                                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-110"
-                                        alt="In-Place Order"
+                                        alt="Pack Day"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep/90 via-jungle-deep/40 to-transparent" />
 
                                     <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-end">
                                         <div className="max-w-md space-y-4">
-                                            <p className="text-white/80 text-sm lg:text-base font-serif leading-relaxed italic">
-                                                {(text as any).kitchen_desc}
-                                            </p>
+                                            <div>
+                                                <h2 className="text-3xl lg:text-4xl font-serif text-white mb-2 leading-tight">
+                                                    {(translations[currentLanguage] as any).packDay.title}
+                                                </h2>
+                                                <p className="text-white/80 text-sm lg:text-base font-serif leading-relaxed italic">
+                                                    {(translations[currentLanguage] as any).packDay.subtitle}
+                                                </p>
+                                            </div>
 
-                                            <div className="flex items-center gap-6 pt-2">
-                                                <button className="bg-luxury-gold text-jungle-deep px-8 py-4 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl gold-shadow flex items-center gap-3 group/btn">
-                                                    <Utensils className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" />
-                                                    {text.order_btn}
+                                            <div className="pt-2">
+                                                <button className="bg-luxury-gold text-jungle-deep px-8 py-4 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl gold-shadow flex items-center gap-3 group/btn hover:scale-105 transition-all">
+                                                    <Sparkles className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" />
+                                                    {(translations[currentLanguage] as any).packDay.button}
                                                     <ChevronRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} />
                                                 </button>
-
-                                                <div className="hidden sm:flex items-center gap-4 text-white/40">
-                                                    <div className="flex flex-col items-center">
-                                                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold">1</div>
-                                                    </div>
-                                                    <div className="w-8 h-px bg-white/10" />
-                                                    <div className="flex flex-col items-center">
-                                                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold">2</div>
-                                                    </div>
-                                                    <div className="w-8 h-px bg-white/10" />
-                                                    <div className="flex flex-col items-center">
-                                                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold">3</div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* Glassmorphic Badge */}
-                                    <div className="absolute top-8 right-8 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                                        <span className="text-[10px] font-bold text-white uppercase tracking-widest">Available anywhere</span>
+                                    <div className="absolute top-8 right-8 px-4 py-2 bg-luxury-gold/20 backdrop-blur-md rounded-full border border-luxury-gold/30">
+                                        <div className="flex items-center gap-2">
+                                            <Clock className="w-3 h-3 text-luxury-gold" />
+                                            <span className="text-[10px] font-bold text-luxury-gold uppercase tracking-widest">
+                                                {(translations[currentLanguage] as any).packDay.tag}
+                                            </span>
+                                        </div>
                                     </div>
                                 </motion.div>
                             </section>
