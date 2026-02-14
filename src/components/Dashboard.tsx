@@ -48,7 +48,7 @@ export interface DashboardProps {
 
 export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
     const isRTL = currentLanguage === 'ar';
-    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition' | 'fun' | 'hours' | 'catering' | 'experience'>('base');
+    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition' | 'fun' | 'hours' | 'catering' | 'teambuilding' | 'school' | 'experience'>('base');
     const [activeExperience, setActiveExperience] = useState<string | null>(null);
     const [activeOrder, setActiveOrder] = useState<{ items: string[], total: string } | null>(null);
     const [hasBooked, setHasBooked] = useState(false);
@@ -77,7 +77,17 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             catering_title: "Catering & Events",
             event_title: "Special Events",
             event_book: "Book Your Special Event",
-            kitchen_order: "Open the Menu"
+            kitchen_order: "Open the Menu",
+            title: {
+                catering: 'Catering & Party',
+                teambuilding: 'Team Building & Events',
+                school: 'School Trips'
+            },
+            subtitle: {
+                catering: 'Plan your special event with us.',
+                teambuilding: 'Organize an unforgettable team experience.',
+                school: 'Educational and fun adventures for students.'
+            }
         },
         fr: {
             brand: "Natura Jungle",
@@ -102,7 +112,17 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             catering_title: "Traiteur & Fêtes",
             event_title: "Événements Spéciaux",
             event_book: "Réservez Votre Événement",
-            kitchen_order: "Ouvrir le Menu"
+            kitchen_order: "Ouvrir le Menu",
+            title: {
+                catering: 'Traiteur & Fêtes',
+                teambuilding: 'Team Building & Événements',
+                school: 'Sorties Scolaires'
+            },
+            subtitle: {
+                catering: 'Planifiez votre événement spécial avec nous.',
+                teambuilding: 'Organisez une expérience d\'équipe inoubliable.',
+                school: 'Aventures éducatives et ludiques pour les élèves.'
+            }
         },
         ar: {
             brand: "نطورا جانغل",
@@ -127,7 +147,17 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             catering_title: "خدمة الحفلات المتميزة",
             event_title: "مناسبات خاصة",
             event_book: "احجز مناسبتك الخاصة",
-            kitchen_order: "اطلب الآن"
+            kitchen_order: "اطلب الآن",
+            title: {
+                catering: 'خدمة الحفلات والتموين',
+                teambuilding: 'بناء الفريق والفعاليات',
+                school: 'الطلعات المدرسية'
+            },
+            subtitle: {
+                catering: 'خطط لمناسبتك معنا',
+                teambuilding: 'نظم تجربة فريق لا تُنسى',
+                school: 'مغامرات تعليمية وممتعة للطلاب'
+            }
         }
     };
 
@@ -304,7 +334,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                         <Palmtree className="w-32 h-32" />
                                     </div>
                                     <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-sand-gold mb-4">{text.about_title}</h2>
-                                    <p className="text-lg font-serif leading-relaxed italic text-jungle-green dark:text-white/90">
+                                    <p className="text-lg font-serif leading-relaxed italic text-[#2d4a36] dark:text-white/90">
                                         "{text.about_text}"
                                     </p>
                                 </div>
@@ -317,34 +347,70 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                         {(text as any).catering_title}
                                     </h2>
                                 </div>
-                                <motion.div
-                                    whileTap={{ scale: 0.98 }}
-                                    onClick={() => setCurrentView('catering')}
-                                    className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
-                                >
-                                    <img
-                                        src={cateringImg}
-                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                        alt="Catering"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
-
-                                    <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
-                                        <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
-                                            <PartyPopper className="w-6 h-6 text-sand-gold" />
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <motion.div
+                                        whileTap={{ scale: 0.98 }}
+                                        onClick={() => setCurrentView('catering')}
+                                        className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
+                                    >
+                                        <img
+                                            src={cateringImg}
+                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            alt="Catering"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+                                        <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
+                                            <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
+                                                <Utensils className="w-6 h-6 text-sand-gold" />
+                                            </div>
+                                            <h3 className="text-2xl font-serif text-white mb-1">
+                                                {translations[currentLanguage].title.catering}
+                                            </h3>
                                         </div>
-                                        <h3 className="text-2xl font-serif text-white mb-1">
-                                            {(text as any).event_title}
-                                        </h3>
-                                        <p className="text-white/60 text-xs font-bold uppercase tracking-widest">
-                                            {(text as any).event_book}
-                                        </p>
-                                    </div>
+                                    </motion.div>
 
-                                    <div className="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500">
-                                        <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
-                                    </div>
-                                </motion.div>
+                                    <motion.div
+                                        whileTap={{ scale: 0.98 }}
+                                        onClick={() => setCurrentView('teambuilding')}
+                                        className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
+                                    >
+                                        <img
+                                            src={tentDayImg}
+                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            alt="Team Building"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+                                        <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
+                                            <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
+                                                <PartyPopper className="w-6 h-6 text-sand-gold" />
+                                            </div>
+                                            <h3 className="text-2xl font-serif text-white mb-1">
+                                                {translations[currentLanguage].title.teambuilding}
+                                            </h3>
+                                        </div>
+                                    </motion.div>
+
+                                    <motion.div
+                                        whileTap={{ scale: 0.98 }}
+                                        onClick={() => setCurrentView('school')}
+                                        className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
+                                    >
+                                        <img
+                                            src={lamaImg}
+                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            alt="School Trips"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+                                        <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
+                                            <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
+                                                <Palmtree className="w-6 h-6 text-sand-gold" />
+                                            </div>
+                                            <h3 className="text-2xl font-serif text-white mb-1">
+                                                {translations[currentLanguage].title.school}
+                                            </h3>
+                                        </div>
+                                    </motion.div>
+                                </div>
                             </section>
 
                             {/* Jungle Kitchen Section */}
@@ -358,36 +424,22 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                 </div>
 
                                 <div className="space-y-6">
-                                    {currentView === 'tracker' && activeOrder ? (
-                                        <VIPOrderTracker
-                                            status="preparing"
-                                            orderId={`NJ-${Math.floor(1000 + Math.random() * 9000)}`}
-                                            items={activeOrder.items}
-                                            total={activeOrder.total}
-                                            isRTL={isRTL}
-                                            onReset={() => {
-                                                setCurrentView('base');
-                                                setActiveOrder(null);
-                                            }}
-                                        />
-                                    ) : (
-                                        <motion.button
-                                            onClick={() => setCurrentView('menu')}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="w-full bg-gradient-to-r from-emerald-900 to-black text-white rounded-[3rem] p-8 flex items-center justify-between group overflow-hidden relative shadow-xl gold-shadow"
-                                        >
-                                            <div className="flex items-center gap-4 relative z-10">
-                                                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
-                                                    <Utensils className="w-8 h-8 text-sand-gold" />
-                                                </div>
-                                                <div className="text-left">
-                                                    <p className="text-[10px] uppercase tracking-widest opacity-70 font-bold">{(text as any).kitchen_order}</p>
-                                                    <span className="text-xl font-serif">{text.order_btn}</span>
-                                                </div>
+                                    <motion.button
+                                        onClick={() => setCurrentView('menu')}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="w-full bg-gradient-to-r from-emerald-900 to-black text-white rounded-[3rem] p-8 flex items-center justify-between group overflow-hidden relative shadow-xl gold-shadow"
+                                    >
+                                        <div className="flex items-center gap-4 relative z-10">
+                                            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
+                                                <Utensils className="w-8 h-8 text-sand-gold" />
                                             </div>
-                                            <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
-                                        </motion.button>
-                                    )}
+                                            <div className="text-left">
+                                                <p className="text-[10px] uppercase tracking-widest opacity-70 font-bold">{(text as any).kitchen_order}</p>
+                                                <span className="text-xl font-serif">{text.order_btn}</span>
+                                            </div>
+                                        </div>
+                                        <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
+                                    </motion.button>
                                 </div>
                             </section>
 
@@ -573,7 +625,13 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                     </motion.div>
                 )}
                 {currentView === 'catering' && (
-                    <CateringPartyservice language={currentLanguage} onClose={() => setCurrentView('base')} />
+                    <CateringPartyservice eventType="catering" language={currentLanguage} onClose={() => setCurrentView('base')} />
+                )}
+                {currentView === 'teambuilding' && (
+                    <CateringPartyservice eventType="teambuilding" language={currentLanguage} onClose={() => setCurrentView('base')} />
+                )}
+                {currentView === 'school' && (
+                    <CateringPartyservice eventType="school" language={currentLanguage} onClose={() => setCurrentView('base')} />
                 )}
                 {currentView === 'experience' && activeExperience && (
                     <ExperienceShowcase

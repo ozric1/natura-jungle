@@ -5,26 +5,52 @@ import { useState } from 'react';
 interface CateringPartyserviceProps {
     onClose: () => void;
     language: 'en' | 'fr' | 'ar';
+    eventType: 'catering' | 'teambuilding' | 'school';
 }
 
-export const CateringPartyservice = ({ onClose, language }: CateringPartyserviceProps) => {
+export const CateringPartyservice = ({ onClose, language, eventType }: CateringPartyserviceProps) => {
     const isRTL = language === 'ar';
     const [formData, setFormData] = useState({
         size: '',
         time: '',
-        food: ''
+        food: '',
+        name: ''
     });
 
     const text = {
         title: {
-            en: 'Catering & Party',
-            fr: 'Traiteur & Fêtes',
-            ar: 'خدمة الحفلات والتموين'
+            catering: {
+                en: 'Catering & Party',
+                fr: 'Traiteur & Fêtes',
+                ar: 'خدمة الحفلات والتموين'
+            },
+            teambuilding: {
+                en: 'Team Building & Events',
+                fr: 'Team Building & Événements',
+                ar: 'بناء الفريق والفعاليات'
+            },
+            school: {
+                en: 'School Trips',
+                fr: 'Sorties Scolaires',
+                ar: 'الطلعات المدرسية'
+            }
         },
         subtitle: {
-            en: 'Plan your special event with us.',
-            fr: 'Planifiez votre événement spécial avec nous.',
-            ar: 'خطط لمناسبتك معنا'
+            catering: {
+                en: 'Plan your special event with us.',
+                fr: 'Planifiez votre événement spécial avec nous.',
+                ar: 'خطط لمناسبتك معنا'
+            },
+            teambuilding: {
+                en: 'Organize an unforgettable team experience.',
+                fr: 'Organisez une expérience d\'équipe inoubliable.',
+                ar: 'نظم تجربة فريق لا تُنسى'
+            },
+            school: {
+                en: 'Educational and fun adventures for students.',
+                fr: 'Aventures éducatives et ludiques pour les élèves.',
+                ar: 'مغامرات تعليمية وممتعة للطلاب'
+            }
         },
         groupSize: {
             en: 'Group Size',
@@ -59,10 +85,13 @@ export const CateringPartyservice = ({ onClose, language }: CateringPartyservice
     };
 
     const handleBook = () => {
-        const message = `New Catering Request:%0A
-- Group Size: ${formData.size}%0A
-- Arrival Time: ${formData.time}%0A
-- Food Orders: ${formData.food}`;
+        const typeHeader = text.title[eventType][language];
+        const message = `*${typeHeader}*%0A%0A` +
+            `*Client:* ${formData.name || 'N/A'}%0A` +
+            `*Group Size:* ${formData.size} guests%0A` +
+            `*Arrival Time:* ${formData.time}%0A` +
+            `*Food Orders:*%0A${formData.food || 'No specific food order yet.'}%0A%0A` +
+            `_Sent via Natura Jungle App_`;
 
         window.open(`https://wa.me/212605500058?text=${message}`, '_blank');
     };
@@ -94,15 +123,30 @@ export const CateringPartyservice = ({ onClose, language }: CateringPartyservice
                 {/* Header */}
                 <div className="mb-8">
                     <h2 className="text-3xl font-serif text-sand-gold mb-2">
-                        {text.title[language]}
+                        {text.title[eventType][language]}
                     </h2>
                     <p className="text-neutral-500 dark:text-neutral-400 text-sm">
-                        {text.subtitle[language]}
+                        {text.subtitle[eventType][language]}
                     </p>
                 </div>
 
                 {/* Form */}
                 <div className="space-y-6">
+                    {/* Name */}
+                    <div className="space-y-2">
+                        <label className="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-white flex items-center gap-2">
+                            <MessageSquare className="w-4 h-4 text-sand-gold" />
+                            {language === 'ar' ? 'الاسم الكامل' : 'Full Name'}
+                        </label>
+                        <input
+                            type="text"
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                            placeholder={language === 'ar' ? 'أدخل اسمك' : 'Enter your name'}
+                            className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl p-4 text-neutral-900 dark:text-white focus:ring-2 focus:ring-sand-gold outline-none transition-all"
+                        />
+                    </div>
+
                     {/* Group Size */}
                     <div className="space-y-2">
                         <label className="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-white flex items-center gap-2">
