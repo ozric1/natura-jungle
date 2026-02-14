@@ -334,7 +334,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                         <Palmtree className="w-32 h-32" />
                                     </div>
                                     <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-sand-gold mb-4">{text.about_title}</h2>
-                                    <p className="text-lg font-serif leading-relaxed italic text-[#2d4a36] dark:text-white/90">
+                                    <p className="text-lg font-serif leading-relaxed italic text-black dark:text-white/90">
                                         "{text.about_text}"
                                     </p>
                                 </div>
