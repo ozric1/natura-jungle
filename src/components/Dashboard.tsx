@@ -16,7 +16,8 @@ import {
     MapPin,
     Phone,
     Instagram,
-    PartyPopper
+    PartyPopper,
+    X
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { VIPOrderTracker } from './VIPOrderTracker';
@@ -57,6 +58,16 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
     const x = useMotionValue(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const [baseWidth, setBaseWidth] = useState(0);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Body Scroll Lock
+    useEffect(() => {
+        if (currentView !== 'base' || isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [currentView, isMenuOpen]);
 
     const translations = {
         en: {
@@ -93,6 +104,13 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                 catering: 'Plan your special event with us.',
                 teambuilding: 'Organize an unforgettable team experience.',
                 school: 'Educational and fun adventures for students.'
+            },
+            menu: {
+                mission: "Our Mission",
+                story: "Our Story",
+                contact: "Contact Us",
+                mission_text: "Natura Jungle Park is your eco-friendly escape near Casablanca and Rabat. Our mission is to provide every visitor a peaceful environment to enjoy quality time. We believe in protecting nature while creating magical memories for everyone.",
+                story_text: "We started Natura Jungle because we love family time and nature. With our expert background in relaxation, we dreamed of a place where everyone can feel at home in the wild. Today, that dream is a reality. We offer professional service with a warm, family touch in the heart of the forest."
             }
         },
         fr: {
@@ -129,6 +147,13 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                 catering: 'Planifiez votre événement spécial avec nous.',
                 teambuilding: 'Organisez une expérience d\'équipe inoubliable.',
                 school: 'Aventures éducatives et ludiques pour les élèves.'
+            },
+            menu: {
+                mission: "Notre Mission",
+                story: "Notre Histoire",
+                contact: "Contactez-nous",
+                mission_text: "Natura Jungle Park est votre évasion écologique près de Casablanca et Rabat. Notre mission est d'offrir à chaque visiteur un environnement paisible pour profiter de moments de qualité. Nous croyons en la protection de la nature tout en créant des souvenirs magiques pour tous.",
+                story_text: "Nous avons créé Natura Jungle car nous aimons les moments en famille et la nature. Forts de notre expertise en relaxation, nous avons rêvé d'un lieu où chacun se sent chez soi en pleine nature. Aujourd'hui, ce rêve est réalité. Nous offrons un service professionnel avec une touche familiale chaleureuse au cœur de la forêt."
             }
         },
         ar: {
@@ -165,6 +190,13 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                 catering: 'خطط لمناسبتك معنا',
                 teambuilding: 'نظم تجربة فريق لا تُنسى',
                 school: 'مغامرات تعليمية وممتعة للطلاب'
+            },
+            menu: {
+                mission: "مهمتنا",
+                story: "قصتنا",
+                contact: "اتصل بنا",
+                mission_text: "ناتورا جانغل بارك هو ملاذك الصديق للبيئة بالقرب من الدار البيضاء والرباط. مهمتنا هي توفير بيئة هادئة لكل زائر للاستمتاع بوقت نوعي. نحن نؤمن بحماية الطبيعة مع خلق ذكريات ساحرة للجميع.",
+                story_text: "لقد بدأنا ناتورا جانغل لأننا نحب الأوقات العائلية والطبيعة. بفضل خبرتنا الكبيرة في مجال الاسترخاء، حلمنا بمكان يشعر فيه الجميع وكأنهم في منزلهم وسط الطبيعة. اليوم، أصبح هذا الحلم حقيقة. نحن نقدم خدمة احترافية بلمسة عائلية دافئة في قلب الغابة."
             }
         }
     };
@@ -208,6 +240,83 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
     return (
         <div className={`min-h-screen font-sans transition-colors duration-1000 ${isNightMode ? 'dark bg-[#050805] text-white' : 'bg-egg-shell text-neutral-900'}`} dir={isRTL ? 'rtl' : 'ltr'}>
 
+            {/* Menu Drawer */}
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <motion.div
+                        initial={{ x: isRTL ? '100%' : '-100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: isRTL ? '100%' : '-100%' }}
+                        transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                        className="fixed inset-0 z-[100] bg-jungle-deep/98 backdrop-blur-2xl flex flex-col"
+                    >
+                        <div className="p-8 flex justify-between items-center border-b border-white/5 bg-black/20">
+                            <div className="space-y-1">
+                                <h2 className="text-luxury-gold font-serif text-2xl tracking-widest uppercase">{text.brand}</h2>
+                                <p className="text-[8px] uppercase tracking-[0.3em] font-bold opacity-40 text-white">{text.tagline}</p>
+                            </div>
+                            <motion.button
+                                whileTap={{ scale: 0.9 }}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="w-12 h-12 flex items-center justify-center text-luxury-gold bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors"
+                            >
+                                <X className="w-6 h-6" />
+                            </motion.button>
+                        </div>
+
+                        <div className="flex-1 overflow-y-auto p-8 lg:p-20 space-y-16">
+                            {/* Our Mission */}
+                            <section className="space-y-6">
+                                <h3 className="text-luxury-gold font-serif text-4xl lg:text-5xl">{text.menu.mission}</h3>
+                                <p className="text-white/70 leading-relaxed text-lg lg:text-xl lg:max-w-3xl font-light">
+                                    {text.menu.mission_text}
+                                </p>
+                            </section>
+
+                            {/* Our Story */}
+                            <section className="space-y-6">
+                                <h3 className="text-luxury-gold font-serif text-4xl lg:text-5xl">{text.menu.story}</h3>
+                                <p className="text-white/70 leading-relaxed text-lg lg:text-xl lg:max-w-3xl font-light italic">
+                                    "{text.menu.story_text}"
+                                </p>
+                            </section>
+
+                            <div className="h-px w-24 bg-luxury-gold/30" />
+
+                            {/* Contact Us */}
+                            <section className="space-y-8">
+                                <h3 className="text-luxury-gold font-serif text-2xl uppercase tracking-widest">{text.menu.contact}</h3>
+                                <div className="flex flex-col sm:flex-row gap-4">
+                                    <motion.a
+                                        href="https://www.instagram.com/naturajunglepark/"
+                                        target="_blank"
+                                        whileHover={{ y: -4, backgroundColor: "rgba(255,255,255,0.1)" }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="h-20 px-10 flex items-center gap-4 bg-white/5 border border-white/10 rounded-[2rem] text-luxury-gold transition-all font-bold tracking-widest text-[12px] uppercase group"
+                                    >
+                                        <div className="w-10 h-10 rounded-full bg-luxury-gold/10 flex items-center justify-center group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-colors">
+                                            <Instagram className="w-5 h-5" />
+                                        </div>
+                                        Instagram
+                                    </motion.a>
+                                    <motion.a
+                                        href="tel:0605500058"
+                                        whileHover={{ y: -4, backgroundColor: "rgba(212,175,55,0.15)" }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="h-20 px-10 flex items-center gap-4 bg-luxury-gold/5 border border-luxury-gold/20 rounded-[2rem] text-luxury-gold transition-all font-bold tracking-widest text-[12px] uppercase group"
+                                    >
+                                        <div className="w-10 h-10 rounded-full bg-luxury-gold/10 flex items-center justify-center group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-colors">
+                                            <Phone className="w-5 h-5" />
+                                        </div>
+                                        {isRTL ? 'اتصل بنا' : 'Call Us'}
+                                    </motion.a>
+                                </div>
+                            </section>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             {/* Desktop Top Nav — hidden on mobile */}
             <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-[60] desktop-nav h-14 items-center justify-center gap-8 px-8">
                 <button onClick={() => setCurrentView('hours')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'hours' ? 'text-sand-gold' : 'text-white/60 hover:text-white'}`}>
@@ -234,43 +343,30 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
 
             {/* Header: Concierge Bar */}
             <header className="px-6 lg:px-12 py-8 lg:pt-20 flex justify-between items-center sticky top-0 z-50 bg-inherit/80 backdrop-blur-md max-w-7xl mx-auto w-full">
-                <motion.button
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => alert(isRTL ? 'القائمة قريباً' : 'Menu Coming Soon')}
-                    className="w-10 h-10 flex items-center justify-center text-jungle-green dark:text-sand-gold"
-                >
-                    <Menu className="w-6 h-6" />
-                </motion.button>
+                <div className="flex-1 flex justify-start">
+                    <motion.button
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => setIsMenuOpen(true)}
+                        className="w-10 h-10 flex items-center justify-center text-jungle-green dark:text-sand-gold bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 transition-colors"
+                    >
+                        <Menu className="w-6 h-6" />
+                    </motion.button>
+                </div>
 
-                <div className="text-center">
-                    <h1 className="text-xl font-serif font-bold tracking-widest uppercase text-sand-gold">
+                <div className="text-center flex-1">
+                    <h1 className="text-xl lg:text-3xl font-serif font-bold tracking-[0.2em] uppercase text-sand-gold drop-shadow-lg">
                         {text.brand}
                     </h1>
-                    <p className="text-[8px] uppercase tracking-[0.3em] font-bold opacity-60">
+                    <p className="text-[8px] lg:text-[10px] uppercase tracking-[0.4em] font-bold opacity-60">
                         {text.tagline}
                     </p>
                 </div>
 
-                <div className="flex items-center gap-4">
-                    <motion.a
-                        href="https://www.instagram.com/naturajunglepark/"
-                        target="_blank"
-                        whileTap={{ scale: 0.9 }}
-                        className="w-8 h-8 flex items-center justify-center text-sand-gold/60 border border-sand-gold/20 rounded-full hover:bg-sand-gold/10 transition-colors"
-                    >
-                        <Instagram className="w-4 h-4 text-jungle-green dark:text-sand-gold" />
-                    </motion.a>
-                    <motion.a
-                        href="tel:0605500058"
-                        whileTap={{ scale: 0.9 }}
-                        className="w-8 h-8 flex items-center justify-center text-sand-gold/60 border border-sand-gold/20 rounded-full hover:bg-sand-gold/10 transition-colors"
-                    >
-                        <Phone className="w-4 h-4 text-jungle-green dark:text-sand-gold" />
-                    </motion.a>
+                <div className="flex-1 flex justify-end items-center gap-4">
                     <motion.button
                         onClick={toggleNightMode}
                         whileTap={{ scale: 0.9 }}
-                        className="w-8 h-8 flex items-center justify-center text-jungle-green dark:text-sand-gold/60"
+                        className="w-10 h-10 flex items-center justify-center text-jungle-green dark:text-sand-gold bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 transition-colors"
                     >
                         {isNightMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                     </motion.button>
