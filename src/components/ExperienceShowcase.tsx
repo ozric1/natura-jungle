@@ -17,7 +17,6 @@ interface Slide {
 }
 
 const bungalowInsideImg = '/assets/natura/bungalow inside.jpeg';
-const bungalowNightImg = '/assets/natura/bungalow at night.jpeg';
 const bungalowMoreImg = '/assets/natura/more bungalow at night.jpeg';
 
 const restau2Img = '/assets/natura/Jungle restau 2.jpeg';
@@ -44,22 +43,22 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         bungalow: {
             slides: [
                 {
-                    image: bungalowInsideImg,
+                    image: bungalowMoreImg,
                     title: { en: "Luxury Bungalows", fr: "Bungalows de Luxe", ar: "بناغل فاخرة" },
                     desc: { en: "Experience nature with premium comfort.", fr: "Vivez la nature avec un confort premium.", ar: "استمتع بالطبيعة مع راحة متميزة." }
                 },
                 {
-                    image: bungalowNightImg,
+                    image: bungalowInsideImg,
                     title: { en: "Serene Interiors", fr: "Intérieurs Sereins", ar: "تصميمات داخلية هادئة" },
                     desc: { en: "Elegant design meets forest tranquility.", fr: "Le design élégant rencontre la tranquillité de la forêt.", ar: "تصميم أنيق يلتقي بهدوء الغابة." }
                 },
                 {
-                    image: bungalowMoreImg,
+                    image: "/assets/natura/night stays.jpeg",
                     title: { en: "The Premises", fr: "Les Prémisses", ar: "المرافق" },
                     desc: { en: "Stunning views from every corner.", fr: "Des vues imprenables de chaque coin.", ar: "مناظر خلابة من كل زاوية." }
                 }
             ],
-            actionLabel: { en: "Center Booking", fr: "Réserver", ar: "احجز الآن" },
+            actionLabel: { en: "Reserve", fr: "Réserver", ar: "احجز الآن" },
             actionTarget: "booking"
         },
         restaurant: {
@@ -236,21 +235,23 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
 
                     {/* Actions */}
                     <div className="flex flex-wrap gap-4 items-center">
-                        {page < currentContent.slides.length - 1 ? (
-                            <button
-                                onClick={() => setPage(page + 1)}
-                                className="bg-luxury-gold text-jungle-deep px-8 py-4 rounded-2xl font-bold uppercase tracking-widest flex items-center gap-3 group"
-                            >
-                                {isRTL ? 'التالي' : 'Next'}
-                                <ChevronRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRTL ? 'rotate-180' : ''}`} />
-                            </button>
-                        ) : currentContent.actionLabel ? (
+                        {currentContent.actionLabel && (
                             <button
                                 onClick={() => onAction(currentContent.actionTarget!)}
                                 className="bg-luxury-gold text-jungle-deep px-10 py-5 rounded-3xl font-bold uppercase tracking-widest flex items-center gap-3 gold-shadow active:scale-95 transition-all"
                             >
                                 {currentContent.actionLabel[language]}
                                 <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+                            </button>
+                        )}
+
+                        {page < currentContent.slides.length - 1 ? (
+                            <button
+                                onClick={() => setPage(page + 1)}
+                                className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-2xl font-bold uppercase tracking-widest flex items-center gap-3 group"
+                            >
+                                {isRTL ? 'التالي' : 'Next'}
+                                <ChevronRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRTL ? 'rotate-180' : ''}`} />
                             </button>
                         ) : (
                             <button
