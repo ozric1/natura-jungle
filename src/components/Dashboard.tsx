@@ -17,7 +17,8 @@ import {
     Phone,
     Instagram,
     PartyPopper,
-    X
+    X,
+    Quote
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { VIPOrderTracker } from './VIPOrderTracker';
@@ -82,7 +83,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             kitchen_desc: "Relax in your tent or by the pool. Place your order, confirm it, and we'll notify you when it's ready for pickup.",
             order_btn: "Start Your Order",
             about_title: "Breathe in Nature | Natura Jungle Park",
-            about_text: "Escape the city buzz and rediscover your wild side at Natura Jungle Park, the ultimate eco-friendly sanctuary just a stone's throw from Casablanca and Rabat. Whether you're a family seeking magical memories for your kids, a company looking to inspire your team with immersive events, or a school planning an educational nature adventure, our park is your perfect canvas. Spend a revitalizing day by the pool, enjoy gourmet ranch-to-table dining, and stay to experience the enchanting mystery of a Jungle night in our luxury bungalows. Your escape to serene nature starts here.",
+            about_text: "Escape the city buzz and discover your wild side at Natura Jungle Park—a serene eco-sanctuary just moments from Casablanca and Rabat.",
             bundles: [
                 { id: 1, title: "Jungle Bungalow", sub: "Luxury Stays", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "Jungle Restaurant", sub: "Fine Dining", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
@@ -125,7 +126,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             kitchen_desc: "Détendez-vous dans votre tente ou au bord de la piscine. Passez commande et nous vous préviendrons dès qu'elle est prête.",
             order_btn: "Lancer ma Commande",
             about_title: "Respirez la Nature | Natura Jungle Park",
-            about_text: "Évadez-vous du tumulte urbain et reconnectez-vous à la nature sauvage au Natura Jungle Park, votre sanctuaire éco-responsable à deux pas de Casablanca et Rabat. Que vous soyez une famille en quête de moments magiques pour vos enfants, une entreprise souhaitant inspirer ses équipes avec des événements immersifs, ou une école organisant une aventure éducative en plein air, notre parc est votre destination idéale. Passez une journée ressourçante au bord de la piscine, savourez une cuisine gastronomique locale et prolongez l'expérience pour vivre le mystère d'une nuit en Jungle dans nos bungalows de luxe. Votre parenthèse de sérénité vous attend.",
+            about_text: "Évadez-vous de l'agitation urbaine et découvrez votre côté sauvage au Natura Jungle Park—un sanctuaire écologique serein à quelques pas de Casablanca et Rabat.",
             bundles: [
                 { id: 1, title: "Bungalow Jungle", sub: "Séjours de Luxe", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "Restaurant Jungle", sub: "Gastronomie", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
@@ -168,7 +169,7 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             kitchen_desc: "استرخِ في خيمتك أو بجانب المسبح. اطلب، أكد طلبك، وسنخطرك فور جاهزيته لتستلمه وتستمتع به.",
             order_btn: "ابدأ الطلب الآن",
             about_title: "استنشق عبير الطبيعة | منتزه نطورا جانغل",
-            about_text: "اهرب من صخب المدينة واستعد تواصلك مع الطبيعة في منتزه 'نطورا جانغل'، ملاذك البيئي الساحر القريب من الدار البيضاء والرباط. سواء كنت تبحث عن لحظات عائلية لا تُنسى لأطفالك، أو كنت شركة تسعى لإلهام فريق عملك بفعاليات متميزة، أو مدرسة تخطط لرحلة تعليمية في قلب الطبيعة، فإن منتزهنا هو وجهتك المثالية. استمتع بيوم من الاسترخاء بجانب المسبح، وتذوق أشهى الأطباق الفاخرة، ولا تفوت فرصة تجربة سحر ليالي الغابة في بناغلنا الفاخرة. رحلتك نحو السكينة والجمال تبدأ من هنا.",
+            about_text: "اهرب من صخب المدينة واكتشف جانبك البري في منتزه ناتورا جانغل—ملاذك البيئي الهادئ على بعد دقائق من الدار البيضاء والرباط.",
             bundles: [
                 { id: 1, title: "بناغل الغابة", sub: "إقامات فاخرة", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "مطعم الغابة", sub: "أرقى المأكولات", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
@@ -208,14 +209,15 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
         if (!isDragging && baseWidth > 0) {
             const moveBy = (delta / 1000) * 40; // 40px per second
             const currentX = x.get();
-            let newX = isRTL ? currentX + moveBy : currentX - moveBy;
 
-            // Wrapping logic
-            if (isRTL) {
-                if (newX > 0) newX -= baseWidth;
-            } else {
-                if (newX < -baseWidth) newX += baseWidth;
+            // Unified logic: Move visually Left (translateX decreases)
+            let newX = currentX - moveBy;
+
+            // Wrapping logic: always stay between -baseWidth and 0
+            if (newX < -baseWidth) {
+                newX += baseWidth;
             }
+
             x.set(newX);
         }
     });
@@ -223,14 +225,12 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
     useEffect(() => {
         const calculateWidth = () => {
             if (containerRef.current) {
-                // Since we triple the cards, baseWidth is 1/3 of total scroll width
                 const fullWidth = containerRef.current.scrollWidth;
                 setBaseWidth(fullWidth / 3);
             }
         };
 
-        // Initial calculation
-        setTimeout(calculateWidth, 500);
+        calculateWidth();
         window.addEventListener('resize', calculateWidth);
         return () => window.removeEventListener('resize', calculateWidth);
     }, [currentLanguage]);
@@ -244,74 +244,139 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
-                        initial={{ x: isRTL ? '100%' : '-100%' }}
-                        animate={{ x: 0 }}
-                        exit={{ x: isRTL ? '100%' : '-100%' }}
-                        transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-                        className="fixed inset-0 z-[100] bg-jungle-deep/98 backdrop-blur-2xl flex flex-col"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[100] bg-[#050805]/95 backdrop-blur-3xl flex flex-col lg:flex-row overflow-hidden"
                     >
-                        <div className="p-8 flex justify-between items-center border-b border-white/5 bg-black/20">
-                            <div className="space-y-1">
-                                <h2 className="text-luxury-gold font-serif text-2xl tracking-widest uppercase">{text.brand}</h2>
-                                <p className="text-[8px] uppercase tracking-[0.3em] font-bold opacity-40 text-white">{text.tagline}</p>
-                            </div>
-                            <motion.button
-                                whileTap={{ scale: 0.9 }}
-                                onClick={() => setIsMenuOpen(false)}
-                                className="w-12 h-12 flex items-center justify-center text-luxury-gold bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors"
-                            >
-                                <X className="w-6 h-6" />
-                            </motion.button>
+                        {/* Organic Background Pattern */}
+                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none overflow-hidden">
+                            <Palmtree className="absolute -top-20 -left-20 w-[600px] h-[600px] rotate-[-15deg] text-luxury-gold" />
+                            <Palmtree className="absolute -bottom-20 -right-20 w-[600px] h-[600px] rotate-[165deg] text-luxury-gold" />
                         </div>
 
-                        <div className="flex-1 overflow-y-auto p-8 lg:p-20 space-y-16">
-                            {/* Our Mission */}
-                            <section className="space-y-6">
-                                <h3 className="text-luxury-gold font-serif text-4xl lg:text-5xl">{text.menu.mission}</h3>
-                                <p className="text-white/70 leading-relaxed text-lg lg:text-xl lg:max-w-3xl font-light">
+                        {/* Left/Top Content: Identity */}
+                        <div className="w-full lg:w-1/3 p-8 lg:p-20 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/5 relative z-10 bg-black/20 lg:bg-transparent">
+                            <div className="space-y-4 text-center lg:text-start">
+                                <motion.div
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.2 }}
+                                    className="inline-block px-4 py-1 rounded-full border border-luxury-gold/30 bg-luxury-gold/5"
+                                >
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-luxury-gold">Explore Natura</span>
+                                </motion.div>
+                                <motion.h2
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.3 }}
+                                    className="text-luxury-gold font-serif text-5xl lg:text-7xl leading-tight"
+                                >
+                                    {text.brand}
+                                </motion.h2>
+                                <motion.p
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.4 }}
+                                    className="text-white/40 font-bold uppercase tracking-[0.3em] text-[10px]"
+                                >
+                                    {text.tagline}
+                                </motion.p>
+                            </div>
+
+                            <div className="flex justify-center lg:justify-start">
+                                <motion.button
+                                    initial={{ scale: 0.8, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    whileTap={{ scale: 0.9 }}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="w-16 h-16 flex items-center justify-center text-luxury-gold bg-white/5 rounded-full border border-white/10 hover:bg-luxury-gold hover:text-jungle-deep transition-all duration-500 group shadow-2xl mt-12 lg:mt-0"
+                                >
+                                    <X className="w-8 h-8 group-hover:rotate-90 transition-transform duration-500" />
+                                </motion.button>
+                            </div>
+                        </div>
+
+                        {/* Right/Bottom Content: Mission, Story, Contacts */}
+                        <div className="flex-1 overflow-y-auto p-8 lg:p-20 space-y-24 relative z-10 scrollbar-hide">
+                            {/* Mission Section */}
+                            <motion.section
+                                initial={{ x: isRTL ? -40 : 40, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                                className="group"
+                            >
+                                <div className={`flex items-center gap-6 mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                    <div className="h-px w-12 bg-luxury-gold/30 group-hover:w-20 transition-all duration-700" />
+                                    <h3 className="text-luxury-gold font-serif text-3xl lg:text-4xl uppercase tracking-widest">{text.menu.mission}</h3>
+                                </div>
+                                <p className={`text-white/80 leading-relaxed text-xl lg:text-3xl lg:max-w-4xl font-light ${isRTL ? 'text-right' : ''}`}>
                                     {text.menu.mission_text}
                                 </p>
-                            </section>
+                            </motion.section>
 
-                            {/* Our Story */}
-                            <section className="space-y-6">
-                                <h3 className="text-luxury-gold font-serif text-4xl lg:text-5xl">{text.menu.story}</h3>
-                                <p className="text-white/70 leading-relaxed text-lg lg:text-xl lg:max-w-3xl font-light italic">
-                                    "{text.menu.story_text}"
-                                </p>
-                            </section>
+                            {/* Story Section */}
+                            <motion.section
+                                initial={{ x: isRTL ? -40 : 40, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                transition={{ delay: 0.6 }}
+                                className={`group ${isRTL ? 'lg:pr-24' : 'lg:pl-24'}`}
+                            >
+                                <div className={`flex items-center gap-6 mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                    <div className="h-px w-12 bg-luxury-gold/30 group-hover:w-20 transition-all duration-700" />
+                                    <h3 className="text-luxury-gold font-serif text-3xl lg:text-4xl uppercase tracking-widest">{text.menu.story}</h3>
+                                </div>
+                                <div className="relative">
+                                    <Quote className={`absolute ${isRTL ? '-right-12' : '-left-12'} -top-10 w-20 h-20 text-luxury-gold/10 rotate-180`} />
+                                    <p className={`text-white/60 leading-relaxed text-lg lg:text-2xl lg:max-w-3xl font-light italic relative z-10 ${isRTL ? 'text-right' : ''}`}>
+                                        "{text.menu.story_text}"
+                                    </p>
+                                </div>
+                            </motion.section>
 
-                            <div className="h-px w-24 bg-luxury-gold/30" />
-
-                            {/* Contact Us */}
-                            <section className="space-y-8">
-                                <h3 className="text-luxury-gold font-serif text-2xl uppercase tracking-widest">{text.menu.contact}</h3>
-                                <div className="flex flex-col sm:flex-row gap-4">
+                            {/* Contact Section */}
+                            <motion.section
+                                initial={{ y: 40, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.7 }}
+                                className="space-y-10 pt-10 border-t border-white/5"
+                            >
+                                <h3 className={`text-luxury-gold font-serif text-xl uppercase tracking-[0.3em] font-bold text-center ${isRTL ? 'lg:text-right' : 'lg:text-left'}`}>{text.menu.contact}</h3>
+                                <div className={`flex flex-col sm:flex-row gap-6 justify-center ${isRTL ? 'lg:justify-end' : 'lg:justify-start'}`}>
                                     <motion.a
                                         href="https://www.instagram.com/naturajunglepark/"
                                         target="_blank"
-                                        whileHover={{ y: -4, backgroundColor: "rgba(255,255,255,0.1)" }}
+                                        whileHover={{ y: -8, backgroundColor: "rgba(255,255,255,0.05)" }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="h-20 px-10 flex items-center gap-4 bg-white/5 border border-white/10 rounded-[2rem] text-luxury-gold transition-all font-bold tracking-widest text-[12px] uppercase group"
+                                        className="h-24 px-12 flex items-center gap-6 bg-white/5 border border-white/10 rounded-[3rem] text-luxury-gold transition-all duration-500 group overflow-hidden relative shadow-xl"
                                     >
-                                        <div className="w-10 h-10 rounded-full bg-luxury-gold/10 flex items-center justify-center group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-colors">
-                                            <Instagram className="w-5 h-5" />
+                                        <div className="absolute inset-x-0 bottom-0 h-1 bg-luxury-gold opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-500">
+                                            <Instagram className="w-6 h-6" />
                                         </div>
-                                        Instagram
+                                        <div className="flex flex-col">
+                                            <span className="text-[10px] uppercase tracking-widest opacity-40">Follow our story</span>
+                                            <span className="font-serif text-xl">Instagram</span>
+                                        </div>
                                     </motion.a>
+
                                     <motion.a
                                         href="tel:0605500058"
-                                        whileHover={{ y: -4, backgroundColor: "rgba(212,175,55,0.15)" }}
+                                        whileHover={{ y: -8, backgroundColor: "rgba(212,175,55,0.08)" }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="h-20 px-10 flex items-center gap-4 bg-luxury-gold/5 border border-luxury-gold/20 rounded-[2rem] text-luxury-gold transition-all font-bold tracking-widest text-[12px] uppercase group"
+                                        className="h-24 px-12 flex items-center gap-6 bg-luxury-gold/5 border border-luxury-gold/20 rounded-[3rem] text-luxury-gold transition-all duration-500 group overflow-hidden relative shadow-xl"
                                     >
-                                        <div className="w-10 h-10 rounded-full bg-luxury-gold/10 flex items-center justify-center group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-colors">
-                                            <Phone className="w-5 h-5" />
+                                        <div className="absolute inset-x-0 bottom-0 h-1 bg-luxury-gold opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <div className="w-12 h-12 rounded-2xl bg-luxury-gold/10 flex items-center justify-center group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-500">
+                                            <Phone className="w-6 h-6" />
                                         </div>
-                                        {isRTL ? 'اتصل بنا' : 'Call Us'}
+                                        <div className="flex flex-col">
+                                            <span className="text-[10px] uppercase tracking-widest opacity-40">Concierge Desk</span>
+                                            <span className="font-serif text-xl">{isRTL ? 'اتصل بنا' : 'Call Office'}</span>
+                                        </div>
                                     </motion.a>
                                 </div>
-                            </section>
+                            </motion.section>
                         </div>
                     </motion.div>
                 )}
@@ -408,13 +473,13 @@ export const Dashboard = ({ language: currentLanguage, isNightMode, toggleNightM
                                     setIsDragging(false);
                                     // Ensure wrapping logic is applied after drag
                                     const currentX = x.get();
-                                    if (isRTL) {
-                                        if (currentX > 0) x.set(currentX - baseWidth);
-                                        if (currentX < -baseWidth) x.set(currentX + baseWidth);
-                                    } else {
-                                        if (currentX < -baseWidth * 2) x.set(currentX + baseWidth);
-                                        if (currentX > -baseWidth) x.set(currentX - baseWidth);
-                                    }
+
+                                    // Robust wrapping logic for both LTR and RTL
+                                    // We keep it between -baseWidth and 0
+                                    let newX = currentX;
+                                    while (newX < -baseWidth) newX += baseWidth;
+                                    while (newX > 0) newX -= baseWidth;
+                                    x.set(newX);
                                 }}
                                 className="flex gap-6 px-6 cursor-grab active:cursor-grabbing"
                             >
