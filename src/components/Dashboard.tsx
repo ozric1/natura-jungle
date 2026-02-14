@@ -117,7 +117,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
         },
         fr: {
             brand: "Natura Jungle",
-            tagline: "L'expérience Sauvage",
+            tagline: "Respirer la Nature",
             explore: "Exploration Sauvage",
             map_title: "Le Circuit Sauvage",
             map_status: "Suivi en Direct",
