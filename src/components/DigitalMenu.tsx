@@ -146,17 +146,17 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
     const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
     const categories = [
-        { id: 'Petit Déjeuner', icon: Coffee, label: language === 'ar' ? 'فطور' : 'Petit Déjeuner' },
-        { id: 'Salades', icon: Leaf, label: language === 'ar' ? 'سلطات' : 'Salades' },
-        { id: 'Tagines', icon: Flame, label: language === 'ar' ? 'طواجن' : 'Tagines' },
-        { id: 'Plats', icon: Utensils, label: language === 'ar' ? 'أطباق' : 'Plats' },
-        { id: 'Sandwiches', icon: ShoppingBag, label: language === 'ar' ? 'ساندويتش' : 'Sandwiches' },
-        { id: 'Pizza', icon: Pizza, label: language === 'ar' ? 'بيتزا' : 'Pizza' },
-        { id: 'Boissons', icon: CupSoda, label: language === 'ar' ? 'مشروبات' : 'Boissons' },
-        { id: 'Jus', icon: GlassWater, label: language === 'ar' ? 'عصائر' : 'Jus' },
-        { id: 'Desserts', icon: Cookie, label: language === 'ar' ? 'حلويات' : 'Desserts' },
-        { id: 'Menu Enfants', icon: Baby, label: language === 'ar' ? 'قائمة الأطفال' : 'Menu Enfants' },
-        { id: 'Suppléments', icon: Plus, label: language === 'ar' ? 'إضافات' : 'Suppléments' },
+        { id: 'Petit Déjeuner', icon: Coffee, label: language === 'ar' ? 'فطور' : 'Morning' },
+        { id: 'Salades', icon: Leaf, label: language === 'ar' ? 'سلطات' : 'Greenery' },
+        { id: 'Tagines', icon: Flame, label: language === 'ar' ? 'طواجن' : 'Tradition' },
+        { id: 'Plats', icon: Utensils, label: language === 'ar' ? 'أطباق' : 'Mains' },
+        { id: 'Sandwiches', icon: ShoppingBag, label: language === 'ar' ? 'ساندويتش' : 'Street' },
+        { id: 'Pizza', icon: Pizza, label: language === 'ar' ? 'بيتزا' : 'Oven' },
+        { id: 'Boissons', icon: CupSoda, label: language === 'ar' ? 'مشروبات' : 'Drinks' },
+        { id: 'Jus', icon: GlassWater, label: language === 'ar' ? 'عصائر' : 'Fresh' },
+        { id: 'Desserts', icon: Cookie, label: language === 'ar' ? 'حلويات' : 'Sweets' },
+        { id: 'Menu Enfants', icon: Baby, label: language === 'ar' ? 'قائمة الأطفال' : 'Kids' },
+        { id: 'Suppléments', icon: Plus, label: language === 'ar' ? 'إضافات' : 'Extras' },
     ];
 
     const filteredItems = menuItems.filter(item => item.category === activeCategory);
@@ -195,82 +195,110 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
 
             <main className="pb-40">
                 {/* Category Picker */}
-                <div className="flex gap-4 overflow-x-auto lg:flex-wrap px-6 lg:px-12 py-6 no-scrollbar">
-                    {categories.map((cat) => {
+                <div className="flex gap-4 overflow-x-auto lg:flex-nowrap px-6 lg:px-12 py-8 no-scrollbar scroll-smooth">
+                    {categories.map((cat, idx) => {
                         const Icon = cat.icon;
                         const isActive = activeCategory === cat.id;
                         return (
                             <motion.button
                                 key={cat.id}
-                                whileTap={{ scale: 0.95 }}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: idx * 0.05 }}
+                                whileTap={{ scale: 0.9 }}
                                 onClick={() => setActiveCategory(cat.id as any)}
-                                className={`flex-none px-6 py-4 rounded-2xl flex items-center gap-3 transition-all duration-300 border ${isActive
-                                    ? 'bg-luxury-gold text-jungle-deep border-luxury-gold shadow-xl shadow-luxury-gold/20'
-                                    : 'bg-jungle-leaf/5 dark:bg-white/5 text-jungle-deep/60 dark:text-pure-nature/40 border-jungle-leaf/10 dark:border-white/10'
+                                className={`flex-none px-8 py-5 rounded-[2rem] flex flex-col items-center gap-3 transition-all duration-500 border ${isActive
+                                    ? 'bg-jungle-deep text-luxury-gold border-luxury-gold shadow-2xl scale-110 z-10'
+                                    : 'bg-white/40 dark:bg-white/5 text-jungle-deep/40 dark:text-pure-nature/20 border-white/20 dark:border-white/5 hover:bg-white/60'
                                     }`}
                             >
-                                <Icon className={`w-5 h-5 ${isActive ? 'text-jungle-deep' : 'text-luxury-gold'}`} />
-                                <span className="text-[10px] font-bold uppercase tracking-widest">{cat.label}</span>
+                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${isActive ? 'bg-luxury-gold/20 shadow-inner' : 'bg-transparent'}`}>
+                                    <Icon className="w-6 h-6" />
+                                </div>
+                                <span className="text-[9px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">{cat.label}</span>
                             </motion.button>
                         );
                     })}
                 </div>
 
                 {/* Items Grid */}
-                <div className="px-6 lg:px-12 space-y-6">
+                <div className="px-6 lg:px-12">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeCategory}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-12 gap-y-16"
                         >
-                            {filteredItems.map((item) => {
+                            {filteredItems.map((item, idx) => {
                                 const cartItem = cart.find(i => i.id === item.id);
+                                const isEven = idx % 2 === 0;
                                 return (
-                                    <div key={item.id} className="jungle-card p-5 flex gap-5 bg-pure-nature dark:bg-jungle-leaf/5 rounded-[2rem] border border-luxury-gold/5 group hover:border-luxury-gold/20 transition-all">
-                                        <div className="w-28 h-28 rounded-2xl overflow-hidden flex-none shadow-lg border border-luxury-gold/5 group-hover:border-luxury-gold/20 transition-all">
-                                            <img src={item.image} className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-1000 ease-out" alt={item.name} />
-                                        </div>
-                                        <div className="flex-1 py-1">
-                                            <div className="flex justify-between items-start mb-2">
-                                                <h3 className="text-xl font-serif text-jungle-deep dark:text-pure-nature line-clamp-1">{item.name}</h3>
-                                                <span className="text-luxury-gold font-bold text-lg">{item.price} MAD</span>
+                                    <motion.div
+                                        key={item.id}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: idx * 0.1 }}
+                                        className={`flex flex-col gap-6 group relative ${!isEven && 'md:mt-24'}`}
+                                    >
+                                        <div className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 group-hover:shadow-luxury-gold/20 transition-all duration-700">
+                                            <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1)" alt={item.name} />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                                            <div className="absolute bottom-6 right-6">
+                                                <span className="px-6 py-3 bg-luxury-gold text-jungle-deep font-bold rounded-2xl shadow-xl">
+                                                    {item.price} MAD
+                                                </span>
                                             </div>
-                                            <p className="text-xs text-jungle-deep/50 dark:text-pure-nature/40 mb-4 line-clamp-2 min-h-[2.5em]">{item.description}</p>
+                                        </div>
 
-                                            <div className="flex justify-end">
+                                        <div className="px-4">
+                                            <div className="flex justify-between items-baseline mb-4">
+                                                <h3 className="text-3xl font-serif text-jungle-deep dark:text-white group-hover:text-luxury-gold transition-colors">{item.name}</h3>
+                                            </div>
+
+                                            <div className="mb-8">
+                                                <p className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-bold mb-3">Ingredients & Base</p>
+                                                <p className="text-sm font-serif leading-relaxed text-jungle-deep/60 dark:text-pure-nature/60 italic">
+                                                    {item.description}
+                                                </p>
+                                            </div>
+
+                                            <div className="flex items-center gap-4">
                                                 {cartItem ? (
-                                                    <div className="flex items-center gap-4 bg-sand-gold/10 rounded-xl p-1">
-                                                        <motion.button
-                                                            whileTap={{ scale: 0.8 }}
-                                                            onClick={(e) => { e.stopPropagation(); removeFromCart(item.id); }}
-                                                            className="w-10 h-10 flex items-center justify-center rounded-xl bg-pure-nature dark:bg-jungle-deep text-luxury-gold shadow-sm border border-luxury-gold/10"
-                                                        >
-                                                            <Minus className="w-4 h-4" />
-                                                        </motion.button>
-                                                        <span className="text-sm font-bold w-6 text-center text-jungle-deep dark:text-luxury-gold">{cartItem.quantity}</span>
-                                                        <motion.button
-                                                            whileTap={{ scale: 0.8 }}
-                                                            onClick={(e) => { e.stopPropagation(); addToCart(item); }}
-                                                            className="w-10 h-10 flex items-center justify-center rounded-xl bg-luxury-gold text-jungle-deep shadow-lg gold-shadow"
-                                                        >
-                                                            <Plus className="w-4 h-4" />
-                                                        </motion.button>
+                                                    <div className="flex items-center gap-6 bg-jungle-deep/5 dark:bg-white/5 rounded-[2rem] p-2 pr-6">
+                                                        <div className="flex items-center gap-2">
+                                                            <motion.button
+                                                                whileTap={{ scale: 0.8 }}
+                                                                onClick={() => removeFromCart(item.id)}
+                                                                className="w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-jungle-deep text-luxury-gold shadow-md"
+                                                            >
+                                                                <Minus className="w-5 h-5" />
+                                                            </motion.button>
+                                                            <span className="text-lg font-bold w-8 text-center">{cartItem.quantity}</span>
+                                                            <motion.button
+                                                                whileTap={{ scale: 0.8 }}
+                                                                onClick={() => addToCart(item)}
+                                                                className="w-12 h-12 flex items-center justify-center rounded-full bg-luxury-gold text-jungle-deep shadow-lg"
+                                                            >
+                                                                <Plus className="w-5 h-5" />
+                                                            </motion.button>
+                                                        </div>
+                                                        <span className="text-xs font-bold uppercase tracking-widest opacity-40">Added</span>
                                                     </div>
                                                 ) : (
                                                     <motion.button
                                                         whileTap={{ scale: 0.95 }}
                                                         onClick={() => addToCart(item)}
-                                                        className="px-6 py-2.5 bg-jungle-deep dark:bg-luxury-gold text-luxury-gold dark:text-jungle-deep rounded-xl text-[10px] font-bold uppercase tracking-widest border border-luxury-gold/20 shadow-md active:scale-95 transition-all"
+                                                        className="px-10 py-5 bg-jungle-deep dark:bg-luxury-gold text-luxury-gold dark:text-jungle-deep rounded-2xl text-[10px] font-bold uppercase tracking-[0.3em] flex items-center gap-3 group/btn hover:shadow-xl transition-all"
                                                     >
-                                                        {language === 'ar' ? 'إضافة' : 'Add to Cart'}
+                                                        <Plus className="w-4 h-4 group-hover/btn:rotate-90 transition-transform" />
+                                                        {language === 'ar' ? 'إضافة للطلب' : 'Add to selection'}
                                                     </motion.button>
                                                 )}
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 );
                             })}
                         </motion.div>
