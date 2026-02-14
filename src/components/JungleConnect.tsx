@@ -1,8 +1,5 @@
 import { motion } from 'framer-motion';
-import { Heart, MessageCircle, Share2, Camera } from 'lucide-react';
-const pigsImg = '/assets/natura/pigs.jpg';
-const parkViewImg = '/assets/natura/park_view.jpg';
-const pondImg = '/assets/natura/pond_update.jpg';
+import { Heart, MessageCircle, Share2, Camera, MapPin, User } from 'lucide-react';
 
 interface JungleConnectProps {
     isRTL?: boolean;
@@ -13,71 +10,138 @@ export const JungleConnect = ({ isRTL = false }: JungleConnectProps) => {
         {
             id: 1,
             user: "Sarah M.",
-            image: pigsImg,
+            handle: "@sarah_jungle",
+            location: "Animal Circuit",
+            image: '/assets/natura/animal circuit Lama.jpeg',
             likes: "1.2k"
         },
         {
             id: 2,
             user: "Ahmed K.",
-            image: parkViewImg,
+            handle: "@ahmed_explores",
+            location: "Main Pool",
+            image: '/assets/natura/pool.jpeg',
             likes: "2.4k"
         },
         {
             id: 3,
             user: "Elena G.",
-            image: pondImg,
+            handle: "@elena_vibe",
+            location: "Berber Tent",
+            image: '/assets/natura/berber tent at night.jpeg',
             likes: "850"
+        },
+        {
+            id: 4,
+            user: "Karim B.",
+            handle: "@karim_nature",
+            location: "Equestrian Academy",
+            image: '/assets/natura/horse_update.jpg',
+            likes: "1.5k"
+        },
+        {
+            id: 5,
+            user: "Sofia L.",
+            handle: "@sofia_jungle",
+            location: "Wild Circuit",
+            image: '/assets/natura/peacock_update.jpg',
+            likes: "3.1k"
+        },
+        {
+            id: 6,
+            user: "Yassine J.",
+            handle: "@yassine_eat",
+            location: "Jungle Restaurant",
+            image: '/assets/natura/Jungle Restaurant 3.jpeg',
+            likes: "920"
         }
     ];
 
+    // Duplicate memories for seamless loop
+    const allMemories = [...memories, ...memories];
+
     return (
-        <div className="space-y-6">
-            <div className="flex justify-between items-end">
-                <h2 className="text-2xl font-serif text-sand-gold transition-colors">{isRTL ? 'جنجل كونكت' : 'Jungle Connect'}</h2>
-                <div className="flex items-center gap-2 text-sand-gold">
+        <div className="space-y-10 overflow-hidden py-10">
+            <div className="flex justify-between items-end px-6 lg:px-12">
+                <div className="space-y-2">
+                    <h2 className="text-3xl lg:text-4xl font-serif text-sand-gold">{isRTL ? 'جنجل كونكت' : 'Jungle Connect'}</h2>
+                    <p className="text-xs lg:text-sm text-jungle-deep/40 dark:text-pure-nature/40 uppercase tracking-[0.3em] font-bold">
+                        {isRTL ? 'لحظات مشتركة من ضيوفنا' : 'Moments shared by our guests'}
+                    </p>
+                </div>
+                <div className="flex items-center gap-3 px-6 py-3 bg-luxury-gold/10 rounded-full text-luxury-gold border border-luxury-gold/20">
                     <Camera className="w-4 h-4" />
-                    <span className="text-[10px] font-bold uppercase tracking-widest">
-                        {isRTL ? 'شارك ذكرياتك' : 'Share Memory'}
+                    <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
+                        {isRTL ? 'شارك ذكرياتك' : 'Share Your Memory'}
                     </span>
                 </div>
             </div>
 
-            <div className="flex gap-4 overflow-x-auto no-scrollbar pb-4 pr-6">
-                {memories.map((memory) => (
-                    <motion.div
-                        key={memory.id}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex-none w-[200px] h-72 rounded-[2rem] relative overflow-hidden shadow-xl"
-                    >
-                        <img
-                            src={memory.image}
-                            className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                            alt={`Memory ${memory.id}`}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+            <div className="relative group">
+                <motion.div
+                    animate={{
+                        x: isRTL ? [0, 100 * memories.length] : [0, -280 * memories.length],
+                    }}
+                    transition={{
+                        x: {
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            duration: 40,
+                            ease: "linear",
+                        },
+                    }}
+                    className="flex gap-6 px-6 cursor-grab active:cursor-grabbing"
+                >
+                    {allMemories.map((memory, idx) => (
+                        <motion.div
+                            key={`${memory.id}-${idx}`}
+                            whileHover={{ scale: 1.02, y: -5 }}
+                            className="flex-none w-[280px] lg:w-[320px] aspect-[4/5] rounded-[2.5rem] relative overflow-hidden shadow-2xl border border-white/10 group/card bg-white dark:bg-jungle-deep"
+                        >
+                            <img
+                                src={memory.image}
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[3000ms] group-hover/card:scale-110"
+                                alt={`Memory ${memory.id}`}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
 
-                        {/* Branded Watermark */}
-                        <div className="absolute top-4 right-4">
-                            <span className="text-[8px] font-serif text-white/40 uppercase tracking-[0.2em] border border-white/20 px-2 py-1 rounded">
-                                Natura
-                            </span>
-                        </div>
-
-                        <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-2">
-                            <span className="text-white text-xs font-bold">{memory.user}</span>
-                            <div className="flex justify-between items-center text-white/60">
-                                <div className="flex items-center gap-1">
-                                    <Heart className="w-3 h-3 text-sand-gold fill-current" />
-                                    <span className="text-[10px]">{memory.likes}</span>
-                                </div>
-                                <div className="flex gap-2">
-                                    <MessageCircle className="w-3 h-3" />
-                                    <Share2 className="w-3 h-3" />
+                            {/* Location Tag */}
+                            <div className="absolute top-6 left-6">
+                                <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                                    <MapPin className="w-3 h-3 text-luxury-gold" />
+                                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">{memory.location}</span>
                                 </div>
                             </div>
-                        </div>
-                    </motion.div>
-                ))}
+
+                            <div className="absolute bottom-8 left-8 right-8 space-y-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-luxury-gold/20 backdrop-blur-md border border-white/20 flex items-center justify-center overflow-hidden">
+                                        <User className="w-5 h-5 text-white/60" />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className="text-white text-sm font-bold leading-none">{memory.user}</span>
+                                        <span className="text-white/40 text-[10px] uppercase tracking-wider mt-1">{memory.handle}</span>
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-between items-center pt-2">
+                                    <div className="flex items-center gap-4">
+                                        <div className="flex items-center gap-1.5">
+                                            <Heart className="w-4 h-4 text-red-500 fill-current" />
+                                            <span className="text-white text-xs font-bold">{memory.likes}</span>
+                                        </div>
+                                        <MessageCircle className="w-4 h-4 text-white/60" />
+                                    </div>
+                                    <Share2 className="w-4 h-4 text-white/60" />
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+
+                {/* Gradient Fades for ultra-wide screens */}
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-egg-shell/50 dark:from-jungle-deep/50 to-transparent z-10" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-egg-shell/50 dark:from-jungle-deep/50 to-transparent z-10" />
             </div>
         </div>
     );
