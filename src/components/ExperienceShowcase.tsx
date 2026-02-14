@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronRight, ChevronLeft, ArrowRight } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface ExperienceShowcaseProps {
     type: string;
@@ -16,8 +16,6 @@ interface Slide {
     zoomType?: 'dish' | 'playground';
 }
 
-const bungalowInsideImg = '/assets/natura/bungalow inside.jpeg';
-const bungalowMoreImg = '/assets/natura/more bungalow at night.jpeg';
 
 const restau2Img = '/assets/natura/Jungle restau 2.jpeg';
 const restau3Img = '/assets/natura/Jungle Restaurant 3.jpeg';
@@ -43,22 +41,32 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         bungalow: {
             slides: [
                 {
-                    image: bungalowMoreImg,
-                    title: { en: "Luxury Bungalows", fr: "Bungalows de Luxe", ar: "بناغل فاخرة" },
-                    desc: { en: "Experience nature with premium comfort.", fr: "Vivez la nature avec un confort premium.", ar: "استمتع بالطبيعة مع راحة متميزة." }
+                    image: '/assets/natura/more bungalow at night.jpeg',
+                    title: { en: "Starry Sanctuary", fr: "Sanctuaire Étoilé", ar: "ملاذ النجوم" },
+                    desc: { en: "Where luxury meets the wild nature.", fr: "Un sanctuaire étoilé où le luxe rencontre la nature sauvage.", ar: "حيث تلتقي الفخامة بالطبيعة البرية." }
                 },
                 {
-                    image: bungalowInsideImg,
-                    title: { en: "Serene Interiors", fr: "Intérieurs Sereins", ar: "تصميمات داخلية هادئة" },
-                    desc: { en: "Elegant design meets forest tranquility.", fr: "Le design élégant rencontre la tranquillité de la forêt.", ar: "تصميم أنيق يلتقي بهدوء الغابة." }
+                    image: '/assets/natura/bugalow.jpeg',
+                    title: { en: "Traditional Elegance", fr: "Élégance Traditionnelle", ar: "أناقة تقليدية" },
+                    desc: { en: "Sculpted in the heart of the forest.", fr: "Une élégance traditionnelle sculptée au cœur de la forêt.", ar: "منحوتة في قلب الغابة." }
                 },
                 {
-                    image: "/assets/natura/night stays.jpeg",
-                    title: { en: "The Premises", fr: "Les Prémisses", ar: "المرافق" },
-                    desc: { en: "Stunning views from every corner.", fr: "Des vues imprenables de chaque coin.", ar: "مناظر خلابة من كل زاوية." }
+                    image: '/assets/natura/night stays.jpeg',
+                    title: { en: "Night Whispers", fr: "Murmures Nocturnes", ar: "همسات الليل" },
+                    desc: { en: "Wake up to the song of nature.", fr: "Réveillez-vous au murmure des feuilles et au chant de la nature.", ar: "استيقظ على أنغام الطبيعة." }
+                },
+                {
+                    image: '/assets/natura/premisses.jpeg',
+                    title: { en: "Serene Paths", fr: "Sentiers Sereins", ar: "مسارات هادئة" },
+                    desc: { en: "Stunning views await your discovery.", fr: "Des vues imprenables et des sentiers sereins attendent votre découverte.", ar: "مناظر خلابة بانتظار اكتشافك." }
+                },
+                {
+                    image: '/assets/natura/WhatsApp Image 2026-02-13 at 13.42.27 (16).jpeg',
+                    title: { en: "Morning Delight", fr: "Délice Matinal", ar: "صباح الخير" },
+                    desc: { en: "Breakfast included in your stay.", fr: "Petit déjeuner inclus dans vos nuitées.", ar: "فطور الصباح مشمول في إقامتك." }
                 }
             ],
-            actionLabel: { en: "Reserve", fr: "Réserver", ar: "احجز الآن" },
+            actionLabel: { en: "Reserve Now", fr: "Réserver", ar: "احجز الآن" },
             actionTarget: "booking"
         },
         restaurant: {
@@ -160,6 +168,14 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
     const currentContent = content[type] || content.bungalow;
     const currentSlide = currentContent.slides[page];
 
+    // Auto-rotation
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setPage(prev => (prev + 1) % currentContent.slides.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [currentContent.slides.length]);
+
     return (
         <div className="fixed inset-0 z-[200] bg-black text-white overflow-hidden flex flex-col">
             {/* Background Image with Ken Burns effect */}
@@ -169,8 +185,6 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     initial={{
                         scale: (currentSlide as any).zoomType === 'dish' ? 1.5 : (currentSlide as any).zoomType === 'playground' ? 1.5 : 1.1,
                         opacity: 0,
-                        x: 0,
-                        y: 0
                     }}
                     animate={{
                         scale: 1,
@@ -207,7 +221,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
 
             {/* Content Area */}
             <div className="relative z-10 flex-1 flex flex-col justify-end p-8 lg:p-16">
-                <div className="max-w-2xl">
+                <div className="max-w-2xl mx-auto text-center mb-12">
                     <motion.div
                         key={page + 'text'}
                         initial={{ y: 30, opacity: 0 }}
@@ -221,68 +235,52 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                             {currentSlide.desc[language]}
                         </p>
                     </motion.div>
+                </div>
 
-                    {/* Navigation Dots */}
-                    <div className="flex gap-2 mt-8 mb-12">
+                {/* Persistent Bottom Center Action Button */}
+                {currentContent.actionLabel && (
+                    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-50">
+                        <button
+                            onClick={() => onAction(currentContent.actionTarget!)}
+                            className="bg-luxury-gold text-jungle-deep px-12 py-5 rounded-full font-bold uppercase tracking-[0.2em] flex items-center gap-4 gold-shadow hover:scale-105 active:scale-95 transition-all shadow-2xl"
+                        >
+                            <span>{currentContent.actionLabel[language]}</span>
+                            <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+                        </button>
+                    </div>
+                )}
+
+                {/* Navigation and Dots Container - pushed to bottom corners or sides */}
+                <div className="absolute inset-x-0 bottom-0 p-8 flex justify-between items-end pointer-events-none">
+                    <div className="pointer-events-auto">
+                        <button
+                            onClick={() => setPage(page === 0 ? currentContent.slides.length - 1 : page - 1)}
+                            className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors bg-black/20 backdrop-blur-sm"
+                        >
+                            <ChevronLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
+                        </button>
+                    </div>
+
+                    {/* Pagination Dots */}
+                    <div className="flex gap-3 pointer-events-auto pb-6">
                         {currentContent.slides.map((_, i) => (
                             <button
                                 key={i}
                                 onClick={() => setPage(i)}
-                                className={`h-1 transition-all duration-300 rounded-full ${i === page ? 'w-12 bg-luxury-gold' : 'w-4 bg-white/20'}`}
+                                className={`h-1.5 transition-all duration-300 rounded-full shadow-lg ${i === page ? 'w-12 bg-luxury-gold' : 'w-4 bg-white/40 hover:bg-white/60'}`}
                             />
                         ))}
                     </div>
 
-                    {/* Actions */}
-                    <div className="flex flex-wrap gap-4 items-center">
-                        {currentContent.actionLabel && (
-                            <button
-                                onClick={() => onAction(currentContent.actionTarget!)}
-                                className="bg-luxury-gold text-jungle-deep px-10 py-5 rounded-3xl font-bold uppercase tracking-widest flex items-center gap-3 gold-shadow active:scale-95 transition-all"
-                            >
-                                {currentContent.actionLabel[language]}
-                                <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
-                            </button>
-                        )}
-
-                        {page < currentContent.slides.length - 1 ? (
-                            <button
-                                onClick={() => setPage(page + 1)}
-                                className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-2xl font-bold uppercase tracking-widest flex items-center gap-3 group"
-                            >
-                                {isRTL ? 'التالي' : 'Next'}
-                                <ChevronRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRTL ? 'rotate-180' : ''}`} />
-                            </button>
-                        ) : (
-                            <button
-                                onClick={onClose}
-                                className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-2xl font-bold uppercase tracking-widest flex items-center gap-3 transition-colors hover:bg-white/20"
-                            >
-                                {isRTL ? 'إغلاق' : 'Close'}
-                            </button>
-                        )}
-
-                        {page > 0 && (
-                            <button
-                                onClick={() => setPage(page - 1)}
-                                className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors"
-                            >
-                                <ChevronLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
-                            </button>
-                        )}
+                    <div className="pointer-events-auto">
+                        <button
+                            onClick={() => setPage((page + 1) % currentContent.slides.length)}
+                            className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors bg-black/20 backdrop-blur-sm"
+                        >
+                            <ChevronRight className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
+                        </button>
                     </div>
                 </div>
-            </div>
-
-            {/* Pagination Controls for Desktop */}
-            <div className="hidden lg:flex fixed right-12 top-1/2 -translate-y-1/2 flex-col gap-4 z-20">
-                {currentContent.slides.map((_, i) => (
-                    <button
-                        key={i}
-                        onClick={() => setPage(i)}
-                        className={`w-3 h-3 rounded-full transition-all ${i === page ? 'bg-luxury-gold scale-150' : 'bg-white/20'}`}
-                    />
-                ))}
             </div>
         </div>
     );
