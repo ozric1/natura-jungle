@@ -144,19 +144,40 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
 
     const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const text = {
+        title: { en: 'Digital Menu', fr: 'Menu Numérique', ar: 'قائمة الطلبات' },
+        addToCart: { en: 'Add to selection', fr: 'Ajouter au panier', ar: 'إضافة للطلب' },
+        added: { en: 'Added', fr: 'Ajouté', ar: 'مضاف' },
+        items: { en: 'Items', fr: 'Articles', ar: 'عناصر' },
+        payNow: { en: 'Pay Now', fr: 'Payer Maintenant', ar: 'ادفع الآن' },
+        ingredients: { en: 'Ingredients & Base', fr: 'Ingrédients & Base', ar: 'المكونات والأساس' },
+        categories: {
+            morning: { en: 'Morning', fr: 'Matin', ar: 'فطور' },
+            greenery: { en: 'Greenery', fr: 'Salades', ar: 'سلطات' },
+            tradition: { en: 'Tradition', fr: 'Tagines', ar: 'طواجن' },
+            mains: { en: 'Mains', fr: 'Plats', ar: 'أطباق' },
+            street: { en: 'Street', fr: 'Sandwichs', ar: 'ساندويتش' },
+            oven: { en: 'Oven', fr: 'Pizzas', ar: 'بيتزا' },
+            drinks: { en: 'Drinks', fr: 'Boissons', ar: 'مشروبات' },
+            fresh: { en: 'Fresh', fr: 'Jus', ar: 'عصائر' },
+            sweets: { en: 'Sweets', fr: 'Desserts', ar: 'حلويات' },
+            kids: { en: 'Kids', fr: 'Enfants', ar: 'قائمة الأطفال' },
+            extras: { en: 'Extras', fr: 'Suppléments', ar: 'إضافات' }
+        }
+    };
 
     const categories = [
-        { id: 'Petit Déjeuner', icon: Coffee, label: language === 'ar' ? 'فطور' : 'Morning' },
-        { id: 'Salades', icon: Leaf, label: language === 'ar' ? 'سلطات' : 'Greenery' },
-        { id: 'Tagines', icon: Flame, label: language === 'ar' ? 'طواجن' : 'Tradition' },
-        { id: 'Plats', icon: Utensils, label: language === 'ar' ? 'أطباق' : 'Mains' },
-        { id: 'Sandwiches', icon: ShoppingBag, label: language === 'ar' ? 'ساندويتش' : 'Street' },
-        { id: 'Pizza', icon: Pizza, label: language === 'ar' ? 'بيتزا' : 'Oven' },
-        { id: 'Boissons', icon: CupSoda, label: language === 'ar' ? 'مشروبات' : 'Drinks' },
-        { id: 'Jus', icon: GlassWater, label: language === 'ar' ? 'عصائر' : 'Fresh' },
-        { id: 'Desserts', icon: Cookie, label: language === 'ar' ? 'حلويات' : 'Sweets' },
-        { id: 'Menu Enfants', icon: Baby, label: language === 'ar' ? 'قائمة الأطفال' : 'Kids' },
-        { id: 'Suppléments', icon: Plus, label: language === 'ar' ? 'إضافات' : 'Extras' },
+        { id: 'Petit Déjeuner', icon: Coffee, label: text.categories.morning[language] },
+        { id: 'Salades', icon: Leaf, label: text.categories.greenery[language] },
+        { id: 'Tagines', icon: Flame, label: text.categories.tradition[language] },
+        { id: 'Plats', icon: Utensils, label: text.categories.mains[language] },
+        { id: 'Sandwiches', icon: ShoppingBag, label: text.categories.street[language] },
+        { id: 'Pizza', icon: Pizza, label: text.categories.oven[language] },
+        { id: 'Boissons', icon: CupSoda, label: text.categories.drinks[language] },
+        { id: 'Jus', icon: GlassWater, label: text.categories.fresh[language] },
+        { id: 'Desserts', icon: Cookie, label: text.categories.sweets[language] },
+        { id: 'Menu Enfants', icon: Baby, label: text.categories.kids[language] },
+        { id: 'Suppléments', icon: Plus, label: text.categories.extras[language] },
     ];
 
     const filteredItems = menuItems.filter(item => item.category === activeCategory);
@@ -174,7 +195,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                 </motion.button>
                 <div className="text-center">
                     <h1 className="text-2xl font-serif font-bold tracking-widest uppercase text-luxury-gold">
-                        {language === 'ar' ? 'قائمة الطلبات' : 'Digital Menu'}
+                        {text.title[language]}
                     </h1>
                 </div>
                 <div className="relative">
@@ -258,7 +279,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                             </div>
 
                                             <div className="mb-8">
-                                                <p className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-bold mb-3">Ingredients & Base</p>
+                                                <p className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-bold mb-3">{text.ingredients[language]}</p>
                                                 <p className="text-sm font-serif leading-relaxed text-jungle-deep/60 dark:text-pure-nature/60 italic">
                                                     {item.description}
                                                 </p>
@@ -284,7 +305,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                                                 <Plus className="w-5 h-5" />
                                                             </motion.button>
                                                         </div>
-                                                        <span className="text-xs font-bold uppercase tracking-widest opacity-40">Added</span>
+                                                        <span className="text-xs font-bold uppercase tracking-widest opacity-40">{text.added[language]}</span>
                                                     </div>
                                                 ) : (
                                                     <motion.button
@@ -293,7 +314,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                                         className="px-10 py-5 bg-jungle-deep dark:bg-luxury-gold text-luxury-gold dark:text-jungle-deep rounded-2xl text-[10px] font-bold uppercase tracking-[0.3em] flex items-center gap-3 group/btn hover:shadow-xl transition-all"
                                                     >
                                                         <Plus className="w-4 h-4 group-hover/btn:rotate-90 transition-transform" />
-                                                        {language === 'ar' ? 'إضافة للطلب' : 'Add to selection'}
+                                                        {text.addToCart[language]}
                                                     </motion.button>
                                                 )}
                                             </div>
@@ -321,7 +342,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                     <ShoppingBag className="w-7 h-7" />
                                 </div>
                                 <div className="text-pure-nature">
-                                    <p className="text-[10px] uppercase tracking-[0.3em] opacity-50 font-bold mb-1">{cartCount} {language === 'ar' ? 'عناصر' : 'Items'}</p>
+                                    <p className="text-[10px] uppercase tracking-[0.3em] opacity-50 font-bold mb-1">{cartCount} {text.items[language]}</p>
                                     <p className="text-3xl font-serif text-luxury-gold">{cartTotal} MAD</p>
                                 </div>
                             </div>
@@ -330,7 +351,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                 onClick={() => onOrderPlaced(cart, cartTotal)}
                                 className="bg-luxury-gold text-jungle-deep px-12 py-5 rounded-2xl font-bold uppercase tracking-widest text-xs shadow-xl gold-shadow active:scale-105 transition-transform"
                             >
-                                {language === 'ar' ? 'ادفع الآن' : 'Pay Now'}
+                                {text.payNow[language]}
                             </motion.button>
                         </div>
                     </motion.div>

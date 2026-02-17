@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { X, Calendar, Users, MessageSquare, Utensils } from 'lucide-react';
+import { X, Calendar, Users, MessageSquare, Utensils, Clock } from 'lucide-react';
 import { useState } from 'react';
 
 interface CateringPartyserviceProps {
@@ -12,6 +12,7 @@ export const CateringPartyservice = ({ onClose, language, eventType }: CateringP
     const isRTL = language === 'ar';
     const [formData, setFormData] = useState({
         size: '',
+        date: '',
         time: '',
         food: '',
         name: ''
@@ -62,6 +63,11 @@ export const CateringPartyservice = ({ onClose, language, eventType }: CateringP
             fr: 'Nombre d\'invités',
             ar: 'عدد الأشخاص'
         },
+        arrivalDate: {
+            en: 'Arrival Date',
+            fr: 'Date d\'Arrivée',
+            ar: 'تاريخ الوصول'
+        },
         arrivalTime: {
             en: 'Arrival Time',
             fr: 'Heure d\'Arrivée',
@@ -89,6 +95,7 @@ export const CateringPartyservice = ({ onClose, language, eventType }: CateringP
         const message = `*${typeHeader}*%0A%0A` +
             `*Client:* ${formData.name || 'N/A'}%0A` +
             `*Group Size:* ${formData.size} guests%0A` +
+            `*Arrival Date:* ${formData.date}%0A` +
             `*Arrival Time:* ${formData.time}%0A` +
             `*Food Orders:*%0A${formData.food || 'No specific food order yet.'}%0A%0A` +
             `_Sent via Natura Jungle App_`;
@@ -162,18 +169,35 @@ export const CateringPartyservice = ({ onClose, language, eventType }: CateringP
                         />
                     </div>
 
-                    {/* Arrival Time */}
-                    <div className="space-y-2">
-                        <label className="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-white flex items-center gap-2">
-                            <Calendar className="w-4 h-4 text-sand-gold" />
-                            {text.arrivalTime[language]}
-                        </label>
-                        <input
-                            type="time"
-                            value={formData.time}
-                            onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                            className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl p-4 text-neutral-900 dark:text-white focus:ring-2 focus:ring-sand-gold outline-none transition-all"
-                        />
+                    {/* Date & Time Row */}
+                    <div className="flex gap-4">
+                        {/* Arrival Date */}
+                        <div className="space-y-2 flex-1">
+                            <label className="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-white flex items-center gap-2">
+                                <Calendar className="w-4 h-4 text-sand-gold" />
+                                {text.arrivalDate[language]}
+                            </label>
+                            <input
+                                type="date"
+                                value={formData.date}
+                                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                                className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl p-4 text-neutral-900 dark:text-white focus:ring-2 focus:ring-sand-gold outline-none transition-all"
+                            />
+                        </div>
+
+                        {/* Arrival Time */}
+                        <div className="space-y-2 flex-1">
+                            <label className="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-white flex items-center gap-2">
+                                <Clock className="w-4 h-4 text-sand-gold" />
+                                {text.arrivalTime[language]}
+                            </label>
+                            <input
+                                type="time"
+                                value={formData.time}
+                                onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                                className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl p-4 text-neutral-900 dark:text-white focus:ring-2 focus:ring-sand-gold outline-none transition-all"
+                            />
+                        </div>
                     </div>
 
                     {/* Food Orders */}

@@ -5,10 +5,88 @@ import { useState, useMemo } from 'react';
 interface BungalowBookingProps {
     onBack: () => void;
     onPaymentComplete: () => void;
-    isRTL?: boolean;
+    currentLanguage: 'en' | 'fr' | 'ar';
 }
 
-export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: BungalowBookingProps) => {
+export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: BungalowBookingProps) => {
+    const isRTL = currentLanguage === 'ar';
+
+    const translations = {
+        en: {
+            title: "Jungle Horizon Bungalow",
+            subtitle: "Luxury Stay",
+            guests: "2 Guests",
+            private: "Private",
+            rest: "Rest",
+            selectDates: "Select Dates",
+            highDemand: "High demand for this bungalow. 70% of dates are already booked for this month. Secure yours today!",
+            pricePerNight: "Price per Night",
+            breakfast: "Breakfast included",
+            extraKid: "Additional kid +150 DH",
+            total: "Total Amount",
+            continue: "Continue to Payment",
+            selectDatesFirst: "Select Dates First",
+            checkout: "Guest Checkout",
+            cardName: "Cardholder Name",
+            cardNumber: "Card Number",
+            expiry: "Expiry",
+            verify: "Verify & Book",
+            confirmed: "Booking Confirmed!",
+            confirmedMsg: "Your luxury night sky experience is now unlocked.",
+            redirecting: "Redirecting...",
+            alert: "Please enter all payment details"
+        },
+        fr: {
+            title: "Bungalow Horizon Jungle",
+            subtitle: "Séjour de Luxe",
+            guests: "2 Invités",
+            private: "Privé",
+            rest: "Détente",
+            selectDates: "Choisir les Dates",
+            highDemand: "Forte demande pour ce bungalow. 70% des dates sont déjà réservées. Sécurisez la vôtre aujourd'hui !",
+            pricePerNight: "Prix par Nuit",
+            breakfast: "Petit-déjeuner inclus",
+            extraKid: "Enfant supplémentaire +150 DH",
+            total: "Montant Total",
+            continue: "Continuer vers le Paiement",
+            selectDatesFirst: "Sélectionnez vos dates",
+            checkout: "Paiement Invité",
+            cardName: "Nom du titulaire",
+            cardNumber: "Numéro de carte",
+            expiry: "Expiration",
+            verify: "Vérifier et Réserver",
+            confirmed: "Réservation Confirmée !",
+            confirmedMsg: "Votre expérience de ciel étoilé de luxe est maintenant débloquée.",
+            redirecting: "Redirection...",
+            alert: "Veuillez entrer tous les détails de paiement"
+        },
+        ar: {
+            title: "بناغل الغابة الفاخرة",
+            subtitle: "إقامة فاخرة",
+            guests: "شخصين",
+            private: "خاص",
+            rest: "استجمام",
+            selectDates: "اختر التواريخ",
+            highDemand: "تم حجز ٧٠٪ من التواريخ لهذا الشهر. احجز مبكراً لتجنب خيبة الأمل.",
+            pricePerNight: "السعر لليلة",
+            breakfast: "شامل الفطور",
+            extraKid: "طفل إضافي +150 درهم",
+            total: "المجموع",
+            continue: "إدخال تفاصيل الدفع",
+            selectDatesFirst: "اختر التواريخ أولاً",
+            checkout: "الدفع الآمن",
+            cardName: "اسم حامل البطاقة",
+            cardNumber: "رقم البطاقة",
+            expiry: "انتهاء الصلاحية",
+            verify: "تأكيد الحجز",
+            confirmed: "الحجز مؤكد!",
+            confirmedMsg: "لقد تم فتح خريطة النجوم المتميزة لك.",
+            redirecting: "جاري العودة...",
+            alert: "يرجى إدخال جميع تفاصيل الدفع"
+        }
+    };
+
+    const t = translations[currentLanguage];
     const [step, setStep] = useState<'details' | 'payment' | 'success'>('details');
     const [selectedDates, setSelectedDates] = useState<number[]>([]);
     const [paymentData, setPaymentData] = useState({
@@ -55,7 +133,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
 
     const handlePayment = () => {
         if (!paymentData.cardName || !paymentData.cardNumber || !paymentData.expiry || !paymentData.cvv) {
-            alert(isRTL ? 'يرجى إدخال جميع تفاصيل الدفع' : 'Please enter all payment details');
+            alert(t.alert);
             return;
         }
         setStep('success');
@@ -75,14 +153,14 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                     <CheckCircle2 className="w-12 h-12 text-jungle-green" />
                 </motion.div>
                 <h2 className="text-4xl font-serif text-white mb-4">
-                    {isRTL ? 'الحجز مؤكد!' : 'Booking Confirmed!'}
+                    {t.confirmed}
                 </h2>
                 <p className="text-sand-gold/60 mb-12 text-sm max-w-xs mx-auto">
-                    {isRTL ? 'لقد تم فتح خريطة النجوم المتميزة لك.' : 'Your luxury night sky experience is now unlocked.'}
+                    {t.confirmedMsg}
                 </p>
                 <div className="flex items-center gap-2 text-indigo-400 font-bold uppercase tracking-widest text-xs">
                     <Sparkles className="w-4 h-4" />
-                    {isRTL ? 'جاري العودة...' : 'Redirecting...'}
+                    {t.redirecting}
                 </div>
             </div>
         );
@@ -117,10 +195,10 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                 <div className="px-6 py-8 space-y-8 max-w-2xl mx-auto">
                     <div>
                         <span className="text-sand-gold font-bold uppercase tracking-[0.3em] text-[9px] mb-2 block">
-                            {isRTL ? 'إقامة فاخرة' : 'Luxury Stay'}
+                            {t.subtitle}
                         </span>
                         <h1 className="text-3xl md:text-4xl font-serif leading-tight">
-                            {isRTL ? 'بناغل الغابة الفاخرة' : 'Jungle Horizon Bungalow'}
+                            {t.title}
                         </h1>
                     </div>
 
@@ -128,15 +206,15 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                     <div className="grid grid-cols-3 gap-3">
                         <div className="p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm">
                             <Users className="w-4 h-4 mx-auto text-sand-gold mb-1" />
-                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{isRTL ? 'شخصين' : '2 Guests'}</p>
+                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{t.guests}</p>
                         </div>
                         <div className="p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm">
                             <Moon className="w-4 h-4 mx-auto text-sand-gold mb-1" />
-                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{isRTL ? 'خاص' : 'Private'}</p>
+                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{t.private}</p>
                         </div>
                         <div className="p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm">
                             <Sparkles className="w-4 h-4 mx-auto text-sand-gold mb-1" />
-                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{isRTL ? 'استجمام' : 'Rest'}</p>
+                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{t.rest}</p>
                         </div>
                     </div>
 
@@ -145,7 +223,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                         <div className="flex justify-between items-center mb-6">
                             <div className="flex items-center gap-2">
                                 <CalendarIcon className="w-4 h-4 text-sand-gold" />
-                                <h3 className="text-sm font-bold uppercase tracking-widest">{isRTL ? 'اختر التواريخ' : 'Select Dates'}</h3>
+                                <h3 className="text-sm font-bold uppercase tracking-widest">{t.selectDates}</h3>
                             </div>
                         </div>
 
@@ -177,24 +255,22 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                         <div className="mt-6 p-4 bg-jungle-green/5 rounded-2xl flex items-center gap-3 border border-sand-gold/10">
                             <Info className="w-4 h-4 text-sand-gold" />
                             <p className="text-[10px] text-jungle-green font-medium leading-tight">
-                                {isRTL
-                                    ? 'تم حجز ٧٠٪ من التواريخ لهذا الشهر. احجز مبكراً لتجنب خيبة الأمل.'
-                                    : 'High demand for this bungalow. 70% of dates are already booked for this month. Secure yours today!'}
+                                {t.highDemand}
                             </p>
                         </div>
                     </div>
 
                     <div className="p-6 border-t border-sand-gold/10">
                         <div className="flex justify-between text-xs mb-2">
-                            <span className="opacity-60">{isRTL ? 'السعر لليلة' : 'Price per Night'}</span>
+                            <span className="opacity-60">{t.pricePerNight}</span>
                             <span className="font-bold">{pricePerNight} MAD</span>
                         </div>
                         <div className="flex justify-between text-[10px] mb-4 text-sand-gold/80">
-                            <span>{isRTL ? 'شامل الفطور' : 'Breakfast included'}</span>
-                            <span>{isRTL ? 'طفل إضافي +150 درهم' : 'Additional kid +150 DH'}</span>
+                            <span>{t.breakfast}</span>
+                            <span>{t.extraKid}</span>
                         </div>
                         <div className="flex justify-between items-end pt-4 border-t border-jungle-green/5">
-                            <span className="text-lg font-serif italic">{isRTL ? 'المجموع' : 'Total Amount'}</span>
+                            <span className="text-lg font-serif italic">{t.total}</span>
                             <span className="text-3xl font-serif text-sand-gold">{nights * pricePerNight} MAD</span>
                         </div>
                     </div>
@@ -212,7 +288,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                         ${nights > 0 ? 'bg-jungle-green text-white' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}
                     `}
                 >
-                    {isRTL ? 'إدخال تفاصيل الدفع' : nights === 0 ? 'Select Dates First' : 'Continue to Payment'}
+                    {nights === 0 ? t.selectDatesFirst : t.continue}
                 </motion.button>
             </div>
 
@@ -232,14 +308,14 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                             className="w-full bg-white rounded-t-[3.5rem] p-8 pb-12 max-w-xl"
                         >
                             <div className="flex justify-between items-center mb-10">
-                                <h3 className="text-3xl font-serif italic">{isRTL ? 'الدفع الآمن' : 'Guest Checkout'}</h3>
+                                <h3 className="text-3xl font-serif italic">{t.checkout}</h3>
                                 <button onClick={() => setStep('details')} className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">×</button>
                             </div>
 
                             <div className="space-y-6">
                                 <div className="space-y-4">
                                     <div>
-                                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-4 mb-2 block">{isRTL ? 'اسم حامل البطاقة' : 'Cardholder Name'}</label>
+                                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-4 mb-2 block">{t.cardName}</label>
                                         <input
                                             type="text"
                                             placeholder="Sarah Mansouria"
@@ -249,7 +325,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                                         />
                                     </div>
                                     <div>
-                                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-4 mb-2 block">{isRTL ? 'رقم البطاقة' : 'Card Number'}</label>
+                                        <label className="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-4 mb-2 block">{t.cardNumber}</label>
                                         <input
                                             type="text"
                                             placeholder="0000 0000 0000 0000"
@@ -260,7 +336,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                                     </div>
                                     <div className="flex gap-4">
                                         <div className="flex-1">
-                                            <label className="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-4 mb-2 block">{isRTL ? 'انتهاء الصلاحية' : 'Expiry'}</label>
+                                            <label className="text-[10px] font-bold uppercase tracking-widest opacity-40 ml-4 mb-2 block">{t.expiry}</label>
                                             <input
                                                 type="text"
                                                 placeholder="MM/YY"
@@ -293,7 +369,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                                     className="w-full bg-jungle-green text-sand-gold py-6 rounded-[2.5rem] font-bold uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 shadow-xl"
                                 >
                                     <Sparkles className="w-4 h-4" />
-                                    {isRTL ? 'تأكيد الحجز' : 'Verify & Book'}
+                                    {t.verify}
                                 </motion.button>
                             </div>
                         </motion.div>

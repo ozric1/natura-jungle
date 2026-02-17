@@ -117,6 +117,43 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 button: "View Pricing",
                 tag: "Rates"
             },
+            navigation: {
+                pricing: { title: "Pricing", subtitle: "Plans" },
+                bungalow: { title: "Bungalow Jungle", subtitle: "Stay" },
+                restaurant: { title: "Restaurant & Menu", subtitle: "Dining" },
+                zones: { title: "Experience Zones", subtitle: "Discover" },
+                catering: { title: "Catering & Events", subtitle: "Services" },
+                teamBuilding: { title: "Team Building", subtitle: "Corporate" },
+                school: { title: "School Trips", subtitle: "Education" },
+                hours: { title: "Opening Hours", subtitle: "Time" },
+                animals: { title: "Animal Circuit", subtitle: "Animals" },
+                map: { title: "Park Map", subtitle: "Location" }
+            },
+            pricingModal: {
+                title: "Our Pricing Plans",
+                subtitle: "Choose Your Experience",
+                parkEntry: {
+                    title: "Park Entry",
+                    adults: "Adults",
+                    kids: "Kids",
+                    desc: "Includes one drink. Access to animal zones.",
+                    book: "Book Now"
+                },
+                poolAccess: {
+                    title: "Pool Area",
+                    adults: "Adults",
+                    kids: "Kids",
+                    desc: "Includes park access. Sunbeds and towels.",
+                    book: "Book Now"
+                },
+                bungalow: {
+                    tag: "Best Value",
+                    title: "Bungalow Stay",
+                    perNight: "Per Night",
+                    desc: "1 Couple + Kids. Breakfast & Activities included.",
+                    book: "Book Now"
+                }
+            },
             menu: {
                 mission: "Our Mission",
                 story: "Our Story",
@@ -166,6 +203,43 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 button: "Voir les Tarifs",
                 tag: "Tarifs"
             },
+            navigation: {
+                pricing: { title: "Tarifs", subtitle: "Formules" },
+                bungalow: { title: "Bungalow Jungle", subtitle: "Séjour" },
+                restaurant: { title: "Restaurant & Menu", subtitle: "Repas" },
+                zones: { title: "Zones d'Expérience", subtitle: "Découvrir" },
+                catering: { title: "Traiteur & Événements", subtitle: "Services" },
+                teamBuilding: { title: "Team Building", subtitle: "Entreprise" },
+                school: { title: "Sorties Scolaires", subtitle: "Éducation" },
+                hours: { title: "Heures d'Ouverture", subtitle: "Horaires" },
+                animals: { title: "Circuit Animalier", subtitle: "Animaux" },
+                map: { title: "Plan du Parc", subtitle: "Localisation" }
+            },
+            pricingModal: {
+                title: "Nos Formules",
+                subtitle: "Choisissez Votre Expérience",
+                parkEntry: {
+                    title: "Entrée Parc",
+                    adults: "Adultes",
+                    kids: "Enfants",
+                    desc: "Comprend une boisson. Accès aux zones animalières.",
+                    book: "Réserver"
+                },
+                poolAccess: {
+                    title: "Accès Piscine",
+                    adults: "Adultes",
+                    kids: "Enfants",
+                    desc: "Comprend l'accès au parc. Transats et serviettes.",
+                    book: "Réserver"
+                },
+                bungalow: {
+                    tag: "Meilleure Offre",
+                    title: "Séjour Bungalow",
+                    perNight: "Par Nuit",
+                    desc: "1 Couple + Enfants. Petit-déjeuner et activités inclus.",
+                    book: "Réserver"
+                }
+            },
             menu: {
                 mission: "Notre Mission",
                 story: "Notre Histoire",
@@ -214,6 +288,43 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 subtitle: "اكتشف أسعارنا وعروضنا.",
                 button: "عرض الأسعار",
                 tag: "الأسعار"
+            },
+            navigation: {
+                pricing: { title: "الأسعار", subtitle: "خطط" },
+                bungalow: { title: "بناغل الغابة", subtitle: "إقامة" },
+                restaurant: { title: "المطعم والقائمة", subtitle: "طعام" },
+                zones: { title: "مناطق التجربة", subtitle: "اكتشف" },
+                catering: { title: "التموين والحفلات", subtitle: "خدمات" },
+                teamBuilding: { title: "بناء الفريق", subtitle: "شركات" },
+                school: { title: "الرحلات المدرسية", subtitle: "تعليم" },
+                hours: { title: "ساعات العمل", subtitle: "توقيت" },
+                animals: { title: "حلبة الحيوانات", subtitle: "حيوانات" },
+                map: { title: "خريطة المنتزه", subtitle: "موقع" }
+            },
+            pricingModal: {
+                title: "خطط أسعارنا",
+                subtitle: "اختر تجربتك",
+                parkEntry: {
+                    title: "تذكرة الدخول",
+                    adults: "كبار",
+                    kids: "صغار",
+                    desc: "شامل مشروب واحد. دخول مناطق الحيوانات.",
+                    book: "احجز الآن"
+                },
+                poolAccess: {
+                    title: "المسبح",
+                    adults: "كبار",
+                    kids: "صغار",
+                    desc: "شامل دخول المتنزه. كراسي ومناشف.",
+                    book: "احجز الآن"
+                },
+                bungalow: {
+                    tag: "أفضل قيمة",
+                    title: "إقامة البناغل",
+                    perNight: "في الليلة",
+                    desc: "زوجان + أطفال. شامل الإفطار والأنشطة.",
+                    book: "احجز الآن"
+                }
             },
             menu: {
                 mission: "مهمتنا",
@@ -335,8 +446,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <div className="text-xl font-serif">DH</div>
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'خطط' : 'Plans'}</div>
-                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'الأسعار' : 'Pricing'}</div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.pricing.subtitle}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{text.navigation.pricing.title}</div>
                                     </div>
                                 </motion.button>
 
@@ -352,8 +463,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <Home className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'إقامة' : 'Stay'}</div>
-                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'بناغل الغابة' : 'Bungalow Jungle'}</div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.bungalow.subtitle}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{text.navigation.bungalow.title}</div>
                                     </div>
                                 </motion.button>
 
@@ -369,8 +480,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <Utensils className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'طعام' : 'Dining'}</div>
-                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'المطعم والقائمة' : 'Restaurant & Menu'}</div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.restaurant.subtitle}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{text.navigation.restaurant.title}</div>
                                     </div>
                                 </motion.button>
 
@@ -386,8 +497,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <Sparkles className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'اكتشف' : 'Discover'}</div>
-                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'مناطق التجربة' : 'Experience Zones'}</div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.zones.subtitle}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{text.navigation.zones.title}</div>
                                     </div>
                                 </motion.button>
 
@@ -403,8 +514,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <PartyPopper className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'خدمات' : 'Services'}</div>
-                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'التموين والحفلات' : 'Catering & Events'}</div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.catering.subtitle}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{text.navigation.catering.title}</div>
                                     </div>
                                 </motion.button>
 
@@ -420,8 +531,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <Users className="w-5 h-5" /> {/* Using Users icon if available, otherwise check imports */}
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'شركات' : 'Corporate'}</div>
-                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'بناء الفريق' : 'Team Building'}</div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.teamBuilding.subtitle}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{text.navigation.teamBuilding.title}</div>
                                     </div>
                                 </motion.button>
 
@@ -437,8 +548,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <Quote className="w-5 h-5" /> {/* Placeholder icon or use specific if imported */}
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'تعليم' : 'Education'}</div>
-                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'الرحلات المدرسية' : 'School Trips'}</div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.school.subtitle}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{text.navigation.school.title}</div>
                                     </div>
                                 </motion.button>
 
@@ -454,8 +565,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <Clock className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'توقيت' : 'Time'}</div>
-                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'ساعات العمل' : 'Opening Hours'}</div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.hours.subtitle}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{text.navigation.hours.title}</div>
                                     </div>
                                 </motion.button>
 
@@ -471,8 +582,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <Palmtree className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'حيوانات' : 'Animals'}</div>
-                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'حلبة الحيوانات' : 'Animal Circuit'}</div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.animals.subtitle}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{text.navigation.animals.title}</div>
                                     </div>
                                 </motion.button>
 
@@ -488,8 +599,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <MapPin className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'موقع' : 'Location'}</div>
-                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'خريطة المنتزه' : 'Park Map'}</div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.map.subtitle}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{text.navigation.map.title}</div>
                                     </div>
                                 </motion.button>
                             </nav>
@@ -537,10 +648,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                             <div className="p-8 lg:p-16">
                                 <div className="text-center mb-12">
                                     <h2 className="text-luxury-gold text-xs font-bold uppercase tracking-[0.3em] mb-4">
-                                        {isRTL ? 'خطط أسعارنا' : 'Our Pricing Plans'}
+                                        {text.pricingModal.title}
                                     </h2>
                                     <h3 className="text-3xl lg:text-5xl font-serif text-white">
-                                        {isRTL ? 'اختر تجربتك' : 'Choose Your Experience'}
+                                        {text.pricingModal.subtitle}
                                     </h3>
                                 </div>
 
@@ -550,23 +661,23 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
                                             <Palmtree className="w-32 h-32 text-luxury-gold" />
                                         </div>
-                                        <h4 className="text-2xl font-serif text-luxury-gold mb-2">{isRTL ? 'تذكرة الدخول' : 'Park Entry'}</h4>
+                                        <h4 className="text-2xl font-serif text-luxury-gold mb-2">{text.pricingModal.parkEntry.title}</h4>
                                         <div className="space-y-4 my-6">
                                             <div className="flex justify-between items-baseline border-b border-white/5 pb-2">
-                                                <span className="text-white/60 text-sm uppercase tracking-wider">{isRTL ? 'كبار' : 'Adults'}</span>
+                                                <span className="text-white/60 text-sm uppercase tracking-wider">{text.pricingModal.parkEntry.adults}</span>
                                                 <span className="text-2xl font-serif text-white">40 <span className="text-xs text-luxury-gold">DH</span></span>
                                             </div>
                                             <div className="flex justify-between items-baseline border-b border-white/5 pb-2">
-                                                <span className="text-white/60 text-sm uppercase tracking-wider">{isRTL ? 'صغار' : 'Kids'}</span>
+                                                <span className="text-white/60 text-sm uppercase tracking-wider">{text.pricingModal.parkEntry.kids}</span>
                                                 <span className="text-2xl font-serif text-white">30 <span className="text-xs text-luxury-gold">DH</span></span>
                                             </div>
                                         </div>
                                         <p className="text-xs text-white/40 leading-relaxed">
-                                            {isRTL ? 'شامل مشروب واحد. دخول مناطق الحيوانات.' : 'Includes one drink. Access to animal zones.'}
+                                            {text.pricingModal.parkEntry.desc}
                                         </p>
                                         <div className="mt-6 pt-6 border-t border-white/5">
                                             <a href="tel:0605500058" className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors">
-                                                {isRTL ? 'احجز الآن' : 'Book Now'}
+                                                {text.pricingModal.parkEntry.book}
                                             </a>
                                         </div>
                                     </div>
@@ -576,23 +687,23 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
                                             <Waves className="w-32 h-32 text-luxury-gold" />
                                         </div>
-                                        <h4 className="text-2xl font-serif text-luxury-gold mb-2">{isRTL ? 'المسبح' : 'Pool Area'}</h4>
+                                        <h4 className="text-2xl font-serif text-luxury-gold mb-2">{text.pricingModal.poolAccess.title}</h4>
                                         <div className="space-y-4 my-6">
                                             <div className="flex justify-between items-baseline border-b border-white/5 pb-2">
-                                                <span className="text-white/60 text-sm uppercase tracking-wider">{isRTL ? 'كبار' : 'Adults'}</span>
+                                                <span className="text-white/60 text-sm uppercase tracking-wider">{text.pricingModal.poolAccess.adults}</span>
                                                 <span className="text-2xl font-serif text-white">150 <span className="text-xs text-luxury-gold">DH</span></span>
                                             </div>
                                             <div className="flex justify-between items-baseline border-b border-white/5 pb-2">
-                                                <span className="text-white/60 text-sm uppercase tracking-wider">{isRTL ? 'صغار' : 'Kids'}</span>
+                                                <span className="text-white/60 text-sm uppercase tracking-wider">{text.pricingModal.poolAccess.kids}</span>
                                                 <span className="text-2xl font-serif text-white">100 <span className="text-xs text-luxury-gold">DH</span></span>
                                             </div>
                                         </div>
                                         <p className="text-xs text-white/40 leading-relaxed">
-                                            {isRTL ? 'شامل دخول المتنزه. كراسي ومناشف.' : 'Includes park access. Sunbeds and towels.'}
+                                            {text.pricingModal.poolAccess.desc}
                                         </p>
                                         <div className="mt-6 pt-6 border-t border-white/5">
                                             <a href="tel:0605500058" className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors">
-                                                {isRTL ? 'احجز الآن' : 'Book Now'}
+                                                {text.pricingModal.poolAccess.book}
                                             </a>
                                         </div>
                                     </div>
@@ -696,7 +807,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                             <button
                                 key={lang}
                                 onClick={() => setLanguage(lang as any)}
-                                className="text-[10px] font-bold tracking-widest text-white/40 hover:text-luxury-gold transition-colors uppercase"
+                                className="text-[10px] font-bold tracking-widest text-luxury-gold hover:text-white transition-colors uppercase"
                             >
                                 {lang === 'ar' ? 'AR' : lang.toUpperCase()}
                             </button>
@@ -722,6 +833,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                             items={activeOrder.items}
                             total={activeOrder.total}
                             isRTL={isRTL}
+                            language={currentLanguage}
                             onReset={() => {
                                 setCurrentView('base');
                                 setActiveOrder(null);
@@ -1063,7 +1175,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         className="fixed inset-0 z-[150] bg-egg-shell dark:bg-ink-black overflow-y-auto"
                     >
                         <BungalowBooking
-                            isRTL={isRTL}
+                            currentLanguage={currentLanguage}
                             onBack={() => setCurrentView('base')}
                             onPaymentComplete={() => {
                                 setHasBooked(true);
