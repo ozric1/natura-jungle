@@ -56,7 +56,6 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
     const [activeOrder, setActiveOrder] = useState<{ items: string[], total: string } | null>(null);
     const [hasBooked, setHasBooked] = useState(false);
 
-    const [hasBooked, setHasBooked] = useState(false);
     const [showPricing, setShowPricing] = useState(false);
 
     // Carousel State & Logic
