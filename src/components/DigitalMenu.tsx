@@ -13,7 +13,7 @@ import {
     Leaf,
     GlassWater,
     Cookie,
-    Baby
+    Soup
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -22,7 +22,7 @@ export interface MenuItem {
     name: string;
     description: string;
     price: number;
-    category: 'Petit Déjeuner' | 'Salades' | 'Tagines' | 'Plats' | 'Sandwiches' | 'Pizza' | 'Boissons' | 'Jus' | 'Desserts' | 'Menu Enfants' | 'Suppléments';
+    category: 'Petit Déjeuner' | 'Salades' | 'Tagines' | 'Plats' | 'Sandwiches' | 'Pizza' | 'Boissons' | 'Jus' | 'Desserts' | 'Suppléments' | 'H\'rira' | 'Café';
     image: string;
 }
 
@@ -43,83 +43,92 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
 
     const menuItems: MenuItem[] = [
         // Petit Déjeuner
-        { id: 'pt1', name: language === 'ar' ? 'فطور كونتيننتال' : 'Continental', description: 'Jus d\'orange, viennoiserie, corbeille de notre boulanger, confiture, miel, beurre, café au thé.', price: 40, category: 'Petit Déjeuner', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'pt2', name: language === 'ar' ? 'فطور غيورماند' : 'Gourmand', description: 'Jus d\'orange, viennoiserie, misemmen, omelette fromage, corbeille de notre boulanger, confiture, beurre, café ou thé.', price: 60, category: 'Petit Déjeuner', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'pt3', name: language === 'ar' ? 'فطور تقليدي' : 'Traditionnel', description: 'Jus d\'orange, m\'semmen, harcha, corbeille de notre boulanger, olives et amlou, jben, miel, huile d\'olive, café ou thé.', price: 50, category: 'Petit Déjeuner', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'pt4', name: language === 'ar' ? 'فطور مغربي' : 'Marocain', description: 'Jus d\'orange, m\'semmen, oeufs au khlii, corbeille de notre boulanger, café ou thé.', price: 55, category: 'Petit Déjeuner', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        {
+            id: 'pt1',
+            name: language === 'ar' ? 'فطور غيورماند' : 'Gourmand',
+            description: language === 'ar' ? 'عصير برتقال، مخبوزات، مسمن، أومليت بالجبن، جبن، عسل، مربى، زبدة، خبز، قهوة أو شاي' : 'Jus d\'orange, viennoiserie, m\'semmen, Omelettes Fromage, Jben, miel, confiture, beurre, pain, café ou thé.',
+            price: 60,
+            category: 'Petit Déjeuner',
+            image: '/assets/natura/Jungle restau 2.jpeg'
+        },
+        {
+            id: 'pt2',
+            name: language === 'ar' ? 'فطور مغربي' : 'Marocain',
+            description: language === 'ar' ? 'عصير برتقال، مسمن، بيض بالخليع، جبن، عسل، خبز، قهوة أو شاي' : 'Jus d\'orange, m\'semmen, oeufs au khlii, Jben, miel, pain, café ou thé.',
+            price: 55,
+            category: 'Petit Déjeuner',
+            image: '/assets/natura/Jungle RESTAURENT 4.jpeg'
+        },
+        {
+            id: 'pt3',
+            name: language === 'ar' ? 'فطور إكسبريس' : 'Express',
+            description: language === 'ar' ? 'عصير برتقال، مخبوزات، مسمن، جبن، عسل، خبز، قهوة أو شاي' : 'Jus d\'orange, viennoiserie, m\'semmen, Jben, miel, pain, café ou thé.',
+            price: 45,
+            category: 'Petit Déjeuner',
+            image: '/assets/natura/Jungle restaurant.jpeg'
+        },
 
         // Salades
-        { id: 'sl1', name: language === 'ar' ? 'سلطة مغربية' : 'Salade Marocaine', description: 'Authentic Moroccan salad', price: 30, category: 'Salades', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'sl2', name: language === 'ar' ? 'سلطة نيسواز' : 'Salade Nicoise', description: 'Classic Niçoise salad', price: 40, category: 'Salades', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'sl3', name: language === 'ar' ? 'سلطة مكسيكية' : 'Salade Mexicaine', description: 'Spicy Mexican flavors', price: 40, category: 'Salades', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'sl4', name: language === 'ar' ? 'سلطة بيشور' : 'Salade Pêcheur', description: 'Ocean fresh seafood salad', price: 60, category: 'Salades', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'sl5', name: language === 'ar' ? 'سلطة نطورا جانغل' : 'Salade Natura Jungle', description: 'Signature home salad', price: 50, category: 'Salades', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'sl6', name: language === 'ar' ? 'سلطة سيزر' : 'Salade Cesar', description: 'Classic Caesar salad', price: 45, category: 'Salades', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
-
-        // Tagines
-        { id: 'tg1', name: language === 'ar' ? 'طاجين لحم بالبرقوق' : 'Tagine Viande Pruneaux', description: 'Slow-cooked tradition', price: 135, category: 'Tagines', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
-        { id: 'tg2', name: language === 'ar' ? 'طاجين دجاج بلدي' : 'Tagine Poulet Beldi', description: 'Free-range chicken tagine', price: 135, category: 'Tagines', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'tg3', name: language === 'ar' ? 'طاجين السمان' : 'Tagine de Cailles', description: 'Delicate quail tagine', price: 135, category: 'Tagines', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'tg4', name: language === 'ar' ? 'طاجين خضار' : 'Tagine Legumes', description: 'Seasonal vegetable mix', price: 115, category: 'Tagines', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'tg5', name: language === 'ar' ? 'طاجين لحم مفروم' : 'Tagine Viande Hachée', description: 'Minced meat with eggs', price: 125, category: 'Tagines', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'tg6', name: language === 'ar' ? 'طاجين معيز' : 'Tagine Chevreaux', description: 'Tender goat meat tagine', price: 135, category: 'Tagines', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'sl1', name: language === 'ar' ? 'سلطة مغربية' : 'Salade Marocaine', description: 'Fresh diced vegetables', price: 30, category: 'Salades', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'sl2', name: language === 'ar' ? 'سلطة نيسواز' : 'Salade Niçoise', description: 'Tuna, beans, eggs, olives', price: 40, category: 'Salades', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'sl3', name: language === 'ar' ? 'سلطة نطورا جانغل' : 'Salade Natura Jungle', description: 'Signature house salad', price: 50, category: 'Salades', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
 
         // Plats
-        { id: 'pl1', name: language === 'ar' ? 'صحن لحم مفروم' : 'Plat Viande Hachée', description: 'Accompagnés par des frites et salade', price: 80, category: 'Plats', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'pl2', name: language === 'ar' ? 'صحن بروشيت مشكل' : 'Plat Brochettes Mixte', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'pl3', name: language === 'ar' ? 'صحن بروشيت دجاج' : 'Plat Brochettes de Poulet', description: 'Accompagnés par des frites et salade', price: 75, category: 'Plats', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'pl4', name: language === 'ar' ? 'صحن ريش لحم' : 'Plat Côtelettes d\'Agneau', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'pl5', name: language === 'ar' ? 'صحن صوصيص' : 'Plat Saucisse', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'pl6', name: language === 'ar' ? 'صحن مشكل' : 'Plat Mixte', description: 'Accompagnés par des frites et salade', price: 85, category: 'Plats', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
-        { id: 'pl7', name: language === 'ar' ? 'صحن ناجتس' : 'Plat Nugets', description: 'Accompagnés par des frites et salade', price: 70, category: 'Plats', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'pl1', name: language === 'ar' ? 'بروشيت لحم مفروم' : 'Brochettes Viande Hachée', description: 'Grilled minced meat skewers', price: 80, category: 'Plats', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'pl2', name: language === 'ar' ? 'بروشيت دجاج' : 'Brochettes Poulet', description: 'Grilled chicken skewers', price: 75, category: 'Plats', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'pl3', name: language === 'ar' ? 'بروشيت مشكل' : 'Brochettes Mixte', description: 'Mixed meat skewers', price: 80, category: 'Plats', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'pl4', name: language === 'ar' ? 'صحن ناجتس' : 'Plat Nuggets', description: 'Chicken nuggets plate', price: 70, category: 'Plats', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+
+        // Tagines
+        { id: 'tg1', name: language === 'ar' ? 'طاجين لحم بالبرقوق' : 'Tagine Viande Pruneaux', description: 'Beef tagine with prunes', price: 140, category: 'Tagines', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
+        { id: 'tg2', name: language === 'ar' ? 'طاجين معيز' : 'Tagine Chevreaux', description: 'Goat meat tagine', price: 140, category: 'Tagines', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'tg3', name: language === 'ar' ? 'طاجين دجاج بلدي بالحامض' : 'Tagine Poulet Beldi Citron', description: 'Free-range chicken with lemon', price: 135, category: 'Tagines', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'tg4', name: language === 'ar' ? 'كسكس (الجمعة)' : 'Couscous (Vendredi)', description: 'Friday Special - Per Person', price: 80, category: 'Tagines', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'tg5', name: language === 'ar' ? 'رفيسة (الأربعاء)' : 'R\'fissa (Mercredi)', description: 'Wednesday Special - Per Person', price: 80, category: 'Tagines', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
 
         // Sandwiches
-        { id: 'sw1', name: language === 'ar' ? 'ساندويتش لحم مفروم' : 'Sandwich Viande Hachée', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
-        { id: 'sw2', name: language === 'ar' ? 'ساندويتش ديك رومي' : 'Sandwich Dinde', description: 'Accompagner de Frites', price: 45, category: 'Sandwiches', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'sw3', name: language === 'ar' ? 'ساندويتش مشكل' : 'Sandwich Mixte', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'sw4', name: language === 'ar' ? 'هامبرغر' : 'Hamburger', description: 'Accompagner de Frites', price: 45, category: 'Sandwiches', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'sw5', name: language === 'ar' ? 'تشيز برجر' : 'Cheeseburger', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'sw1', name: language === 'ar' ? 'ساندويتش ديك رومي' : 'Sandwich Dinde', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'sw2', name: language === 'ar' ? 'ساندويتش لحم مفروم' : 'Sandwich Viande Hachée', description: 'Accompagner de Frites', price: 55, category: 'Sandwiches', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'sw3', name: language === 'ar' ? 'تشيز برجر' : 'Cheeseburger', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'sw4', name: language === 'ar' ? 'ناجتس' : 'Nuggets', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
 
         // Pizza
-        { id: 'pz1', name: language === 'ar' ? 'بيتزا لحم مفروم' : 'Pizza Viande Hachée', description: 'Tomato sauce, minced meat, cheese', price: 70, category: 'Pizza', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'pz2', name: language === 'ar' ? 'بيتزا دجاج' : 'Pizza Poulet', description: 'Tomato sauce, chicken, cheese', price: 70, category: 'Pizza', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'pz3', name: language === 'ar' ? 'بيتزا فواكه البحر' : 'Pizza Fruit de Mer', description: 'Assorted seafood and cheese', price: 80, category: 'Pizza', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'pz4', name: language === 'ar' ? 'بيتزا تونة' : 'Pizza Thon', description: 'Tuna, olives, and onions', price: 65, category: 'Pizza', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'pz5', name: language === 'ar' ? 'بيتزا ٤ أجبان' : 'Pizza 4 Fromages', description: 'Mozzarella, Roquefort, Edam, Cheddar', price: 65, category: 'Pizza', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-
-        // Boissons
-        { id: 'bs1', name: language === 'ar' ? 'صودا' : 'Soda', description: 'Various flavors', price: 15, category: 'Boissons', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
-        { id: 'bs2', name: language === 'ar' ? 'ماء معدني' : 'Eau Minérale (P)', description: 'Still water small', price: 12, category: 'Boissons', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'bs3', name: language === 'ar' ? 'ماء فوار' : 'Eau Gazeuse', description: 'Sparkling water', price: 17, category: 'Boissons', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'bs4', name: language === 'ar' ? 'لويزة' : 'Verveine', description: 'Herbal tea', price: 17, category: 'Boissons', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'bs5', name: language === 'ar' ? 'شاي مغربي' : 'Thé Marocain (P)', description: 'Traditional mint tea', price: 15, category: 'Boissons', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'bs6', name: language === 'ar' ? 'قهوة' : 'Café', description: 'Black coffee', price: 17, category: 'Boissons', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'bs7', name: language === 'ar' ? 'قهوة بالحليب' : 'Café au Lait', description: 'Coffee with milk', price: 17, category: 'Boissons', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'bs8', name: language === 'ar' ? 'حليب بالشوكولاتة' : 'Lait au Chocolat', description: 'Hot chocolate milk', price: 17, category: 'Boissons', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'bs9', name: language === 'ar' ? 'كابتشينو' : 'Cappuccino', description: 'Frothy coffee', price: 17, category: 'Boissons', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
-
-        // Jus
-        { id: 'js1', name: language === 'ar' ? 'نكتار برتقال' : 'Nectars Jus d\'Orange', description: '100% natural', price: 15, category: 'Jus', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'js2', name: language === 'ar' ? 'عصير فواكه حمراء' : 'Jus de Fruits Rouge', description: 'Berry mix', price: 17, category: 'Jus', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'js3', name: language === 'ar' ? 'عصير تفاح' : 'Jus de Pomme', description: 'Fresh apple juice', price: 17, category: 'Jus', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'js4', name: language === 'ar' ? 'عصير مانجو' : 'Jus de Mangue', description: 'Fresh mango juice', price: 17, category: 'Jus', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'js5', name: language === 'ar' ? 'عصير أناناس' : 'Jus de Ananas', description: 'Fresh pineapple juice', price: 17, category: 'Jus', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'js6', name: language === 'ar' ? 'عصير فواكه استوائية' : 'Jus Exotique', description: 'Tropical mix', price: 17, category: 'Jus', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
-
-        // Desserts
-        { id: 'ds1', name: language === 'ar' ? 'سلطة فواكه' : 'Salade de Fruits', description: 'Fresh seasonal fruit mix', price: 30, category: 'Desserts', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'ds2', name: language === 'ar' ? 'فلان' : 'Flan', description: 'Caramel custard', price: 25, category: 'Desserts', image: '/assets/natura/Jungle restau 2.jpeg' },
-
-        // Menu Enfants
-        { id: 'me1', name: language === 'ar' ? 'وجبة أطفال' : 'Menu Enfants', description: 'Nugget ou Hamburger + Frite', price: 40, category: 'Menu Enfants', image: '/assets/natura/detente berber.jpeg' },
+        { id: 'pz1', name: language === 'ar' ? 'بيتزا لحم مفروم' : 'Pizza Viande Hachée', description: 'Minced meat', price: 70, category: 'Pizza', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'pz2', name: language === 'ar' ? 'بيتزا دجاج' : 'Pizza Poulet', description: 'Chicken', price: 70, category: 'Pizza', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'pz3', name: language === 'ar' ? 'بيتزا فواكه البحر' : 'Pizza Fruit de Mer', description: 'Seafood', price: 80, category: 'Pizza', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'pz4', name: language === 'ar' ? 'بيتزا تونة' : 'Pizza Thon', description: 'Tuna', price: 65, category: 'Pizza', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'pz5', name: language === 'ar' ? 'بيتزا ٤ أجبان' : 'Pizza 4 Fromages', description: 'Four Cheeses', price: 65, category: 'Pizza', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
 
         // Suppléments
-        { id: 'sp1', name: language === 'ar' ? 'مسمن' : 'Msemen', description: 'Extra unit', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'sp2', name: language === 'ar' ? 'حرشة' : 'Harcha', description: 'Extra unit', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'sp3', name: language === 'ar' ? 'كرواسون' : 'Croissant', description: 'Extra unit', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'sp4', name: language === 'ar' ? 'أومليت' : 'Omelette', description: 'Extra unit', price: 15, category: 'Suppléments', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
-        { id: 'sp5', name: language === 'ar' ? 'جبن' : 'Fromage', description: 'Extra serving', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'sp1', name: language === 'ar' ? 'مسمن' : 'M\'semen', description: 'Moroccan pancake', price: 6, category: 'Suppléments', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'sp2', name: language === 'ar' ? 'حرشة' : 'Harcha', description: 'Semolina bread', price: 6, category: 'Suppléments', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'sp3', name: language === 'ar' ? 'كرواسون' : 'Croissant', description: 'Butter croissant', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'sp4', name: language === 'ar' ? 'أومليت' : 'Omelette', description: 'Eggs', price: 15, category: 'Suppléments', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'sp5', name: language === 'ar' ? 'جبن' : 'Fromage', description: 'Cheese portion', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
 
+        // Jus
+        { id: 'js1', name: language === 'ar' ? 'عصير برتقال' : 'Jus d\'Orange', description: 'Freshly squeezed', price: 20, category: 'Jus', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
+
+        // Desserts
+        { id: 'ds1', name: language === 'ar' ? 'سلطة فواكه' : 'Salade de Fruits', description: 'Fresh seasonal fruits', price: 30, category: 'Desserts', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'ds2', name: language === 'ar' ? 'حلوى مغربية' : 'Gâteau Marocain', description: 'Traditional sweet', price: 40, category: 'Desserts', image: '/assets/natura/Jungle restau 2.jpeg' },
+
+        // H'rira
+        { id: 'hr1', name: language === 'ar' ? 'حريرة + بيض + تمر' : 'H\'rira + Oeuf + Dattes', description: 'Soup set', price: 30, category: 'H\'rira', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+
+        // Boissons
+        { id: 'bs1', name: language === 'ar' ? 'صودا' : 'Soda', description: 'Fresh drink', price: 15, category: 'Boissons', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        { id: 'bs2', name: language === 'ar' ? 'ماء معدني (صغير)' : 'Eau Minérale (P)', description: 'Small Water', price: 12, category: 'Boissons', image: '/assets/natura/Jungle restaurant.jpeg' },
+        { id: 'bs3', name: language === 'ar' ? 'ماء معدني (كبير)' : 'Eau Minérale (G)', description: 'Large Water', price: 16, category: 'Boissons', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'bs4', name: language === 'ar' ? 'ماء فوار' : 'Eau Gazeuse', description: 'Sparkling Water', price: 17, category: 'Boissons', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'bs5', name: language === 'ar' ? 'لويزة' : 'Verveine', description: 'Herbal Tea', price: 17, category: 'Boissons', image: '/assets/natura/Jungle restau 2.jpeg' },
+        { id: 'bs6', name: language === 'ar' ? 'شاي مغربي (صغير)' : 'Thé Marocain (P)', description: 'Mint Tea Small', price: 15, category: 'Boissons', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
+        { id: 'bs7', name: language === 'ar' ? 'شاي مغربي (كبير)' : 'Thé Marocain (G)', description: 'Mint Tea Large', price: 25, category: 'Boissons', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+
+        // Café
+        { id: 'cf1', name: language === 'ar' ? 'قهوة بالحليب' : 'Café au Lait', description: 'Coffee with milk', price: 17, category: 'Café', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        { id: 'cf2', name: language === 'ar' ? 'حليب بالشوكولاتة' : 'Lait au Chocolat', description: 'Chocolate milk', price: 17, category: 'Café', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
+        { id: 'cf3', name: language === 'ar' ? 'كابتشينو' : 'Cappuccino', description: 'Foamy coffee', price: 17, category: 'Café', image: '/assets/natura/Jungle restaurant.jpeg' },
     ];
 
     const addToCart = (item: MenuItem) => {
@@ -146,38 +155,40 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
     const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
     const text = {
         title: { en: 'Digital Menu', fr: 'Menu Numérique', ar: 'قائمة الطلبات' },
-        addToCart: { en: 'Add to selection', fr: 'Ajouter au panier', ar: 'إضافة للطلب' },
+        addToCart: { en: 'Add', fr: 'Ajouter', ar: 'إضافة' },
         added: { en: 'Added', fr: 'Ajouté', ar: 'مضاف' },
         items: { en: 'Items', fr: 'Articles', ar: 'عناصر' },
-        payNow: { en: 'Pay Now', fr: 'Payer Maintenant', ar: 'ادفع الآن' },
-        ingredients: { en: 'Ingredients & Base', fr: 'Ingrédients & Base', ar: 'المكونات والأساس' },
+        payNow: { en: 'Order Now', fr: 'Commander', ar: 'اطلب الآن' },
+        ingredients: { en: 'Ingredients', fr: 'Ingrédients', ar: 'المكونات' },
         categories: {
-            morning: { en: 'Morning', fr: 'Matin', ar: 'فطور' },
-            greenery: { en: 'Greenery', fr: 'Salades', ar: 'سلطات' },
-            tradition: { en: 'Tradition', fr: 'Tagines', ar: 'طواجن' },
-            mains: { en: 'Mains', fr: 'Plats', ar: 'أطباق' },
-            street: { en: 'Street', fr: 'Sandwichs', ar: 'ساندويتش' },
-            oven: { en: 'Oven', fr: 'Pizzas', ar: 'بيتزا' },
+            breakfast: { en: 'Breakfast', fr: 'Petit Déjeuner', ar: 'فطور' },
+            salads: { en: 'Salads', fr: 'Salades', ar: 'سلطات' },
+            tagines: { en: 'Tagines', fr: 'Tagines', ar: 'طواجن' },
+            dishes: { en: 'Dishes', fr: 'Plats', ar: 'أطباق' },
+            sandwiches: { en: 'Sandwiches', fr: 'Sandwiches', ar: 'ساندويتش' },
+            pizza: { en: 'Pizza', fr: 'Pizza', ar: 'بيتزا' },
+            supplements: { en: 'Extras', fr: 'Suppléments', ar: 'إضافات' },
+            juice: { en: 'Juice', fr: 'Jus', ar: 'عصائر' },
+            desserts: { en: 'Desserts', fr: 'Desserts', ar: 'حلويات' },
+            hrira: { en: 'H\'rira', fr: 'H\'rira', ar: 'حريرة' },
             drinks: { en: 'Drinks', fr: 'Boissons', ar: 'مشروبات' },
-            fresh: { en: 'Fresh', fr: 'Jus', ar: 'عصائر' },
-            sweets: { en: 'Sweets', fr: 'Desserts', ar: 'حلويات' },
-            kids: { en: 'Kids', fr: 'Enfants', ar: 'قائمة الأطفال' },
-            extras: { en: 'Extras', fr: 'Suppléments', ar: 'إضافات' }
+            coffee: { en: 'Coffee', fr: 'Café', ar: 'قهوة' }
         }
     };
 
     const categories = [
-        { id: 'Petit Déjeuner', icon: Coffee, label: text.categories.morning[language] },
-        { id: 'Salades', icon: Leaf, label: text.categories.greenery[language] },
-        { id: 'Tagines', icon: Flame, label: text.categories.tradition[language] },
-        { id: 'Plats', icon: Utensils, label: text.categories.mains[language] },
-        { id: 'Sandwiches', icon: ShoppingBag, label: text.categories.street[language] },
-        { id: 'Pizza', icon: Pizza, label: text.categories.oven[language] },
+        { id: 'Petit Déjeuner', icon: Coffee, label: text.categories.breakfast[language] },
+        { id: 'Salades', icon: Leaf, label: text.categories.salads[language] },
+        { id: 'Plats', icon: Utensils, label: text.categories.dishes[language] },
+        { id: 'Tagines', icon: Flame, label: text.categories.tagines[language] },
+        { id: 'Sandwiches', icon: ShoppingBag, label: text.categories.sandwiches[language] },
+        { id: 'Pizza', icon: Pizza, label: text.categories.pizza[language] },
+        { id: 'Suppléments', icon: Plus, label: text.categories.supplements[language] },
+        { id: 'Jus', icon: GlassWater, label: text.categories.juice[language] },
+        { id: 'Desserts', icon: Cookie, label: text.categories.desserts[language] },
+        { id: 'H\'rira', icon: Soup, label: text.categories.hrira[language] },
         { id: 'Boissons', icon: CupSoda, label: text.categories.drinks[language] },
-        { id: 'Jus', icon: GlassWater, label: text.categories.fresh[language] },
-        { id: 'Desserts', icon: Cookie, label: text.categories.sweets[language] },
-        { id: 'Menu Enfants', icon: Baby, label: text.categories.kids[language] },
-        { id: 'Suppléments', icon: Plus, label: text.categories.extras[language] },
+        { id: 'Café', icon: Coffee, label: text.categories.coffee[language] },
     ];
 
     const filteredItems = menuItems.filter(item => item.category === activeCategory);
@@ -185,22 +196,22 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
     return (
         <div className={`min-h-screen ${isRTL ? 'text-right' : 'text-left'} bg-inherit text-inherit max-w-7xl mx-auto`} dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Header */}
-            <header className="px-6 lg:px-12 py-10 flex justify-between items-center glass-pure-nature dark:glass-jungle-deep border-b border-luxury-gold/10 sticky top-0 z-50">
+            <header className="px-4 lg:px-12 py-6 flex justify-between items-center glass-pure-nature dark:glass-jungle-deep border-b border-luxury-gold/10 sticky top-0 z-50 backdrop-blur-md">
                 <motion.button
                     whileTap={{ scale: 0.9 }}
                     onClick={onBack}
-                    className="w-12 h-12 flex items-center justify-center rounded-2xl bg-luxury-gold/10 text-luxury-gold border border-luxury-gold/10"
+                    className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-2xl bg-luxury-gold/10 text-luxury-gold border border-luxury-gold/10"
                 >
-                    <ChevronLeft className={`w-6 h-6 ${isRTL ? 'rotate-180' : ''}`} />
+                    <ChevronLeft className={`w-5 h-5 lg:w-6 lg:h-6 ${isRTL ? 'rotate-180' : ''}`} />
                 </motion.button>
                 <div className="text-center">
-                    <h1 className="text-2xl font-serif font-bold tracking-widest uppercase text-luxury-gold">
+                    <h1 className="text-lg lg:text-2xl font-serif font-bold tracking-widest uppercase text-luxury-gold">
                         {text.title[language]}
                     </h1>
                 </div>
                 <div className="relative">
-                    <div className="w-12 h-12 rounded-2xl bg-luxury-gold text-jungle-deep flex items-center justify-center shadow-lg gold-shadow">
-                        <ShoppingCart className="w-6 h-6" />
+                    <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-2xl bg-luxury-gold text-jungle-deep flex items-center justify-center shadow-lg gold-shadow">
+                        <ShoppingCart className="w-5 h-5 lg:w-6 lg:h-6" />
                     </div>
                     {cartCount > 0 && (
                         <motion.span
@@ -216,7 +227,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
 
             <main className="pb-40">
                 {/* Category Picker */}
-                <div className="flex gap-4 overflow-x-auto lg:flex-nowrap px-6 lg:px-12 py-8 no-scrollbar scroll-smooth">
+                <div className="flex gap-3 overflow-x-auto lg:flex-nowrap px-4 lg:px-12 py-6 no-scrollbar scroll-smooth">
                     {categories.map((cat, idx) => {
                         const Icon = cat.icon;
                         const isActive = activeCategory === cat.id;
@@ -228,29 +239,29 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                 transition={{ delay: idx * 0.05 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => setActiveCategory(cat.id as any)}
-                                className={`flex-none px-8 py-5 rounded-[2rem] flex flex-col items-center gap-3 transition-all duration-500 border ${isActive
-                                    ? 'bg-jungle-deep text-luxury-gold border-luxury-gold shadow-2xl scale-110 z-10'
+                                className={`flex-none px-5 py-3 lg:px-8 lg:py-5 rounded-[1.5rem] lg:rounded-[2rem] flex flex-col items-center gap-2 transition-all duration-500 border ${isActive
+                                    ? 'bg-jungle-deep text-luxury-gold border-luxury-gold shadow-2xl scale-105 z-10'
                                     : 'bg-white/40 dark:bg-white/5 text-jungle-deep/40 dark:text-pure-nature/20 border-white/20 dark:border-white/5 hover:bg-white/60'
                                     }`}
                             >
-                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${isActive ? 'bg-luxury-gold/20 shadow-inner' : 'bg-transparent'}`}>
-                                    <Icon className="w-6 h-6" />
+                                <div className={`w-8 h-8 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center ${isActive ? 'bg-luxury-gold/20 shadow-inner' : 'bg-transparent'}`}>
+                                    <Icon className="w-4 h-4 lg:w-6 lg:h-6" />
                                 </div>
-                                <span className="text-[9px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">{cat.label}</span>
+                                <span className="text-[8px] lg:text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">{cat.label}</span>
                             </motion.button>
                         );
                     })}
                 </div>
 
                 {/* Items Grid */}
-                <div className="px-6 lg:px-12">
+                <div className="px-4 lg:px-12">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeCategory}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-12 gap-y-16"
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-12 lg:gap-x-12 lg:gap-y-16"
                         >
                             {filteredItems.map((item, idx) => {
                                 const cartItem = cart.find(i => i.id === item.id);
@@ -261,59 +272,61 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                         initial={{ opacity: 0, y: 30 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: idx * 0.1 }}
-                                        className={`flex flex-col gap-6 group relative ${!isEven && 'md:mt-24'}`}
+                                        className={`flex flex-col gap-4 group relative ${!isEven ? 'md:mt-12 lg:mt-24' : ''}`}
                                     >
-                                        <div className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 group-hover:shadow-luxury-gold/20 transition-all duration-700">
+                                        <div className="relative aspect-[4/3] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-xl border border-white/10 group-hover:shadow-luxury-gold/20 transition-all duration-700">
                                             <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1)" alt={item.name} />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
-                                            <div className="absolute bottom-6 right-6">
-                                                <span className="px-6 py-3 bg-luxury-gold text-jungle-deep font-bold rounded-2xl shadow-xl">
+                                            <div className="absolute bottom-4 right-4 lg:bottom-6 lg:right-6">
+                                                <span className="px-4 py-2 lg:px-6 lg:py-3 bg-luxury-gold text-jungle-deep font-bold rounded-xl lg:rounded-2xl shadow-xl text-xs lg:text-base">
                                                     {item.price} MAD
                                                 </span>
                                             </div>
                                         </div>
 
-                                        <div className="px-4">
-                                            <div className="flex justify-between items-baseline mb-4">
-                                                <h3 className="text-3xl font-serif text-jungle-deep dark:text-white group-hover:text-luxury-gold transition-colors">{item.name}</h3>
+                                        <div className="px-2 lg:px-4">
+                                            <div className="flex justify-between items-baseline mb-2 lg:mb-4">
+                                                <h3 className="text-xl lg:text-3xl font-serif text-jungle-deep dark:text-white group-hover:text-luxury-gold transition-colors">{item.name}</h3>
                                             </div>
 
-                                            <div className="mb-8">
-                                                <p className="text-[10px] uppercase tracking-[0.3em] text-luxury-gold font-bold mb-3">{text.ingredients[language]}</p>
-                                                <p className="text-sm font-serif leading-relaxed text-jungle-deep/60 dark:text-pure-nature/60 italic">
+                                            <div className="mb-4 lg:mb-8 min-h-[3rem]">
+                                                {['Petit Déjeuner', 'Salades', 'Tagines', 'Plats', 'Pizza'].includes(item.category) && (
+                                                    <p className="text-[8px] lg:text-[10px] uppercase tracking-[0.2em] text-luxury-gold font-bold mb-1 opacity-80">{text.ingredients[language]}</p>
+                                                )}
+                                                <p className="text-xs lg:text-sm font-serif leading-relaxed text-jungle-deep/60 dark:text-pure-nature/60 italic">
                                                     {item.description}
                                                 </p>
                                             </div>
 
-                                            <div className="flex items-center gap-4">
+                                            <div className="flex items-center gap-3 lg:gap-4">
                                                 {cartItem ? (
-                                                    <div className="flex items-center gap-6 bg-jungle-deep/5 dark:bg-white/5 rounded-[2rem] p-2 pr-6">
+                                                    <div className="flex items-center gap-4 lg:gap-6 bg-jungle-deep/5 dark:bg-white/5 rounded-[1.5rem] lg:rounded-[2rem] p-1.5 lg:p-2 pr-4 lg:pr-6 w-full justify-between">
                                                         <div className="flex items-center gap-2">
                                                             <motion.button
                                                                 whileTap={{ scale: 0.8 }}
                                                                 onClick={() => removeFromCart(item.id)}
-                                                                className="w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-jungle-deep text-luxury-gold shadow-md"
+                                                                className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-white dark:bg-jungle-deep text-luxury-gold shadow-md"
                                                             >
-                                                                <Minus className="w-5 h-5" />
+                                                                <Minus className="w-4 h-4" />
                                                             </motion.button>
-                                                            <span className="text-lg font-bold w-8 text-center">{cartItem.quantity}</span>
+                                                            <span className="text-base lg:text-lg font-bold w-6 text-center">{cartItem.quantity}</span>
                                                             <motion.button
                                                                 whileTap={{ scale: 0.8 }}
                                                                 onClick={() => addToCart(item)}
-                                                                className="w-12 h-12 flex items-center justify-center rounded-full bg-luxury-gold text-jungle-deep shadow-lg"
+                                                                className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-luxury-gold text-jungle-deep shadow-lg"
                                                             >
-                                                                <Plus className="w-5 h-5" />
+                                                                <Plus className="w-4 h-4" />
                                                             </motion.button>
                                                         </div>
-                                                        <span className="text-xs font-bold uppercase tracking-widest opacity-40">{text.added[language]}</span>
+                                                        <span className="text-[10px] lg:text-xs font-bold uppercase tracking-widest opacity-40">{text.added[language]}</span>
                                                     </div>
                                                 ) : (
                                                     <motion.button
                                                         whileTap={{ scale: 0.95 }}
                                                         onClick={() => addToCart(item)}
-                                                        className="px-10 py-5 bg-jungle-deep dark:bg-luxury-gold text-luxury-gold dark:text-jungle-deep rounded-2xl text-[10px] font-bold uppercase tracking-[0.3em] flex items-center gap-3 group/btn hover:shadow-xl transition-all"
+                                                        className="w-full py-4 lg:py-5 bg-jungle-deep dark:bg-luxury-gold text-luxury-gold dark:text-jungle-deep rounded-2xl text-[9px] lg:text-[10px] font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-3 group/btn hover:shadow-xl transition-all"
                                                     >
-                                                        <Plus className="w-4 h-4 group-hover/btn:rotate-90 transition-transform" />
+                                                        <Plus className="w-3 h-3 lg:w-4 lg:h-4 group-hover/btn:rotate-90 transition-transform" />
                                                         {text.addToCart[language]}
                                                     </motion.button>
                                                 )}
@@ -334,22 +347,22 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                         initial={{ y: 100 }}
                         animate={{ y: 0 }}
                         exit={{ y: 100 }}
-                        className="fixed bottom-0 left-0 right-0 p-6 z-[60]"
+                        className="fixed bottom-0 left-0 right-0 p-4 lg:p-6 z-[60]"
                     >
-                        <div className="bg-jungle-deep border border-luxury-gold/30 rounded-[3rem] p-8 shadow-2xl gold-shadow flex items-center justify-between">
-                            <div className="flex items-center gap-6">
-                                <div className="w-14 h-14 rounded-2xl bg-luxury-gold/10 flex items-center justify-center text-luxury-gold">
-                                    <ShoppingBag className="w-7 h-7" />
+                        <div className="bg-jungle-deep/95 backdrop-blur-xl border border-luxury-gold/30 rounded-[2rem] lg:rounded-[3rem] p-6 lg:p-8 shadow-2xl gold-shadow flex items-center justify-between">
+                            <div className="flex items-center gap-4 lg:gap-6">
+                                <div className="w-10 h-10 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl bg-luxury-gold/10 flex items-center justify-center text-luxury-gold">
+                                    <ShoppingBag className="w-5 h-5 lg:w-7 lg:h-7" />
                                 </div>
                                 <div className="text-pure-nature">
-                                    <p className="text-[10px] uppercase tracking-[0.3em] opacity-50 font-bold mb-1">{cartCount} {text.items[language]}</p>
-                                    <p className="text-3xl font-serif text-luxury-gold">{cartTotal} MAD</p>
+                                    <p className="text-[8px] lg:text-[10px] uppercase tracking-[0.3em] opacity-50 font-bold mb-1">{cartCount} {text.items[language]}</p>
+                                    <p className="text-2xl lg:text-3xl font-serif text-luxury-gold">{cartTotal} MAD</p>
                                 </div>
                             </div>
                             <motion.button
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => onOrderPlaced(cart, cartTotal)}
-                                className="bg-luxury-gold text-jungle-deep px-12 py-5 rounded-2xl font-bold uppercase tracking-widest text-xs shadow-xl gold-shadow active:scale-105 transition-transform"
+                                className="bg-luxury-gold text-jungle-deep px-8 py-3 lg:px-12 lg:py-5 rounded-xl lg:rounded-2xl font-bold uppercase tracking-widest text-[10px] lg:text-xs shadow-xl gold-shadow active:scale-105 transition-transform"
                             >
                                 {text.payNow[language]}
                             </motion.button>

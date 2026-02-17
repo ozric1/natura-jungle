@@ -679,7 +679,17 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                             {text.pricingModal.parkEntry.desc}
                                         </p>
                                         <div className="mt-6 pt-6 border-t border-white/5 mt-auto">
-                                            <a href="tel:0605500058" className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors">
+                                            <a
+                                                href={`https://wa.me/212605500058?text=${currentLanguage === 'ar'
+                                                        ? 'مرحبًا، أود حجز تذاكر لدخول الحديقة.'
+                                                        : currentLanguage === 'fr'
+                                                            ? 'Bonjour, je souhaite réserver des billets pour l\'Entrée du Parc.'
+                                                            : 'Hello, I would like to book tickets for Park Entry.'
+                                                    }`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
+                                            >
                                                 {text.pricingModal.parkEntry.book}
                                             </a>
                                         </div>
@@ -705,7 +715,17 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                             {text.pricingModal.poolAccess.desc}
                                         </p>
                                         <div className="mt-6 pt-6 border-t border-white/5 mt-auto">
-                                            <a href="tel:0605500058" className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors">
+                                            <a
+                                                href={`https://wa.me/212605500058?text=${currentLanguage === 'ar'
+                                                        ? 'مرحبًا، أود الحجز في منطقة المسبح.'
+                                                        : currentLanguage === 'fr'
+                                                            ? 'Bonjour, je souhaite réserver pour l\'Accès Piscine.'
+                                                            : 'Hello, I would like to book for the Pool Area.'
+                                                    }`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
+                                            >
                                                 {text.pricingModal.poolAccess.book}
                                             </a>
                                         </div>
