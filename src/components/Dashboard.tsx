@@ -161,6 +161,13 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 contact: "Contact Us",
                 mission_text: "Natura Jungle Park is your eco-friendly escape near Casablanca and Rabat. Our mission is to provide every visitor a peaceful environment to enjoy quality time. We believe in protecting nature while creating magical memories for everyone.",
                 story_text: "We started Natura Jungle because we love family time and nature. With our expert background in relaxation, we dreamed of a place where everyone can feel at home in the wild. Today, that dream is a reality. We offer professional service with a warm, family touch in the heart of the forest."
+            },
+            topNav: {
+                hours: "Hours",
+                map: "Map",
+                circuit: "Circuit",
+                kitchen: "Kitchen",
+                theme: "Theme"
             }
         },
         fr: {
@@ -248,6 +255,13 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 contact: "Contactez-nous",
                 mission_text: "Natura Jungle Park est votre évasion écologique près de Casablanca et Rabat. Notre mission est d'offrir à chaque visiteur un environnement paisible pour profiter de moments de qualité. Nous croyons en la protection de la nature tout en créant des souvenirs magiques pour tous.",
                 story_text: "Nous avons créé Natura Jungle car nous aimons les moments en famille et la nature. Forts de notre expertise en relaxation, nous avons rêvé d'un lieu où chacun se sent chez soi en pleine nature. Aujourd'hui, ce rêve est réalité. Nous offrons un service professionnel avec une touche familiale chaleureuse au cœur de la forêt."
+            },
+            topNav: {
+                hours: "Horaires",
+                map: "Carte",
+                circuit: "Circuit",
+                kitchen: "Cuisine",
+                theme: "Thème"
             }
         },
         ar: {
@@ -335,6 +349,13 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 contact: "اتصل بنا",
                 mission_text: "ناتورا جانغل بارك هو ملاذك الصديق للبيئة بالقرب من الدار البيضاء والرباط. مهمتنا هي توفير بيئة هادئة لكل زائر للاستمتاع بوقت نوعي. نحن نؤمن بحماية الطبيعة مع خلق ذكريات ساحرة للجميع.",
                 story_text: "لقد بدأنا ناتورا جانغل لأننا نحب الأوقات العائلية والطبيعة. بفضل خبرتنا الكبيرة في مجال الاسترخاء، حلمنا بمكان يشعر فيه الجميع وكأنهم في منزلهم وسط الطبيعة. اليوم، أصبح هذا الحلم حقيقة. نحن نقدم خدمة احترافية بلمسة عائلية دافئة في قلب الغابة."
+            },
+            topNav: {
+                hours: "المواعيد",
+                map: "الخريطة",
+                circuit: "المسار",
+                kitchen: "المطبخ",
+                theme: "الوضع"
             }
         }
     };
@@ -681,10 +702,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <div className="mt-6 pt-6 border-t border-white/5 mt-auto">
                                             <a
                                                 href={`https://wa.me/212605500058?text=${currentLanguage === 'ar'
-                                                        ? 'مرحبًا، أود حجز تذاكر لدخول الحديقة.'
-                                                        : currentLanguage === 'fr'
-                                                            ? 'Bonjour, je souhaite réserver des billets pour l\'Entrée du Parc.'
-                                                            : 'Hello, I would like to book tickets for Park Entry.'
+                                                    ? 'مرحبًا، أود حجز تذاكر لدخول الحديقة.'
+                                                    : currentLanguage === 'fr'
+                                                        ? 'Bonjour, je souhaite réserver des billets pour l\'Entrée du Parc.'
+                                                        : 'Hello, I would like to book tickets for Park Entry.'
                                                     }`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -717,10 +738,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <div className="mt-6 pt-6 border-t border-white/5 mt-auto">
                                             <a
                                                 href={`https://wa.me/212605500058?text=${currentLanguage === 'ar'
-                                                        ? 'مرحبًا، أود الحجز في منطقة المسبح.'
-                                                        : currentLanguage === 'fr'
-                                                            ? 'Bonjour, je souhaite réserver pour l\'Accès Piscine.'
-                                                            : 'Hello, I would like to book for the Pool Area.'
+                                                    ? 'مرحبًا، أود الحجز في منطقة المسبح.'
+                                                    : currentLanguage === 'fr'
+                                                        ? 'Bonjour, je souhaite réserver pour l\'Accès Piscine.'
+                                                        : 'Hello, I would like to book for the Pool Area.'
                                                     }`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -784,23 +805,23 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-[60] desktop-nav h-14 items-center justify-center gap-8 px-8">
                 <button onClick={() => setCurrentView('hours')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'hours' ? 'text-sand-gold' : 'text-white/60 hover:text-white'}`}>
                     <Clock className="w-4 h-4" />
-                    {isRTL ? 'المواعيد' : 'Hours'}
+                    {(text as any).topNav.hours}
                 </button>
                 <button onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')} className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors">
                     <MapPin className="w-4 h-4" />
-                    {isRTL ? 'الخريطة' : 'Map'}
+                    {(text as any).topNav.map}
                 </button>
                 <button onClick={() => setCurrentView('exhibition')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'exhibition' ? 'text-sand-gold' : 'text-white/60 hover:text-white'}`}>
                     <Palmtree className="w-4 h-4" />
-                    {isRTL ? 'الحيوانات' : 'Circuit'}
+                    {(text as any).topNav.circuit}
                 </button>
                 <button onClick={() => setCurrentView('menu')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'menu' ? 'text-sand-gold' : 'text-white/60 hover:text-white'}`}>
                     <Utensils className="w-4 h-4" />
-                    {isRTL ? 'المطبخ' : 'Kitchen'}
+                    {(text as any).topNav.kitchen}
                 </button>
                 <button onClick={toggleNightMode} className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors">
                     {isNightMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-                    {isRTL ? 'الوضع' : 'Theme'}
+                    {(text as any).topNav.theme}
                 </button>
             </nav>
 
