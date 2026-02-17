@@ -136,7 +136,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     desc: "Includes one free cold drink. Access to animal zones.",
                     book: "Book Now"
                 },
-                footer_hours: "Daily: 10 AM - 7 PM",
+                footer_hours: "Daily: 10 AM - 8 PM",
                 poolAccess: {
                     title: "Pool Area",
                     adults: "Adults",
@@ -230,7 +230,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     desc: "Comprend une boisson froide offerte. Accès aux zones animalières.",
                     book: "Réserver"
                 },
-                footer_hours: "Tous les jours : 10h - 19h",
+                footer_hours: "Tous les jours : 10h - 20h",
                 poolAccess: {
                     title: "Accès Piscine",
                     adults: "Adultes",
@@ -324,7 +324,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     desc: "شامل مشروب بارد مجاني. دخول مناطق الحيوانات.",
                     book: "احجز الآن"
                 },
-                footer_hours: "يومياً: 10 ص - 7 م",
+                footer_hours: "يومياً: 10 ص - 8 م",
                 poolAccess: {
                     title: "المسبح",
                     adults: "كبار",

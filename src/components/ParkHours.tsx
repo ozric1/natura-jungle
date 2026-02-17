@@ -14,15 +14,19 @@ export const ParkHours = ({ onClose, isRTL = false, language }: ParkHoursProps) 
         call: { en: 'Call Support', fr: 'Appelez-nous', ar: 'اتصل بنا' }
     };
 
-    const schedule = [
-        { day: { en: 'Monday', fr: 'Lundi', ar: 'الاثنين' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
-        { day: { en: 'Tuesday', fr: 'Mardi', ar: 'الثلاثاء' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
-        { day: { en: 'Wednesday', fr: 'Mercredi', ar: 'الأربعاء' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
-        { day: { en: 'Thursday', fr: 'Jeudi', ar: 'الخميس' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
-        { day: { en: 'Friday', fr: 'Vendredi', ar: 'الجمعة' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
-        { day: { en: 'Saturday', fr: 'Samedi', ar: 'السبت' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
-        { day: { en: 'Sunday', fr: 'Dimanche', ar: 'الأحد' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
+    const days = [
+        { en: 'Monday', fr: 'Lundi', ar: 'الاثنين' },
+        { en: 'Tuesday', fr: 'Mardi', ar: 'الثلاثاء' },
+        { en: 'Wednesday', fr: 'Mercredi', ar: 'الأربعاء' },
+        { en: 'Thursday', fr: 'Jeudi', ar: 'الخميس' },
+        { en: 'Friday', fr: 'Vendredi', ar: 'الجمعة' },
+        { en: 'Saturday', fr: 'Samedi', ar: 'السبت' },
+        { en: 'Sunday', fr: 'Dimanche', ar: 'الأحد' }
     ];
+
+    const hours = { en: '10 AM – 8 PM', fr: '10h00 – 20h00', ar: '10 ص – 8 م' };
+
+    const schedule = days.map(day => ({ day, hours }));
 
     return (
         <div className="min-h-screen bg-egg-shell dark:bg-ink-black text-jungle-green dark:text-white p-8 flex flex-col items-center justify-center relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
