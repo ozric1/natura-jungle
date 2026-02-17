@@ -23,6 +23,12 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             pricePerNight: "Price per Night",
             breakfast: "Breakfast included",
             extraKid: "Additional kid +150 DH",
+            addKidsQuestion: "Additional Kids?",
+            howMany: "How many?",
+            yes: "Yes",
+            no: "No",
+            kid: "Kid",
+            kids: "Kids",
             total: "Total Amount",
             continue: "Continue to Payment",
             selectDatesFirst: "Select Dates First",
@@ -47,6 +53,12 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             pricePerNight: "Prix par Nuit",
             breakfast: "Petit-déjeuner inclus",
             extraKid: "Enfant supplémentaire +150 DH",
+            addKidsQuestion: "Enfants supplémentaires ?",
+            howMany: "Combien ?",
+            yes: "Oui",
+            no: "Non",
+            kid: "Enfant",
+            kids: "Enfants",
             total: "Montant Total",
             continue: "Continuer vers le Paiement",
             selectDatesFirst: "Sélectionnez vos dates",
@@ -71,6 +83,12 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             pricePerNight: "السعر لليلة",
             breakfast: "شامل الفطور",
             extraKid: "طفل إضافي +150 درهم",
+            addKidsQuestion: "أطفال إضافيون؟",
+            howMany: "كم عددهم؟",
+            yes: "نعم",
+            no: "لا",
+            kid: "طفل",
+            kids: "أطفال",
             total: "المجموع",
             continue: "إدخال تفاصيل الدفع",
             selectDatesFirst: "اختر التواريخ أولاً",
@@ -89,6 +107,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     const t = translations[currentLanguage];
     const [step, setStep] = useState<'details' | 'payment' | 'success'>('details');
     const [selectedDates, setSelectedDates] = useState<number[]>([]);
+    const [addKids, setAddKids] = useState<boolean | null>(null);
+    const [kidsCount, setKidsCount] = useState<1 | 2>(1);
     const [paymentData, setPaymentData] = useState({
         cardName: '',
         cardNumber: '',
@@ -96,6 +116,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
         cvv: ''
     });
     const pricePerNight = 900;
+    const extraKidPrice = 150;
 
     // Simulation of occupancy
     const bookedDates: number[] = useMemo(() => [], []);
@@ -130,6 +151,11 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     };
 
     const nights = selectedDates.length;
+
+    // Price Calculation
+    const totalExtraKidsCost = (addKids && kidsCount > 0) ? (kidsCount * extraKidPrice) : 0;
+    const totalPricePerNight = pricePerNight + totalExtraKidsCost;
+    const grandTotal = nights * totalPricePerNight;
 
     const handlePayment = () => {
         if (!paymentData.cardName || !paymentData.cardNumber || !paymentData.expiry || !paymentData.cvv) {
@@ -260,6 +286,58 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                         </div>
                     </div>
 
+                    {/* Additional Kids Selection */}
+                    <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-sand-gold/10">
+                        <div className="flex justify-between items-center mb-4">
+                            <h3 className="text-sm font-bold uppercase tracking-widest text-jungle-green">{t.addKidsQuestion}</h3>
+                            <div className="flex gap-2 bg-egg-shell p-1 rounded-xl">
+                                <button
+                                    onClick={() => setAddKids(true)}
+                                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${addKids === true ? 'bg-jungle-green text-white shadow-md' : 'text-jungle-green/40 hover:text-jungle-green'}`}
+                                >
+                                    {t.yes}
+                                </button>
+                                <button
+                                    onClick={() => { setAddKids(false); setKidsCount(1); }}
+                                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${addKids === false ? 'bg-jungle-green text-white shadow-md' : 'text-jungle-green/40 hover:text-jungle-green'}`}
+                                >
+                                    {t.no}
+                                </button>
+                            </div>
+                        </div>
+
+                        <AnimatePresence>
+                            {addKids && (
+                                <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    className="overflow-hidden"
+                                >
+                                    <div className="pt-4 border-t border-sand-gold/10 flex justify-between items-center">
+                                        <span className="text-xs font-medium opacity-60">{t.howMany}</span>
+                                        <div className="flex gap-3">
+                                            {[1, 2].map(num => (
+                                                <button
+                                                    key={num}
+                                                    onClick={() => setKidsCount(num as 1 | 2)}
+                                                    className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm transition-all border ${kidsCount === num ? 'bg-sand-gold text-white border-sand-gold shadow-lg scale-110' : 'bg-white border-sand-gold/20 text-jungle-green/60'}`}
+                                                >
+                                                    {num}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 text-right">
+                                        <span className="text-xs font-serif text-sand-gold italic">
+                                            + {kidsCount * extraKidPrice} MAD / {isRTL ? 'الليلة' : 'Night'}
+                                        </span>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+
                     <div className="p-6 border-t border-sand-gold/10">
                         <div className="flex justify-between text-xs mb-2">
                             <span className="opacity-60">{t.pricePerNight}</span>
@@ -269,9 +347,17 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                             <span>{t.breakfast}</span>
                             <span>{t.extraKid}</span>
                         </div>
+
+                        {addKids && (
+                            <div className="flex justify-between text-xs mb-4 text-jungle-green/80 border-t border-dashed border-jungle-green/10 pt-2">
+                                <span>{kidsCount} {kidsCount === 1 ? t.kid : t.kids} x {nights} {isRTL ? 'ليالي' : 'Nights'}</span>
+                                <span className="font-bold">+ {totalExtraKidsCost * nights} MAD</span>
+                            </div>
+                        )}
+
                         <div className="flex justify-between items-end pt-4 border-t border-jungle-green/5">
                             <span className="text-lg font-serif italic">{t.total}</span>
-                            <span className="text-3xl font-serif text-sand-gold">{nights * pricePerNight} MAD</span>
+                            <span className="text-3xl font-serif text-sand-gold">{grandTotal} MAD</span>
                         </div>
                     </div>
                 </div>
@@ -360,7 +446,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
 
                                 <div className="flex justify-between items-center py-4 border-t border-jungle-green/5">
                                     <span className="text-lg font-serif italic opacity-60">Total</span>
-                                    <span className="text-2xl font-serif text-sand-gold">{nights * pricePerNight} MAD</span>
+                                    <span className="text-2xl font-serif text-sand-gold">{grandTotal} MAD</span>
                                 </div>
 
                                 <motion.button
