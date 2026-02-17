@@ -92,15 +92,20 @@ export const CateringPartyservice = ({ onClose, language, eventType }: CateringP
 
     const handleBook = () => {
         const typeHeader = text.title[eventType][language];
-        const message = `*${typeHeader}*%0A%0A` +
-            `*Client:* ${formData.name || 'N/A'}%0A` +
-            `*Group Size:* ${formData.size} guests%0A` +
-            `*Arrival Date:* ${formData.date}%0A` +
-            `*Arrival Time:* ${formData.time}%0A` +
-            `*Food Orders:*%0A${formData.food || 'No specific food order yet.'}%0A%0A` +
+
+        // Construct the message with clean newlines
+        const message = `*${typeHeader}*\n\n` +
+            `*Client:* ${formData.name || 'N/A'}\n` +
+            `*Group Size:* ${formData.size} ${language === 'ar' ? 'أشخاص' : 'guests'}\n` +
+            `*Arrival Date:* ${formData.date || 'Not specified'}\n` +
+            `*Arrival Time:* ${formData.time || 'Not specified'}\n` +
+            `*Food Orders:*\n${formData.food || 'No specific food order yet.'}\n\n` +
             `_Sent via Natura Jungle App_`;
 
-        window.open(`https://wa.me/212605500058?text=${message}`, '_blank');
+        // Encode the entire message to handle special characters and newlines correctly
+        const encodedMessage = encodeURIComponent(message);
+
+        window.open(`https://wa.me/212605500058?text=${encodedMessage}`, '_blank');
     };
 
     return (

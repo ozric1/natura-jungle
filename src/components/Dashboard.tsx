@@ -136,14 +136,15 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     title: "Park Entry",
                     adults: "Adults",
                     kids: "Kids",
-                    desc: "Includes one drink. Access to animal zones.",
+                    desc: "Includes one free cold drink. Access to animal zones.",
                     book: "Book Now"
                 },
+                footer_hours: "Daily: 10 AM - 7 PM",
                 poolAccess: {
                     title: "Pool Area",
                     adults: "Adults",
                     kids: "Kids",
-                    desc: "Includes park access. Sunbeds and towels.",
+                    desc: "Includes park access. Sunbeds.",
                     book: "Book Now"
                 },
                 bungalow: {
@@ -222,14 +223,15 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     title: "Entrée Parc",
                     adults: "Adultes",
                     kids: "Enfants",
-                    desc: "Comprend une boisson. Accès aux zones animalières.",
+                    desc: "Comprend une boisson froide offerte. Accès aux zones animalières.",
                     book: "Réserver"
                 },
+                footer_hours: "Tous les jours : 10h - 19h",
                 poolAccess: {
                     title: "Accès Piscine",
                     adults: "Adultes",
                     kids: "Enfants",
-                    desc: "Comprend l'accès au parc. Transats et serviettes.",
+                    desc: "Comprend l'accès au parc. Transats.",
                     book: "Réserver"
                 },
                 bungalow: {
@@ -308,14 +310,15 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     title: "تذكرة الدخول",
                     adults: "كبار",
                     kids: "صغار",
-                    desc: "شامل مشروب واحد. دخول مناطق الحيوانات.",
+                    desc: "شامل مشروب بارد مجاني. دخول مناطق الحيوانات.",
                     book: "احجز الآن"
                 },
+                footer_hours: "يومياً: 10 ص - 7 م",
                 poolAccess: {
                     title: "المسبح",
                     adults: "كبار",
                     kids: "صغار",
-                    desc: "شامل دخول المتنزه. كراسي ومناشف.",
+                    desc: "شامل دخول المتنزه. كراسي استرخاء.",
                     book: "احجز الآن"
                 },
                 bungalow: {
@@ -657,7 +660,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {/* Park Entry */}
-                                    <div className="bg-white/5 rounded-[2rem] p-8 border border-white/10 relative group hover:border-luxury-gold/30 transition-all">
+                                    <div className="bg-white/5 rounded-[2rem] p-8 hover:bg-white/10 transition-colors border border-white/10 relative group flex flex-col h-full">
                                         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
                                             <Palmtree className="w-32 h-32 text-luxury-gold" />
                                         </div>
@@ -675,7 +678,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <p className="text-xs text-white/40 leading-relaxed">
                                             {text.pricingModal.parkEntry.desc}
                                         </p>
-                                        <div className="mt-6 pt-6 border-t border-white/5">
+                                        <div className="mt-6 pt-6 border-t border-white/5 mt-auto">
                                             <a href="tel:0605500058" className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors">
                                                 {text.pricingModal.parkEntry.book}
                                             </a>
@@ -683,7 +686,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     </div>
 
                                     {/* Pool Access */}
-                                    <div className="bg-white/5 rounded-[2rem] p-8 border border-white/10 relative group hover:border-luxury-gold/30 transition-all">
+                                    <div className="bg-white/5 rounded-[2rem] p-8 hover:bg-white/10 transition-colors border border-white/10 relative group flex flex-col h-full">
                                         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
                                             <Waves className="w-32 h-32 text-luxury-gold" />
                                         </div>
@@ -701,7 +704,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <p className="text-xs text-white/40 leading-relaxed">
                                             {text.pricingModal.poolAccess.desc}
                                         </p>
-                                        <div className="mt-6 pt-6 border-t border-white/5">
+                                        <div className="mt-6 pt-6 border-t border-white/5 mt-auto">
                                             <a href="tel:0605500058" className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors">
                                                 {text.pricingModal.poolAccess.book}
                                             </a>
@@ -709,7 +712,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     </div>
 
                                     {/* Bungalow Stay */}
-                                    <div className="bg-gradient-to-br from-luxury-gold/10 to-transparent rounded-[2rem] p-8 border border-luxury-gold/20 relative group md:col-span-2 lg:col-span-1">
+                                    <div className="bg-gradient-to-br from-luxury-gold/10 to-transparent rounded-[2rem] p-8 border border-luxury-gold/20 relative group md:col-span-2 lg:col-span-1 flex flex-col h-full">
                                         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
                                             <Home className="w-32 h-32 text-luxury-gold" />
                                         </div>
@@ -730,12 +733,14 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                                 {isRTL ? '+150 درهم لكل طفل إضافي' : '+150 DH / Additional Kid'}
                                             </span>
                                         </p>
-                                        <button
-                                            onClick={() => { setShowPricing(false); setActiveExperience('bungalow'); setCurrentView('experience'); }}
-                                            className="w-full py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
-                                        >
-                                            {isRTL ? 'احجز الآن' : 'Book Now'}
-                                        </button>
+                                        <div className="mt-auto pt-6">
+                                            <button
+                                                onClick={() => { setShowPricing(false); setActiveExperience('bungalow'); setCurrentView('experience'); }}
+                                                className="w-full py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
+                                            >
+                                                {isRTL ? 'احجز الآن' : 'Book Now'}
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -746,7 +751,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <Clock className="w-4 h-4 text-luxury-gold" />
-                                        <span>{isRTL ? 'يومياً: 10 ص - 10 م' : 'Daily: 10 AM - 10 PM'}</span>
+                                        <span>{text.pricingModal.footer_hours}</span>
                                     </div>
                                 </div>
                             </div>
@@ -1231,7 +1236,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
                         className="fixed inset-0 z-[250]"
                     >
-                        <ParkHours isRTL={isRTL} onClose={() => setCurrentView('base')} />
+                        <ParkHours isRTL={isRTL} language={currentLanguage} onClose={() => setCurrentView('base')} />
                     </motion.div>
                 )}
                 {currentView === 'catering' && (

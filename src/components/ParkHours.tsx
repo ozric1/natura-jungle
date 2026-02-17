@@ -4,17 +4,24 @@ import { X, Clock, Instagram, Phone } from 'lucide-react';
 interface ParkHoursProps {
     onClose: () => void;
     isRTL?: boolean;
+    language: 'en' | 'fr' | 'ar';
 }
 
-export const ParkHours = ({ onClose, isRTL = false }: ParkHoursProps) => {
+export const ParkHours = ({ onClose, isRTL = false, language }: ParkHoursProps) => {
+    const text = {
+        title: { en: 'Opening Hours', fr: 'Heures d\'Ouverture', ar: 'ساعات العمل' },
+        waiting: { en: 'We Are Waiting For You', fr: 'Nous Vous Attendons', ar: 'نحن ننتظرك' },
+        call: { en: 'Call Support', fr: 'Appelez-nous', ar: 'اتصل بنا' }
+    };
+
     const schedule = [
-        { day: { en: 'Monday', ar: 'الاثنين' }, hours: '10 AM – 8 PM' },
-        { day: { en: 'Tuesday', ar: 'الثلاثاء' }, hours: '10 AM – 8 PM' },
-        { day: { en: 'Wednesday', ar: 'الأربعاء' }, hours: '10 AM – 8 PM' },
-        { day: { en: 'Thursday', ar: 'الخميس' }, hours: '10 AM – 8 PM' },
-        { day: { en: 'Friday', ar: 'الجمعة' }, hours: '10 AM – 8 PM' },
-        { day: { en: 'Saturday', ar: 'السبت' }, hours: '10 AM – 8 PM' },
-        { day: { en: 'Sunday', ar: 'الأحد' }, hours: '10 AM – 8 PM' },
+        { day: { en: 'Monday', fr: 'Lundi', ar: 'الاثنين' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
+        { day: { en: 'Tuesday', fr: 'Mardi', ar: 'الثلاثاء' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
+        { day: { en: 'Wednesday', fr: 'Mercredi', ar: 'الأربعاء' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
+        { day: { en: 'Thursday', fr: 'Jeudi', ar: 'الخميس' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
+        { day: { en: 'Friday', fr: 'Vendredi', ar: 'الجمعة' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
+        { day: { en: 'Saturday', fr: 'Samedi', ar: 'السبت' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
+        { day: { en: 'Sunday', fr: 'Dimanche', ar: 'الأحد' }, hours: { en: '10 AM – 7 PM', fr: '10h00 – 19h00', ar: '10 ص – 7 م' } },
     ];
 
     return (
@@ -39,9 +46,9 @@ export const ParkHours = ({ onClose, isRTL = false }: ParkHoursProps) => {
                     <Clock className="w-10 h-10 text-sand-gold" />
                 </div>
 
-                <h2 className="text-4xl font-serif mb-2">{isRTL ? 'ساعات العمل' : 'Opening Hours'}</h2>
+                <h2 className="text-4xl font-serif mb-2">{text.title[language]}</h2>
                 <p className="text-[10px] uppercase font-bold tracking-[0.4em] text-sand-gold mb-12">
-                    {isRTL ? 'نحن ننتظرك' : 'We Are Waiting For You'}
+                    {text.waiting[language]}
                 </p>
 
                 <div className="space-y-4 mb-16">
@@ -54,10 +61,10 @@ export const ParkHours = ({ onClose, isRTL = false }: ParkHoursProps) => {
                             className="flex justify-between items-center py-4 border-b border-jungle-green/5 dark:border-white/5 group hover:bg-sand-gold/5 px-4 rounded-xl transition-colors"
                         >
                             <span className="font-bold text-sm text-jungle-green/60 dark:text-white/60 group-hover:text-sand-gold transition-colors">
-                                {isRTL ? item.day.ar : item.day.en}
+                                {item.day[language]}
                             </span>
                             <span className="font-serif italic text-lg text-sand-gold">
-                                {item.hours}
+                                {item.hours[language]}
                             </span>
                         </motion.div>
                     ))}
@@ -84,7 +91,7 @@ export const ParkHours = ({ onClose, isRTL = false }: ParkHoursProps) => {
                         <div className="w-10 h-10 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green shadow-lg">
                             <Phone className="w-5 h-5" />
                         </div>
-                        <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'اتصل بنا' : 'Call Support'}</span>
+                        <span className="text-[8px] font-bold uppercase tracking-widest">{text.call[language]}</span>
                     </motion.a>
                 </div>
             </motion.div>
