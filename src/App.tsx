@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 type Language = 'en' | 'fr' | 'ar';
 
 function App() {
-  const [activeLanguage, setActiveLanguage] = useState<Language | null>(null);
+  const [activeLanguage, setActiveLanguage] = useState<Language | null>('fr');
   const [isNightMode, setIsNightMode] = useState(false);
 
   return (

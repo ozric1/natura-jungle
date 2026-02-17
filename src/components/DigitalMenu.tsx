@@ -16,8 +16,8 @@ import { useState } from 'react';
 
 export interface MenuItem {
     id: string;
-    name: string;
-    description: string;
+    name: { en: string; fr: string; ar: string };
+    description: { en: string; fr: string; ar: string };
     price: number;
     category: 'Petit Déjeuner' | 'Salades' | 'Tagines' | 'Plats' | 'Sandwiches' | 'Pizza' | 'Boissons' | 'Jus' | 'Desserts' | 'Suppléments' | 'H\'rira' | 'Café';
     image: string;
@@ -36,90 +36,382 @@ export const DigitalMenu = ({ onBack, isRTL = false, language }: DigitalMenuProp
         // Petit Déjeuner
         {
             id: 'pt1',
-            name: language === 'ar' ? 'فطور غيورماند' : 'Gourmand',
-            description: language === 'ar' ? 'عصير برتقال، مخبوزات، مسمن، أومليت بالجبن، جبن، عسل، مربى، زبدة، خبز، قهوة أو شاي' : 'Jus d\'orange, viennoiserie, m\'semmen, Omelettes Fromage, Jben, miel, confiture, beurre, pain, café ou thé.',
+            name: { en: 'Gourmand', fr: 'Gourmand', ar: 'فطور غيورماند' },
+            description: {
+                en: 'Orange juice, pastries, m\'semmen, Cheese Omelet, Jben, honey, jam, butter, bread, coffee or tea.',
+                fr: 'Jus d\'orange, viennoiserie, m\'semmen, Omelettes Fromage, Jben, miel, confiture, beurre, pain, café ou thé.',
+                ar: 'عصير برتقال، مخبوزات، مسمن، أومليت بالجبن، جبن، عسل، مربى، زبدة، خبز، قهوة أو شاي'
+            },
             price: 60,
             category: 'Petit Déjeuner',
             image: '/assets/natura/Jungle restau 2.jpeg'
         },
         {
             id: 'pt2',
-            name: language === 'ar' ? 'فطور مغربي' : 'Marocain',
-            description: language === 'ar' ? 'عصير برتقال، مسمن، بيض بالخليع، جبن، عسل، خبز، قهوة أو شاي' : 'Jus d\'orange, m\'semmen, oeufs au khlii, Jben, miel, pain, café ou thé.',
+            name: { en: 'Moroccan', fr: 'Marocain', ar: 'فطور مغربي' },
+            description: {
+                en: 'Orange juice, m\'semmen, eggs with khlii, Jben, honey, bread, coffee or tea.',
+                fr: 'Jus d\'orange, m\'semmen, oeufs au khlii, Jben, miel, pain, café ou thé.',
+                ar: 'عصير برتقال، مسمن، بيض بالخليع، جبن، عسل، خبز، قهوة أو شاي'
+            },
             price: 55,
             category: 'Petit Déjeuner',
             image: '/assets/natura/Jungle RESTAURENT 4.jpeg'
         },
         {
             id: 'pt3',
-            name: language === 'ar' ? 'فطور إكسبريس' : 'Express',
-            description: language === 'ar' ? 'عصير برتقال، مخبوزات، مسمن، جبن، عسل، خبز، قهوة أو شاي' : 'Jus d\'orange, viennoiserie, m\'semmen, Jben, miel, pain, café ou thé.',
+            name: { en: 'Express', fr: 'Express', ar: 'فطور إكسبريس' },
+            description: {
+                en: 'Orange juice, pastries, m\'semmen, Jben, honey, bread, coffee or tea.',
+                fr: 'Jus d\'orange, viennoiserie, m\'semmen, Jben, miel, pain, café ou thé.',
+                ar: 'عصير برتقال، مخبوزات، مسمن، جبن، عسل، خبز، قهوة أو شاي'
+            },
             price: 45,
             category: 'Petit Déjeuner',
             image: '/assets/natura/Jungle restaurant.jpeg'
         },
 
         // Salades
-        { id: 'sl1', name: language === 'ar' ? 'سلطة مغربية' : 'Salade Marocaine', description: 'Fresh diced vegetables', price: 30, category: 'Salades', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'sl2', name: language === 'ar' ? 'سلطة نيسواز' : 'Salade Niçoise', description: 'Tuna, beans, eggs, olives', price: 40, category: 'Salades', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'sl3', name: language === 'ar' ? 'سلطة نطورا جانغل' : 'Salade Natura Jungle', description: 'Signature house salad', price: 50, category: 'Salades', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        {
+            id: 'sl1',
+            name: { en: 'Moroccan Salad', fr: 'Salade Marocaine', ar: 'سلطة مغربية' },
+            description: { en: 'Fresh diced vegetables', fr: 'Légumes frais coupés en dés', ar: 'خضروات طازجة مقطعة' },
+            price: 30,
+            category: 'Salades',
+            image: '/assets/natura/Jungle Restaurant 3.jpeg'
+        },
+        {
+            id: 'sl2',
+            name: { en: 'Nicoise Salad', fr: 'Salade Niçoise', ar: 'سلطة نيسواز' },
+            description: { en: 'Tuna, beans, eggs, olives', fr: 'Thon, haricots, œufs, olives', ar: 'تونة، فاصوليا، بيض، زيتون' },
+            price: 40,
+            category: 'Salades',
+            image: '/assets/natura/Jungle restau 2.jpeg'
+        },
+        {
+            id: 'sl3',
+            name: { en: 'Natura Jungle Salad', fr: 'Salade Natura Jungle', ar: 'سلطة نطورا جانغل' },
+            description: { en: 'Signature house salad', fr: 'Salade signature de la maison', ar: 'سلطة الدار المميزة' },
+            price: 50,
+            category: 'Salades',
+            image: '/assets/natura/Jungle RESTAURANT 5.jpeg'
+        },
 
         // Plats
-        { id: 'pl1', name: language === 'ar' ? 'بروشيت لحم مفروم' : 'Brochettes Viande Hachée', description: 'Grilled minced meat skewers', price: 80, category: 'Plats', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'pl2', name: language === 'ar' ? 'بروشيت دجاج' : 'Brochettes Poulet', description: 'Grilled chicken skewers', price: 75, category: 'Plats', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'pl3', name: language === 'ar' ? 'بروشيت مشكل' : 'Brochettes Mixte', description: 'Mixed meat skewers', price: 80, category: 'Plats', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'pl4', name: language === 'ar' ? 'صحن ناجتس' : 'Plat Nuggets', description: 'Chicken nuggets plate', price: 70, category: 'Plats', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        {
+            id: 'pl1',
+            name: { en: 'Minced Meat Skewers', fr: 'Brochettes Viande Hachée', ar: 'بروشيت لحم مفروم' },
+            description: { en: 'Grilled minced meat skewers', fr: 'Brochettes de viande hachée grillées', ar: 'أسياخ لحم مفروم مشوي' },
+            price: 80,
+            category: 'Plats',
+            image: '/assets/natura/Jungle restaurant.jpeg'
+        },
+        {
+            id: 'pl2',
+            name: { en: 'Chicken Skewers', fr: 'Brochettes Poulet', ar: 'بروشيت دجاج' },
+            description: { en: 'Grilled chicken skewers', fr: 'Brochettes de poulet grillées', ar: 'أسياخ دجاج مشوي' },
+            price: 75,
+            category: 'Plats',
+            image: '/assets/natura/Jungle Restaurant 3.jpeg'
+        },
+        {
+            id: 'pl3',
+            name: { en: 'Mixed Skewers', fr: 'Brochettes Mixte', ar: 'بروشيت مشكل' },
+            description: { en: 'Mixed meat skewers', fr: 'Brochettes de viandes mixtes', ar: 'أسياخ لحم مشكل' },
+            price: 80,
+            category: 'Plats',
+            image: '/assets/natura/Jungle RESTAURENT 4.jpeg'
+        },
+        {
+            id: 'pl4',
+            name: { en: 'Nuggets Plate', fr: 'Plat Nuggets', ar: 'صحن ناجتس' },
+            description: { en: 'Chicken nuggets plate', fr: 'Assiette de nuggets de poulet', ar: 'طبق ناجتس دجاج' },
+            price: 70,
+            category: 'Plats',
+            image: '/assets/natura/Jungle RESTAURANT 5.jpeg'
+        },
 
         // Tagines
-        { id: 'tg1', name: language === 'ar' ? 'طاجين لحم بالبرقوق' : 'Tagine Viande Pruneaux', description: 'Beef tagine with prunes', price: 140, category: 'Tagines', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
-        { id: 'tg2', name: language === 'ar' ? 'طاجين معيز' : 'Tagine Chevreaux', description: 'Goat meat tagine', price: 140, category: 'Tagines', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'tg3', name: language === 'ar' ? 'طاجين دجاج بلدي بالحامض' : 'Tagine Poulet Beldi Citron', description: 'Free-range chicken with lemon', price: 135, category: 'Tagines', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'tg4', name: language === 'ar' ? 'كسكس (الجمعة)' : 'Couscous (Vendredi)', description: 'Friday Special - Per Person', price: 80, category: 'Tagines', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'tg5', name: language === 'ar' ? 'رفيسة (الأربعاء)' : 'R\'fissa (Mercredi)', description: 'Wednesday Special - Per Person', price: 80, category: 'Tagines', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        {
+            id: 'tg1',
+            name: { en: 'Beef Tagine with Prunes', fr: 'Tagine Viande Pruneaux', ar: 'طاجين لحم بالبرقوق' },
+            description: { en: 'Beef tagine with prunes', fr: 'Tagine de bœuf aux pruneaux', ar: 'طاجين لحم بالبرقوق' },
+            price: 140,
+            category: 'Tagines',
+            image: '/assets/natura/Jungle restaurant Tajine.jpeg'
+        },
+        {
+            id: 'tg2',
+            name: { en: 'Goat Tagine', fr: 'Tagine Chevreaux', ar: 'طاجين معيز' },
+            description: { en: 'Goat meat tagine', fr: 'Tagine de viande de chèvre', ar: 'طاجين لحم الماعز' },
+            price: 140,
+            category: 'Tagines',
+            image: '/assets/natura/Jungle RESTAURENT 4.jpeg'
+        },
+        {
+            id: 'tg3',
+            name: { en: 'Beldi Chicken Tagine', fr: 'Tagine Poulet Beldi Citron', ar: 'طاجين دجاج بلدي بالحامض' },
+            description: { en: 'Free-range chicken with lemon', fr: 'Poulet beldi au citron', ar: 'دجاج بلدي بالحامض' },
+            price: 135,
+            category: 'Tagines',
+            image: '/assets/natura/Jungle RESTAURANT 5.jpeg'
+        },
+        {
+            id: 'tg4',
+            name: { en: 'Couscous (Friday)', fr: 'Couscous (Vendredi)', ar: 'كسكس (الجمعة)' },
+            description: { en: 'Friday Special - Per Person', fr: 'Spécial Vendredi - Par Personne', ar: 'مخصوص الجمعة - للشخص' },
+            price: 80,
+            category: 'Tagines',
+            image: '/assets/natura/Jungle restau 2.jpeg'
+        },
+        {
+            id: 'tg5',
+            name: { en: 'R\'fissa (Wednesday)', fr: 'R\'fissa (Mercredi)', ar: 'رفيسة (الأربعاء)' },
+            description: { en: 'Wednesday Special - Per Person', fr: 'Spécial Mercredi - Par Personne', ar: 'مخصوص الأربعاء - للشخص' },
+            price: 80,
+            category: 'Tagines',
+            image: '/assets/natura/Jungle Restaurant 3.jpeg'
+        },
 
         // Sandwiches
-        { id: 'sw1', name: language === 'ar' ? 'ساندويتش ديك رومي' : 'Sandwich Dinde', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'sw2', name: language === 'ar' ? 'ساندويتش لحم مفروم' : 'Sandwich Viande Hachée', description: 'Accompagner de Frites', price: 55, category: 'Sandwiches', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'sw3', name: language === 'ar' ? 'تشيز برجر' : 'Cheeseburger', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'sw4', name: language === 'ar' ? 'ناجتس' : 'Nuggets', description: 'Accompagner de Frites', price: 50, category: 'Sandwiches', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        {
+            id: 'sw1',
+            name: { en: 'Turkey Sandwich', fr: 'Sandwich Dinde', ar: 'ساندويتش ديك رومي' },
+            description: { en: 'Served with Fries', fr: 'Accompagné de Frites', ar: 'يقدم مع البطاطس المقلية' },
+            price: 50,
+            category: 'Sandwiches',
+            image: '/assets/natura/Jungle RESTAURANT 5.jpeg'
+        },
+        {
+            id: 'sw2',
+            name: { en: 'Minced Meat Sandwich', fr: 'Sandwich Viande Hachée', ar: 'ساندويتش لحم مفروم' },
+            description: { en: 'Served with Fries', fr: 'Accompagné de Frites', ar: 'يقدم مع البطاطس المقلية' },
+            price: 55,
+            category: 'Sandwiches',
+            image: '/assets/natura/Jungle RESTAURENT 4.jpeg'
+        },
+        {
+            id: 'sw3',
+            name: { en: 'Cheeseburger', fr: 'Cheeseburger', ar: 'تشيز برجر' },
+            description: { en: 'Served with Fries', fr: 'Accompagné de Frites', ar: 'يقدم مع البطاطس المقلية' },
+            price: 50,
+            category: 'Sandwiches',
+            image: '/assets/natura/Jungle restau 2.jpeg'
+        },
+        {
+            id: 'sw4',
+            name: { en: 'Nuggets', fr: 'Nuggets', ar: 'ناجتس' },
+            description: { en: 'Served with Fries', fr: 'Accompagné de Frites', ar: 'يقدم مع البطاطس المقلية' },
+            price: 50,
+            category: 'Sandwiches',
+            image: '/assets/natura/Jungle Restaurant 3.jpeg'
+        },
 
         // Pizza
-        { id: 'pz1', name: language === 'ar' ? 'بيتزا لحم مفروم' : 'Pizza Viande Hachée', description: 'Minced meat', price: 70, category: 'Pizza', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'pz2', name: language === 'ar' ? 'بيتزا دجاج' : 'Pizza Poulet', description: 'Chicken', price: 70, category: 'Pizza', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'pz3', name: language === 'ar' ? 'بيتزا فواكه البحر' : 'Pizza Fruit de Mer', description: 'Seafood', price: 80, category: 'Pizza', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'pz4', name: language === 'ar' ? 'بيتزا تونة' : 'Pizza Thon', description: 'Tuna', price: 65, category: 'Pizza', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'pz5', name: language === 'ar' ? 'بيتزا ٤ أجبان' : 'Pizza 4 Fromages', description: 'Four Cheeses', price: 65, category: 'Pizza', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
+        {
+            id: 'pz1',
+            name: { en: 'Minced Meat Pizza', fr: 'Pizza Viande Hachée', ar: 'بيتزا لحم مفروم' },
+            description: { en: 'Minced meat', fr: 'Viande hachée', ar: 'لحم مفروم' },
+            price: 70,
+            category: 'Pizza',
+            image: '/assets/natura/Jungle restaurant.jpeg'
+        },
+        {
+            id: 'pz2',
+            name: { en: 'Chicken Pizza', fr: 'Pizza Poulet', ar: 'بيتزا دجاج' },
+            description: { en: 'Chicken', fr: 'Poulet', ar: 'دجاج' },
+            price: 70,
+            category: 'Pizza',
+            image: '/assets/natura/Jungle Restaurant 3.jpeg'
+        },
+        {
+            id: 'pz3',
+            name: { en: 'Seafood Pizza', fr: 'Pizza Fruit de Mer', ar: 'بيتزا فواكه البحر' },
+            description: { en: 'Seafood', fr: 'Fruits de mer', ar: 'فواكه البحر' },
+            price: 80,
+            category: 'Pizza',
+            image: '/assets/natura/Jungle RESTAURENT 4.jpeg'
+        },
+        {
+            id: 'pz4',
+            name: { en: 'Tuna Pizza', fr: 'Pizza Thon', ar: 'بيتزا تونة' },
+            description: { en: 'Tuna', fr: 'Thon', ar: 'تونة' },
+            price: 65,
+            category: 'Pizza',
+            image: '/assets/natura/Jungle RESTAURANT 5.jpeg'
+        },
+        {
+            id: 'pz5',
+            name: { en: '4 Cheese Pizza', fr: 'Pizza 4 Fromages', ar: 'بيتزا ٤ أجبان' },
+            description: { en: 'Four Cheeses', fr: 'Quatre Fromages', ar: 'أربعة أجبان' },
+            price: 65,
+            category: 'Pizza',
+            image: '/assets/natura/Jungle restaurant Tajine.jpeg'
+        },
 
         // Suppléments
-        { id: 'sp1', name: language === 'ar' ? 'مسمن' : 'M\'semen', description: 'Moroccan pancake', price: 6, category: 'Suppléments', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'sp2', name: language === 'ar' ? 'حرشة' : 'Harcha', description: 'Semolina bread', price: 6, category: 'Suppléments', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'sp3', name: language === 'ar' ? 'كرواسون' : 'Croissant', description: 'Butter croissant', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'sp4', name: language === 'ar' ? 'أومليت' : 'Omelette', description: 'Eggs', price: 15, category: 'Suppléments', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'sp5', name: language === 'ar' ? 'جبن' : 'Fromage', description: 'Cheese portion', price: 5, category: 'Suppléments', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        {
+            id: 'sp1',
+            name: { en: 'M\'semen', fr: 'M\'semen', ar: 'مسمن' },
+            description: { en: 'Moroccan pancake', fr: 'Crêpe marocaine', ar: 'فطيرة مغربية' },
+            price: 6,
+            category: 'Suppléments',
+            image: '/assets/natura/Jungle restau 2.jpeg'
+        },
+        {
+            id: 'sp2',
+            name: { en: 'Harcha', fr: 'Harcha', ar: 'حرشة' },
+            description: { en: 'Semolina bread', fr: 'Galette de semoule', ar: 'خبز السميد' },
+            price: 6,
+            category: 'Suppléments',
+            image: '/assets/natura/Jungle Restaurant 3.jpeg'
+        },
+        {
+            id: 'sp3',
+            name: { en: 'Croissant', fr: 'Croissant', ar: 'كرواسون' },
+            description: { en: 'Butter croissant', fr: 'Croissant au beurre', ar: 'كرواسون بالزبدة' },
+            price: 5,
+            category: 'Suppléments',
+            image: '/assets/natura/Jungle RESTAURENT 4.jpeg'
+        },
+        {
+            id: 'sp4',
+            name: { en: 'Omelet', fr: 'Omelette', ar: 'أومليت' },
+            description: { en: 'Eggs', fr: 'Œufs', ar: 'بيض' },
+            price: 15,
+            category: 'Suppléments',
+            image: '/assets/natura/Jungle restaurant.jpeg'
+        },
+        {
+            id: 'sp5',
+            name: { en: 'Cheese', fr: 'Fromage', ar: 'جبن' },
+            description: { en: 'Cheese portion', fr: 'Portion de fromage', ar: 'قطعة جبن' },
+            price: 5,
+            category: 'Suppléments',
+            image: '/assets/natura/Jungle RESTAURANT 5.jpeg'
+        },
 
         // Jus
-        { id: 'js1', name: language === 'ar' ? 'عصير برتقال' : 'Jus d\'Orange', description: 'Freshly squeezed', price: 20, category: 'Jus', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
+        {
+            id: 'js1',
+            name: { en: 'Orange Juice', fr: 'Jus d\'Orange', ar: 'عصير برتقال' },
+            description: { en: 'Freshly squeezed', fr: 'Fraîchement pressé', ar: 'عصير طازج' },
+            price: 20,
+            category: 'Jus',
+            image: '/assets/natura/Jungle restaurant Tajine.jpeg'
+        },
 
         // Desserts
-        { id: 'ds1', name: language === 'ar' ? 'سلطة فواكه' : 'Salade de Fruits', description: 'Fresh seasonal fruits', price: 30, category: 'Desserts', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'ds2', name: language === 'ar' ? 'حلوى مغربية' : 'Gâteau Marocain', description: 'Traditional sweet', price: 40, category: 'Desserts', image: '/assets/natura/Jungle restau 2.jpeg' },
+        {
+            id: 'ds1',
+            name: { en: 'Fruit Salad', fr: 'Salade de Fruits', ar: 'سلطة فواكه' },
+            description: { en: 'Fresh seasonal fruits', fr: 'Fruits frais de saison', ar: 'فواكه موسمية طازجة' },
+            price: 30,
+            category: 'Desserts',
+            image: '/assets/natura/Jungle restaurant.jpeg'
+        },
+        {
+            id: 'ds2',
+            name: { en: 'Moroccan Sweet', fr: 'Gâteau Marocain', ar: 'حلوى مغربية' },
+            description: { en: 'Traditional sweet', fr: 'Douceur traditionnelle', ar: 'حلوى تقليدية' },
+            price: 40,
+            category: 'Desserts',
+            image: '/assets/natura/Jungle restau 2.jpeg'
+        },
 
         // H'rira
-        { id: 'hr1', name: language === 'ar' ? 'حريرة + بيض + تمر' : 'H\'rira + Oeuf + Dattes', description: 'Soup set', price: 30, category: 'H\'rira', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
+        {
+            id: 'hr1',
+            name: { en: 'Harira + Egg + Dates', fr: 'H\'rira + Oeuf + Dattes', ar: 'حريرة + بيض + تمر' },
+            description: { en: 'Soup set', fr: 'Ensemble soupe', ar: 'مجموعة الحريرة' },
+            price: 30,
+            category: 'H\'rira',
+            image: '/assets/natura/Jungle Restaurant 3.jpeg'
+        },
 
         // Boissons
-        { id: 'bs1', name: language === 'ar' ? 'صودا' : 'Soda', description: 'Fresh drink', price: 15, category: 'Boissons', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
-        { id: 'bs2', name: language === 'ar' ? 'ماء معدني (صغير)' : 'Eau Minérale (P)', description: 'Small Water', price: 12, category: 'Boissons', image: '/assets/natura/Jungle restaurant.jpeg' },
-        { id: 'bs3', name: language === 'ar' ? 'ماء معدني (كبير)' : 'Eau Minérale (G)', description: 'Large Water', price: 16, category: 'Boissons', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'bs4', name: language === 'ar' ? 'ماء فوار' : 'Eau Gazeuse', description: 'Sparkling Water', price: 17, category: 'Boissons', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'bs5', name: language === 'ar' ? 'لويزة' : 'Verveine', description: 'Herbal Tea', price: 17, category: 'Boissons', image: '/assets/natura/Jungle restau 2.jpeg' },
-        { id: 'bs6', name: language === 'ar' ? 'شاي مغربي (صغير)' : 'Thé Marocain (P)', description: 'Mint Tea Small', price: 15, category: 'Boissons', image: '/assets/natura/Jungle restaurant Tajine.jpeg' },
-        { id: 'bs7', name: language === 'ar' ? 'شاي مغربي (كبير)' : 'Thé Marocain (G)', description: 'Mint Tea Large', price: 25, category: 'Boissons', image: '/assets/natura/Jungle RESTAURANT 5.jpeg' },
+        {
+            id: 'bs1',
+            name: { en: 'Soda', fr: 'Soda', ar: 'صودا' },
+            description: { en: 'Fresh drink', fr: 'Boisson fraîche', ar: 'مشروب بارد' },
+            price: 15,
+            category: 'Boissons',
+            image: '/assets/natura/Jungle RESTAURANT 5.jpeg'
+        },
+        {
+            id: 'bs2',
+            name: { en: 'Mineral Water (S)', fr: 'Eau Minérale (P)', ar: 'ماء معدني (صغير)' },
+            description: { en: 'Small Water', fr: 'Petite Eau', ar: 'ماء صغير' },
+            price: 12,
+            category: 'Boissons',
+            image: '/assets/natura/Jungle restaurant.jpeg'
+        },
+        {
+            id: 'bs3',
+            name: { en: 'Mineral Water (L)', fr: 'Eau Minérale (G)', ar: 'ماء معدني (كبير)' },
+            description: { en: 'Large Water', fr: 'Grande Eau', ar: 'ماء كبير' },
+            price: 16,
+            category: 'Boissons',
+            image: '/assets/natura/Jungle Restaurant 3.jpeg'
+        },
+        {
+            id: 'bs4',
+            name: { en: 'Sparkling Water', fr: 'Eau Gazeuse', ar: 'ماء فوار' },
+            description: { en: 'Sparkling Water', fr: 'Eau Gazeuse', ar: 'ماء غازي' },
+            price: 17,
+            category: 'Boissons',
+            image: '/assets/natura/Jungle RESTAURENT 4.jpeg'
+        },
+        {
+            id: 'bs5',
+            name: { en: 'Verbena Tea', fr: 'Verveine', ar: 'لويزة' },
+            description: { en: 'Herbal Tea', fr: 'Tisane', ar: 'شاي أعشاب' },
+            price: 17,
+            category: 'Boissons',
+            image: '/assets/natura/Jungle restau 2.jpeg'
+        },
+        {
+            id: 'bs6',
+            name: { en: 'Moroccan Tea (S)', fr: 'Thé Marocain (P)', ar: 'شاي مغربي (صغير)' },
+            description: { en: 'Mint Tea Small', fr: 'Thé à la menthe petit', ar: 'شاي بالنعناع صغير' },
+            price: 15,
+            category: 'Boissons',
+            image: '/assets/natura/Jungle restaurant Tajine.jpeg'
+        },
+        {
+            id: 'bs7',
+            name: { en: 'Moroccan Tea (L)', fr: 'Thé Marocain (G)', ar: 'شاي مغربي (كبير)' },
+            description: { en: 'Mint Tea Large', fr: 'Thé à la menthe grand', ar: 'شاي بالنعناع كبير' },
+            price: 25,
+            category: 'Boissons',
+            image: '/assets/natura/Jungle RESTAURANT 5.jpeg'
+        },
 
         // Café
-        { id: 'cf1', name: language === 'ar' ? 'قهوة بالحليب' : 'Café au Lait', description: 'Coffee with milk', price: 17, category: 'Café', image: '/assets/natura/Jungle Restaurant 3.jpeg' },
-        { id: 'cf2', name: language === 'ar' ? 'حليب بالشوكولاتة' : 'Lait au Chocolat', description: 'Chocolate milk', price: 17, category: 'Café', image: '/assets/natura/Jungle RESTAURENT 4.jpeg' },
-        { id: 'cf3', name: language === 'ar' ? 'كابتشينو' : 'Cappuccino', description: 'Foamy coffee', price: 17, category: 'Café', image: '/assets/natura/Jungle restaurant.jpeg' },
+        {
+            id: 'cf1',
+            name: { en: 'Coffee with Milk', fr: 'Café au Lait', ar: 'قهوة بالحليب' },
+            description: { en: 'Coffee with milk', fr: 'Café au lait', ar: 'قهوة وحليب' },
+            price: 17,
+            category: 'Café',
+            image: '/assets/natura/Jungle Restaurant 3.jpeg'
+        },
+        {
+            id: 'cf2',
+            name: { en: 'Chocolate Milk', fr: 'Lait au Chocolat', ar: 'حليب بالشوكولاتة' },
+            description: { en: 'Chocolate milk', fr: 'Lait chocolaté', ar: 'حليب شكولاتة' },
+            price: 17,
+            category: 'Café',
+            image: '/assets/natura/Jungle RESTAURENT 4.jpeg'
+        },
+        {
+            id: 'cf3',
+            name: { en: 'Cappuccino', fr: 'Cappuccino', ar: 'كابتشينو' },
+            description: { en: 'Foamy coffee', fr: 'Café mousseux', ar: 'قهوة برغوة' },
+            price: 17,
+            category: 'Café',
+            image: '/assets/natura/Jungle restaurant.jpeg'
+        },
     ];
 
     const text = {
@@ -148,7 +440,7 @@ export const DigitalMenu = ({ onBack, isRTL = false, language }: DigitalMenuProp
         { id: 'Tagines', icon: Flame, label: text.categories.tagines[language] },
         { id: 'Sandwiches', icon: ShoppingBag, label: text.categories.sandwiches[language] },
         { id: 'Pizza', icon: Pizza, label: text.categories.pizza[language] },
-        { id: 'Suppléments', label: text.categories.supplements[language], icon: Utensils }, // Placeholder icon if needed
+        { id: 'Suppléments', label: text.categories.supplements[language], icon: Utensils },
         { id: 'Jus', icon: GlassWater, label: text.categories.juice[language] },
         { id: 'Desserts', icon: Cookie, label: text.categories.desserts[language] },
         { id: 'H\'rira', icon: Soup, label: text.categories.hrira[language] },
@@ -226,7 +518,7 @@ export const DigitalMenu = ({ onBack, isRTL = false, language }: DigitalMenuProp
                                         className={`flex flex-col gap-4 group relative ${!isEven ? 'md:mt-12 lg:mt-24' : ''}`}
                                     >
                                         <div className="relative aspect-[4/3] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-xl border border-white/10 group-hover:shadow-luxury-gold/20 transition-all duration-700">
-                                            <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1)" alt={item.name} />
+                                            <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1)" alt={item.name[language]} />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                                             <div className="absolute bottom-4 right-4 lg:bottom-6 lg:right-6">
                                                 <span className="px-4 py-2 lg:px-6 lg:py-3 bg-luxury-gold text-jungle-deep font-bold rounded-xl lg:rounded-2xl shadow-xl text-xs lg:text-base">
@@ -237,7 +529,7 @@ export const DigitalMenu = ({ onBack, isRTL = false, language }: DigitalMenuProp
 
                                         <div className="px-2 lg:px-4">
                                             <div className="flex justify-between items-baseline mb-2 lg:mb-4">
-                                                <h3 className="text-xl lg:text-3xl font-serif text-jungle-deep dark:text-white group-hover:text-luxury-gold transition-colors">{item.name}</h3>
+                                                <h3 className="text-xl lg:text-3xl font-serif text-jungle-deep dark:text-white group-hover:text-luxury-gold transition-colors">{item.name[language]}</h3>
                                             </div>
 
                                             <div className="mb-4 lg:mb-8 min-h-[3rem]">
@@ -245,7 +537,7 @@ export const DigitalMenu = ({ onBack, isRTL = false, language }: DigitalMenuProp
                                                     <p className="text-[8px] lg:text-[10px] uppercase tracking-[0.2em] text-luxury-gold font-bold mb-1 opacity-80">{text.ingredients[language]}</p>
                                                 )}
                                                 <p className="text-xs lg:text-sm font-serif leading-relaxed text-jungle-deep/60 dark:text-pure-nature/60 italic">
-                                                    {item.description}
+                                                    {item.description[language]}
                                                 </p>
                                             </div>
                                         </div>

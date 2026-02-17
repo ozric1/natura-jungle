@@ -165,12 +165,18 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 circuit: "Circuit",
                 kitchen: "Kitchen",
                 theme: "Theme"
+            },
+            nightSky: {
+                tag: "Premium Night Sky",
+                title: "Stargazer Guide",
+                desc: "Live AR star map for the dark skies over Mansouria.",
+                button: "Launch AR View"
             }
         },
         fr: {
             brand: "Natura Jungle",
             tagline: "Respirer la Nature",
-            explore: "Exploration Sauvage",
+            explore: "Exploration auvage",
             map_title: "Le Circuit Sauvage",
             map_status: "Suivi en Direct",
             kitchen: "Commande sur Place",
@@ -242,7 +248,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     tag: "Meilleure Offre",
                     title: "Séjour Bungalow",
                     perNight: "Par Nuit",
-                    desc: "1 Couple + Enfants. Petit-déjeuner et activités inclus.",
+                    desc: "1 Couple + 1 Enfant. Petit-déjeuner et activités inclus.",
                     book: "Réserver"
                 }
             },
@@ -346,6 +352,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 contact: "اتصل بنا",
                 mission_text: "ناتورا جانغل بارك هو ملاذك الصديق للبيئة بالقرب من الدار البيضاء والرباط. مهمتنا هي توفير بيئة هادئة لكل زائر للاستمتاع بوقت نوعي. نحن نؤمن بحماية الطبيعة مع خلق ذكريات ساحرة للجميع.",
                 story_text: "لقد بدأنا ناتورا جانغل لأننا نحب الأوقات العائلية والطبيعة. بفضل خبرتنا الكبيرة في مجال الاسترخاء، حلمنا بمكان يشعر فيه الجميع وكأنهم في منزلهم وسط الطبيعة. اليوم، أصبح هذا الحلم حقيقة. نحن نقدم خدمة احترافية بلمسة عائلية دافئة في قلب الغابة."
+            },
+            nightSky: {
+                tag: "تجربة ليلية متميزة",
+                title: "خريطة النجوم",
+                desc: "دليل النجوم والمجرات فوق منصورية.",
+                button: "بدء العرض"
             },
             topNav: {
                 hours: "المواعيد",
@@ -1098,16 +1110,16 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                             <div className="relative z-10 text-left">
                                 <div className="flex items-center gap-2 text-indigo-400 mb-4">
                                     <Moon className="w-4 h-4" />
-                                    <span className="text-[10px] font-bold uppercase tracking-[0.3em]">{isRTL ? 'تجربة ليلية متميزة' : 'Premium Night Sky'}</span>
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.3em]">{(translations[currentLanguage] as any).nightSky.tag}</span>
                                 </div>
-                                <h3 className="text-3xl font-serif mb-2">{isRTL ? 'خريطة النجوم' : 'Stargazer Guide'}</h3>
-                                <p className="text-sm text-white/40 mb-6 max-w-[200px]">{isRTL ? 'دليل النجوم والمجرات فوق منصورية.' : 'Live AR star map for the dark skies over Mansouria.'}</p>
+                                <h3 className="text-3xl font-serif mb-2">{(translations[currentLanguage] as any).nightSky.title}</h3>
+                                <p className="text-sm text-white/40 mb-6 max-w-[200px]">{(translations[currentLanguage] as any).nightSky.desc}</p>
                                 <motion.button
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => setCurrentView('stargazer')}
                                     className="bg-indigo-600/20 border border-indigo-400/30 text-indigo-100 px-6 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-indigo-600/40 transition-all font-sans"
                                 >
-                                    {isRTL ? 'بدء العرض' : 'Launch AR View'}
+                                    {(translations[currentLanguage] as any).nightSky.button}
                                 </motion.button>
                             </div>
                         </motion.section>
@@ -1124,7 +1136,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     className={`flex flex-col items-center gap-1 ${currentView === 'hours' ? 'text-sand-gold' : 'text-white/40'}`}
                 >
                     <Clock className="w-5 h-5" />
-                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'المواعيد' : 'Hours'}</span>
+                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'المواعيد' : (translations[currentLanguage] as any).navigation.hours.subtitle}</span>
                 </motion.button>
 
                 <motion.button
@@ -1133,7 +1145,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     className="flex flex-col items-center gap-1 text-white/40"
                 >
                     <MapPin className="w-5 h-5" />
-                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'الخريطة' : 'Map'}</span>
+                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'الخريطة' : (translations[currentLanguage] as any).navigation.map.title}</span>
                 </motion.button>
 
                 <div className="relative -mt-12">

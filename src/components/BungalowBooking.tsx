@@ -40,7 +40,9 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             confirmed: "Booking Confirmed!",
             confirmedMsg: "Your luxury night sky experience is now unlocked.",
             redirecting: "Redirecting...",
-            alert: "Please enter all payment details"
+            alert: "Please enter all payment details",
+            night: "Night",
+            nights: "Nights"
         },
         fr: {
             title: "Bungalow Horizon Jungle",
@@ -70,7 +72,9 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             confirmed: "Réservation Confirmée !",
             confirmedMsg: "Votre expérience de ciel étoilé de luxe est maintenant débloquée.",
             redirecting: "Redirection...",
-            alert: "Veuillez entrer tous les détails de paiement"
+            alert: "Veuillez entrer tous les détails de paiement",
+            night: "Nuit",
+            nights: "Nuits"
         },
         ar: {
             title: "بناغل الغابة الفاخرة",
@@ -100,7 +104,9 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             confirmed: "الحجز مؤكد!",
             confirmedMsg: "لقد تم فتح خريطة النجوم المتميزة لك.",
             redirecting: "جاري العودة...",
-            alert: "يرجى إدخال جميع تفاصيل الدفع"
+            alert: "يرجى إدخال جميع تفاصيل الدفع",
+            night: "ليلة",
+            nights: "ليالي"
         }
     };
 
@@ -330,7 +336,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                                     </div>
                                     <div className="mt-4 text-right">
                                         <span className="text-xs font-serif text-sand-gold italic">
-                                            + {kidsCount * extraKidPrice} MAD / {isRTL ? 'الليلة' : 'Night'}
+                                            + {kidsCount * extraKidPrice} MAD / {t.night}
                                         </span>
                                     </div>
                                 </motion.div>
@@ -350,7 +356,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
 
                         {addKids && (
                             <div className="flex justify-between text-xs mb-4 text-jungle-green/80 border-t border-dashed border-jungle-green/10 pt-2">
-                                <span>{kidsCount} {kidsCount === 1 ? t.kid : t.kids} x {nights} {isRTL ? 'ليالي' : 'Nights'}</span>
+                                <span>{kidsCount} {kidsCount === 1 ? t.kid : t.kids} x {nights} {t.nights}</span>
                                 <span className="font-bold">+ {totalExtraKidsCost * nights} MAD</span>
                             </div>
                         )}
@@ -445,7 +451,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                                 </div>
 
                                 <div className="flex justify-between items-center py-4 border-t border-jungle-green/5">
-                                    <span className="text-lg font-serif italic opacity-60">Total</span>
+                                    <span className="text-lg font-serif italic opacity-60">{t.total}</span>
                                     <span className="text-2xl font-serif text-sand-gold">{grandTotal} MAD</span>
                                 </div>
 
