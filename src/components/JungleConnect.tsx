@@ -3,9 +3,42 @@ import { Heart, MessageCircle, Share2, Camera, MapPin, User } from 'lucide-react
 
 interface JungleConnectProps {
     isRTL?: boolean;
+    language?: 'en' | 'fr' | 'ar';
 }
 
-export const JungleConnect = ({ isRTL = false }: JungleConnectProps) => {
+export const JungleConnect = ({ isRTL = false, language = 'en' }: JungleConnectProps) => {
+
+    const text = {
+        title: {
+            en: 'Jungle Connect',
+            fr: 'Jungle Connect',
+            ar: 'جنجل كونكت'
+        },
+        subtitle: {
+            en: 'Moments shared by our guests',
+            fr: 'Moments partagés par nos invités',
+            ar: 'لحظات مشتركة من ضيوفنا'
+        },
+        share: {
+            en: 'Share Your Memory',
+            fr: 'Partagez Votre Souvenir',
+            ar: 'شارك ذكرياتك'
+        }
+    };
+
+    // Helper for location translation (basic mapping for demo data)
+    const getLocationText = (loc: string) => {
+        const locations: any = {
+            "Animal Circuit": { en: "Animal Circuit", fr: "Circuit Animalier", ar: "مسار الحيوانات" },
+            "Main Pool": { en: "Main Pool", fr: "Piscine Principale", ar: "المسبح الرئيسي" },
+            "Berber Tent": { en: "Berber Tent", fr: "Tente Berbère", ar: "الخيمة البربرية" },
+            "Equestrian Academy": { en: "Equestrian Academy", fr: "Académie Équestre", ar: "أكاديمية الفروسية" },
+            "Wild Circuit": { en: "Wild Circuit", fr: "Circuit Sauvage", ar: "المسار البري" },
+            "Jungle Restaurant": { en: "Jungle Restaurant", fr: "Restaurant Jungle", ar: "مطعم الغابة" }
+        };
+        return locations[loc]?.[language] || loc;
+    };
+
     const memories = [
         {
             id: 1,
@@ -64,15 +97,15 @@ export const JungleConnect = ({ isRTL = false }: JungleConnectProps) => {
         <div className="space-y-10 overflow-hidden py-10">
             <div className="flex justify-between items-end px-6 lg:px-12">
                 <div className="space-y-2">
-                    <h2 className="text-3xl lg:text-4xl font-serif text-sand-gold">{isRTL ? 'جنجل كونكت' : 'Jungle Connect'}</h2>
+                    <h2 className="text-3xl lg:text-4xl font-serif text-sand-gold">{text.title[language]}</h2>
                     <p className="text-xs lg:text-sm text-jungle-deep/40 dark:text-pure-nature/40 uppercase tracking-[0.3em] font-bold">
-                        {isRTL ? 'لحظات مشتركة من ضيوفنا' : 'Moments shared by our guests'}
+                        {text.subtitle[language]}
                     </p>
                 </div>
                 <div className="flex items-center gap-3 px-6 py-3 bg-luxury-gold/10 rounded-full text-luxury-gold border border-luxury-gold/20">
                     <Camera className="w-4 h-4" />
                     <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
-                        {isRTL ? 'شارك ذكرياتك' : 'Share Your Memory'}
+                        {text.share[language]}
                     </span>
                 </div>
             </div>
@@ -109,7 +142,7 @@ export const JungleConnect = ({ isRTL = false }: JungleConnectProps) => {
                             <div className="absolute top-6 left-6">
                                 <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
                                     <MapPin className="w-3 h-3 text-luxury-gold" />
-                                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">{memory.location}</span>
+                                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">{getLocationText(memory.location)}</span>
                                 </div>
                             </div>
 

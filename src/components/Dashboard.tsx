@@ -148,7 +148,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     tag: "Best Value",
                     title: "Bungalow Stay",
                     perNight: "Per Night",
-                    desc: "1 Couple + Kids. Breakfast & Activities included.",
+                    desc: "1 Couple + 1 Kid. Breakfast & Activities included.",
                     book: "Book Now"
                 }
             },
@@ -339,15 +339,15 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     book: "احجز الآن"
                 },
                 bungalow: {
-                    tag: "أفضل قيمة",
-                    title: "إقامة البناغل",
-                    perNight: "في الليلة",
-                    desc: "زوجان + أطفال. شامل الإفطار والأنشطة.",
-                    book: "احجز الآن"
+                    tag: "Meilleure Offre",
+                    title: "Séjour Bungalow",
+                    perNight: "Par Nuit",
+                    desc: "1 Couple + 1 Enfant. Petit-déjeuner et activités inclus.",
+                    book: "Réserver"
                 }
             },
             menu: {
-                mission: "مهمتنا",
+                mission: "Notre Mission",
                 story: "قصتنا",
                 contact: "اتصل بنا",
                 mission_text: "ناتورا جانغل بارك هو ملاذك الصديق للبيئة بالقرب من الدار البيضاء والرباط. مهمتنا هي توفير بيئة هادئة لكل زائر للاستمتاع بوقت نوعي. نحن نؤمن بحماية الطبيعة مع خلق ذكريات ساحرة للجميع.",
@@ -1095,7 +1095,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     <SmartConcierge language={currentLanguage} />
 
                     {/* Jungle Connect Section */}
-                    <JungleConnect isRTL={isRTL} />
+                    <JungleConnect isRTL={isRTL} language={currentLanguage} />
 
                     {/* Night Sky Feature (If paid) */}
                     {hasBooked && (

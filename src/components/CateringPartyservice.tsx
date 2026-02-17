@@ -87,6 +87,16 @@ export const CateringPartyservice = ({ onClose, language, eventType }: CateringP
             en: 'Book on WhatsApp',
             fr: 'Réserver sur WhatsApp',
             ar: 'احجز عبر واتساب'
+        },
+        nameLabel: {
+            en: 'Full Name',
+            fr: 'Nom Complet',
+            ar: 'الاسم الكامل'
+        },
+        namePlaceholder: {
+            en: 'Enter your name',
+            fr: 'Entrez votre nom',
+            ar: 'أدخل اسمك'
         }
     };
 
@@ -96,7 +106,7 @@ export const CateringPartyservice = ({ onClose, language, eventType }: CateringP
         // Construct the message with clean newlines
         const message = `*${typeHeader}*\n\n` +
             `*Client:* ${formData.name || 'N/A'}\n` +
-            `*Group Size:* ${formData.size} ${language === 'ar' ? 'أشخاص' : 'guests'}\n` +
+            `*Group Size:* ${formData.size} ${language === 'ar' ? 'أشخاص' : (language === 'fr' ? 'invités' : 'guests')}\n` +
             `*Arrival Date:* ${formData.date || 'Not specified'}\n` +
             `*Arrival Time:* ${formData.time || 'Not specified'}\n` +
             `*Food Orders:*\n${formData.food || 'No specific food order yet.'}\n\n` +
@@ -148,13 +158,13 @@ export const CateringPartyservice = ({ onClose, language, eventType }: CateringP
                     <div className="space-y-2">
                         <label className="text-xs font-bold uppercase tracking-widest text-neutral-900 dark:text-white flex items-center gap-2">
                             <MessageSquare className="w-4 h-4 text-sand-gold" />
-                            {language === 'ar' ? 'الاسم الكامل' : 'Full Name'}
+                            {text.nameLabel[language]}
                         </label>
                         <input
                             type="text"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            placeholder={language === 'ar' ? 'أدخل اسمك' : 'Enter your name'}
+                            placeholder={text.namePlaceholder[language]}
                             className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl p-4 text-neutral-900 dark:text-white focus:ring-2 focus:ring-sand-gold outline-none transition-all"
                         />
                     </div>

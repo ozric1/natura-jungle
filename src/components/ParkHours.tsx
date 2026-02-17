@@ -84,7 +84,7 @@ export const ParkHours = ({ onClose, isRTL = false, language }: ParkHoursProps) 
                         <div className="w-10 h-10 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green shadow-lg">
                             <Instagram className="w-5 h-5" />
                         </div>
-                        <span className="text-[8px] font-bold uppercase tracking-widest">Instagram</span>
+                        <span className="text-[8px] font-bold uppercase tracking-widest">{language === 'ar' ? 'انستغرام' : 'Instagram'}</span>
                     </motion.a>
 
                     <motion.a
