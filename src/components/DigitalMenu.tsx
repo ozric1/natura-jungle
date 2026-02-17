@@ -1,9 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     ChevronLeft,
-    Plus,
-    Minus,
-    ShoppingCart,
     Utensils,
     Flame,
     Pizza,
@@ -26,19 +23,13 @@ export interface MenuItem {
     image: string;
 }
 
-export interface CartItem extends MenuItem {
-    quantity: number;
-}
-
 interface DigitalMenuProps {
     onBack: () => void;
-    onOrderPlaced: (cart: CartItem[], total: number) => void;
     isRTL?: boolean;
     language: 'en' | 'fr' | 'ar';
 }
 
-export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: DigitalMenuProps) => {
-    const [cart, setCart] = useState<CartItem[]>([]);
+export const DigitalMenu = ({ onBack, isRTL = false, language }: DigitalMenuProps) => {
     const [activeCategory, setActiveCategory] = useState<MenuItem['category']>('Petit Déjeuner');
 
     const menuItems: MenuItem[] = [
@@ -131,34 +122,8 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
         { id: 'cf3', name: language === 'ar' ? 'كابتشينو' : 'Cappuccino', description: 'Foamy coffee', price: 17, category: 'Café', image: '/assets/natura/Jungle restaurant.jpeg' },
     ];
 
-    const addToCart = (item: MenuItem) => {
-        setCart(prev => {
-            const existing = prev.find(i => i.id === item.id);
-            if (existing) {
-                return prev.map(i => i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i);
-            }
-            return [...prev, { ...item, quantity: 1 }];
-        });
-    };
-
-    const removeFromCart = (itemId: string) => {
-        setCart(prev => {
-            const existing = prev.find(i => i.id === itemId);
-            if (existing && existing.quantity > 1) {
-                return prev.map(i => i.id === itemId ? { ...i, quantity: i.quantity - 1 } : i);
-            }
-            return prev.filter(i => i.id !== itemId);
-        });
-    };
-
-    const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
     const text = {
-        title: { en: 'Digital Menu', fr: 'Menu Numérique', ar: 'قائمة الطلبات' },
-        addToCart: { en: 'Add', fr: 'Ajouter', ar: 'إضافة' },
-        added: { en: 'Added', fr: 'Ajouté', ar: 'مضاف' },
-        items: { en: 'Items', fr: 'Articles', ar: 'عناصر' },
-        payNow: { en: 'Order Now', fr: 'Commander', ar: 'اطلب الآن' },
+        title: { en: 'Menu', fr: 'Menu', ar: 'القائمة' },
         ingredients: { en: 'Ingredients', fr: 'Ingrédients', ar: 'المكونات' },
         categories: {
             breakfast: { en: 'Breakfast', fr: 'Petit Déjeuner', ar: 'فطور' },
@@ -183,7 +148,7 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
         { id: 'Tagines', icon: Flame, label: text.categories.tagines[language] },
         { id: 'Sandwiches', icon: ShoppingBag, label: text.categories.sandwiches[language] },
         { id: 'Pizza', icon: Pizza, label: text.categories.pizza[language] },
-        { id: 'Suppléments', icon: Plus, label: text.categories.supplements[language] },
+        { id: 'Suppléments', label: text.categories.supplements[language], icon: Utensils }, // Placeholder icon if needed
         { id: 'Jus', icon: GlassWater, label: text.categories.juice[language] },
         { id: 'Desserts', icon: Cookie, label: text.categories.desserts[language] },
         { id: 'H\'rira', icon: Soup, label: text.categories.hrira[language] },
@@ -209,23 +174,10 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                         {text.title[language]}
                     </h1>
                 </div>
-                <div className="relative">
-                    <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-2xl bg-luxury-gold text-jungle-deep flex items-center justify-center shadow-lg gold-shadow">
-                        <ShoppingCart className="w-5 h-5 lg:w-6 lg:h-6" />
-                    </div>
-                    {cartCount > 0 && (
-                        <motion.span
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            className="absolute -top-2 -right-2 w-5 h-5 bg-jungle-terracotta text-white text-[10px] font-bold rounded-full flex items-center justify-center"
-                        >
-                            {cartCount}
-                        </motion.span>
-                    )}
-                </div>
+                <div className="w-10 lg:w-12" /> {/* Spacer for centering */}
             </header>
 
-            <main className="pb-40">
+            <main className="pb-12">
                 {/* Category Picker */}
                 <div className="flex gap-3 overflow-x-auto lg:flex-nowrap px-4 lg:px-12 py-6 no-scrollbar scroll-smooth">
                     {categories.map((cat, idx) => {
@@ -264,7 +216,6 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-12 lg:gap-x-12 lg:gap-y-16"
                         >
                             {filteredItems.map((item, idx) => {
-                                const cartItem = cart.find(i => i.id === item.id);
                                 const isEven = idx % 2 === 0;
                                 return (
                                     <motion.div
@@ -297,40 +248,6 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                                                     {item.description}
                                                 </p>
                                             </div>
-
-                                            <div className="flex items-center gap-3 lg:gap-4">
-                                                {cartItem ? (
-                                                    <div className="flex items-center gap-4 lg:gap-6 bg-jungle-deep/5 dark:bg-white/5 rounded-[1.5rem] lg:rounded-[2rem] p-1.5 lg:p-2 pr-4 lg:pr-6 w-full justify-between">
-                                                        <div className="flex items-center gap-2">
-                                                            <motion.button
-                                                                whileTap={{ scale: 0.8 }}
-                                                                onClick={() => removeFromCart(item.id)}
-                                                                className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-white dark:bg-jungle-deep text-luxury-gold shadow-md"
-                                                            >
-                                                                <Minus className="w-4 h-4" />
-                                                            </motion.button>
-                                                            <span className="text-base lg:text-lg font-bold w-6 text-center">{cartItem.quantity}</span>
-                                                            <motion.button
-                                                                whileTap={{ scale: 0.8 }}
-                                                                onClick={() => addToCart(item)}
-                                                                className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-luxury-gold text-jungle-deep shadow-lg"
-                                                            >
-                                                                <Plus className="w-4 h-4" />
-                                                            </motion.button>
-                                                        </div>
-                                                        <span className="text-[10px] lg:text-xs font-bold uppercase tracking-widest opacity-40">{text.added[language]}</span>
-                                                    </div>
-                                                ) : (
-                                                    <motion.button
-                                                        whileTap={{ scale: 0.95 }}
-                                                        onClick={() => addToCart(item)}
-                                                        className="w-full py-4 lg:py-5 bg-jungle-deep dark:bg-luxury-gold text-luxury-gold dark:text-jungle-deep rounded-2xl text-[9px] lg:text-[10px] font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-3 group/btn hover:shadow-xl transition-all"
-                                                    >
-                                                        <Plus className="w-3 h-3 lg:w-4 lg:h-4 group-hover/btn:rotate-90 transition-transform" />
-                                                        {text.addToCart[language]}
-                                                    </motion.button>
-                                                )}
-                                            </div>
                                         </div>
                                     </motion.div>
                                 );
@@ -339,37 +256,6 @@ export const DigitalMenu = ({ onBack, onOrderPlaced, isRTL = false, language }: 
                     </AnimatePresence>
                 </div>
             </main>
-
-            {/* Cart Float */}
-            <AnimatePresence>
-                {cartCount > 0 && (
-                    <motion.div
-                        initial={{ y: 100 }}
-                        animate={{ y: 0 }}
-                        exit={{ y: 100 }}
-                        className="fixed bottom-0 left-0 right-0 p-4 lg:p-6 z-[60]"
-                    >
-                        <div className="bg-jungle-deep/95 backdrop-blur-xl border border-luxury-gold/30 rounded-[2rem] lg:rounded-[3rem] p-6 lg:p-8 shadow-2xl gold-shadow flex items-center justify-between">
-                            <div className="flex items-center gap-4 lg:gap-6">
-                                <div className="w-10 h-10 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl bg-luxury-gold/10 flex items-center justify-center text-luxury-gold">
-                                    <ShoppingBag className="w-5 h-5 lg:w-7 lg:h-7" />
-                                </div>
-                                <div className="text-pure-nature">
-                                    <p className="text-[8px] lg:text-[10px] uppercase tracking-[0.3em] opacity-50 font-bold mb-1">{cartCount} {text.items[language]}</p>
-                                    <p className="text-2xl lg:text-3xl font-serif text-luxury-gold">{cartTotal} MAD</p>
-                                </div>
-                            </div>
-                            <motion.button
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => onOrderPlaced(cart, cartTotal)}
-                                className="bg-luxury-gold text-jungle-deep px-8 py-3 lg:px-12 lg:py-5 rounded-xl lg:rounded-2xl font-bold uppercase tracking-widest text-[10px] lg:text-xs shadow-xl gold-shadow active:scale-105 transition-transform"
-                            >
-                                {text.payNow[language]}
-                            </motion.button>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </div>
     );
 };

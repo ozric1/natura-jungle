@@ -22,11 +22,9 @@ import {
     Quote
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import { VIPOrderTracker } from './VIPOrderTracker';
-
 import { SmartConcierge } from './SmartConcierge';
 import { JungleConnect } from './JungleConnect';
-import { DigitalMenu, type CartItem } from './DigitalMenu';
+import { DigitalMenu } from './DigitalMenu';
 import { BungalowBooking } from './BungalowBooking';
 import { NightSkyMap } from './NightSkyMap';
 import { WildCircuitExhibition } from './WildCircuitExhibition';
@@ -52,9 +50,8 @@ export interface DashboardProps {
 
 export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode, toggleNightMode }: DashboardProps) => {
     const isRTL = currentLanguage === 'ar';
-    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'tracker' | 'booking' | 'stargazer' | 'exhibition' | 'fun' | 'hours' | 'catering' | 'teambuilding' | 'school' | 'experience'>('base');
+    const [currentView, setCurrentView] = useState<'base' | 'menu' | 'booking' | 'stargazer' | 'exhibition' | 'fun' | 'hours' | 'catering' | 'teambuilding' | 'school' | 'experience'>('base');
     const [activeExperience, setActiveExperience] = useState<string | null>(null);
-    const [activeOrder, setActiveOrder] = useState<{ items: string[], total: string } | null>(null);
     const [hasBooked, setHasBooked] = useState(false);
 
     const [showPricing, setShowPricing] = useState(false);
@@ -871,270 +868,252 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             </header>
 
             <main className="pb-32 lg:pb-16 max-w-7xl mx-auto">
-                {currentView === 'tracker' && activeOrder ? (
-                    <div className="px-6 py-4 animate-slide-up">
-                        <VIPOrderTracker
-                            status="preparing"
-                            orderId={`NJ-${Math.floor(1000 + Math.random() * 9000)}`}
-                            items={activeOrder.items}
-                            total={activeOrder.total}
-                            isRTL={isRTL}
-                            language={currentLanguage}
-                            onReset={() => {
-                                setCurrentView('base');
-                                setActiveOrder(null);
-                            }}
-                        />
+                <div className="px-6 lg:px-12 mb-6 flex justify-between items-end">
+                    <div>
+                        <h2 className="text-3xl font-serif text-luxury-gold tracking-tight">{text.explore}</h2>
+                        <div className="h-1 w-12 bg-luxury-gold mt-2 rounded-full" />
                     </div>
-                ) : (
-                    <>
-                        <div className="px-6 lg:px-12 mb-6 flex justify-between items-end">
-                            <div>
-                                <h2 className="text-3xl font-serif text-luxury-gold tracking-tight">{text.explore}</h2>
-                                <div className="h-1 w-12 bg-luxury-gold mt-2 rounded-full" />
-                            </div>
-                        </div>
+                </div>
 
-                        <div className="relative overflow-hidden mb-12">
-                            <motion.div
-                                ref={containerRef}
-                                style={{ x }}
-                                drag="x"
-                                dragConstraints={{ left: -baseWidth * 2, right: 0 }}
-                                onDragStart={() => setIsDragging(true)}
-                                onDragEnd={() => {
-                                    setIsDragging(false);
-                                    // Ensure wrapping logic is applied after drag
-                                    const currentX = x.get();
+                <div className="relative overflow-hidden mb-12">
+                    <motion.div
+                        ref={containerRef}
+                        style={{ x }}
+                        drag="x"
+                        dragConstraints={{ left: -baseWidth * 2, right: 0 }}
+                        onDragStart={() => setIsDragging(true)}
+                        onDragEnd={() => {
+                            setIsDragging(false);
+                            // Ensure wrapping logic is applied after drag
+                            const currentX = x.get();
 
-                                    // Robust wrapping logic for both LTR and RTL
-                                    // We keep it between -baseWidth and 0
-                                    let newX = currentX;
-                                    while (newX < -baseWidth) newX += baseWidth;
-                                    while (newX > 0) newX -= baseWidth;
-                                    x.set(newX);
-                                }}
-                                className="flex gap-6 px-6 cursor-grab active:cursor-grabbing"
-                            >
-                                {displayBundles.map((bundle, idx) => {
-                                    const Icon = bundle.icon;
-                                    return (
-                                        <motion.div
-                                            key={`${bundle.id}-${idx}`}
-                                            whileHover={{ y: -12, scale: 1.02 }}
-                                            whileTap={{ scale: 0.98 }}
-                                            animate={{
-                                                y: [0, -5, 0],
-                                                transition: {
-                                                    duration: 4,
-                                                    repeat: Infinity,
-                                                    delay: (idx % 6) * 0.4,
-                                                    ease: "easeInOut"
-                                                }
-                                            }}
-                                            onClick={bundle.action}
-                                            className="flex-none w-[280px] sm:w-[320px] lg:w-[350px] xl:w-[400px] 2xl:w-[450px] h-[350px] lg:h-[480px] rounded-[2rem] lg:rounded-[3rem] relative overflow-hidden group shadow-2xl border border-white/5"
-                                        >
-                                            {bundle.image && (
-                                                <div className="absolute inset-0">
-                                                    <img src={bundle.image} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" alt={bundle.title} />
-                                                </div>
-                                            )}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep via-jungle-deep/40 to-transparent opacity-80" />
-
-                                            <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                                                <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 border border-white/20 group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-500">
-                                                    <Icon className="w-7 h-7" />
-                                                </div>
-                                                <h3 className="text-2xl font-serif text-pure-nature mb-2 leading-tight group-hover:text-luxury-gold transition-colors">{bundle.title}</h3>
-                                                <p className="text-pure-nature/60 text-[10px] font-bold uppercase tracking-[0.2em]">{bundle.sub}</p>
-
-                                                <div className="mt-8 flex items-center gap-2 text-luxury-gold opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                                                    <span className="text-[10px] font-bold uppercase tracking-widest">{isRTL ? 'استكشف' : 'Explore'}</span>
-                                                    <ArrowRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} />
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    );
-                                })}
-                            </motion.div>
-                        </div>
-
-                        <div className="px-6 lg:px-12 space-y-10">
-                            {/* About Section */}
-                            <section className="mt-4">
-                                <div className="bg-white/80 dark:bg-jungle-deep/40 backdrop-blur-md rounded-[3rem] p-10 lg:p-16 border border-sand-gold/10 relative overflow-hidden shadow-2xl">
-                                    <div className="absolute -right-8 -bottom-8 opacity-[0.05] rotate-12">
-                                        <Palmtree className="w-64 h-64 text-jungle-deep dark:text-sand-gold" />
-                                    </div>
-                                    <div className="relative z-10 max-w-4xl">
-                                        <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-sand-gold mb-6 flex items-center gap-3">
-                                            <div className="h-px w-8 bg-sand-gold/30" />
-                                            {text.about_title}
-                                        </h2>
-                                        <p className="text-xl lg:text-3xl font-serif leading-relaxed text-jungle-deep dark:text-white italic">
-                                            "{text.about_text}"
-                                        </p>
-                                    </div>
-                                </div>
-                            </section>
-
-                            {/* Catering & Party Service Section */}
-                            <section className="space-y-4">
-                                <div className="flex justify-between items-end">
-                                    <h2 className="text-2xl font-serif text-sand-gold transition-colors">
-                                        {(text as any).catering_title}
-                                    </h2>
-                                </div>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                    <motion.div
-                                        whileTap={{ scale: 0.98 }}
-                                        onClick={() => setCurrentView('catering')}
-                                        className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
-                                    >
-                                        <img
-                                            src={cateringImg}
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                            alt="Catering"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
-                                        <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
-                                            <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
-                                                <Utensils className="w-6 h-6 text-sand-gold" />
-                                            </div>
-                                            <h3 className="text-2xl font-serif text-white mb-1">
-                                                {translations[currentLanguage].title.catering}
-                                            </h3>
-                                        </div>
-                                    </motion.div>
-
-                                    <motion.div
-                                        whileTap={{ scale: 0.98 }}
-                                        onClick={() => setCurrentView('teambuilding')}
-                                        className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
-                                    >
-                                        <img
-                                            src={tentDayImg}
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                            alt="Team Building"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
-                                        <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
-                                            <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
-                                                <PartyPopper className="w-6 h-6 text-sand-gold" />
-                                            </div>
-                                            <h3 className="text-2xl font-serif text-white mb-1">
-                                                {translations[currentLanguage].title.teambuilding}
-                                            </h3>
-                                        </div>
-                                    </motion.div>
-
-                                    <motion.div
-                                        whileTap={{ scale: 0.98 }}
-                                        onClick={() => setCurrentView('school')}
-                                        className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
-                                    >
-                                        <img
-                                            src={lamaImg}
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                            alt="School Trips"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
-                                        <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
-                                            <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
-                                                <Palmtree className="w-6 h-6 text-sand-gold" />
-                                            </div>
-                                            <h3 className="text-2xl font-serif text-white mb-1">
-                                                {translations[currentLanguage].title.school}
-                                            </h3>
-                                        </div>
-                                    </motion.div>
-                                </div>
-                            </section>
-
-                            {/* Pack Day Section */}
-                            <section className="space-y-6">
+                            // Robust wrapping logic for both LTR and RTL
+                            // We keep it between -baseWidth and 0
+                            let newX = currentX;
+                            while (newX < -baseWidth) newX += baseWidth;
+                            while (newX > 0) newX -= baseWidth;
+                            x.set(newX);
+                        }}
+                        className="flex gap-6 px-6 cursor-grab active:cursor-grabbing"
+                    >
+                        {displayBundles.map((bundle, idx) => {
+                            const Icon = bundle.icon;
+                            return (
                                 <motion.div
+                                    key={`${bundle.id}-${idx}`}
+                                    whileHover={{ y: -12, scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
-                                    onClick={() => setShowPricing(true)}
-                                    className="relative h-72 lg:h-80 rounded-[3rem] overflow-hidden group cursor-pointer shadow-2xl border border-white/10"
+                                    animate={{
+                                        y: [0, -5, 0],
+                                        transition: {
+                                            duration: 4,
+                                            repeat: Infinity,
+                                            delay: (idx % 6) * 0.4,
+                                            ease: "easeInOut"
+                                        }
+                                    }}
+                                    onClick={bundle.action}
+                                    className="flex-none w-[280px] sm:w-[320px] lg:w-[350px] xl:w-[400px] 2xl:w-[450px] h-[350px] lg:h-[480px] rounded-[2rem] lg:rounded-[3rem] relative overflow-hidden group shadow-2xl border border-white/5"
                                 >
-                                    <img
-                                        src={packDayImg}
-                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-110"
-                                        alt="Pack Day"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep/90 via-jungle-deep/40 to-transparent" />
-
-                                    <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-center items-center text-center">
-                                        <div className="max-w-md space-y-4 flex flex-col items-center">
-                                            <div>
-                                                <h2 className="text-3xl lg:text-4xl font-serif text-white mb-2 leading-tight">
-                                                    {(translations[currentLanguage] as any).packDay.title}
-                                                </h2>
-                                                <p className="text-white/80 text-sm lg:text-base font-serif leading-relaxed italic">
-                                                    {(translations[currentLanguage] as any).packDay.subtitle}
-                                                </p>
-                                            </div>
-
-                                            <div className="pt-2">
-                                                <button className="bg-luxury-gold text-jungle-deep px-8 py-4 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl gold-shadow flex items-center gap-3 group/btn hover:scale-105 transition-all">
-                                                    <Sparkles className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" />
-                                                    {(translations[currentLanguage] as any).packDay.button}
-                                                    <ChevronRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} />
-                                                </button>
-                                            </div>
+                                    {bundle.image && (
+                                        <div className="absolute inset-0">
+                                            <img src={bundle.image} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" alt={bundle.title} />
                                         </div>
-                                    </div>
+                                    )}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep via-jungle-deep/40 to-transparent opacity-80" />
 
-                                    {/* Glassmorphic Badge */}
-                                    <div className="absolute top-8 right-8 px-4 py-2 bg-luxury-gold/20 backdrop-blur-md rounded-full border border-luxury-gold/30">
-                                        <div className="flex items-center gap-2">
-                                            <Clock className="w-3 h-3 text-luxury-gold" />
-                                            <span className="text-[10px] font-bold text-luxury-gold uppercase tracking-widest">
-                                                {(translations[currentLanguage] as any).packDay.tag}
-                                            </span>
+                                    <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                                        <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 border border-white/20 group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-500">
+                                            <Icon className="w-7 h-7" />
+                                        </div>
+                                        <h3 className="text-2xl font-serif text-pure-nature mb-2 leading-tight group-hover:text-luxury-gold transition-colors">{bundle.title}</h3>
+                                        <p className="text-pure-nature/60 text-[10px] font-bold uppercase tracking-[0.2em]">{bundle.sub}</p>
+
+                                        <div className="mt-8 flex items-center gap-2 text-luxury-gold opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                                            <span className="text-[10px] font-bold uppercase tracking-widest">{isRTL ? 'استكشف' : 'Explore'}</span>
+                                            <ArrowRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} />
                                         </div>
                                     </div>
                                 </motion.div>
-                            </section>
+                            );
+                        })}
+                    </motion.div>
+                </div>
 
-                            {/* Smart Concierge Section */}
-                            <SmartConcierge language={currentLanguage} />
-
-                            {/* Jungle Connect Section */}
-                            <JungleConnect isRTL={isRTL} />
-
-                            {/* Night Sky Feature (If paid) */}
-                            {hasBooked && (
-                                <motion.section
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="rounded-[3rem] p-8 bg-gradient-to-br from-[#0F172A] via-[#1E1B4B] to-black border border-indigo-500/20 text-white relative overflow-hidden"
-                                >
-                                    <div className="absolute top-0 right-0 p-8 opacity-10">
-                                        <Star className="w-32 h-32 fill-white" />
-                                    </div>
-                                    <div className="relative z-10 text-left">
-                                        <div className="flex items-center gap-2 text-indigo-400 mb-4">
-                                            <Moon className="w-4 h-4" />
-                                            <span className="text-[10px] font-bold uppercase tracking-[0.3em]">{isRTL ? 'تجربة ليلية متميزة' : 'Premium Night Sky'}</span>
-                                        </div>
-                                        <h3 className="text-3xl font-serif mb-2">{isRTL ? 'خريطة النجوم' : 'Stargazer Guide'}</h3>
-                                        <p className="text-sm text-white/40 mb-6 max-w-[200px]">{isRTL ? 'دليل النجوم والمجرات فوق منصورية.' : 'Live AR star map for the dark skies over Mansouria.'}</p>
-                                        <motion.button
-                                            whileTap={{ scale: 0.95 }}
-                                            onClick={() => setCurrentView('stargazer')}
-                                            className="bg-indigo-600/20 border border-indigo-400/30 text-indigo-100 px-6 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-indigo-600/40 transition-all font-sans"
-                                        >
-                                            {isRTL ? 'بدء العرض' : 'Launch AR View'}
-                                        </motion.button>
-                                    </div>
-                                </motion.section>
-                            )}
+                <div className="px-6 lg:px-12 space-y-10">
+                    {/* About Section */}
+                    <section className="mt-4">
+                        <div className="bg-white/80 dark:bg-jungle-deep/40 backdrop-blur-md rounded-[3rem] p-10 lg:p-16 border border-sand-gold/10 relative overflow-hidden shadow-2xl">
+                            <div className="absolute -right-8 -bottom-8 opacity-[0.05] rotate-12">
+                                <Palmtree className="w-64 h-64 text-jungle-deep dark:text-sand-gold" />
+                            </div>
+                            <div className="relative z-10 max-w-4xl">
+                                <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-sand-gold mb-6 flex items-center gap-3">
+                                    <div className="h-px w-8 bg-sand-gold/30" />
+                                    {text.about_title}
+                                </h2>
+                                <p className="text-xl lg:text-3xl font-serif leading-relaxed text-jungle-deep dark:text-white italic">
+                                    "{text.about_text}"
+                                </p>
+                            </div>
                         </div>
-                    </>
-                )}
+                    </section>
+
+                    {/* Catering & Party Service Section */}
+                    <section className="space-y-4">
+                        <div className="flex justify-between items-end">
+                            <h2 className="text-2xl font-serif text-sand-gold transition-colors">
+                                {(text as any).catering_title}
+                            </h2>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <motion.div
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => setCurrentView('catering')}
+                                className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
+                            >
+                                <img
+                                    src={cateringImg}
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    alt="Catering"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+                                <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
+                                    <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
+                                        <Utensils className="w-6 h-6 text-sand-gold" />
+                                    </div>
+                                    <h3 className="text-2xl font-serif text-white mb-1">
+                                        {translations[currentLanguage].title.catering}
+                                    </h3>
+                                </div>
+                            </motion.div>
+
+                            <motion.div
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => setCurrentView('teambuilding')}
+                                className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
+                            >
+                                <img
+                                    src={tentDayImg}
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    alt="Team Building"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+                                <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
+                                    <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
+                                        <PartyPopper className="w-6 h-6 text-sand-gold" />
+                                    </div>
+                                    <h3 className="text-2xl font-serif text-white mb-1">
+                                        {translations[currentLanguage].title.teambuilding}
+                                    </h3>
+                                </div>
+                            </motion.div>
+
+                            <motion.div
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => setCurrentView('school')}
+                                className="h-48 rounded-[2.5rem] relative overflow-hidden group cursor-pointer shadow-xl border border-sand-gold/10"
+                            >
+                                <img
+                                    src={lamaImg}
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    alt="School Trips"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+                                <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
+                                    <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20">
+                                        <Palmtree className="w-6 h-6 text-sand-gold" />
+                                    </div>
+                                    <h3 className="text-2xl font-serif text-white mb-1">
+                                        {translations[currentLanguage].title.school}
+                                    </h3>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </section>
+
+                    {/* Pack Day Section */}
+                    <section className="space-y-6">
+                        <motion.div
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => setShowPricing(true)}
+                            className="relative h-72 lg:h-80 rounded-[3rem] overflow-hidden group cursor-pointer shadow-2xl border border-white/10"
+                        >
+                            <img
+                                src={packDayImg}
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-110"
+                                alt="Pack Day"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep/90 via-jungle-deep/40 to-transparent" />
+
+                            <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-center items-center text-center">
+                                <div className="max-w-md space-y-4 flex flex-col items-center">
+                                    <div>
+                                        <h2 className="text-3xl lg:text-4xl font-serif text-white mb-2 leading-tight">
+                                            {(translations[currentLanguage] as any).packDay.title}
+                                        </h2>
+                                        <p className="text-white/80 text-sm lg:text-base font-serif leading-relaxed italic">
+                                            {(translations[currentLanguage] as any).packDay.subtitle}
+                                        </p>
+                                    </div>
+
+                                    <div className="pt-2">
+                                        <button className="bg-luxury-gold text-jungle-deep px-8 py-4 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-xl gold-shadow flex items-center gap-3 group/btn hover:scale-105 transition-all">
+                                            <Sparkles className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" />
+                                            {(translations[currentLanguage] as any).packDay.button}
+                                            <ChevronRight className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`} />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Glassmorphic Badge */}
+                            <div className="absolute top-8 right-8 px-4 py-2 bg-luxury-gold/20 backdrop-blur-md rounded-full border border-luxury-gold/30">
+                                <div className="flex items-center gap-2">
+                                    <Clock className="w-3 h-3 text-luxury-gold" />
+                                    <span className="text-[10px] font-bold text-luxury-gold uppercase tracking-widest">
+                                        {(translations[currentLanguage] as any).packDay.tag}
+                                    </span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </section>
+
+                    {/* Smart Concierge Section */}
+                    <SmartConcierge language={currentLanguage} />
+
+                    {/* Jungle Connect Section */}
+                    <JungleConnect isRTL={isRTL} />
+
+                    {/* Night Sky Feature (If paid) */}
+                    {hasBooked && (
+                        <motion.section
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="rounded-[3rem] p-8 bg-gradient-to-br from-[#0F172A] via-[#1E1B4B] to-black border border-indigo-500/20 text-white relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 p-8 opacity-10">
+                                <Star className="w-32 h-32 fill-white" />
+                            </div>
+                            <div className="relative z-10 text-left">
+                                <div className="flex items-center gap-2 text-indigo-400 mb-4">
+                                    <Moon className="w-4 h-4" />
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.3em]">{isRTL ? 'تجربة ليلية متميزة' : 'Premium Night Sky'}</span>
+                                </div>
+                                <h3 className="text-3xl font-serif mb-2">{isRTL ? 'خريطة النجوم' : 'Stargazer Guide'}</h3>
+                                <p className="text-sm text-white/40 mb-6 max-w-[200px]">{isRTL ? 'دليل النجوم والمجرات فوق منصورية.' : 'Live AR star map for the dark skies over Mansouria.'}</p>
+                                <motion.button
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={() => setCurrentView('stargazer')}
+                                    className="bg-indigo-600/20 border border-indigo-400/30 text-indigo-100 px-6 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-indigo-600/40 transition-all font-sans"
+                                >
+                                    {isRTL ? 'بدء العرض' : 'Launch AR View'}
+                                </motion.button>
+                            </div>
+                        </motion.section>
+                    )}
+                </div>
+
             </main>
 
             {/* Premium Visitor Platform Bottom Nav */}
@@ -1201,13 +1180,6 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                             language={currentLanguage}
                             isRTL={isRTL}
                             onBack={() => setCurrentView('base')}
-                            onOrderPlaced={(cart: CartItem[], total: number) => {
-                                setActiveOrder({
-                                    items: cart.map(i => `${i.quantity}x ${i.name}`),
-                                    total: `${total} MAD`
-                                });
-                                setCurrentView('tracker');
-                            }}
                         />
                     </motion.div>
                 )}
@@ -1298,6 +1270,6 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     />
                 )}
             </AnimatePresence>
-        </div>
+        </div >
     );
 };
