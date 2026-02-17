@@ -128,9 +128,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     title: { en: "Animal Discovery", fr: "Découverte Animale", ar: "اكتشاف الحيوانات" },
                     desc: { en: "Learn about the wildlife of the region.", fr: "Apprenez-en plus sur la faune de la région.", ar: "تعرف على الحياة البرية في المنطقة." }
                 }
-            ],
-            actionLabel: { en: "Circuit Details", fr: "Détails du Circuit", ar: "تفاصيل المسار" },
-            actionTarget: "exhibition"
+            ]
         },
         kids: {
             slides: [
@@ -228,10 +226,10 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                         animate={{ y: 0, opacity: 1 }}
                         className="space-y-4"
                     >
-                        <h2 className="text-4xl lg:text-6xl font-serif text-white leading-tight drop-shadow-lg">
+                        <h2 className="text-2xl sm:text-4xl lg:text-6xl font-serif text-white leading-tight drop-shadow-lg">
                             {currentSlide.title[language]}
                         </h2>
-                        <p className="text-lg text-white/90 font-medium drop-shadow-md">
+                        <p className="text-sm sm:text-lg text-white/90 font-medium drop-shadow-md">
                             {currentSlide.desc[language]}
                         </p>
                     </motion.div>
@@ -239,13 +237,13 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
 
                 {/* Persistent Bottom Center Action Button */}
                 {currentContent.actionLabel && (
-                    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-50">
+                    <div className="absolute bottom-24 sm:bottom-10 left-1/2 -translate-x-1/2 z-50">
                         <button
                             onClick={() => onAction(currentContent.actionTarget!)}
-                            className="bg-luxury-gold text-jungle-deep px-12 py-5 rounded-full font-bold uppercase tracking-[0.2em] flex items-center gap-4 gold-shadow hover:scale-105 active:scale-95 transition-all shadow-2xl"
+                            className="bg-luxury-gold text-jungle-deep px-6 py-3 sm:px-12 sm:py-5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] flex items-center gap-2 sm:gap-4 gold-shadow hover:scale-105 active:scale-95 transition-all shadow-2xl"
                         >
                             <span>{currentContent.actionLabel[language]}</span>
-                            <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+                            <ArrowRight className={`w-4 h-4 sm:w-5 sm:h-5 ${isRTL ? 'rotate-180' : ''}`} />
                         </button>
                     </div>
                 )}

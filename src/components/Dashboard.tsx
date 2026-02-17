@@ -56,6 +56,9 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
     const [activeOrder, setActiveOrder] = useState<{ items: string[], total: string } | null>(null);
     const [hasBooked, setHasBooked] = useState(false);
 
+    const [hasBooked, setHasBooked] = useState(false);
+    const [showPricing, setShowPricing] = useState(false);
+
     // Carousel State & Logic
     const [isDragging, setIsDragging] = useState(false);
     const x = useMotionValue(0);
@@ -109,10 +112,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 school: 'Educational and fun adventures for students.'
             },
             packDay: {
-                title: "Pack Day Offers",
-                subtitle: "Experience the full magic of Natura.",
-                button: "View Offers",
-                tag: "Limited Time"
+                title: "Pricing",
+                subtitle: "Discover our rates and packages.",
+                button: "View Pricing",
+                tag: "Rates"
             },
             menu: {
                 mission: "Our Mission",
@@ -158,10 +161,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 school: 'Aventures éducatives et ludiques pour les élèves.'
             },
             packDay: {
-                title: "Offres Pack Journée",
-                subtitle: "Vivez toute la magie de Natura.",
-                button: "Voir les Offres",
-                tag: "Temps Limité"
+                title: "Tarifs",
+                subtitle: "Découvrez nos tarifs et forfaits.",
+                button: "Voir les Tarifs",
+                tag: "Tarifs"
             },
             menu: {
                 mission: "Notre Mission",
@@ -207,10 +210,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 school: 'مغامرات تعليمية وممتعة للطلاب'
             },
             packDay: {
-                title: "عروض باقة اليوم",
-                subtitle: "عش سحر ناتورا الكامل.",
-                button: "عرض العروض",
-                tag: "وقت محدود"
+                title: "الأسعار",
+                subtitle: "اكتشف أسعارنا وعروضنا.",
+                button: "عرض الأسعار",
+                tag: "الأسعار"
             },
             menu: {
                 mission: "مهمتنا",
@@ -398,6 +401,128 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                 </div>
                             </motion.section>
                         </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Pricing Modal */}
+            <AnimatePresence>
+                {showPricing && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[250] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 lg:p-8"
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            className="bg-[#0b1d12] w-full max-w-5xl rounded-[3rem] overflow-hidden border border-luxury-gold/20 shadow-2xl max-h-[90vh] overflow-y-auto relative"
+                        >
+                            {/* Texture Overlay */}
+                            <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay" />
+
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setShowPricing(false)}
+                                className="absolute top-6 right-6 lg:top-10 lg:right-10 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-luxury-gold hover:bg-luxury-gold hover:text-jungle-deep transition-all z-50 text-white"
+                            >
+                                <X className="w-6 h-6" />
+                            </button>
+
+                            <div className="p-8 lg:p-16">
+                                <div className="text-center mb-12">
+                                    <h2 className="text-luxury-gold text-xs font-bold uppercase tracking-[0.3em] mb-4">
+                                        {isRTL ? 'خطط أسعارنا' : 'Our Pricing Plans'}
+                                    </h2>
+                                    <h3 className="text-3xl lg:text-5xl font-serif text-white">
+                                        {isRTL ? 'اختر تجربتك' : 'Choose Your Experience'}
+                                    </h3>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {/* Park Entry */}
+                                    <div className="bg-white/5 rounded-[2rem] p-8 border border-white/10 relative group hover:border-luxury-gold/30 transition-all">
+                                        <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                                            <Palmtree className="w-32 h-32 text-luxury-gold" />
+                                        </div>
+                                        <h4 className="text-2xl font-serif text-luxury-gold mb-2">{isRTL ? 'تذكرة الدخول' : 'Park Entry'}</h4>
+                                        <div className="space-y-4 my-6">
+                                            <div className="flex justify-between items-baseline border-b border-white/5 pb-2">
+                                                <span className="text-white/60 text-sm uppercase tracking-wider">{isRTL ? 'كبار' : 'Adults'}</span>
+                                                <span className="text-2xl font-serif text-white">40 <span className="text-xs text-luxury-gold">DH</span></span>
+                                            </div>
+                                            <div className="flex justify-between items-baseline border-b border-white/5 pb-2">
+                                                <span className="text-white/60 text-sm uppercase tracking-wider">{isRTL ? 'صغار' : 'Kids'}</span>
+                                                <span className="text-2xl font-serif text-white">30 <span className="text-xs text-luxury-gold">DH</span></span>
+                                            </div>
+                                        </div>
+                                        <p className="text-xs text-white/40 leading-relaxed">
+                                            {isRTL ? 'شامل مشروب واحد. دخول مناطق الحيوانات.' : 'Includes one drink. Access to animal zones.'}
+                                        </p>
+                                    </div>
+
+                                    {/* Pool Access */}
+                                    <div className="bg-white/5 rounded-[2rem] p-8 border border-white/10 relative group hover:border-luxury-gold/30 transition-all">
+                                        <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                                            <Waves className="w-32 h-32 text-luxury-gold" />
+                                        </div>
+                                        <h4 className="text-2xl font-serif text-luxury-gold mb-2">{isRTL ? 'المسبح' : 'Pool Area'}</h4>
+                                        <div className="space-y-4 my-6">
+                                            <div className="flex justify-between items-baseline border-b border-white/5 pb-2">
+                                                <span className="text-white/60 text-sm uppercase tracking-wider">{isRTL ? 'كبار' : 'Adults'}</span>
+                                                <span className="text-2xl font-serif text-white">150 <span className="text-xs text-luxury-gold">DH</span></span>
+                                            </div>
+                                            <div className="flex justify-between items-baseline border-b border-white/5 pb-2">
+                                                <span className="text-white/60 text-sm uppercase tracking-wider">{isRTL ? 'صغار' : 'Kids'}</span>
+                                                <span className="text-2xl font-serif text-white">100 <span className="text-xs text-luxury-gold">DH</span></span>
+                                            </div>
+                                        </div>
+                                        <p className="text-xs text-white/40 leading-relaxed">
+                                            {isRTL ? 'شامل دخول المتنزه. كراسي ومناشف.' : 'Includes park access. Sunbeds and towels.'}
+                                        </p>
+                                    </div>
+
+                                    {/* Bungalow Stay */}
+                                    <div className="bg-gradient-to-br from-luxury-gold/10 to-transparent rounded-[2rem] p-8 border border-luxury-gold/20 relative group md:col-span-2 lg:col-span-1">
+                                        <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                                            <Home className="w-32 h-32 text-luxury-gold" />
+                                        </div>
+                                        <div className="inline-block px-3 py-1 bg-luxury-gold text-jungle-deep text-[10px] font-bold uppercase tracking-widest rounded-full mb-4">
+                                            {isRTL ? 'الأكثر طلباً' : 'Best Value'}
+                                        </div>
+                                        <h4 className="text-2xl font-serif text-luxury-gold mb-2">{isRTL ? 'إقامة بنغالو' : 'Bungalow Stay'}</h4>
+                                        <div className="space-y-4 my-6">
+                                            <div className="flex justify-between items-baseline border-b border-luxury-gold/10 pb-2">
+                                                <span className="text-white/60 text-sm uppercase tracking-wider">{isRTL ? 'الليلة' : 'Per Night'}</span>
+                                                <span className="text-3xl font-serif text-white">900 <span className="text-xs text-luxury-gold">DH</span></span>
+                                            </div>
+                                        </div>
+                                        <p className="text-xs text-white/40 leading-relaxed mb-4">
+                                            {isRTL ? 'زوجين + أطفال. شامل الفطور والأنشطة.' : '1 Couple + Kids. Breakfast & Activities included.'}
+                                        </p>
+                                        <button
+                                            onClick={() => { setShowPricing(false); setActiveExperience('bungalow'); setCurrentView('experience'); }}
+                                            className="w-full py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
+                                        >
+                                            {isRTL ? 'احجز الآن' : 'Book Now'}
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div className="mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-xs font-medium uppercase tracking-widest">
+                                    <div className="flex items-center gap-2">
+                                        <MapPin className="w-4 h-4 text-luxury-gold" />
+                                        <span>El Mansouria, Benslimane</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Clock className="w-4 h-4 text-luxury-gold" />
+                                        <span>{isRTL ? 'يومياً: 10 ص - 10 م' : 'Daily: 10 AM - 10 PM'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -656,7 +781,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                             <section className="space-y-6">
                                 <motion.div
                                     whileTap={{ scale: 0.98 }}
-                                    onClick={() => console.log("Pack Day Offers clicked")}
+                                    onClick={() => setShowPricing(true)}
                                     className="relative h-72 lg:h-80 rounded-[3rem] overflow-hidden group cursor-pointer shadow-2xl border border-white/10"
                                 >
                                     <img
