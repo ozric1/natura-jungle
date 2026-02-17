@@ -17,7 +17,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
         expiry: '',
         cvv: ''
     });
-    const pricePerNight = 1000;
+    const pricePerNight = 900;
 
     // Simulation of occupancy
     const bookedDates: number[] = useMemo(() => [], []);
@@ -26,9 +26,29 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
 
     const toggleDate = (day: number) => {
         if (isDayDisabled(day)) return;
-        setSelectedDates(prev =>
-            prev.includes(day) ? prev.filter(d => d !== day) : [...prev, day].sort((a, b) => a - b)
-        );
+
+        setSelectedDates(prev => {
+            if (prev.length === 0 || prev.length > 1) {
+                // Start a new selection
+                return [day];
+            } else {
+                // Range selection
+                const start = prev[0];
+                const end = day;
+                const range = [];
+                const [lower, upper] = start < end ? [start, end] : [end, start];
+
+                // Check if any booked dates are in the range
+                for (let i = lower; i <= upper; i++) {
+                    if (isDayDisabled(i)) {
+                        // If range includes disabled date, just select the new day
+                        return [day];
+                    }
+                    range.push(i);
+                }
+                return range;
+            }
+        });
     };
 
     const nights = selectedDates.length;
@@ -168,6 +188,10 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, isRTL = false }: Bu
                         <div className="flex justify-between text-xs mb-2">
                             <span className="opacity-60">{isRTL ? 'السعر لليلة' : 'Price per Night'}</span>
                             <span className="font-bold">{pricePerNight} MAD</span>
+                        </div>
+                        <div className="flex justify-between text-[10px] mb-4 text-sand-gold/80">
+                            <span>{isRTL ? 'شامل الفطور' : 'Breakfast included'}</span>
+                            <span>{isRTL ? 'طفل إضافي +150 درهم' : 'Additional kid +150 DH'}</span>
                         </div>
                         <div className="flex justify-between items-end pt-4 border-t border-jungle-green/5">
                             <span className="text-lg font-serif italic">{isRTL ? 'المجموع' : 'Total Amount'}</span>

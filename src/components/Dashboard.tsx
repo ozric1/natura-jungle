@@ -18,6 +18,7 @@ import {
     Instagram,
     PartyPopper,
     X,
+    Users,
     Quote
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
@@ -319,86 +320,189 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                             </div>
                         </div>
 
-                        {/* Right/Bottom Content: Mission, Story, Contacts */}
-                        <div className="flex-1 overflow-y-auto p-8 lg:p-20 space-y-24 relative z-10 scrollbar-hide">
-                            {/* Mission Section */}
-                            <motion.section
-                                initial={{ x: isRTL ? -40 : 40, opacity: 0 }}
-                                animate={{ x: 0, opacity: 1 }}
-                                transition={{ delay: 0.5 }}
-                                className="group"
-                            >
-                                <div className={`flex items-center gap-6 mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                                    <div className="h-px w-12 bg-luxury-gold/30 group-hover:w-20 transition-all duration-700" />
-                                    <h3 className="text-luxury-gold font-serif text-3xl lg:text-4xl uppercase tracking-widest">{text.menu.mission}</h3>
-                                </div>
-                                <p className={`text-white/80 leading-relaxed text-xl lg:text-3xl lg:max-w-4xl font-light ${isRTL ? 'text-right' : ''}`}>
-                                    {text.menu.mission_text}
-                                </p>
-                            </motion.section>
+                        {/* Right/Bottom Content: Navigation Grid */}
+                        <div className="flex-1 overflow-y-auto p-8 lg:p-20 relative z-10 scrollbar-hide">
+                            <nav className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                                {/* 1. Pricing */}
+                                <motion.button
+                                    initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.1 }}
+                                    onClick={() => { setIsMenuOpen(false); setShowPricing(true); }}
+                                    className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
+                                >
+                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
+                                        <div className="text-xl font-serif">DH</div>
+                                    </div>
+                                    <div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'خطط' : 'Plans'}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'الأسعار' : 'Pricing'}</div>
+                                    </div>
+                                </motion.button>
 
-                            {/* Story Section */}
-                            <motion.section
-                                initial={{ x: isRTL ? -40 : 40, opacity: 0 }}
-                                animate={{ x: 0, opacity: 1 }}
-                                transition={{ delay: 0.6 }}
-                                className={`group ${isRTL ? 'lg:pr-24' : 'lg:pl-24'}`}
-                            >
-                                <div className={`flex items-center gap-6 mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                                    <div className="h-px w-12 bg-luxury-gold/30 group-hover:w-20 transition-all duration-700" />
-                                    <h3 className="text-luxury-gold font-serif text-3xl lg:text-4xl uppercase tracking-widest">{text.menu.story}</h3>
-                                </div>
-                                <div className="relative">
-                                    <Quote className={`absolute ${isRTL ? '-right-12' : '-left-12'} -top-10 w-20 h-20 text-luxury-gold/10 rotate-180`} />
-                                    <p className={`text-white/60 leading-relaxed text-lg lg:text-2xl lg:max-w-3xl font-light italic relative z-10 ${isRTL ? 'text-right' : ''}`}>
-                                        "{text.menu.story_text}"
-                                    </p>
-                                </div>
-                            </motion.section>
+                                {/* 2. Bungalow Jungle */}
+                                <motion.button
+                                    initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.15 }}
+                                    onClick={() => { setIsMenuOpen(false); setActiveExperience('bungalow'); setCurrentView('experience'); }}
+                                    className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
+                                >
+                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
+                                        <Home className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'إقامة' : 'Stay'}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'بناغل الغابة' : 'Bungalow Jungle'}</div>
+                                    </div>
+                                </motion.button>
 
-                            {/* Contact Section */}
-                            <motion.section
-                                initial={{ y: 40, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.7 }}
-                                className="space-y-10 pt-10 border-t border-white/5"
-                            >
-                                <h3 className={`text-luxury-gold font-serif text-xl uppercase tracking-[0.3em] font-bold text-center ${isRTL ? 'lg:text-right' : 'lg:text-left'}`}>{text.menu.contact}</h3>
-                                <div className={`flex flex-col sm:flex-row gap-6 justify-center ${isRTL ? 'lg:justify-end' : 'lg:justify-start'}`}>
-                                    <motion.a
-                                        href="https://www.instagram.com/naturajunglepark/"
-                                        target="_blank"
-                                        whileHover={{ y: -8, backgroundColor: "rgba(255,255,255,0.05)" }}
-                                        whileTap={{ scale: 0.98 }}
-                                        className="h-24 px-12 flex items-center gap-6 bg-white/5 border border-white/10 rounded-[3rem] text-luxury-gold transition-all duration-500 group overflow-hidden relative shadow-xl"
-                                    >
-                                        <div className="absolute inset-x-0 bottom-0 h-1 bg-luxury-gold opacity-0 group-hover:opacity-100 transition-opacity" />
-                                        <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-500">
-                                            <Instagram className="w-6 h-6" />
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-[10px] uppercase tracking-widest opacity-40">Follow our story</span>
-                                            <span className="font-serif text-xl">Instagram</span>
-                                        </div>
-                                    </motion.a>
+                                {/* 3. Restaurant & Menu */}
+                                <motion.button
+                                    initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.2 }}
+                                    onClick={() => { setIsMenuOpen(false); setCurrentView('menu'); }}
+                                    className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
+                                >
+                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
+                                        <Utensils className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'طعام' : 'Dining'}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'المطعم والقائمة' : 'Restaurant & Menu'}</div>
+                                    </div>
+                                </motion.button>
 
-                                    <motion.a
-                                        href="tel:0605500058"
-                                        whileHover={{ y: -8, backgroundColor: "rgba(212,175,55,0.08)" }}
-                                        whileTap={{ scale: 0.98 }}
-                                        className="h-24 px-12 flex items-center gap-6 bg-luxury-gold/5 border border-luxury-gold/20 rounded-[3rem] text-luxury-gold transition-all duration-500 group overflow-hidden relative shadow-xl"
-                                    >
-                                        <div className="absolute inset-x-0 bottom-0 h-1 bg-luxury-gold opacity-0 group-hover:opacity-100 transition-opacity" />
-                                        <div className="w-12 h-12 rounded-2xl bg-luxury-gold/10 flex items-center justify-center group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-500">
-                                            <Phone className="w-6 h-6" />
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-[10px] uppercase tracking-widest opacity-40">Concierge Desk</span>
-                                            <span className="font-serif text-xl">{isRTL ? 'اتصل بنا' : 'Call Office'}</span>
-                                        </div>
-                                    </motion.a>
-                                </div>
-                            </motion.section>
+                                {/* 4. Experience Zones */}
+                                <motion.button
+                                    initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.25 }}
+                                    onClick={() => { setIsMenuOpen(false); setCurrentView('base'); }}
+                                    className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
+                                >
+                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
+                                        <Sparkles className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'اكتشف' : 'Discover'}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'مناطق التجربة' : 'Experience Zones'}</div>
+                                    </div>
+                                </motion.button>
+
+                                {/* 5. Catering & Events */}
+                                <motion.button
+                                    initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.3 }}
+                                    onClick={() => { setIsMenuOpen(false); setCurrentView('catering'); }}
+                                    className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
+                                >
+                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
+                                        <PartyPopper className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'خدمات' : 'Services'}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'التموين والحفلات' : 'Catering & Events'}</div>
+                                    </div>
+                                </motion.button>
+
+                                {/* 6. Team Building & Events */}
+                                <motion.button
+                                    initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.35 }}
+                                    onClick={() => { setIsMenuOpen(false); setCurrentView('teambuilding'); }}
+                                    className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
+                                >
+                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
+                                        <Users className="w-5 h-5" /> {/* Using Users icon if available, otherwise check imports */}
+                                    </div>
+                                    <div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'شركات' : 'Corporate'}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'بناء الفريق' : 'Team Building'}</div>
+                                    </div>
+                                </motion.button>
+
+                                {/* 7. School Trips */}
+                                <motion.button
+                                    initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.4 }}
+                                    onClick={() => { setIsMenuOpen(false); setCurrentView('school'); }}
+                                    className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
+                                >
+                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
+                                        <Quote className="w-5 h-5" /> {/* Placeholder icon or use specific if imported */}
+                                    </div>
+                                    <div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'تعليم' : 'Education'}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'الرحلات المدرسية' : 'School Trips'}</div>
+                                    </div>
+                                </motion.button>
+
+                                {/* 8. Opening Hours */}
+                                <motion.button
+                                    initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.45 }}
+                                    onClick={() => { setIsMenuOpen(false); setCurrentView('hours'); }}
+                                    className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
+                                >
+                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
+                                        <Clock className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'توقيت' : 'Time'}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'ساعات العمل' : 'Opening Hours'}</div>
+                                    </div>
+                                </motion.button>
+
+                                {/* 9. Animal Circuit */}
+                                <motion.button
+                                    initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.5 }}
+                                    onClick={() => { setIsMenuOpen(false); setCurrentView('exhibition'); }}
+                                    className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
+                                >
+                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
+                                        <Palmtree className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'حيوانات' : 'Animals'}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'حلبة الحيوانات' : 'Animal Circuit'}</div>
+                                    </div>
+                                </motion.button>
+
+                                {/* 10. Park Map */}
+                                <motion.button
+                                    initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.55 }}
+                                    onClick={() => { setIsMenuOpen(false); window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank'); }}
+                                    className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
+                                >
+                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
+                                        <MapPin className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{isRTL ? 'موقع' : 'Location'}</div>
+                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{isRTL ? 'خريطة المنتزه' : 'Park Map'}</div>
+                                    </div>
+                                </motion.button>
+                            </nav>
+
+                            {/* Social Footer */}
+                            <div className="mt-12 pt-8 border-t border-white/5 flex justify-center gap-6">
+                                <a href="https://www.instagram.com/naturajunglepark/" target="_blank" className="text-white/40 hover:text-luxury-gold transition-colors">
+                                    <Instagram className="w-6 h-6" />
+                                </a>
+                                <a href="tel:0605500058" className="text-white/40 hover:text-luxury-gold transition-colors">
+                                    <Phone className="w-6 h-6" />
+                                </a>
+                            </div>
                         </div>
                     </motion.div>
                 )}
@@ -460,6 +564,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <p className="text-xs text-white/40 leading-relaxed">
                                             {isRTL ? 'شامل مشروب واحد. دخول مناطق الحيوانات.' : 'Includes one drink. Access to animal zones.'}
                                         </p>
+                                        <div className="mt-6 pt-6 border-t border-white/5">
+                                            <a href="tel:0605500058" className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors">
+                                                {isRTL ? 'احجز الآن' : 'Book Now'}
+                                            </a>
+                                        </div>
                                     </div>
 
                                     {/* Pool Access */}
@@ -481,6 +590,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <p className="text-xs text-white/40 leading-relaxed">
                                             {isRTL ? 'شامل دخول المتنزه. كراسي ومناشف.' : 'Includes park access. Sunbeds and towels.'}
                                         </p>
+                                        <div className="mt-6 pt-6 border-t border-white/5">
+                                            <a href="tel:0605500058" className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors">
+                                                {isRTL ? 'احجز الآن' : 'Book Now'}
+                                            </a>
+                                        </div>
                                     </div>
 
                                     {/* Bungalow Stay */}
@@ -500,6 +614,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         </div>
                                         <p className="text-xs text-white/40 leading-relaxed mb-4">
                                             {isRTL ? 'زوجين + أطفال. شامل الفطور والأنشطة.' : '1 Couple + Kids. Breakfast & Activities included.'}
+                                            <br />
+                                            <span className="text-luxury-gold/80 mt-1 block font-medium">
+                                                {isRTL ? '+150 درهم لكل طفل إضافي' : '+150 DH / Additional Kid'}
+                                            </span>
                                         </p>
                                         <button
                                             onClick={() => { setShowPricing(false); setActiveExperience('bungalow'); setCurrentView('experience'); }}
@@ -790,8 +908,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep/90 via-jungle-deep/40 to-transparent" />
 
-                                    <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-end">
-                                        <div className="max-w-md space-y-4">
+                                    <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-center items-center text-center">
+                                        <div className="max-w-md space-y-4 flex flex-col items-center">
                                             <div>
                                                 <h2 className="text-3xl lg:text-4xl font-serif text-white mb-2 leading-tight">
                                                     {(translations[currentLanguage] as any).packDay.title}
