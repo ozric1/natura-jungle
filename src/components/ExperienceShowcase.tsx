@@ -209,9 +209,17 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
     useEffect(() => {
         const interval = setInterval(() => {
             setPage(prev => (prev + 1) % currentContent.slides.length);
-        }, 3000);
+        }, 5000);
         return () => clearInterval(interval);
     }, [currentContent.slides.length]);
+
+    // Image Preloading
+    useEffect(() => {
+        const nextPageIndex = (page + 1) % currentContent.slides.length;
+        const nextImage = currentContent.slides[nextPageIndex].image;
+        const img = new Image();
+        img.src = nextImage;
+    }, [page, currentContent.slides]);
 
     return (
         <div className="fixed inset-0 z-[200] bg-black text-white overflow-hidden flex flex-col">
