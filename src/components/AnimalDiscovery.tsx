@@ -24,7 +24,7 @@ export const AnimalDiscovery = ({ animal, onBack, isRTL = false }: AnimalDiscove
                 <motion.div
                     initial={{ scale: 1.2 }}
                     animate={{ scale: 1 }}
-                    transition={{ duration: 1.5 }}
+                    transition={{ duration: 3 }}
                     className="w-full h-full bg-cover bg-center"
                     style={{ backgroundImage: `url(${animal.image})` }}
                 />

@@ -19,19 +19,9 @@ interface Slide {
 
 const restau2Img = '/assets/natura/Jungle restau 2.jpeg';
 const restau3Img = '/assets/natura/Jungle Restaurant 3.jpeg';
-const tajineImg = '/assets/natura/Jungle restaurant Tajine.jpeg';
-
-const tentNightImg = '/assets/natura/berber tent at night.jpeg';
-const berberTentImg = '/assets/natura/BERBER TENT.jpeg';
-
-const parkViewImg = '/assets/natura/Natura view from above MAIN PAGE BCKGRND.jpeg';
-
-const aquaPoolImg = '/assets/natura/pool.jpeg';
-const restau4Img = '/assets/natura/Jungle RESTAURENT 4.jpeg';
 const restau5Img = '/assets/natura/JUNGLE RESTAURANT 5.jpeg';
-const friendlyAnimalsImg = '/assets/natura/WhatsApp Image 2026-02-13 at 13.42.27.jpeg';
-const playgroundAerialImg = '/assets/natura/Natura view from above MAIN PAGE BCKGRND.jpeg';
-const pondUpdateImg = '/assets/natura/pond_update.jpg';
+const restau4Img = '/assets/natura/Jungle RESTAURENT 4.jpeg';
+const tajineImg = '/assets/natura/Jungle restaurant Tajine.jpeg';
 
 export const ExperienceShowcase = ({ type, language, onClose, onAction }: ExperienceShowcaseProps) => {
     const [page, setPage] = useState(0);
@@ -105,12 +95,12 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         tents: {
             slides: [
                 {
-                    image: tentNightImg,
+                    image: '/assets/natura/tents/_DSC4619.jpg',
                     title: { en: "Berber Spirit", fr: "L'Esprit Berbère", ar: "الروح البربرية" },
                     desc: { en: "Authentic living in the heart of the jungle.", fr: "Vivre l'authentique au cœur de la jungle.", ar: "حياة أصيلة في قلب الغابة." }
                 },
                 {
-                    image: berberTentImg,
+                    image: '/assets/natura/tents/DSC03202.jpg',
                     title: { en: "Natural Comfort", fr: "Confort Naturel", ar: "راحة طبيعية" },
                     desc: { en: "Wake up to the sounds of nature.", fr: "Réveillez-vous aux sons de la nature.", ar: "استيقظ على أنغام الطبيعة." }
                 }
@@ -119,29 +109,78 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         park: {
             slides: [
                 {
-                    image: friendlyAnimalsImg,
-                    title: { en: "Friendly Animals", fr: "Animaux Amicaux", ar: "حيوانات أليفة" },
-                    desc: { en: "Gentle encounters in their natural habitat.", fr: "Rencontres douces dans leur habitat naturel.", ar: "لقاءات هادئة في بيئتها الطبيعية." }
+                    image: '/assets/natura/animals/DSC00001.jpg',
+                    title: { en: "Wild Discovery", fr: "Découverte Sauvage", ar: "اكتشاف بري" },
+                    desc: { en: "Meet the majestic wildlife of Natura.", fr: "Rencontrez la faune majestueuse de Natura.", ar: "تعرف على الحياة البرية المهيبة في نطورا." }
                 },
                 {
-                    image: parkViewImg,
-                    title: { en: "Animal Discovery", fr: "Découverte Animale", ar: "اكتشاف الحيوانات" },
-                    desc: { en: "Learn about the wildlife of the region.", fr: "Apprenez-en plus sur la faune de la région.", ar: "تعرف على الحياة البرية في المنطقة." }
+                    image: '/assets/natura/animals/DSC00003.jpg',
+                    title: { en: "Animal Kingdom", fr: "Royaume Animal", ar: "مملكة الحيوان" },
+                    desc: { en: "Step into the heart of the wild.", fr: "Entrez au cœur du monde sauvage.", ar: "ادخل إلى قلب الحياة البرية." }
+                },
+                {
+                    image: '/assets/natura/animals/DSC00006.jpg',
+                    title: { en: "Gentle Creatures", fr: "Créatures Douces", ar: "كائنات هادئة" },
+                    desc: { en: "Peaceful encounters in nature.", fr: "Rencontres paisibles dans la nature.", ar: "لقاءات هادئة في الطبيعة." }
+                },
+                {
+                    image: '/assets/natura/animals/DSC00009.jpg',
+                    title: { en: "Nature's Wonders", fr: "Merveilles de la Nature", ar: "عجائب الطبيعة" },
+                    desc: { en: "Explore the diversity of the park.", fr: "Explorez la diversité du parc.", ar: "استكشف تنوع المنتزه." }
+                },
+                {
+                    image: '/assets/natura/animals/DSC00014.jpg',
+                    title: { en: "Wild Habitat", fr: "Habitat Sauvage", ar: "موائل برية" },
+                    desc: { en: "Animals in their natural surroundings.", fr: "Des animaux dans leur environnement naturel.", ar: "حيوانات في محيطها الطبيعي." }
+                },
+                {
+                    image: '/assets/natura/animals/DSC00018.jpg',
+                    title: { en: "Eco Sanctuary", fr: "Sanctuaire Eco", ar: "ملاذ بيئي" },
+                    desc: { en: "A safe haven for every species.", fr: "Un refuge sûr pour chaque espèce.", ar: "ملجأ آمن لكل الأنواع." }
+                },
+                {
+                    image: '/assets/natura/animals/DSC00070.jpg',
+                    title: { en: "Jungle Life", fr: "Vie dans la Jungle", ar: "حياة الغابة" },
+                    desc: { en: "Experience the rhythm of the forest.", fr: "Découvrez le rythme de la forêt.", ar: "اختبر إيقاع الغابة." }
                 }
             ]
         },
         kids: {
             slides: [
                 {
-                    image: playgroundAerialImg,
-                    title: { en: "Kids Playground", fr: "Aire de Jeux", ar: "مساحة لعب الأطفال" },
-                    desc: { en: "Safety and fun for everyone.", fr: "Sécurité et plaisir pour tous.", ar: "الأمان والمتعة للجميع." },
-                    zoomType: "playground"
+                    image: '/assets/natura/gaming space/DSC00040.jpg',
+                    title: { en: "Kids Adventures", fr: "Aventures Enfants", ar: "مغامرات الأطفال" },
+                    desc: { en: "Fun and games in the fresh air.", fr: "Jeux et divertissements au grand air.", ar: "ألعاب ومرح في الهواء الطلق." }
                 },
                 {
-                    image: pondUpdateImg,
+                    image: '/assets/natura/gaming space/DSC00041.jpg',
                     title: { en: "Equitation Academy", fr: "Académie d'Équitation", ar: "أكاديمية الفروسية" },
-                    desc: { en: "Start your horse riding adventure.", fr: "Commencez votre aventure équestre.", ar: "ابدأ مغامرتك في الفروسية." }
+                    desc: { en: "Learn to ride in a safe environment.", fr: "Apprenez à monter à cheval en toute sécurité.", ar: "تعلم الفروسية في بيئة آمنة." }
+                },
+                {
+                    image: '/assets/natura/gaming space/DSC00047.jpg',
+                    title: { en: "Jungle Play", fr: "Jeux de la Jungle", ar: "لعب الغابة" },
+                    desc: { en: "Endless possibilities for fun.", fr: "Des possibilités de divertissement infinies.", ar: "إمكانيات لا حصر لها للمرح." }
+                },
+                {
+                    image: '/assets/natura/gaming space/DSC03228.jpg',
+                    title: { en: "Outdoor Fun", fr: "Plaisir Extérieur", ar: "متعة في الخارج" },
+                    desc: { en: "Safe playgrounds for all ages.", fr: "Des aires de jeux sécurisées pour tous les âges.", ar: "ملاعب آمنة لجميع الأعمار." }
+                },
+                {
+                    image: '/assets/natura/gaming space/DSC03232.jpg',
+                    title: { en: "Mini Equestrians", fr: "Mini Équestres", ar: "فرسان صغار" },
+                    desc: { en: "Start your journey with horses.", fr: "Commencez votre voyage avec les chevaux.", ar: "ابدأ رحلتك مع الخيول." }
+                },
+                {
+                    image: '/assets/natura/gaming space/DSC03241.jpg',
+                    title: { en: "Active Nature", fr: "Nature Active", ar: "طبيعة نشطة" },
+                    desc: { en: "Run, jump and explore the wild.", fr: "Courir, sauter et explorer la nature.", ar: "اركض، اقفز واستكشف البرية." }
+                },
+                {
+                    image: '/assets/natura/gaming space/DSC09995.jpg',
+                    title: { en: "Family Moments", fr: "Moments en Famille", ar: "لحظات عائلية" },
+                    desc: { en: "Creating memories that last a lifetime.", fr: "Créer des souvenirs qui durent toute une vie.", ar: "خلق ذكريات تدوم مدى الحياة." }
                 }
             ],
             actionLabel: { en: "Fun & Play", fr: "Fun & Jeux", ar: "المرح واللعب" },
@@ -150,14 +189,14 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         pool: {
             slides: [
                 {
-                    image: aquaPoolImg,
+                    image: '/assets/natura/tents/Pool/DSC00017.jpg',
                     title: { en: "Aqua Oasis", fr: "Oasis Aqua", ar: "واحة أكوا" },
                     desc: { en: "A refreshing paradise with crystal waters.", fr: "Un paradis rafraîchissant aux eaux cristallines.", ar: "جنة منعشة بمياه كريستالية." }
                 },
                 {
-                    image: restau4Img,
-                    title: { en: "Serene Surrounding", fr: "Environnement Serein", ar: "محيط هادئ" },
-                    desc: { en: "Relax in the peaceful jungle atmosphere.", fr: "Détendez-vous dans l'atmosphère paisible de la jungle.", ar: "استرخ في أجواء الغابة الهادئة." }
+                    image: '/assets/natura/tents/Pool/DSC00056.jpg',
+                    title: { en: "Poolside Serenity", fr: "Sérénité au Bord de l'Eau", ar: "هدوء المسبح" },
+                    desc: { en: "Relax in our premium jungle pool.", fr: "Détendez-vous dans notre piscine de jungle haut de gamme.", ar: "استرخ في مسبح الغابة الفاخر." }
                 }
             ]
         }
@@ -170,7 +209,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
     useEffect(() => {
         const interval = setInterval(() => {
             setPage(prev => (prev + 1) % currentContent.slides.length);
-        }, 5000);
+        }, 3000);
         return () => clearInterval(interval);
     }, [currentContent.slides.length]);
 
