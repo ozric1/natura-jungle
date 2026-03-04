@@ -518,28 +518,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     </div>
                                 </motion.button>
 
-                                {/* 4. Experience Zones */}
+                                {/* 4. Catering & Events */}
                                 <motion.button
                                     initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
                                     animate={{ x: 0, opacity: 1 }}
                                     transition={{ delay: 0.25 }}
-                                    onClick={() => { setIsMenuOpen(false); setCurrentView('base'); }}
-                                    className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
-                                >
-                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
-                                        <Sparkles className="w-5 h-5" />
-                                    </div>
-                                    <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.zones.subtitle}</div>
-                                        <div className="text-2xl font-serif text-white group-hover:text-luxury-gold transition-colors">{text.navigation.zones.title}</div>
-                                    </div>
-                                </motion.button>
-
-                                {/* 5. Catering & Events */}
-                                <motion.button
-                                    initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{ delay: 0.3 }}
                                     onClick={() => { setIsMenuOpen(false); setCurrentView('catering'); }}
                                     className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
                                 >

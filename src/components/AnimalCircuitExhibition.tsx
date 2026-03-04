@@ -13,6 +13,8 @@ const horseImg = '/assets/natura/horse_update.jpg';
 const ostrichImg = '/assets/natura/animals/austrich.jpg';
 const tibetGoatImg = '/assets/natura/tibet_goat_update.jpg';
 const peacockImg = '/assets/natura/peacock_update.jpg';
+const blackDoveImg = '/assets/natura/animals/blackdove.jpg';
+const highlightDSC09 = '/assets/natura/animals/DSC00009.jpg';
 
 interface AnimalExhibit {
     id: string;
@@ -187,6 +189,20 @@ export const AnimalDiscoveryExhibition = ({ onBack, isRTL = false, language }: A
             fact: { en: 'Observing animals in their natural habitat brings a sense of serenity.', fr: 'Observer les animaux dans leur habitat naturel apporte un sentiment de sérénité.', ar: 'مراقبة الحيوانات في بيئتها الطبيعية يمنح شعوراً بالسكينة.' },
             image: '/assets/natura/animals/DSC00014.jpg',
             category: 'Discovery'
+        },
+        {
+            id: 'park-highlight-3',
+            name: { en: 'Sanctuary Peace', fr: 'Paix du Sanctuaire', ar: 'سلام المحمية' },
+            fact: { en: 'A glimpse into the daily life of our cherished inhabitants.', fr: 'Un aperçu de la vie quotidienne de nos chers habitants.', ar: 'لمحة عن الحياة اليومية لسكاننا الأعزاء.' },
+            image: highlightDSC09,
+            category: 'Discovery'
+        },
+        {
+            id: 'black-dove',
+            name: { en: 'Black Dove', fr: 'Pigeon Noir', ar: 'الحمام الأسود' },
+            fact: { en: 'A rare and beautiful sight, the black dove is a symbol of peace in our gardens.', fr: 'Un spectacle rare et magnifique, le pigeon noir est un symbole de paix dans nos jardins.', ar: 'رؤية نادرة وجميلة، اليمامة السوداء هي رمز للسلام في حدائقنا.' },
+            image: blackDoveImg,
+            category: 'Avian'
         },
     ];
 

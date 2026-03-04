@@ -62,31 +62,34 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         restaurant: {
             slides: [
                 {
-                    image: restau2Img,
+                    image: '/assets/natura/catering/_DSC2419.jpg',
+                    title: { en: "Gourmet Garden", fr: "Jardin Gourmand", ar: "حديقة الذواقة" },
+                    desc: { en: "Experience fine dining in the heart of nature.", fr: "Découvrez une cuisine raffinée au cœur de la nature.", ar: "جرب المأكولات الراقية في قلب الطبيعة." }
+                },
+                {
+                    image: '/assets/natura/catering/DSC09970.jpg',
                     title: { en: "The Artist Kitchen", fr: "La Cuisine d'Artiste", ar: "مطبخ الفنان" },
                     desc: { en: "Where our chef prepares your gourmet meals.", fr: "Où notre chef prépare vos repas gastronomiques.", ar: "حيث يحضر الشيف وجباتك الفاخرة." }
                 },
                 {
-                    image: restau3Img,
+                    image: '/assets/natura/catering/_DSC2423.jpg',
                     title: { en: "Elegant Premises", fr: "Cadre Élégant", ar: "مرافق أنيقة" },
                     desc: { en: "Dine under the stars and the trees.", fr: "Dînez sous les étoiles et les arbres.", ar: "تناول الطعام تحت النجوم والأشجار." }
                 },
                 {
-                    image: restau5Img,
-                    title: { en: "The Chef's Selection", fr: "La Sélection du Chef", ar: "اختيارات الشيف" },
-                    desc: { en: "Our finest gourmet creations, presented with precision.", fr: "Nos plus belles créations gastronomiques, présentées avec précision.", ar: "أروع إبداعاتنا الفاخرة، مقدمة بكل دقة." },
-                    zoomType: "dish"
+                    image: '/assets/natura/catering/_DSC2426.jpg',
+                    title: { en: "Atmospheric Dining", fr: "Dîner Atmosphérique", ar: "عشاء جوي" },
+                    desc: { en: "A perfect blend of luxury and natural beauty.", fr: "Un mélange parfait de luxe et de beauté naturelle.", ar: "مزيج مثالي من الفخامة والجمال الطبيعي." }
                 },
                 {
-                    image: restau4Img,
-                    title: { en: "Ambient Dining", fr: "Ambiance Gastronomique", ar: "أجواء الطعام" },
-                    desc: { en: "Elegant table settings for an unforgettable evening.", fr: "Des tables élégantes pour une soirée inoubliable.", ar: "طاولات أنيقة لأمسية لا تُنسى." }
+                    image: '/assets/natura/catering/_DSC2429.jpg',
+                    title: { en: "Culinary Excellence", fr: "Excellence Culinaire", ar: "التميز في الطهي" },
+                    desc: { en: "Every dish is a masterpiece of flavors.", fr: "Chaque plat est un chef-d'œuvre de saveurs.", ar: "كل طبق هو تحفة من النكهات." }
                 },
                 {
-                    image: tajineImg,
-                    title: { en: "Signature Dishes", fr: "Plats Signature", ar: "أطباقنا المتميزة" },
-                    desc: { en: "Authentic flavors with a modern twist.", fr: "Saveurs authentiques avec une touche moderne.", ar: "نكهات أصيلة بلمسة عصرية." },
-                    zoomType: "dish"
+                    image: '/assets/natura/catering/DSC09972.jpg',
+                    title: { en: "Sunset Soirée", fr: "Soirée au Coucher du Soleil", ar: "أمسية عند غروب الشمس" },
+                    desc: { en: "Unforgettable evenings in our jungle sanctuary.", fr: "Des soirées inoubliables dans notre sanctuaire de la jungle.", ar: "أمسيات لا تنسى في محمية الغابة لدينا." }
                 }
             ],
             actionLabel: { en: "Explore Menu", fr: "Explorer le Menu", ar: "استكشف القائمة" },
