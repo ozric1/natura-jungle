@@ -60,7 +60,11 @@ const InteractiveImage = ({ src, alt, category }: { src: string; alt: string; ca
                 src={src}
                 alt={alt}
                 className="w-full h-full object-cover transition-all duration-500"
-                style={{ scale, transformOrigin: `${x.get() * 100}% ${y.get() * 100}%` }}
+                style={{
+                    scale,
+                    transformOrigin: `${x.get() * 100}% ${y.get() * 100}%`,
+                    objectPosition: alt.toLowerCase().includes('ostrich') || alt.toLowerCase().includes('autruche') ? 'center 20%' : 'center center'
+                }}
                 initial={{ filter: 'grayscale(0%) saturate(100%)' }}
                 whileHover={{ filter: 'grayscale(0%) saturate(120%)' }}
             />
@@ -91,7 +95,7 @@ export const AnimalDiscoveryExhibition = ({ onBack, isRTL = false, language }: A
             id: 'ducks',
             name: { en: 'Ducks', fr: 'Canards', ar: 'البط' },
             fact: { en: 'Our ducks love the central pond and are often the first to greet visitors.', fr: 'Nos canards adorent l\'étang central et sont souvent les premiers à saluer les visiteurs.', ar: 'تحب طيور البط لدينا البركة المركزية وغالباً ما تكون هي أول من يستقبل الزوار.' },
-            image: '/assets/natura/pond.jpg',
+            image: '/assets/natura/animals/ducks.jpg',
             category: 'Avian'
         },
         {
@@ -116,11 +120,67 @@ export const AnimalDiscoveryExhibition = ({ onBack, isRTL = false, language }: A
             category: 'Mammal'
         },
         {
+            id: 'sanctuary-peace',
+            name: { en: 'Sanctuary Peace', fr: 'Paix du Sanctuaire', ar: 'سلام المحمية' },
+            fact: { en: 'A glimpse into the daily life of our cherished inhabitants.', fr: 'Un aperçu de la vie quotidienne de nos chers habitants.', ar: 'لمحة عن الحياة اليومية لسكاننا الأعزاء.' },
+            image: '/assets/natura/animals/DSC00009.jpg',
+            category: 'Discovery'
+        },
+        {
             id: 'nature-harmony',
             name: { en: 'Nature Harmony', fr: 'Harmonie Naturelle', ar: 'تناغم الطبيعة' },
             fact: { en: 'Observing animals in their natural habitat brings a sense of serenity.', fr: 'Observer les animaux dans leur habitat naturel apporte un sentiment de sérénité.', ar: 'مراقبة الحيوانات في بيئتها الطبيعية يمنح شعوراً بالسكينة.' },
             image: '/assets/natura/animals/DSC00014.jpg',
             category: 'Discovery'
+        },
+        {
+            id: 'discovery-moments',
+            name: { en: 'Discovery Moments', fr: 'Moments de Découverte', ar: 'لحظات الاكتشاف' },
+            fact: { en: 'Every encounter at Natura is a lesson in nature\'s beauty.', fr: 'Chaque rencontre à Natura est une leçon sur la beauté de la nature.', ar: 'كل لقاء في نطورا هو درس في جمال الطبيعة.' },
+            image: '/assets/natura/animals/DSC00006.jpg',
+            category: 'Discovery'
+        },
+        {
+            id: 'lama',
+            name: { en: 'Lama', fr: 'Lama', ar: 'اللاما' },
+            fact: { en: 'Gentle and curious, they often hum when they are happy and content.', fr: 'Doux et curieux, ils fredonnent souvent lorsqu\'ils sont heureux et satisfaits.', ar: 'لطيفة وفضولية، غالباً ما تدندن عندما تكون سعيدة وراضية.' },
+            image: '/assets/natura/animal circuit Lama.jpeg',
+            category: 'Mammal'
+        },
+        {
+            id: 'black-swan',
+            name: { en: 'Black Swan', fr: 'Cygne Noir', ar: 'البجع الأسود' },
+            fact: { en: 'Majestic and rare, the black swan is a symbol of elegance in our park.', fr: 'Majestueux et rare, le cygne noir est un symbole d\'élégance dans notre parc.', ar: 'مهيب ونادر، البجع الأسود هو رمز للأناقة في منتزهنا.' },
+            image: '/assets/natura/black_swan_update.jpg',
+            category: 'Avian'
+        },
+        {
+            id: 'cockatoo',
+            name: { en: 'Cockatoo', fr: 'Cacatoès', ar: 'الكاكاتو' },
+            fact: { en: 'Social and intelligent birds that add music to our sanctuary.', fr: 'Oiseaux sociaux et intelligents qui ajoutent de la musique à notre sanctuaire.', ar: 'طيور اجتماعية وذكية تضفي لمسة موسيقية على محمتنا.' },
+            image: '/assets/natura/cockatoo.jpg',
+            category: 'Avian'
+        },
+        {
+            id: 'horses',
+            name: { en: 'Horses', fr: 'Chevaux', ar: 'الخيول' },
+            fact: { en: 'Our stables house gentle spirits ready for equestrian adventures.', fr: 'Nos écuries abritent des esprits doux prêts pour des aventures équestres.', ar: 'تضم اسطبلاتنا خيولاً لطيفة وجاهزة لمغامرات الفروسية.' },
+            image: '/assets/natura/horse_update.jpg',
+            category: 'Mammal'
+        },
+        {
+            id: 'peacock',
+            name: { en: 'Peacock', fr: 'Paon', ar: 'الطاووس' },
+            fact: { en: 'A living masterpiece of nature, displaying vibrant "eyes" to dazzle.', fr: 'Un chef-d\'œuvre vivant de la nature, arborant des "yeux" vibrants pour éblouir.', ar: 'تحفة طبيعية حية، تظهر "عيوناً" ملونة للانبهار.' },
+            image: '/assets/natura/peacock_update.jpg',
+            category: 'Avian'
+        },
+        {
+            id: 'wallaby',
+            name: { en: 'Kangaroo (Wallaby)', fr: 'Kangourou (Wallaby)', ar: 'الكنغر (والابي)' },
+            fact: { en: 'Agile and alert, these marsupials are a joy to observe in their enclosure.', fr: 'Agiles et alertes, ces marsupiaux sont un plaisir à observer dans leur enclos.', ar: 'رشيقة ويقظة، هذه الجرابيات هي متعة لمراقبتها في حظيرتها.' },
+            image: '/assets/natura/wallaby.jpg',
+            category: 'Mammal'
         }
     ];
 
