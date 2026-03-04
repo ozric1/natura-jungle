@@ -103,78 +103,29 @@ export const AnimalDiscoveryExhibition = ({ onBack, isRTL = false, language }: A
             id: 'ducks',
             name: { en: 'Ducks', fr: 'Canards', ar: 'البط' },
             fact: { en: 'Our ducks love the central pond and are often the first to greet visitors.', fr: 'Nos canards adorent l\'étang central et sont souvent les premiers à saluer les visiteurs.', ar: 'تحب طيور البط لدينا البركة المركزية وغالباً ما تكون هي أول من يستقبل الزوار.' },
-            image: duckImg,
+            image: '/assets/natura/animals/ducks.jpg',
             category: 'Avian'
-        },
-        {
-            id: 'black-swan',
-            name: { en: 'Black Swan', fr: 'Cygne Noir', ar: 'البجع الأسود' },
-            fact: { en: 'Majestic and rare, the black swan is a symbol of elegance in our park.', fr: 'Majestueux et rare, le cygne noir est un symbole d\'élégance dans notre parc.', ar: 'مهيب ونادر، البجع الأسود هو رمز للأناقة في منتزهنا.' },
-            image: blackSwanImg,
-            category: 'Avian'
-        },
-        {
-            id: 'peacock',
-            name: { en: 'Peacock', fr: 'Paon', ar: 'الطاووس' },
-            fact: { en: 'A living masterpiece of nature, displaying vibrant "eyes" to dazzle.', fr: 'Un chef-d\'œuvre vivant de la nature, arborant des "yeux" vibrants pour éblouir.', ar: 'تحفة طبيعية حية، تظهر "عيوناً" ملونة للانبهار.' },
-            image: peacockImg,
-            category: 'Avian'
-        },
-        {
-            id: 'horses',
-            name: { en: 'Horses', fr: 'Chevaux', ar: 'الخيول' },
-            fact: { en: 'Our stables house gentle spirits ready for equestrian adventures.', fr: 'Nos écuries abritent des esprits doux prêts pour des aventures équestres.', ar: 'تضم اسطبلاتنا خيولاً لطيفة وجاهزة لمغامرات الفروسية.' },
-            image: horseImg,
-            category: 'Mammal'
         },
         {
             id: 'ostrich',
             name: { en: 'Ostrich', fr: 'Autruche', ar: 'النعام' },
             fact: { en: 'The fastest bird on land, our ostriches are curious and impressive.', fr: 'L\'oiseau le plus rapide sur terre, nos autruches sont curieuses et impressionnantes.', ar: 'أسرع طائر على وجه الأرض، النعام لدينا فضولي ومثير للإعجاب.' },
-            image: ostrichImg,
+            image: '/assets/natura/animals/austrich.jpg',
             category: 'Avian'
         },
         {
-            id: 'tibet-goat',
-            name: { en: 'Tibet Goat', fr: 'Chèvre du Tibet', ar: 'ماعز التبت' },
-            fact: { en: 'Known for their soft coat and climbing skills.', fr: 'Connues pour leur pelage doux et leurs talents de grimpeur.', ar: 'معروفة بفرائها الناعم ومهاراتها في التسلق.' },
-            image: tibetGoatImg,
-            category: 'Mammal'
-        },
-        {
-            id: 'wallaby',
-            name: { en: 'Kangaroo (Wallaby)', fr: 'Kangourou (Wallaby)', ar: 'الكنغر (والابي)' },
-            fact: { en: 'Agile and alert, these marsupials are a joy to observe in their enclosure.', fr: 'Agiles et alertes, ces marsupiaux sont un plaisir à observer dans leur enclos.', ar: 'رشيقة ويقظة، هذه الجرابيات هي متعة لمراقبتها في حظيرتها.' },
-            image: wallabyImg,
-            category: 'Mammal'
-        },
-        {
-            id: 'lama',
-            name: { en: 'Lama', fr: 'Lama', ar: 'اللاما' },
-            fact: { en: 'Gentle and curious, they often hum when they are happy and content.', fr: 'Doux et curieux, ils fredonnent souvent lorsqu\'ils sont heureux et satisfaits.', ar: 'لطيفة وفضولية، غالباً ما تدندن عندما تكون سعيدة وراضية.' },
-            image: lamaImg,
-            category: 'Mammal'
+            id: 'black-dove',
+            name: { en: 'Black Dove', fr: 'Pigeon Noir', ar: 'الحمام الأسود' },
+            fact: { en: 'A rare and beautiful sight, the black dove is a symbol of peace in our gardens.', fr: 'Un spectacle rare et magnifique, le pigeon noir est un symbole de paix dans nos jardins.', ar: 'رؤية نادرة وجميلة، اليمامة السوداء هي رمز للسلام في حدائقنا.' },
+            image: '/assets/natura/animals/blackdove.jpg',
+            category: 'Avian'
         },
         {
             id: 'deer',
             name: { en: 'Deer', fr: 'Cerf', ar: 'الغزلان' },
             fact: { en: 'Graceful runners that represent the gentle soul of the forest.', fr: 'Coureurs gracieux qui représentent l\'âme douce de la forêt.', ar: 'عدائين رشيقين يمثلون الروح اللطيفة للغابة.' },
-            image: deerImg,
+            image: '/assets/natura/animals/deer.jpg',
             category: 'Mammal'
-        },
-        {
-            id: 'jungle-cat',
-            name: { en: 'Jungle Cats', fr: 'Chats de la Jungle', ar: 'قطط الغابة' },
-            fact: { en: 'Agile feline friends with keen senses, living peacefully in our sanctuary.', fr: 'Des félins agiles aux sens aiguisés, vivant paisiblement dans notre sanctuaire.', ar: 'أصدقاء من القطط الرشيقة ذات الحواس الحادة، يعيشون بسلام في محميتنا.' },
-            image: jungleCatImg,
-            category: 'Discovery'
-        },
-        {
-            id: 'small-pigs',
-            name: { en: 'Small Pigs', fr: 'Petits Cochons', ar: 'الخنازير الصغيرة' },
-            fact: { en: 'Intelligent and playful, they are a favorite among our younger guests.', fr: 'Intelligents et enjoués, ils sont les favoris de nos plus jeunes invités.', ar: 'ذكية ومرحة، وهي مفضلة لدى زوارنا الصغار.' },
-            image: pigsImg,
-            category: 'Farm'
         },
         {
             id: 'park-highlight-1',
@@ -186,7 +137,7 @@ export const AnimalDiscoveryExhibition = ({ onBack, isRTL = false, language }: A
         {
             id: 'park-highlight-2',
             name: { en: 'Nature Harmony', fr: 'Harmonie Naturelle', ar: 'تناغم الطبيعة' },
-            fact: { en: 'Observing animals in their natural habitat brings a sense of serenity.', fr: 'Observer les animaux dans leur habitat naturel apporte un sentiment de sérénité.', ar: 'مراقبة الحيوانات في بيئتها الطبيعية يمنح شعوراً بالسكينة.' },
+            fact: { en: 'Observing animals in their natural habitat brings a sense of serenity.', fr: 'Observer les animaux dans leur habitat naturel apporte un sentiment de سيرينتي.', ar: 'مراقبة الحيوانات في بيئتها الطبيعية يمنح شعوراً بالسكينة.' },
             image: '/assets/natura/animals/DSC00014.jpg',
             category: 'Discovery'
         },
@@ -194,16 +145,51 @@ export const AnimalDiscoveryExhibition = ({ onBack, isRTL = false, language }: A
             id: 'park-highlight-3',
             name: { en: 'Sanctuary Peace', fr: 'Paix du Sanctuaire', ar: 'سلام المحمية' },
             fact: { en: 'A glimpse into the daily life of our cherished inhabitants.', fr: 'Un aperçu de la vie quotidienne de nos chers habitants.', ar: 'لمحة عن الحياة اليومية لسكاننا الأعزاء.' },
-            image: highlightDSC09,
+            image: '/assets/natura/animals/DSC00009.jpg',
             category: 'Discovery'
         },
         {
-            id: 'black-dove',
-            name: { en: 'Black Dove', fr: 'Pigeon Noir', ar: 'الحمام الأسود' },
-            fact: { en: 'A rare and beautiful sight, the black dove is a symbol of peace in our gardens.', fr: 'Un spectacle rare et magnifique, le pigeon noir est un symbole de paix dans nos jardins.', ar: 'رؤية نادرة وجميلة، اليمامة السوداء هي رمز للسلام في حدائقنا.' },
-            image: blackDoveImg,
+            id: 'lama',
+            name: { en: 'Lama', fr: 'Lama', ar: 'اللاما' },
+            fact: { en: 'Gentle and curious, they often hum when they are happy and content.', fr: 'Doux et curieux, ils fredonnent souvent lorsqu\'ils sont heureux et satisfaits.', ar: 'لطيفة وفضولية، غالباً ما تدندن عندما تكون سعيدة وراضية.' },
+            image: '/assets/natura/animal circuit Lama.jpeg',
+            category: 'Mammal'
+        },
+        {
+            id: 'black-swan',
+            name: { en: 'Black Swan', fr: 'Cygne Noir', ar: 'البجع الأسود' },
+            fact: { en: 'Majestic and rare, the black swan is a symbol of elegance in our park.', fr: 'Majestueux et rare, le cygne noir est un symbole d\'élégance dans notre parc.', ar: 'مهيب ونادر، البجع الأسود هو رمز للأناقة في منتزهنا.' },
+            image: '/assets/natura/black_swan_update.jpg',
             category: 'Avian'
         },
+        {
+            id: 'cockatoo',
+            name: { en: 'Cockatoo', fr: 'Cacatoès', ar: 'الكاكاتو' },
+            fact: { en: 'Social and intelligent birds that add music to our sanctuary.', fr: 'Oiseaux sociaux et intelligents qui ajoutent de la musique à notre sanctuaire.', ar: 'طيور اجتماعية وذكية تضفي لمسة موسيقية على محمتنا.' },
+            image: '/assets/natura/cockatoo.jpg',
+            category: 'Avian'
+        },
+        {
+            id: 'horses',
+            name: { en: 'Horses', fr: 'Chevaux', ar: 'الخيول' },
+            fact: { en: 'Our stables house gentle spirits ready for equestrian adventures.', fr: 'Nos écuries abritent des esprits doux prêts pour des aventures équestres.', ar: 'تضم اسطبلاتنا خيولاً لطيفة وجاهزة لمغامرات الفروسية.' },
+            image: '/assets/natura/horse_update.jpg',
+            category: 'Mammal'
+        },
+        {
+            id: 'peacock',
+            name: { en: 'Peacock', fr: 'Paon', ar: 'الطاووس' },
+            fact: { en: 'A living masterpiece of nature, displaying vibrant "eyes" to dazzle.', fr: 'Un chef-d\'œuvre vivant de la nature, arborant des "yeux" vibrants pour éblouir.', ar: 'تحفة طبيعية حية، تظهر "عيوناً" ملونة للانبهار.' },
+            image: '/assets/natura/peacock_update.jpg',
+            category: 'Avian'
+        },
+        {
+            id: 'wallaby',
+            name: { en: 'Kangaroo (Wallaby)', fr: 'Kangourou (Wallaby)', ar: 'الكنغر (والابي)' },
+            fact: { en: 'Agile and alert, these marsupials are a joy to observe in their enclosure.', fr: 'Agiles et alertes, ces marsupiaux sont un plaisir à observer dans leur enclos.', ar: 'رشيقة ويقظة، هذه الجرابيات هي متعة لمراقبتها في حظيرتها.' },
+            image: '/assets/natura/wallaby.jpg',
+            category: 'Mammal'
+        }
     ];
 
     return (
@@ -215,8 +201,12 @@ export const AnimalDiscoveryExhibition = ({ onBack, isRTL = false, language }: A
                     <ChevronLeft className={`w-6 h-6 text-pure-nature group-hover:text-luxury-gold ${isRTL ? 'rotate-180' : ''}`} />
                 </button>
                 <div className="text-center">
-                    <h1 className="text-3xl font-serif text-pure-nature tracking-tight">The Animal Circuit</h1>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-gold">Animal Discovery Exhibition</p>
+                    <h1 className="text-3xl font-serif text-pure-nature tracking-tight">
+                        {language === 'ar' ? 'مسار الحيوانات' : language === 'fr' ? 'Le Circuit Animalier' : 'The Animal Circuit'}
+                    </h1>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-gold">
+                        {language === 'ar' ? 'معرض اكتشاف الحيوانات' : language === 'fr' ? 'Exposition Découverte' : 'Animal Discovery Exhibition'}
+                    </p>
                 </div>
                 <div className="w-12 h-12 rounded-2xl bg-luxury-gold text-jungle-deep flex items-center justify-center shadow-lg gold-shadow">
                     <Sparkles className="w-6 h-6 animate-pulse" />
@@ -267,12 +257,12 @@ export const AnimalDiscoveryExhibition = ({ onBack, isRTL = false, language }: A
                                         <div className="flex gap-6 items-center">
                                             <button className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-luxury-gold hover:text-pure-nature transition-colors">
                                                 <Bookmark className="w-5 h-5" />
-                                                Save
+                                                {language === 'ar' ? 'حفظ' : language === 'fr' ? 'Enregistrer' : 'Save'}
                                             </button>
                                             <div className="w-1 h-1 rounded-full bg-luxury-gold/40" />
                                             <button className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-all text-pure-nature">
                                                 <Share2 className="w-5 h-5" />
-                                                Share
+                                                {language === 'ar' ? 'مشاركة' : language === 'fr' ? 'Partager' : 'Share'}
                                             </button>
                                         </div>
 
@@ -330,10 +320,14 @@ export const AnimalDiscoveryExhibition = ({ onBack, isRTL = false, language }: A
                 <div className="max-w-xl mx-auto p-16 bg-jungle-deep rounded-[4rem] text-pure-nature overflow-hidden relative shadow-2xl gold-shadow border border-luxury-gold/20">
                     <div className="absolute inset-0 opacity-10 blur-3xl bg-luxury-gold" />
                     <Sparkles className="w-16 h-16 text-luxury-gold mx-auto mb-8" />
-                    <h3 className="text-4xl font-serif mb-6 text-luxury-gold">Want to meet them?</h3>
-                    <p className="text-pure-nature/60 mb-12 text-lg leading-relaxed">Experience the magic in person. Book your tour or stay today.</p>
+                    <h3 className="text-4xl font-serif mb-6 text-luxury-gold">
+                        {language === 'ar' ? 'هل تود لقاءهم؟' : language === 'fr' ? 'Voulez-vous les rencontrer ?' : 'Want to meet them?'}
+                    </h3>
+                    <p className="text-pure-nature/60 mb-12 text-lg leading-relaxed">
+                        {language === 'ar' ? 'عش السحر شخصياً. احجز جولتك أو إقامتك اليوم.' : language === 'fr' ? 'Vivez la magie en personne. Réservez votre visite ou séjour dès aujourd\'hui.' : 'Experience the magic in person. Book your tour or stay today.'}
+                    </p>
                     <button onClick={onBack} className="bg-luxury-gold text-jungle-deep px-12 py-6 rounded-3xl font-bold uppercase tracking-widest text-sm flex items-center gap-4 mx-auto gold-shadow hover:scale-105 transition-transform">
-                        Return to Dashboard
+                        {language === 'ar' ? 'العودة إلى لوحة القيادة' : language === 'fr' ? 'Retour au Tableau de Bord' : 'Return to Dashboard'}
                         <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
                     </button>
                 </div>

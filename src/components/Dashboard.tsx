@@ -148,7 +148,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     tag: "Best Value",
                     title: "Bungalow Stay",
                     perNight: "Per Night",
-                    desc: "1 Couple + 1 Kid. Breakfast & Activities included.",
+                    desc: "1 Couple + Kids. Breakfast & Activities included.",
+                    additional: "+150 DH / Additional Kid",
                     book: "Book Now"
                 }
             },
@@ -246,9 +247,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 },
                 bungalow: {
                     tag: "Meilleure Offre",
-                    title: "Séjour Bungalow",
+                    title: "Séjour en Bungalow",
                     perNight: "Par Nuit",
-                    desc: "1 Couple + 1 Enfant. Petit-déjeuner et activités inclus.",
+                    desc: "1 Couple + Enfants. Petit-déjeuner et activités inclus.",
+                    additional: "+150 DH / Enfant Supplémentaire",
                     book: "Réserver"
                 }
             },
@@ -339,11 +341,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     book: "احجز الآن"
                 },
                 bungalow: {
-                    tag: "Meilleure Offre",
-                    title: "Séjour Bungalow",
-                    perNight: "Par Nuit",
-                    desc: "1 Couple + 1 Enfant. Petit-déjeuner et activités inclus.",
-                    book: "Réserver"
+                    tag: "أفضل قيمة",
+                    title: "إقامة في البنغالو",
+                    perNight: "لليلة الواحدة",
+                    desc: "زوجان + أطفال. وجبة الإفطار والأنشطة مشمولة.",
+                    additional: "+150 درهم / طفل إضافي",
+                    book: "احجز الآن"
                 }
             },
             menu: {
@@ -750,20 +753,20 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                             <Home className="w-32 h-32 text-luxury-gold" />
                                         </div>
                                         <div className="inline-block px-3 py-1 bg-luxury-gold text-jungle-deep text-[10px] font-bold uppercase tracking-widest rounded-full mb-4">
-                                            {isRTL ? 'الأكثر طلباً' : 'Best Value'}
+                                            {text.pricingModal.bungalow.tag}
                                         </div>
-                                        <h4 className="text-2xl font-serif text-luxury-gold mb-2">{isRTL ? 'إقامة بنغالو' : 'Bungalow Stay'}</h4>
+                                        <h4 className="text-2xl font-serif text-luxury-gold mb-2">{text.pricingModal.bungalow.title}</h4>
                                         <div className="space-y-4 my-6">
                                             <div className="flex justify-between items-baseline border-b border-luxury-gold/10 pb-2">
-                                                <span className="text-white/60 text-sm uppercase tracking-wider">{isRTL ? 'الليلة' : 'Per Night'}</span>
+                                                <span className="text-white/60 text-sm uppercase tracking-wider">{text.pricingModal.bungalow.perNight}</span>
                                                 <span className="text-3xl font-serif text-white">900 <span className="text-xs text-luxury-gold">DH</span></span>
                                             </div>
                                         </div>
                                         <p className="text-xs text-white/40 leading-relaxed mb-4">
-                                            {isRTL ? 'زوجين + أطفال. شامل الفطور والأنشطة.' : '1 Couple + Kids. Breakfast & Activities included.'}
+                                            {text.pricingModal.bungalow.desc}
                                             <br />
                                             <span className="text-luxury-gold/80 mt-1 block font-medium">
-                                                {isRTL ? '+150 درهم لكل طفل إضافي' : '+150 DH / Additional Kid'}
+                                                {text.pricingModal.bungalow.additional}
                                             </span>
                                         </p>
                                         <div className="mt-auto pt-6">
@@ -771,7 +774,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                                 onClick={() => { setShowPricing(false); setActiveExperience('bungalow'); setCurrentView('experience'); }}
                                                 className="w-full py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
                                             >
-                                                {isRTL ? 'احجز الآن' : 'Book Now'}
+                                                {text.pricingModal.bungalow.book}
                                             </button>
                                         </div>
                                     </div>
