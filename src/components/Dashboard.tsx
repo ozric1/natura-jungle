@@ -147,8 +147,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     tag: "Best Value",
                     title: "Bungalow Stay",
                     perNight: "Per Night",
-                    desc: "1 Couple + Kids. Breakfast & Activities included.",
-                    additional: "+150 DH / Additional Kid",
+                    desc: "1 Couple + 1 Kid. Breakfast & Activities included.",
+                    additional: "+150 DH / 2nd Child",
                     book: "Book Now"
                 }
             },
@@ -248,8 +248,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     tag: "Meilleure Offre",
                     title: "Séjour en Bungalow",
                     perNight: "Par Nuit",
-                    desc: "1 Couple + Enfants. Petit-déjeuner et activités inclus.",
-                    additional: "+150 DH / Enfant Supplémentaire",
+                    desc: "1 Couple + 1 Enfant. Petit-déjeuner et activités inclus.",
+                    additional: "+150 DH / 2ème Enfant",
                     book: "Réserver"
                 }
             },
@@ -343,8 +343,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     tag: "أفضل قيمة",
                     title: "إقامة في البنغالو",
                     perNight: "لليلة الواحدة",
-                    desc: "زوجان + أطفال. وجبة الإفطار والأنشطة مشمولة.",
-                    additional: "+150 درهم / طفل إضافي",
+                    desc: "زوجان + طفل واحد. وجبة الإفطار والأنشطة مشمولة.",
+                    additional: "+150 درهم / الطفل الثاني",
                     book: "احجز الآن"
                 }
             },
@@ -593,7 +593,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     initial={{ x: isRTL ? -20 : 20, opacity: 0 }}
                                     animate={{ x: 0, opacity: 1 }}
                                     transition={{ delay: 0.5 }}
-                                    onClick={() => { setIsMenuOpen(false); setCurrentView('exhibition'); }}
+                                    onClick={() => { setIsMenuOpen(false); setCurrentView('circuit-map'); }}
                                     className={`group flex items-center gap-4 text-left ${isRTL ? 'flex-row-reverse text-right' : ''}`}
                                 >
                                     <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-jungle-deep transition-all duration-300">
@@ -805,7 +805,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     <MapPin className="w-4 h-4" />
                     {(text as any).topNav.map}
                 </button>
-                <button onClick={() => setCurrentView('exhibition')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'exhibition' ? 'text-sand-gold' : 'text-white/60 hover:text-white'}`}>
+                <button onClick={() => setCurrentView('circuit-map')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'circuit-map' ? 'text-sand-gold' : 'text-white/60 hover:text-white'}`}>
                     <Palmtree className="w-4 h-4" />
                     {(text as any).topNav.circuit}
                 </button>

@@ -15,14 +15,14 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
         en: {
             title: "Jungle Horizon Bungalow",
             subtitle: "Luxury Stay",
-            guests: "2 Guests",
+            guests: "2 Adults + 1 Kid",
             private: "Private",
             rest: "Rest",
             selectDates: "Select Dates",
             highDemand: "High demand for this bungalow. 70% of dates are already booked for this month. Secure yours today!",
             pricePerNight: "Price per Night",
             breakfast: "Breakfast included",
-            extraKid: "Additional kid +150 DH",
+            extraKid: "2nd child +150 DH",
             addKidsQuestion: "Additional Kids?",
             howMany: "How many?",
             yes: "Yes",
@@ -47,14 +47,14 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
         fr: {
             title: "Bungalow Horizon Jungle",
             subtitle: "Séjour de Luxe",
-            guests: "2 Invités",
+            guests: "2 Adultes + 1 Enfant",
             private: "Privé",
             rest: "Détente",
             selectDates: "Choisir les Dates",
             highDemand: "Forte demande pour ce bungalow. 70% des dates sont déjà réservées. Sécurisez la vôtre aujourd'hui !",
             pricePerNight: "Prix par Nuit",
             breakfast: "Petit-déjeuner inclus",
-            extraKid: "Enfant supplémentaire +150 DH",
+            extraKid: "2ème enfant +150 DH",
             addKidsQuestion: "Enfants supplémentaires ?",
             howMany: "Combien ?",
             yes: "Oui",
@@ -79,14 +79,14 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
         ar: {
             title: "بناغل الغابة الفاخرة",
             subtitle: "إقامة فاخرة",
-            guests: "شخصين",
+            guests: "شخصين + طفل واحد",
             private: "خاص",
             rest: "استجمام",
             selectDates: "اختر التواريخ",
             highDemand: "تم حجز ٧٠٪ من التواريخ لهذا الشهر. احجز مبكراً لتجنب خيبة الأمل.",
             pricePerNight: "السعر لليلة",
             breakfast: "شامل الفطور",
-            extraKid: "طفل إضافي +150 درهم",
+            extraKid: "الطفل الثاني +150 درهم",
             addKidsQuestion: "أطفال إضافيون؟",
             howMany: "كم عددهم؟",
             yes: "نعم",
@@ -159,7 +159,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     const nights = selectedDates.length;
 
     // Price Calculation
-    const totalExtraKidsCost = (addKids && kidsCount > 0) ? (kidsCount * extraKidPrice) : 0;
+    const totalExtraKidsCost = (addKids && kidsCount > 1) ? (extraKidPrice) : 0;
     const totalPricePerNight = pricePerNight + totalExtraKidsCost;
     const grandTotal = nights * totalPricePerNight;
 
@@ -336,7 +336,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                                     </div>
                                     <div className="mt-4 text-right">
                                         <span className="text-xs font-serif text-sand-gold italic">
-                                            + {kidsCount * extraKidPrice} MAD / {t.night}
+                                            + {(kidsCount > 1 ? extraKidPrice : 0)} MAD / {t.night}
                                         </span>
                                     </div>
                                 </motion.div>
@@ -356,8 +356,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
 
                         {addKids && (
                             <div className="flex justify-between text-xs mb-4 text-jungle-green/80 border-t border-dashed border-jungle-green/10 pt-2">
-                                <span>{kidsCount} {kidsCount === 1 ? t.kid : t.kids} x {nights} {t.nights}</span>
-                                <span className="font-bold">+ {totalExtraKidsCost * nights} MAD</span>
+                                <span>{kidsCount > 1 ? "2nd Child" : "1st Child Included"} x {nights} {t.nights}</span>
+                                <span className="font-bold">+ {(kidsCount > 1 ? extraKidPrice * nights : 0)} MAD</span>
                             </div>
                         )}
 
