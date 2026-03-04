@@ -27,7 +27,7 @@ import { JungleConnect } from './JungleConnect';
 import { DigitalMenu } from './DigitalMenu';
 import { BungalowBooking } from './BungalowBooking';
 import { NightSkyMap } from './NightSkyMap';
-import { AnimalDiscoveryExhibition } from './AnimalCircuitExhibition';
+import { FunPlay } from './FunPlay';
 import { FunPlay } from './FunPlay';
 import { ParkHours } from './ParkHours';
 import { CateringPartyservice } from './CateringPartyservice';
@@ -90,7 +90,6 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 { id: 1, title: "Jungle Bungalow", sub: "Luxury Stays", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "Jungle Restaurant", sub: "Fine Dining", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
                 { id: 3, title: "Berber Tents", sub: "Authentic Experience", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: tentDayImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
-                { id: 4, title: "Animal Park", sub: "Animal Discovery", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: lamaImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
                 { id: 5, title: "Kid's & Equitation", sub: "Family Fun", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: skyViewImg, action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
                 { id: 6, title: "Aqua Jungle", sub: "Poolside Serenity", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: poolImg, action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
             ],
@@ -123,7 +122,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 teamBuilding: { title: "Team Building", subtitle: "Corporate" },
                 school: { title: "School Trips", subtitle: "Education" },
                 hours: { title: "Opening Hours", subtitle: "Time" },
-                animals: { title: "Animal Circuit", subtitle: "Animals" },
+                animals: { title: "Circuit", subtitle: "Animals" },
                 map: { title: "Park Map", subtitle: "Location" }
             },
             pricingModal: {
@@ -178,7 +177,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             brand: "Natura Jungle",
             tagline: "Respirer la Nature",
             explore: "Exploration Nature",
-            map_title: "Le Circuit Animalier",
+            map_title: "Circuit",
             map_status: "Suivi en Direct",
             kitchen: "Commande sur Place",
             kitchen_status: "Cuisine Ouverte",
@@ -191,7 +190,6 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 { id: 1, title: "Bungalow Jungle", sub: "Séjours de Luxe", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "Restaurant Jungle", sub: "Gastronomie", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
                 { id: 3, title: "Tentes Berbères", sub: "Expérience Authentique", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: tentDayImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
-                { id: 4, title: "Parc Animalier", sub: "Circuit Animalier", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: lamaImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
                 { id: 5, title: "Enfants & Équitation", sub: "Plaisir en Famille", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: skyViewImg, action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
                 { id: 6, title: "Aqua Jungle", sub: "Sérénité au Bord de l'Eau", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: poolImg, action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
             ],
@@ -224,7 +222,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 teamBuilding: { title: "Team Building", subtitle: "Entreprise" },
                 school: { title: "Sorties Scolaires", subtitle: "Éducation" },
                 hours: { title: "Heures d'Ouverture", subtitle: "Horaires" },
-                animals: { title: "Circuit Animalier", subtitle: "Animaux" },
+                animals: { title: "Circuit", subtitle: "Animaux" },
                 map: { title: "Plan du Parc", subtitle: "Localisation" }
             },
             pricingModal: {
@@ -286,7 +284,6 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 { id: 1, title: "بناغل الغابة", sub: "إقامات فاخرة", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "مطعم الغابة", sub: "أرقى المأكولات", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
                 { id: 3, title: "خيام بربرية", sub: "أصالة وراحة", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: tentDayImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
-                { id: 4, title: "حديقة الحيوان", sub: "مسار الطبيعة", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: lamaImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
                 { id: 5, title: "الأطفال والفروسية", sub: "مرح لكل العائلة", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: skyViewImg, action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
                 { id: 6, title: "أكوا جانغل", sub: "استرخاء المسبح", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: poolImg, action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
             ],
@@ -319,7 +316,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 teamBuilding: { title: "بناء الفريق", subtitle: "شركات" },
                 school: { title: "الرحلات المدرسية", subtitle: "تعليم" },
                 hours: { title: "ساعات العمل", subtitle: "توقيت" },
-                animals: { title: "حلبة الحيوانات", subtitle: "حيوانات" },
+                animals: { title: "Circuit", subtitle: "حيوانات" },
                 map: { title: "خريطة المنتزه", subtitle: "موقع" }
             },
             pricingModal: {
@@ -1143,8 +1140,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        onClick={() => setCurrentView('exhibition')}
-                        className={`w-16 h-16 rounded-full bg-luxury-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow transition-all duration-500 ${currentView === 'exhibition' ? 'scale-110 rotate-12' : ""}`}
+                        onClick={() => setCurrentView('circuit-map')}
+                        className={`w-16 h-16 rounded-full bg-luxury-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow transition-all duration-500 ${currentView === 'circuit-map' ? 'scale-110 rotate-12' : ""}`}
                     >
                         <Palmtree className="w-8 h-8" />
                     </motion.button>
@@ -1209,18 +1206,34 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         />
                     </motion.div>
                 )}
-                {currentView === 'exhibition' && (
+                {currentView === 'circuit-map' && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[180] bg-egg-shell dark:bg-ink-black overflow-hidden"
+                        className="fixed inset-0 z-[220] bg-black overflow-hidden flex flex-col pt-16"
                     >
-                        <AnimalDiscoveryExhibition
-                            isRTL={isRTL}
-                            language={currentLanguage}
-                            onBack={() => setCurrentView('base')}
-                        />
+                        <div className="absolute top-6 left-6 z-50">
+                            <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                onClick={() => setCurrentView('base')}
+                                className="w-12 h-12 rounded-full glass-dark flex items-center justify-center text-white border border-white/10"
+                            >
+                                <X className="w-6 h-6" />
+                            </motion.button>
+                        </div>
+                        <div className="flex-1 w-full h-full p-4 md:p-12 flex items-center justify-center overflow-auto">
+                            <img
+                                src="/assets/natura/Natura view from above MAIN PAGE BCKGRND.jpeg"
+                                alt="Circuit"
+                                className="max-w-none md:max-w-full max-h-none md:max-h-full w-auto h-auto object-contain shadow-2xl rounded-3xl"
+                                style={{
+                                    maxWidth: '200%',
+                                    maxHeight: '200%'
+                                }}
+                            />
+                        </div>
                     </motion.div>
                 )}
                 {currentView === 'fun' && (

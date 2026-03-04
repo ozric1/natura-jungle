@@ -103,45 +103,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                 }
             ]
         },
-        park: {
-            slides: [
-                {
-                    image: '/assets/natura/animals/ducks.jpg',
-                    title: { en: "Animal Discovery", fr: "Découverte Animalière", ar: "اكتشاف حيواني" },
-                    desc: { en: "Meet the majestic animals of Natura.", fr: "Rencontrez la faune majestueuse de Natura.", ar: "تعرف على الحيوانات المهيبة في نطورا." }
-                },
-                {
-                    image: '/assets/natura/animals/austrich.jpg',
-                    title: { en: "Animal Kingdom", fr: "Royaume Animal", ar: "مملكة الحيوان" },
-                    desc: { en: "Step into the heart of nature.", fr: "Entrez au cœur de la nature.", ar: "ادخل إلى قلب الطبيعة." }
-                },
-                {
-                    image: '/assets/natura/animals/DSC00006.jpg',
-                    title: { en: "Gentle Creatures", fr: "Créatures Douces", ar: "كائنات هادئة" },
-                    desc: { en: "Peaceful encounters in nature.", fr: "Rencontres paisibles dans la nature.", ar: "لقاءات هادئة في الطبيعة." }
-                },
-                {
-                    image: '/assets/natura/animals/DSC00009.jpg',
-                    title: { en: "Nature's Wonders", fr: "Merveilles de la Nature", ar: "عجائب الطبيعة" },
-                    desc: { en: "Explore the diversity of the park.", fr: "Explorez la diversité du parc.", ar: "استكشف تنوع المنتزه." }
-                },
-                {
-                    image: '/assets/natura/animals/DSC00014.jpg',
-                    title: { en: "Natural Habitat", fr: "Habitat Naturel", ar: "موائل طبيعية" },
-                    desc: { en: "Animals in their natural surroundings.", fr: "Des animaux dans leur environnement naturel.", ar: "حيوانات في محيطها الطبيعي." }
-                },
-                {
-                    image: '/assets/natura/animals/DSC00018.jpg',
-                    title: { en: "Eco Sanctuary", fr: "Sanctuaire Eco", ar: "ملاذ بيئي" },
-                    desc: { en: "A safe haven for every species.", fr: "Un refuge sûr pour chaque espèce.", ar: "ملجأ آمن لكل الأنواع." }
-                },
-                {
-                    image: '/assets/natura/animals/blackdove.jpg',
-                    title: { en: "Jungle Life", fr: "Vie dans la Jungle", ar: "حياة الغابة" },
-                    desc: { en: "Experience the rhythm of the forest.", fr: "Découvrez le rythme de la forêt.", ar: "اختبر إيقاع الغابة." }
-                }
-            ]
-        },
+
         kids: {
             slides: [
                 {
