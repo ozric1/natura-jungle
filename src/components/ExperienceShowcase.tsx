@@ -61,7 +61,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     desc: { en: "Experience fine dining in the heart of nature.", fr: "Découvrez une cuisine raffinée au cœur de la nature.", ar: "جرب المأكولات الراقية في قلب الطبيعة." }
                 },
                 {
-                    image: '/assets/natura/catering/DSC09970.jpg',
+                    image: '/assets/natura/JUNGLE RESTAURANT 5.jpeg',
                     title: { en: "The Artist Kitchen", fr: "La Cuisine d'Artiste", ar: "مطبخ الفنان" },
                     desc: { en: "Where our chef prepares your gourmet meals.", fr: "Où notre chef prépare vos repas gastronomiques.", ar: "حيث يحضر الشيف وجباتك الفاخرة." }
                 },
@@ -97,7 +97,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     desc: { en: "Authentic living in the heart of the jungle.", fr: "Vivre l'authentique au cœur de la jungle.", ar: "حياة أصيلة في قلب الغابة." }
                 },
                 {
-                    image: '/assets/natura/tents/DSC03202.jpg',
+                    image: '/assets/natura/detente berber.jpeg',
                     title: { en: "Natural Comfort", fr: "Confort Naturel", ar: "راحة طبيعية" },
                     desc: { en: "Wake up to the sounds of nature.", fr: "Réveillez-vous aux sons de la nature.", ar: "استيقظ على أنغام الطبيعة." }
                 }
