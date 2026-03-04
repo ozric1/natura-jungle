@@ -164,9 +164,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     title: { en: "Outdoor Fun", fr: "Plaisir Extérieur", ar: "متعة في الخارج" },
                     desc: { en: "Safe playgrounds for all ages.", fr: "Des aires de jeux sécurisées pour tous les âges.", ar: "ملاعب آمنة لجميع الأعمار." }
                 }
-            ],
-            actionLabel: { en: "Fun & Play", fr: "Fun & Jeux", ar: "المرح واللعب" },
-            actionTarget: "fun"
+            ]
         },
         pool: {
             slides: [
