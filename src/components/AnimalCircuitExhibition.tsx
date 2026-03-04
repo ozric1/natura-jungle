@@ -2,19 +2,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { ChevronLeft, Info, Bookmark, Share2, Sparkles, ArrowRight, Search } from 'lucide-react';
 import { useState, useRef, type MouseEvent } from 'react';
 import { AnimalDiscovery } from './AnimalDiscovery';
-const lamaImg = '/assets/natura/lamaImg.jpeg';
-const deerImg = '/assets/natura/animals/deer.jpg';
-const jungleCatImg = '/assets/natura/jungleCat.jpeg';
-const wallabyImg = '/assets/natura/wallaby_update.jpg';
-const pigsImg = '/assets/natura/pigs.jpg';
-const duckImg = '/assets/natura/animals/ducks.jpg';
-const blackSwanImg = '/assets/natura/black_swan_update.jpg';
-const horseImg = '/assets/natura/horse_update.jpg';
-const ostrichImg = '/assets/natura/animals/austrich.jpg';
-const tibetGoatImg = '/assets/natura/tibet_goat_update.jpg';
-const peacockImg = '/assets/natura/peacock_update.jpg';
-const blackDoveImg = '/assets/natura/animals/blackdove.jpg';
-const highlightDSC09 = '/assets/natura/animals/DSC00009.jpg';
+
 
 interface AnimalExhibit {
     id: string;
