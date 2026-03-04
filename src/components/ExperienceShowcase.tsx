@@ -156,9 +156,9 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     desc: { en: "Fun and games in the fresh air.", fr: "Jeux et divertissements au grand air.", ar: "ألعاب ومرح في الهواء الطلق." }
                 },
                 {
-                    image: '/assets/natura/gaming space/DSC00041.jpg',
-                    title: { en: "Equitation Academy", fr: "Académie d'Équitation", ar: "أكاديمية الفروسية" },
-                    desc: { en: "Learn to ride in a safe environment.", fr: "Apprenez à monter à cheval en toute sécurité.", ar: "تعلم الفروسية في بيئة آمنة." }
+                    image: '/assets/natura/gaming space/DSC03232.jpg',
+                    title: { en: "Riding Academy", fr: "Académie d'Équitation", ar: "أكاديمية الفروسية" },
+                    desc: { en: "Learn to ride a horse safely.", fr: "Apprenez à monter à cheval en toute sécurité.", ar: "تعلم الفروسية في بيئة آمنة." }
                 },
                 {
                     image: '/assets/natura/gaming space/DSC00047.jpg',
@@ -274,7 +274,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                         key={page + 'text'}
                         initial={{ y: 30, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        className="space-y-4"
+                        className="space-y-4 flex flex-col items-center"
                     >
                         <h2 className="text-2xl sm:text-4xl lg:text-6xl font-serif text-white leading-tight drop-shadow-lg">
                             {currentSlide.title[language]}
@@ -282,21 +282,24 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                         <p className="text-sm sm:text-lg text-white/90 font-medium drop-shadow-md">
                             {currentSlide.desc[language]}
                         </p>
+
+                        {/* Persistent Action Button - Now below text */}
+                        {currentContent.actionLabel && (
+                            <motion.button
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3 }}
+                                onClick={() => onAction(currentContent.actionTarget!)}
+                                className="mt-8 bg-luxury-gold text-jungle-deep px-8 py-4 sm:px-12 sm:py-5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em] flex items-center gap-2 sm:gap-4 gold-shadow hover:scale-105 active:scale-95 transition-all shadow-2xl whitespace-nowrap pointer-events-auto"
+                            >
+                                <span>{currentContent.actionLabel[language]}</span>
+                                <ArrowRight className={`w-4 h-4 sm:w-5 sm:h-5 ${isRTL ? 'rotate-180' : ''}`} />
+                            </motion.button>
+                        )}
                     </motion.div>
                 </div>
 
-                {/* Persistent Bottom Action Button */}
-                {currentContent.actionLabel && (
-                    <div className="absolute bottom-32 sm:bottom-12 left-1/2 -translate-x-1/2 z-50 w-auto">
-                        <button
-                            onClick={() => onAction(currentContent.actionTarget!)}
-                            className="bg-luxury-gold text-jungle-deep px-8 py-4 sm:px-12 sm:py-5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em] flex items-center gap-2 sm:gap-4 gold-shadow hover:scale-105 active:scale-95 transition-all shadow-2xl whitespace-nowrap"
-                        >
-                            <span>{currentContent.actionLabel[language]}</span>
-                            <ArrowRight className={`w-4 h-4 sm:w-5 sm:h-5 ${isRTL ? 'rotate-180' : ''}`} />
-                        </button>
-                    </div>
-                )}
+
 
                 {/* Navigation and Dots Container - pushed to bottom corners or sides */}
                 <div className="absolute inset-x-0 bottom-0 p-8 flex justify-center items-end pointer-events-none">
