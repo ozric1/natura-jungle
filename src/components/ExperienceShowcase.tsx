@@ -17,12 +17,6 @@ interface Slide {
 }
 
 
-const restau2Img = '/assets/natura/Jungle restau 2.jpeg';
-const restau3Img = '/assets/natura/Jungle Restaurant 3.jpeg';
-const restau5Img = '/assets/natura/JUNGLE RESTAURANT 5.jpeg';
-const restau4Img = '/assets/natura/Jungle RESTAURENT 4.jpeg';
-const tajineImg = '/assets/natura/Jungle restaurant Tajine.jpeg';
-
 export const ExperienceShowcase = ({ type, language, onClose, onAction }: ExperienceShowcaseProps) => {
     const [page, setPage] = useState(0);
     const isRTL = language === 'ar';
