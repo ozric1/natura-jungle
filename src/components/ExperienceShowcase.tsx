@@ -106,12 +106,12 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         park: {
             slides: [
                 {
-                    image: '/assets/natura/animals/DSC00001.jpg',
+                    image: '/assets/natura/animals/ducks.jpg',
                     title: { en: "Animal Discovery", fr: "Découverte Animalière", ar: "اكتشاف حيواني" },
                     desc: { en: "Meet the majestic animals of Natura.", fr: "Rencontrez la faune majestueuse de Natura.", ar: "تعرف على الحيوانات المهيبة في نطورا." }
                 },
                 {
-                    image: '/assets/natura/animals/DSC00003.jpg',
+                    image: '/assets/natura/animals/austrich.jpg',
                     title: { en: "Animal Kingdom", fr: "Royaume Animal", ar: "مملكة الحيوان" },
                     desc: { en: "Step into the heart of nature.", fr: "Entrez au cœur de la nature.", ar: "ادخل إلى قلب الطبيعة." }
                 },
@@ -136,7 +136,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     desc: { en: "A safe haven for every species.", fr: "Un refuge sûr pour chaque espèce.", ar: "ملجأ آمن لكل الأنواع." }
                 },
                 {
-                    image: '/assets/natura/animals/DSC00070.jpg',
+                    image: '/assets/natura/animals/blackdove.jpg',
                     title: { en: "Jungle Life", fr: "Vie dans la Jungle", ar: "حياة الغابة" },
                     desc: { en: "Experience the rhythm of the forest.", fr: "Découvrez le rythme de la forêt.", ar: "اختبر إيقاع الغابة." }
                 }
@@ -163,21 +163,6 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     image: '/assets/natura/gaming space/DSC03228.jpg',
                     title: { en: "Outdoor Fun", fr: "Plaisir Extérieur", ar: "متعة في الخارج" },
                     desc: { en: "Safe playgrounds for all ages.", fr: "Des aires de jeux sécurisées pour tous les âges.", ar: "ملاعب آمنة لجميع الأعمار." }
-                },
-                {
-                    image: '/assets/natura/gaming space/DSC03232.jpg',
-                    title: { en: "Mini Equestrians", fr: "Mini Équestres", ar: "فرسان صغار" },
-                    desc: { en: "Start your journey with horses.", fr: "Commencez votre voyage avec les chevaux.", ar: "ابدأ رحلتك مع الخيول." }
-                },
-                {
-                    image: '/assets/natura/gaming space/DSC03241.jpg',
-                    title: { en: "Active Nature", fr: "Nature Active", ar: "طبيعة نشطة" },
-                    desc: { en: "Run, jump and explore nature.", fr: "Courir, sauter et explorer la nature.", ar: "اركض، اقفز واستكشف الطبيعة." }
-                },
-                {
-                    image: '/assets/natura/gaming space/DSC09995.jpg',
-                    title: { en: "Family Moments", fr: "Moments en Famille", ar: "لحظات عائلية" },
-                    desc: { en: "Creating memories that last a lifetime.", fr: "Créer des souvenirs qui durent toute une vie.", ar: "خلق ذكريات تدوم مدى الحياة." }
                 }
             ],
             actionLabel: { en: "Fun & Play", fr: "Fun & Jeux", ar: "المرح واللعب" },
