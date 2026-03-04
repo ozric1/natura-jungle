@@ -2,15 +2,15 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { ChevronLeft, Info, Bookmark, Share2, Sparkles, ArrowRight, Search } from 'lucide-react';
 import { useState, useRef, type MouseEvent } from 'react';
 import { AnimalDiscovery } from './AnimalDiscovery';
-const lamaImg = '/assets/natura/lama_update.jpg';
-const deerImg = '/assets/natura/deer_update.jpg';
-const wildCatImg = '/assets/natura/wildcat_update.jpg';
+const lamaImg = '/assets/natura/lamaImg.jpeg';
+const deerImg = '/assets/natura/animals/deer.jpg';
+const jungleCatImg = '/assets/natura/jungleCat.jpeg';
 const wallabyImg = '/assets/natura/wallaby_update.jpg';
 const pigsImg = '/assets/natura/pigs.jpg';
-const duckImg = '/assets/natura/duck_update.jpg';
+const duckImg = '/assets/natura/animals/ducks.jpg';
 const blackSwanImg = '/assets/natura/black_swan_update.jpg';
 const horseImg = '/assets/natura/horse_update.jpg';
-const ostrichImg = '/assets/natura/ostrich_update.jpg';
+const ostrichImg = '/assets/natura/animals/austrich.jpg';
 const tibetGoatImg = '/assets/natura/tibet_goat_update.jpg';
 const peacockImg = '/assets/natura/peacock_update.jpg';
 
@@ -19,10 +19,10 @@ interface AnimalExhibit {
     name: { en: string; fr: string; ar: string };
     fact: { en: string; fr: string; ar: string };
     image: string;
-    category: 'Avian' | 'Mammal' | 'Farm' | 'Wild';
+    category: 'Avian' | 'Mammal' | 'Farm' | 'Discovery';
 }
 
-interface WildCircuitExhibitionProps {
+interface AnimalDiscoveryExhibitionProps {
     onBack: () => void;
     isRTL?: boolean;
     language: 'en' | 'fr' | 'ar';
@@ -93,7 +93,7 @@ const InteractiveImage = ({ src, alt, category }: { src: string; alt: string; ca
 };
 
 
-export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildCircuitExhibitionProps) => {
+export const AnimalDiscoveryExhibition = ({ onBack, isRTL = false, language }: AnimalDiscoveryExhibitionProps) => {
     const [selectedAnimal, setSelectedAnimal] = useState<AnimalExhibit | null>(null);
 
     const exhibits: AnimalExhibit[] = [
@@ -161,11 +161,11 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
             category: 'Mammal'
         },
         {
-            id: 'wild-cat',
-            name: { en: 'Wild Cats', fr: 'Chats Sauvages', ar: 'القطط البرية' },
-            fact: { en: 'Agile hunters with keen senses, distinct from their domestic cousins.', fr: 'Chasseurs agiles aux sens aiguisés, distincts de leurs cousins domestiques.', ar: 'صيادون رشيقون ذوو حواس حادة، يختلفون عن أبناء عمومتهم الأليفة.' },
-            image: wildCatImg,
-            category: 'Wild'
+            id: 'jungle-cat',
+            name: { en: 'Jungle Cats', fr: 'Chats de la Jungle', ar: 'قطط الغابة' },
+            fact: { en: 'Agile feline friends with keen senses, living peacefully in our sanctuary.', fr: 'Des félins agiles aux sens aiguisés, vivant paisiblement dans notre sanctuaire.', ar: 'أصدقاء من القطط الرشيقة ذات الحواس الحادة، يعيشون بسلام في محميتنا.' },
+            image: jungleCatImg,
+            category: 'Discovery'
         },
         {
             id: 'small-pigs',
@@ -173,6 +173,20 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
             fact: { en: 'Intelligent and playful, they are a favorite among our younger guests.', fr: 'Intelligents et enjoués, ils sont les favoris de nos plus jeunes invités.', ar: 'ذكية ومرحة، وهي مفضلة لدى زوارنا الصغار.' },
             image: pigsImg,
             category: 'Farm'
+        },
+        {
+            id: 'park-highlight-1',
+            name: { en: 'Gentle Moments', fr: 'Moments de Douceur', ar: 'لحظات هادئة' },
+            fact: { en: 'Every corner of our sanctuary offers a peaceful encounter with nature.', fr: 'Chaque coin de notre sanctuaire offre une rencontre paisible avec la nature.', ar: 'كل ركن في محميتنا يقدم لقاءً هادئاً مع الطبيعة.' },
+            image: '/assets/natura/animals/DSC00006.jpg',
+            category: 'Discovery'
+        },
+        {
+            id: 'park-highlight-2',
+            name: { en: 'Nature Harmony', fr: 'Harmonie Naturelle', ar: 'تناغم الطبيعة' },
+            fact: { en: 'Observing animals in their natural habitat brings a sense of serenity.', fr: 'Observer les animaux dans leur habitat naturel apporte un sentiment de sérénité.', ar: 'مراقبة الحيوانات في بيئتها الطبيعية يمنح شعوراً بالسكينة.' },
+            image: '/assets/natura/animals/DSC00014.jpg',
+            category: 'Discovery'
         },
     ];
 
@@ -185,8 +199,8 @@ export const WildCircuitExhibition = ({ onBack, isRTL = false, language }: WildC
                     <ChevronLeft className={`w-6 h-6 text-pure-nature group-hover:text-luxury-gold ${isRTL ? 'rotate-180' : ''}`} />
                 </button>
                 <div className="text-center">
-                    <h1 className="text-3xl font-serif text-pure-nature tracking-tight">The Wild Circuit</h1>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-gold">Species Discovery Exhibition</p>
+                    <h1 className="text-3xl font-serif text-pure-nature tracking-tight">The Animal Circuit</h1>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-luxury-gold">Animal Discovery Exhibition</p>
                 </div>
                 <div className="w-12 h-12 rounded-2xl bg-luxury-gold text-jungle-deep flex items-center justify-center shadow-lg gold-shadow">
                     <Sparkles className="w-6 h-6 animate-pulse" />

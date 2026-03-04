@@ -33,7 +33,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                 {
                     image: '/assets/natura/more bungalow at night.jpeg',
                     title: { en: "Starry Sanctuary", fr: "Sanctuaire Étoilé", ar: "ملاذ النجوم" },
-                    desc: { en: "Where luxury meets the wild nature.", fr: "Un sanctuaire étoilé où le luxe rencontre la nature sauvage.", ar: "حيث تلتقي الفخامة بالطبيعة البرية." }
+                    desc: { en: "Where luxury meets nature.", fr: "Un sanctuaire étoilé où le luxe rencontre la nature.", ar: "حيث تلتقي الفخامة بالطبيعة." }
                 },
                 {
                     image: '/assets/natura/bugalow.jpeg',
@@ -110,13 +110,13 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
             slides: [
                 {
                     image: '/assets/natura/animals/DSC00001.jpg',
-                    title: { en: "Wild Discovery", fr: "Découverte Sauvage", ar: "اكتشاف بري" },
-                    desc: { en: "Meet the majestic wildlife of Natura.", fr: "Rencontrez la faune majestueuse de Natura.", ar: "تعرف على الحياة البرية المهيبة في نطورا." }
+                    title: { en: "Animal Discovery", fr: "Découverte Animalière", ar: "اكتشاف حيواني" },
+                    desc: { en: "Meet the majestic animals of Natura.", fr: "Rencontrez la faune majestueuse de Natura.", ar: "تعرف على الحيوانات المهيبة في نطورا." }
                 },
                 {
                     image: '/assets/natura/animals/DSC00003.jpg',
                     title: { en: "Animal Kingdom", fr: "Royaume Animal", ar: "مملكة الحيوان" },
-                    desc: { en: "Step into the heart of the wild.", fr: "Entrez au cœur du monde sauvage.", ar: "ادخل إلى قلب الحياة البرية." }
+                    desc: { en: "Step into the heart of nature.", fr: "Entrez au cœur de la nature.", ar: "ادخل إلى قلب الطبيعة." }
                 },
                 {
                     image: '/assets/natura/animals/DSC00006.jpg',
@@ -130,7 +130,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                 },
                 {
                     image: '/assets/natura/animals/DSC00014.jpg',
-                    title: { en: "Wild Habitat", fr: "Habitat Sauvage", ar: "موائل برية" },
+                    title: { en: "Natural Habitat", fr: "Habitat Naturel", ar: "موائل طبيعية" },
                     desc: { en: "Animals in their natural surroundings.", fr: "Des animaux dans leur environnement naturel.", ar: "حيوانات في محيطها الطبيعي." }
                 },
                 {
@@ -175,7 +175,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                 {
                     image: '/assets/natura/gaming space/DSC03241.jpg',
                     title: { en: "Active Nature", fr: "Nature Active", ar: "طبيعة نشطة" },
-                    desc: { en: "Run, jump and explore the wild.", fr: "Courir, sauter et explorer la nature.", ar: "اركض، اقفز واستكشف البرية." }
+                    desc: { en: "Run, jump and explore nature.", fr: "Courir, sauter et explorer la nature.", ar: "اركض، اقفز واستكشف الطبيعة." }
                 },
                 {
                     image: '/assets/natura/gaming space/DSC09995.jpg',
@@ -209,7 +209,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
     useEffect(() => {
         const interval = setInterval(() => {
             setPage(prev => (prev + 1) % currentContent.slides.length);
-        }, 5000);
+        }, 7000);
         return () => clearInterval(interval);
     }, [currentContent.slides.length]);
 
@@ -282,12 +282,12 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     </motion.div>
                 </div>
 
-                {/* Persistent Bottom Center Action Button */}
+                {/* Persistent Bottom Action Button */}
                 {currentContent.actionLabel && (
-                    <div className="absolute bottom-24 sm:bottom-10 left-1/2 -translate-x-1/2 z-50">
+                    <div className="absolute bottom-32 sm:bottom-12 left-1/2 -translate-x-1/2 z-50 w-auto">
                         <button
                             onClick={() => onAction(currentContent.actionTarget!)}
-                            className="bg-luxury-gold text-jungle-deep px-6 py-3 sm:px-12 sm:py-5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] flex items-center gap-2 sm:gap-4 gold-shadow hover:scale-105 active:scale-95 transition-all shadow-2xl"
+                            className="bg-luxury-gold text-jungle-deep px-8 py-4 sm:px-12 sm:py-5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em] flex items-center gap-2 sm:gap-4 gold-shadow hover:scale-105 active:scale-95 transition-all shadow-2xl whitespace-nowrap"
                         >
                             <span>{currentContent.actionLabel[language]}</span>
                             <ArrowRight className={`w-4 h-4 sm:w-5 sm:h-5 ${isRTL ? 'rotate-180' : ''}`} />

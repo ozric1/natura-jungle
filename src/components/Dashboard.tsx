@@ -27,7 +27,7 @@ import { JungleConnect } from './JungleConnect';
 import { DigitalMenu } from './DigitalMenu';
 import { BungalowBooking } from './BungalowBooking';
 import { NightSkyMap } from './NightSkyMap';
-import { WildCircuitExhibition } from './WildCircuitExhibition';
+import { AnimalDiscoveryExhibition } from './AnimalCircuitExhibition';
 import { FunPlay } from './FunPlay';
 import { ParkHours } from './ParkHours';
 import { CateringPartyservice } from './CateringPartyservice';
@@ -75,9 +75,9 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
     const translations = {
         en: {
             brand: "Natura Jungle",
-            tagline: "The Wild Experience",
+            tagline: "Nature's Sanctuary",
             explore: "Experience Zones",
-            map_title: "The Wild Circuit",
+            map_title: "The Animal Circuit",
             map_status: "Live Tracking",
             kitchen: "In-Place Order",
             kitchen_status: "Kitchen Open",
@@ -85,12 +85,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             kitchen_desc: "Relax in your tent or by the pool. Place your order, confirm it, and we'll notify you when it's ready for pickup.",
             order_btn: "Start Your Order",
             about_title: "Breathe in Nature | Natura Jungle Park",
-            about_text: "Escape the city buzz and discover your wild side at Natura Jungle Park—a serene eco-sanctuary just moments from Casablanca and Rabat.",
+            about_text: "Escape the city buzz and reconnect with nature at Natura Jungle Park—a serene eco-sanctuary just moments from Casablanca and Rabat.",
             bundles: [
                 { id: 1, title: "Jungle Bungalow", sub: "Luxury Stays", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "Jungle Restaurant", sub: "Fine Dining", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
                 { id: 3, title: "Berber Tents", sub: "Authentic Experience", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: tentDayImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
-                { id: 4, title: "Animal Park", sub: "Wild Circuit", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: lamaImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
+                { id: 4, title: "Animal Park", sub: "Animal Discovery", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: lamaImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
                 { id: 5, title: "Kid's & Equitation", sub: "Family Fun", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: skyViewImg, action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
                 { id: 6, title: "Aqua Jungle", sub: "Poolside Serenity", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: poolImg, action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
             ],
@@ -157,7 +157,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 story: "Our Story",
                 contact: "Contact Us",
                 mission_text: "Natura Jungle Park is your eco-friendly escape near Casablanca and Rabat. Our mission is to provide every visitor a peaceful environment to enjoy quality time. We believe in protecting nature while creating magical memories for everyone.",
-                story_text: "We started Natura Jungle because we love family time and nature. With our expert background in relaxation, we dreamed of a place where everyone can feel at home in the wild. Today, that dream is a reality. We offer professional service with a warm, family touch in the heart of the forest."
+                story_text: "We started Natura Jungle because we love family time and nature. With our expert background in relaxation, we dreamed of a place where everyone can feel at home in nature. Today, that dream is a reality. We offer professional service with a warm, family touch in the heart of the forest."
             },
             topNav: {
                 hours: "Hours",
@@ -176,8 +176,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
         fr: {
             brand: "Natura Jungle",
             tagline: "Respirer la Nature",
-            explore: "Exploration auvage",
-            map_title: "Le Circuit Sauvage",
+            explore: "Exploration Nature",
+            map_title: "Le Circuit Animalier",
             map_status: "Suivi en Direct",
             kitchen: "Commande sur Place",
             kitchen_status: "Cuisine Ouverte",
@@ -185,12 +185,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             kitchen_desc: "Détendez-vous dans votre tente ou au bord de la piscine. Passez commande et nous vous préviendrons dès qu'elle est prête.",
             order_btn: "Lancer ma Commande",
             about_title: "Respirez la Nature | Natura Jungle Park",
-            about_text: "Évadez-vous de l'agitation urbaine et découvrez votre côté sauvage au Natura Jungle Park—un sanctuaire écologique serein à quelques pas de Casablanca et Rabat.",
+            about_text: "Évadez-vous de l'agitation urbaine et reconnectez avec la nature au Natura Jungle Park—un sanctuaire écologique serein à quelques pas de Casablanca et Rabat.",
             bundles: [
                 { id: 1, title: "Bungalow Jungle", sub: "Séjours de Luxe", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "Restaurant Jungle", sub: "Gastronomie", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
                 { id: 3, title: "Tentes Berbères", sub: "Expérience Authentique", color: "from-[#a08860] to-[#0b1d12]", icon: Tent, image: tentDayImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
-                { id: 4, title: "Parc Animalier", sub: "Circuit Sauvage", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: lamaImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
+                { id: 4, title: "Parc Animalier", sub: "Circuit Animalier", color: "from-[#88a070] to-[#0b1d12]", icon: Palmtree, image: lamaImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
                 { id: 5, title: "Enfants & Équitation", sub: "Plaisir en Famille", color: "from-[#c96b4d] to-[#0b1d12]", icon: Sparkles, image: skyViewImg, action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
                 { id: 6, title: "Aqua Jungle", sub: "Sérénité au Bord de l'Eau", color: "from-[#1a3a3a] to-[#0b1d12]", icon: Waves, image: poolImg, action: () => { setActiveExperience('pool'); setCurrentView('experience'); } }
             ],
@@ -269,9 +269,9 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
         },
         ar: {
             brand: "نطورا جانغل",
-            tagline: "تجربة برية لا تُنسى",
+            tagline: "تجربة طبيعية لا تُنسى",
             explore: "مناطق الاستكشاف",
-            map_title: "المسار البري",
+            map_title: "مسار الحيوانات",
             map_status: "تتبع مباشر",
             kitchen: "طلب من مكانك",
             kitchen_status: "المطبخ مفتوح",
@@ -279,7 +279,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             kitchen_desc: "استرخِ في خيمتك أو بجانب المسبح. اطلب، أكد طلبك، وسنخطرك فور جاهزيته لتستلمه وتستمتع به.",
             order_btn: "ابدأ الطلب الآن",
             about_title: "استنشق عبير الطبيعة | منتزه نطورا جانغل",
-            about_text: "اهرب من صخب المدينة واكتشف جانبك البري في منتزه ناتورا جانغل—ملاذك البيئي الهادئ على بعد دقائق من الدار البيضاء والرباط.",
+            about_text: "اهرب من صخب المدينة واكتشف جمال الطبيعة في منتزه ناتورا جانغل—ملاذك البيئي الهادئ على بعد دقائق من الدار البيضاء والرباط.",
             bundles: [
                 { id: 1, title: "بناغل الغابة", sub: "إقامات فاخرة", color: "from-[#1a2f1a] to-[#0b1d12]", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "مطعم الغابة", sub: "أرقى المأكولات", color: "from-[#3d5a45] to-[#0b1d12]", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
@@ -1129,53 +1129,62 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             </main>
 
             {/* Premium Visitor Platform Bottom Nav */}
-            <nav className="fixed bottom-6 left-6 right-6 h-20 nav-island flex lg:hidden justify-around items-center px-6 z-50">
-                <motion.button
-                    whileTap={{ y: -5 }}
-                    onClick={() => setCurrentView('hours')}
-                    className={`flex flex-col items-center gap-1 ${currentView === 'hours' ? 'text-sand-gold' : 'text-white/40'}`}
-                >
-                    <Clock className="w-5 h-5" />
-                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'المواعيد' : (translations[currentLanguage] as any).navigation.hours.subtitle}</span>
-                </motion.button>
-
-                <motion.button
-                    whileTap={{ y: -5 }}
-                    onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')}
-                    className="flex flex-col items-center gap-1 text-white/40"
-                >
-                    <MapPin className="w-5 h-5" />
-                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'الخريطة' : (translations[currentLanguage] as any).navigation.map.title}</span>
-                </motion.button>
-
-                <div className="relative -mt-12">
-                    <div className="absolute inset-0 bg-sand-gold blur-2xl opacity-40 rounded-full" />
+            <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 w-[92%] max-w-sm h-20 glass-dark rounded-[2.5rem] border border-white/10 flex lg:hidden items-center justify-around px-4 z-[90] shadow-2xl">
+                <div className="flex-1 flex justify-center">
                     <motion.button
                         whileTap={{ scale: 0.9 }}
+                        onClick={() => setCurrentView('hours')}
+                        className={`flex flex-col items-center gap-1 transition-colors ${currentView === 'hours' ? 'text-luxury-gold' : 'text-white/30 hover:text-white/60'}`}
+                    >
+                        <Clock className="w-5 h-5" />
+                        <span className="text-[7px] font-black uppercase tracking-widest">{isRTL ? 'المواعيد' : 'Hours'}</span>
+                    </motion.button>
+                </div>
+
+                <div className="flex-1 flex justify-center">
+                    <motion.button
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')}
+                        className="flex flex-col items-center gap-1 text-white/30 hover:text-white/60 transition-colors"
+                    >
+                        <MapPin className="w-5 h-5" />
+                        <span className="text-[7px] font-black uppercase tracking-widest">{isRTL ? 'الخريطة' : 'Map'}</span>
+                    </motion.button>
+                </div>
+
+                <div className="relative -mt-16 group">
+                    <div className="absolute inset-0 bg-luxury-gold blur-2xl opacity-20 group-hover:opacity-40 transition-opacity rounded-full" />
+                    <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
                         onClick={() => setCurrentView('exhibition')}
-                        className={`w-16 h-16 rounded-full bg-sand-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow ${currentView === 'exhibition' ? 'scale-110 ring-4 ring-sand-gold/20' : ""}`}
+                        className={`w-16 h-16 rounded-full bg-luxury-gold flex items-center justify-center text-jungle-green shadow-2xl relative z-10 gold-shadow transition-all duration-500 ${currentView === 'exhibition' ? 'scale-110 rotate-12' : ""}`}
                     >
                         <Palmtree className="w-8 h-8" />
                     </motion.button>
                 </div>
 
-                <motion.button
-                    whileTap={{ y: -5 }}
-                    onClick={() => setCurrentView('menu')}
-                    className={`flex flex-col items-center gap-1 ${currentView === 'menu' ? 'text-sand-gold' : 'text-white/40'}`}
-                >
-                    <Utensils className="w-5 h-5" />
-                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'المطبخ' : 'Kitchen'}</span>
-                </motion.button>
+                <div className="flex-1 flex justify-center">
+                    <motion.button
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => setCurrentView('menu')}
+                        className={`flex flex-col items-center gap-1 transition-colors ${currentView === 'menu' ? 'text-luxury-gold' : 'text-white/30 hover:text-white/60'}`}
+                    >
+                        <Utensils className="w-5 h-5" />
+                        <span className="text-[7px] font-black uppercase tracking-widest">{isRTL ? 'المطبخ' : 'Kitchen'}</span>
+                    </motion.button>
+                </div>
 
-                <motion.button
-                    whileTap={{ y: -5 }}
-                    onClick={toggleNightMode}
-                    className="flex flex-col items-center gap-1 text-white/40"
-                >
-                    {isNightMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                    <span className="text-[8px] font-bold uppercase tracking-widest">{isRTL ? 'الوضع' : 'Theme'}</span>
-                </motion.button>
+                <div className="flex-1 flex justify-center">
+                    <motion.button
+                        whileTap={{ scale: 0.9 }}
+                        onClick={toggleNightMode}
+                        className="flex flex-col items-center gap-1 text-white/30 hover:text-white/60 transition-colors"
+                    >
+                        {isNightMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                        <span className="text-[7px] font-black uppercase tracking-widest">{isRTL ? 'الوضع' : 'Theme'}</span>
+                    </motion.button>
+                </div>
             </nav>
 
             {/* View Transitions */}
@@ -1221,7 +1230,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         exit={{ opacity: 0 }}
                         className="fixed inset-0 z-[180] bg-egg-shell dark:bg-ink-black overflow-hidden"
                     >
-                        <WildCircuitExhibition
+                        <AnimalDiscoveryExhibition
                             isRTL={isRTL}
                             language={currentLanguage}
                             onBack={() => setCurrentView('base')}
