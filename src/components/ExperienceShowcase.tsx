@@ -110,6 +110,11 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     image: '/assets/natura/berber tent at night.jpeg',
                     title: { en: "Enchanted Nights", fr: "Nuits Enchantées", ar: "ليالي ساحرة" },
                     desc: { en: "Experience the magic of the jungle after sunset.", fr: "Découvrez la magie de la jungle après le coucher du soleil.", ar: "اختبر سحر الغابة بعد غروب الشمس." }
+                },
+                {
+                    image: '/assets/natura/night tent.jpeg',
+                    title: { en: "Starry Night", fr: "Nuit Étoilée", ar: "ليلة مرصعة بالنجوم" },
+                    desc: { en: "Experience the magic of the desert night.", fr: "Découvrez la magie de la nuit dans le désert.", ar: "جرب سحر الصحراء ليلاً." }
                 }
             ]
         },
@@ -174,6 +179,11 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     image: '/assets/natura/gaming space/DSC03228.jpg',
                     title: { en: "Outdoor Fun", fr: "Plaisir Extérieur", ar: "متعة في الخارج" },
                     desc: { en: "Safe playgrounds for all ages.", fr: "Des aires de jeux sécurisées pour tous les âges.", ar: "ملاعب آمنة لجميع الأعمار." }
+                },
+                {
+                    image: '/assets/natura/pond_update.jpg',
+                    title: { en: "Nature's Harmony", fr: "Harmonie Naturelle", ar: "تناغم الطبيعة" },
+                    desc: { en: "Enjoy the serenity of our pond area.", fr: "Profitez de la sérénité de notre espace étang.", ar: "استمتع بهدوء منطقة البركة." }
                 }
             ]
         },

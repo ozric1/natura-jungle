@@ -75,6 +75,16 @@ export const SmartConcierge = ({ language }: SmartConciergeProps) => {
                 onClick={() => setIsExpanded(!isExpanded)}
                 className="rounded-[3rem] p-10 lg:p-14 relative overflow-hidden group border border-luxury-gold/10 cursor-pointer bg-[#0b1d12] shadow-2xl"
             >
+                {/* Welcoming Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <img 
+                        src="/assets/natura/night stays.jpeg" 
+                        className="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-1000 object-center"
+                        alt="Service Express Welcome"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0b1d12] via-[#0b1d12]/60 to-transparent" />
+                </div>
+
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-50" />

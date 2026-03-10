@@ -37,7 +37,7 @@ const cateringImg = '/assets/natura/Jungle Restaurant.jpeg';
 const tentDayImg = '/assets/natura/berber tent at day.jpeg';
 const lamaImg = '/assets/natura/animal circuit Lama.jpeg';
 const poolImg = '/assets/natura/pool.jpeg';
-const skyViewImg = '/assets/natura/Natura sky view MAIN PAGE BKGRND TWO.jpeg';
+const skyViewImg = '/assets/natura/gaming space/DSC03228.jpg';
 const packDayImg = '/assets/natura/WhatsApp Image 2026-02-13 at 13.42.27.jpeg';
 
 export interface DashboardProps {
@@ -434,6 +434,22 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     className="inline-block px-4 py-1 rounded-full border border-luxury-gold/30 bg-luxury-gold/5"
                                 >
                                     <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-luxury-gold">Explore Natura</span>
+                                </motion.div>
+                                <motion.div
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.25 }}
+                                    className="absolute top-8 right-8 lg:top-12 lg:right-12 z-20 flex gap-4"
+                                >
+                                    {['fr', 'en', 'ar'].filter(lang => lang !== currentLanguage).map((lang) => (
+                                        <button
+                                            key={lang}
+                                            onClick={() => setLanguage(lang as any)}
+                                            className="px-3 py-1 rounded-full border border-luxury-gold/30 bg-luxury-gold/5 text-[10px] font-bold tracking-widest text-luxury-gold hover:bg-luxury-gold hover:text-jungle-deep transition-all uppercase"
+                                        >
+                                            {lang === 'ar' ? 'AR' : lang.toUpperCase()}
+                                        </button>
+                                    ))}
                                 </motion.div>
                                 <motion.h2
                                     initial={{ y: 20, opacity: 0 }}
@@ -842,12 +858,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
                 <div className="flex-1 flex justify-end items-center gap-4">
                     {/* Language Switcher */}
-                    <div className="hidden md:flex items-center gap-3 mr-2">
+                    <div className="flex items-center gap-3 mr-2">
                         {['fr', 'en', 'ar'].filter(lang => lang !== currentLanguage).map((lang) => (
                             <button
                                 key={lang}
                                 onClick={() => setLanguage(lang as any)}
-                                className="text-[10px] font-bold tracking-widest text-luxury-gold hover:text-white transition-colors uppercase"
+                                className="text-[10px] font-bold tracking-widest text-luxury-gold hover:text-white transition-colors uppercase px-2 py-1 rounded-md bg-white/5 border border-white/5"
                             >
                                 {lang === 'ar' ? 'AR' : lang.toUpperCase()}
                             </button>

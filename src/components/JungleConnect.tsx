@@ -85,7 +85,7 @@ export const JungleConnect = ({ isRTL = false, language = 'en' }: JungleConnectP
             user: "Yassine J.",
             handle: "@yassine_eat",
             location: "Jungle Restaurant",
-            image: '/assets/natura/Jungle Restaurant 3.jpeg',
+            image: '/assets/natura/Jungle restau 2.jpeg',
             likes: "920"
         }
     ];
