@@ -717,6 +717,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     <h3 className="text-3xl lg:text-5xl font-serif text-white">
                                         {text.pricingModal.subtitle}
                                     </h3>
+                                </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
                                     {/* Park Entry */}
@@ -813,6 +814,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                                 {text.pricingModal.bungalow.additional}
                                             </span>
                                         </p>
+                                        <div className="mt-auto pt-6">
+                                            <button
+                                                onClick={() => { setShowPricing(false); setActiveExperience('bungalow'); setCurrentView('experience'); }}
+                                                className="w-full py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
+                                            >
+                                                {text.pricingModal.bungalow.book}
                                             </button>
                                         </div>
                                     </div>
