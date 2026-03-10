@@ -150,6 +150,16 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     desc: "1 Couple + 1 Kid. Breakfast & Activities included.",
                     additional: "+150 DH / 2nd Child",
                     book: "Book Now"
+                },
+                activities: {
+                    title: "Activities & Leisure",
+                    gaming: "Kids Gaming Space",
+                    gamingDesc: "Unlimited bracelet access.",
+                    poney: "Poney Ride",
+                    poneyDesc: "10 minutes of fun ride.",
+                    horse: "Horse Ride",
+                    horseDesc: "10 minutes equestrian experience.",
+                    book: "Book Now"
                 }
             },
             menu: {
@@ -251,6 +261,16 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     desc: "1 Couple + 1 Enfant. Petit-déjeuner et activités inclus.",
                     additional: "+150 DH / 2ème Enfant",
                     book: "Réserver"
+                },
+                activities: {
+                    title: "Activités & Loisirs",
+                    gaming: "Espace jeux enfants",
+                    gamingDesc: "Bracelet illimité.",
+                    poney: "Balade à Poney",
+                    poneyDesc: "10 minutes.",
+                    horse: "Équitation (Cheval)",
+                    horseDesc: "10 minutes.",
+                    book: "Réserver"
                 }
             },
             menu: {
@@ -345,6 +365,16 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     perNight: "لليلة الواحدة",
                     desc: "زوجان + طفل واحد. وجبة الإفطار والأنشطة مشمولة.",
                     additional: "+150 درهم / الطفل الثاني",
+                    book: "احجز الآن"
+                },
+                activities: {
+                    title: "الأنشطة والترفيه",
+                    gaming: "منطقة ألعاب الأطفال",
+                    gamingDesc: "سوار اشتراك غير محدود.",
+                    poney: "ركوب البوني",
+                    poneyDesc: "10 دقائق.",
+                    horse: "ركوب الخيل",
+                    horseDesc: "10 دقائق.",
                     book: "احجز الآن"
                 }
             },
@@ -687,9 +717,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     <h3 className="text-3xl lg:text-5xl font-serif text-white">
                                         {text.pricingModal.subtitle}
                                     </h3>
-                                </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
                                     {/* Park Entry */}
                                     <div className="bg-white/5 rounded-[2rem] p-8 hover:bg-white/10 transition-colors border border-white/10 relative group flex flex-col h-full">
                                         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
@@ -784,13 +813,53 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                                 {text.pricingModal.bungalow.additional}
                                             </span>
                                         </p>
-                                        <div className="mt-auto pt-6">
-                                            <button
-                                                onClick={() => { setShowPricing(false); setActiveExperience('bungalow'); setCurrentView('experience'); }}
-                                                className="w-full py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
-                                            >
-                                                {text.pricingModal.bungalow.book}
                                             </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Activities & Leisure */}
+                                    <div className="bg-white/5 rounded-[2rem] p-8 hover:bg-white/10 transition-colors border border-white/10 relative group flex flex-col h-full md:col-span-2 lg:col-span-3 xl:col-span-1">
+                                        <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                                            <Sparkles className="w-32 h-32 text-luxury-gold" />
+                                        </div>
+                                        <h4 className="text-2xl font-serif text-luxury-gold mb-2">{text.pricingModal.activities.title}</h4>
+                                        <div className="space-y-4 my-6">
+                                            <div className="flex justify-between items-baseline border-b border-white/5 pb-2">
+                                                <div className="flex flex-col">
+                                                    <span className="text-white text-sm font-bold">{text.pricingModal.activities.gaming}</span>
+                                                    <span className="text-white/40 text-[10px] uppercase tracking-wider">{text.pricingModal.activities.gamingDesc}</span>
+                                                </div>
+                                                <span className="text-2xl font-serif text-white">50 <span className="text-xs text-luxury-gold">DH</span></span>
+                                            </div>
+                                            <div className="flex justify-between items-baseline border-b border-white/5 pb-2">
+                                                <div className="flex flex-col">
+                                                    <span className="text-white text-sm font-bold">{text.pricingModal.activities.poney}</span>
+                                                    <span className="text-white/40 text-[10px] uppercase tracking-wider">{text.pricingModal.activities.poneyDesc}</span>
+                                                </div>
+                                                <span className="text-2xl font-serif text-white">30 <span className="text-xs text-luxury-gold">DH</span></span>
+                                            </div>
+                                            <div className="flex justify-between items-baseline border-b border-white/5 pb-2">
+                                                <div className="flex flex-col">
+                                                    <span className="text-white text-sm font-bold">{text.pricingModal.activities.horse}</span>
+                                                    <span className="text-white/40 text-[10px] uppercase tracking-wider">{text.pricingModal.activities.horseDesc}</span>
+                                                </div>
+                                                <span className="text-2xl font-serif text-white">40 <span className="text-xs text-luxury-gold">DH</span></span>
+                                            </div>
+                                        </div>
+                                        <div className="mt-auto pt-6">
+                                            <a
+                                                href={`https://wa.me/212605500058?text=${currentLanguage === 'ar'
+                                                    ? 'مرحبًا، أود حجز بعض الأنشطة.'
+                                                    : currentLanguage === 'fr'
+                                                        ? 'Bonjour, je souhaite réserver des activités.'
+                                                        : 'Hello, I would like to book some activities.'
+                                                    }`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
+                                            >
+                                                {text.pricingModal.activities.book}
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
