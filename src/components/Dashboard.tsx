@@ -929,12 +929,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
                 <div className="flex-1 flex justify-end items-center gap-4">
                     {/* Language Switcher */}
-                    <div className="hidden md:flex items-center gap-3 mr-2">
+                    <div className="flex items-center gap-3 mr-2">
                         {['fr', 'en', 'ar'].filter(lang => lang !== currentLanguage).map((lang) => (
                             <button
                                 key={lang}
                                 onClick={() => setLanguage(lang as any)}
-                                className="text-[10px] font-bold tracking-widest text-luxury-gold hover:text-white transition-colors uppercase"
+                                className="px-2 py-1 rounded-lg border border-luxury-gold/20 bg-black/20 backdrop-blur-md text-[10px] font-bold tracking-widest text-luxury-gold hover:bg-luxury-gold hover:text-jungle-deep transition-all uppercase"
                             >
                                 {lang === 'ar' ? 'AR' : lang.toUpperCase()}
                             </button>
