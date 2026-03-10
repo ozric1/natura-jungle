@@ -465,22 +465,17 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                 >
                                     <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-luxury-gold">Explore Natura</span>
                                 </motion.div>
-                                <motion.div
-                                    initial={{ y: 20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: 0.25 }}
-                                    className="absolute top-8 right-8 lg:top-12 lg:right-12 z-20 flex gap-4"
-                                >
+                                <div className="absolute top-6 right-6 lg:top-12 lg:right-12 z-30 flex gap-2">
                                     {['fr', 'en', 'ar'].filter(lang => lang !== currentLanguage).map((lang) => (
                                         <button
                                             key={lang}
                                             onClick={() => setLanguage(lang as any)}
-                                            className="px-3 py-1 rounded-full border border-luxury-gold/30 bg-luxury-gold/5 text-[10px] font-bold tracking-widest text-luxury-gold hover:bg-luxury-gold hover:text-jungle-deep transition-all uppercase"
+                                            className="px-3 py-1 rounded-lg border border-luxury-gold/20 bg-black/40 backdrop-blur-md text-[10px] font-bold tracking-widest text-luxury-gold hover:bg-luxury-gold hover:text-jungle-deep transition-all uppercase"
                                         >
                                             {lang === 'ar' ? 'AR' : lang.toUpperCase()}
                                         </button>
                                     ))}
-                                </motion.div>
+                                </div>
                                 <motion.h2
                                     initial={{ y: 20, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
@@ -934,12 +929,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
                 <div className="flex-1 flex justify-end items-center gap-4">
                     {/* Language Switcher */}
-                    <div className="flex items-center gap-3 mr-2">
+                    <div className="hidden md:flex items-center gap-3 mr-2">
                         {['fr', 'en', 'ar'].filter(lang => lang !== currentLanguage).map((lang) => (
                             <button
                                 key={lang}
                                 onClick={() => setLanguage(lang as any)}
-                                className="text-[10px] font-bold tracking-widest text-luxury-gold hover:text-white transition-colors uppercase px-2 py-1 rounded-md bg-white/5 border border-white/5"
+                                className="text-[10px] font-bold tracking-widest text-luxury-gold hover:text-white transition-colors uppercase"
                             >
                                 {lang === 'ar' ? 'AR' : lang.toUpperCase()}
                             </button>
