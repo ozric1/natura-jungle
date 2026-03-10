@@ -1199,7 +1199,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 </div>
 
                 {/* Creator Signature */}
-                <div className="pb-20 pt-10 text-center">
+                <div className="pb-20 pt-10 text-center flex flex-col items-center gap-2">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-luxury-gold/40">
+                        © 2026 Natura Jungle. All Rights Reserved.
+                    </p>
                     <a 
                         href="https://wa.me/212634175357" 
                         target="_blank" 
