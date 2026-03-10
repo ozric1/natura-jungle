@@ -1198,6 +1198,17 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     )}
                 </div>
 
+                {/* Creator Signature */}
+                <div className="pb-20 pt-10 text-center">
+                    <a 
+                        href="https://wa.me/212634175357" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[10px] font-bold uppercase tracking-[0.4em] text-luxury-gold/40 hover:text-luxury-gold transition-colors duration-500"
+                    >
+                        Created by <span className="underline decoration-luxury-gold/20 underline-offset-4">Nezar Abdeljalil</span>
+                    </a>
+                </div>
             </main>
 
             {/* Premium Visitor Platform Bottom Nav */}
