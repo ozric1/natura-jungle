@@ -374,7 +374,20 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                 <motion.button
                     whileTap={{ scale: 0.98 }}
                     disabled={nights === 0}
-                    onClick={() => setStep('payment')}
+                    onClick={() => {
+                        const arrivalDate = selectedDates.length > 0 ? Math.min(...selectedDates) : null;
+                        const message = `Bonjour, je souhaite finaliser la réservation du Bungalow Horizon Jungle.\n\n` +
+                            `Détails :\n` +
+                            `- Nuitées : ${nights}\n` +
+                            (arrivalDate ? `- Date d'arrivée : ${arrivalDate} (ce mois)\n` : '') +
+                            (addKids && kidsCount > 1 ? `- Enfants supplémentaires : ${kidsCount - 1}\n` : '') +
+                            `- Prix par nuit : ${totalPricePerNight} MAD\n` +
+                            `- Montant Total : ${grandTotal} MAD\n\n` +
+                            `Merci de me confirmer la disponibilité et les modalités de paiement.`;
+                        
+                        const whatsappUrl = `https://wa.me/212605500058?text=${encodeURIComponent(message)}`;
+                        window.open(whatsappUrl, '_blank');
+                    }}
                     className={`
                         w-full py-5 rounded-[2.5rem] font-bold uppercase tracking-[0.2em] text-[10px] shadow-2xl transition-all duration-500
                         ${nights > 0 ? 'bg-jungle-green text-white' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}
