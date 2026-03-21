@@ -1196,7 +1196,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         className={`flex flex-col items-center gap-1 transition-colors ${currentView === 'hours' ? 'text-luxury-gold' : 'text-white/30 hover:text-white/60'}`}
                     >
                         <Clock className="w-5 h-5" />
-                        <span className="text-[7px] font-black uppercase tracking-widest">{isRTL ? 'المواعيد' : 'Hours'}</span>
+                        <span className="text-[7px] font-black uppercase tracking-widest">{(text as any).topNav.hours}</span>
                     </motion.button>
                 </div>
 
@@ -1207,7 +1207,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         className="flex flex-col items-center gap-1 text-white/30 hover:text-white/60 transition-colors"
                     >
                         <MapPin className="w-5 h-5" />
-                        <span className="text-[7px] font-black uppercase tracking-widest">{isRTL ? 'الخريطة' : 'Map'}</span>
+                        <span className="text-[7px] font-black uppercase tracking-widest">{(text as any).topNav.map}</span>
                     </motion.button>
                 </div>
 
@@ -1230,7 +1230,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         className={`flex flex-col items-center gap-1 transition-colors ${currentView === 'menu' ? 'text-luxury-gold' : 'text-white/30 hover:text-white/60'}`}
                     >
                         <Utensils className="w-5 h-5" />
-                        <span className="text-[7px] font-black uppercase tracking-widest">{isRTL ? 'المطبخ' : 'Kitchen'}</span>
+                        <span className="text-[7px] font-black uppercase tracking-widest">{(text as any).topNav.kitchen}</span>
                     </motion.button>
                 </div>
 
@@ -1241,7 +1241,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         className="flex flex-col items-center gap-1 text-white/30 hover:text-white/60 transition-colors"
                     >
                         {isNightMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                        <span className="text-[7px] font-black uppercase tracking-widest">{isRTL ? 'الوضع' : 'Theme'}</span>
+                        <span className="text-[7px] font-black uppercase tracking-widest">{(text as any).topNav.theme}</span>
                     </motion.button>
                 </div>
             </nav>

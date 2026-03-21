@@ -14,9 +14,10 @@ interface AnimalDiscoveryProps {
     };
     onBack: () => void;
     isRTL?: boolean;
+    language?: 'en' | 'fr' | 'ar';
 }
 
-export const AnimalDiscovery = ({ animal, onBack, isRTL = false }: AnimalDiscoveryProps) => {
+export const AnimalDiscovery = ({ animal, onBack, isRTL = false, language = 'en' }: AnimalDiscoveryProps) => {
     return (
         <div className="min-h-screen bg-egg-shell dark:bg-ink-black text-jungle-green dark:text-white font-sans pb-20 shadow-2xl z-[300]" dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Magazine Header Image */}
@@ -58,7 +59,9 @@ export const AnimalDiscovery = ({ animal, onBack, isRTL = false }: AnimalDiscove
             <div className="px-8 max-w-4xl mx-auto -mt-4 relative z-10">
                 <div className="flex flex-wrap gap-8 mb-16">
                     <div className="flex-1 min-w-[300px] border-l-2 border-sand-gold/20 pl-8 relative">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-sand-gold mb-6 block">The Character</span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-sand-gold mb-6 block">
+                            {language === 'fr' ? 'Le Caractère' : language === 'ar' ? 'الطبيعة' : 'The Character'}
+                        </span>
                         <p className="text-2xl font-serif italic leading-relaxed">
                             "{animal.character}"
                         </p>
@@ -68,7 +71,7 @@ export const AnimalDiscovery = ({ animal, onBack, isRTL = false }: AnimalDiscove
                         <div className="flex justify-between border-t border-jungle-green/10 pt-4">
                             <button className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-sand-gold transition-colors">
                                 <Volume2 className="w-4 h-4" />
-                                {isRTL ? 'دليل صوتي' : 'Audio Guide'}
+                                {language === 'fr' ? 'Guide Audio' : language === 'ar' ? 'دليل صوتي' : 'Audio Guide'}
                             </button>
                             <div className="flex gap-4">
                                 <Heart className="w-4 h-4 text-sand-gold" />
@@ -84,7 +87,9 @@ export const AnimalDiscovery = ({ animal, onBack, isRTL = false }: AnimalDiscove
                         <Play className="w-10 h-10 fill-current" />
                     </div>
                     <div>
-                        <h3 className="text-[10px] font-bold uppercase tracking-[0.4em] text-sand-gold mb-4">The Intelligence</h3>
+                        <h3 className="text-[10px] font-bold uppercase tracking-[0.4em] text-sand-gold mb-4">
+                            {language === 'fr' ? 'L\'Intelligence' : language === 'ar' ? 'الذكاء' : 'The Intelligence'}
+                        </h3>
                         <p className="text-lg leading-relaxed text-jungle-green/70 dark:text-white/70 italic">
                             {animal.intelligence}
                         </p>
@@ -93,7 +98,7 @@ export const AnimalDiscovery = ({ animal, onBack, isRTL = false }: AnimalDiscove
 
                 {/* Gallery Preview */}
                 <div className="mt-20">
-                    <h3 className="text-2xl font-serif mb-8">{isRTL ? 'معرض الصور' : 'Species Gallery'}</h3>
+                    <h3 className="text-2xl font-serif mb-8">{language === 'fr' ? 'Galerie des Espèces' : language === 'ar' ? 'معرض الصور' : 'Species Gallery'}</h3>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="h-48 bg-jungle-green/5 rounded-[2rem] overflow-hidden">
                             <img src={cockatooImg} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Detail 1" />

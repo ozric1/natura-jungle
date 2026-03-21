@@ -260,7 +260,9 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                 </button>
                 <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
                     <span className="text-[10px] uppercase font-bold tracking-widest text-luxury-gold">
-                        {type === 'bungalow' ? 'Bungalows' : type === 'restaurant' ? 'Restaurant' : type === 'tents' ? 'Berber Tents' : type === 'park' ? 'Animal Park' : type === 'kids' ? 'Family Fun' : 'Aqua Jungle'}
+                        {language === 'fr' ? (type === 'bungalow' ? 'Bungalows' : type === 'restaurant' ? 'Restaurant' : type === 'tents' ? 'Tentes Berbères' : type === 'park' ? 'Parc Animalier' : type === 'kids' ? 'Jeux Enfants' : 'Aqua Jungle') : 
+                        language === 'ar' ? (type === 'bungalow' ? 'بناغل' : type === 'restaurant' ? 'مطعم' : type === 'tents' ? 'خيام بربرية' : type === 'park' ? 'حديقة الحيوان' : type === 'kids' ? 'ألعاب الأطفال' : 'أكوا جانغل') : 
+                        (type === 'bungalow' ? 'Bungalows' : type === 'restaurant' ? 'Restaurant' : type === 'tents' ? 'Berber Tents' : type === 'park' ? 'Animal Park' : type === 'kids' ? 'Family Fun' : 'Aqua Jungle')}
                     </span>
                 </div>
             </header>
