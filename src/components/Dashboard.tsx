@@ -147,8 +147,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     tag: "Best Value",
                     title: "Bungalow Stay",
                     perNight: "Per Night",
-                    desc: "1 Couple + 1 Kid. Breakfast & Activities included.",
-                    additional: "+150 DH / 2nd Child",
+                    desc: "1 Couple + 1 Kid. Free animal park access & breakfast included.",
+                    additional: "+150 DH / night for additional child",
                     book: "Book Now"
                 },
                 activities: {
@@ -160,7 +160,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     horse: "Horse Ride",
                     horseDesc: "10 minutes equestrian experience.",
                     book: "Book Now"
-                }
+                },
+                noReservationNotice: "Reservations are only required for Bungalow stays and Events. For a visit to Natura Jungle Park, including the pool and activities, you are welcome to visit without a reservation!"
             },
             menu: {
                 mission: "Our Mission",
@@ -258,8 +259,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     tag: "Meilleure Offre",
                     title: "Séjour en Bungalow",
                     perNight: "Par Nuit",
-                    desc: "1 Couple + 1 Enfant. Petit-déjeuner et activités inclus.",
-                    additional: "+150 DH / 2ème Enfant",
+                    desc: "1 Couple + 1 Enfant. Accès gratuit au parc animalier et petit-déjeuner inclus.",
+                    additional: "+150 DH / nuit pour un autre enfant",
                     book: "Réserver"
                 },
                 activities: {
@@ -271,7 +272,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     horse: "Équitation (Cheval)",
                     horseDesc: "10 minutes.",
                     book: "Réserver"
-                }
+                },
+                noReservationNotice: "Les réservations sont obligatoires uniquement pour les séjours en Bungalow et les Événements. Pour le parc, l'accès piscine et les autres activités, vous êtes les bienvenus sans réservation !"
             },
             menu: {
                 mission: "Notre Mission",
@@ -363,8 +365,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     tag: "أفضل قيمة",
                     title: "إقامة في البنغالو",
                     perNight: "لليلة الواحدة",
-                    desc: "زوجان + طفل واحد. وجبة الإفطار والأنشطة مشمولة.",
-                    additional: "+150 درهم / الطفل الثاني",
+                    desc: "زوجان + طفل واحد. دخول مجاني لمدار الحيوانات ووجبة الإفطار مشمولة.",
+                    additional: "+150 درهم / ليلة لطفل إضافي",
                     book: "احجز الآن"
                 },
                 activities: {
@@ -376,7 +378,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     horse: "ركوب الخيل",
                     horseDesc: "10 دقائق.",
                     book: "احجز الآن"
-                }
+                },
+                noReservationNotice: "الحجز مسبقاً مطلوب فقط للإقامات في البناغل والفعاليات. لزيارة منتزه نطورا جانغل، المسبح، والأنشطة، نرحب بكم بدون حجز مسبق!"
             },
             menu: {
                 mission: "Notre Mission",
@@ -712,6 +715,15 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     <h3 className="text-3xl lg:text-5xl font-serif text-white">
                                         {text.pricingModal.subtitle}
                                     </h3>
+                                    <div className="mt-8 max-w-3xl mx-auto bg-luxury-gold/5 border border-luxury-gold/20 rounded-2xl p-4 lg:p-6 text-center backdrop-blur-sm shadow-xl">
+                                        <div className="flex items-center justify-center gap-2 mb-2">
+                                            <Sparkles className="w-4 h-4 text-luxury-gold" />
+                                            <span className="text-luxury-gold text-[10px] font-bold uppercase tracking-[0.2em]">Info</span>
+                                        </div>
+                                        <p className="text-sm lg:text-base text-white/80 font-serif leading-relaxed">
+                                            {text.pricingModal.noReservationNotice}
+                                        </p>
+                                    </div>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -734,21 +746,6 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <p className="text-xs text-white/40 leading-relaxed">
                                             {text.pricingModal.parkEntry.desc}
                                         </p>
-                                        <div className="mt-6 pt-6 border-t border-white/5 mt-auto">
-                                            <a
-                                                href={`https://wa.me/212605500058?text=${currentLanguage === 'ar'
-                                                    ? 'مرحبًا، أود حجز تذاكر لدخول الحديقة.'
-                                                    : currentLanguage === 'fr'
-                                                        ? 'Bonjour, je souhaite réserver des billets pour l\'Entrée du Parc.'
-                                                        : 'Hello, I would like to book tickets for Park Entry.'
-                                                    }`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
-                                            >
-                                                {text.pricingModal.parkEntry.book}
-                                            </a>
-                                        </div>
                                     </div>
 
                                     {/* Pool Access */}
@@ -770,21 +767,6 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         <p className="text-xs text-white/40 leading-relaxed">
                                             {text.pricingModal.poolAccess.desc}
                                         </p>
-                                        <div className="mt-6 pt-6 border-t border-white/5 mt-auto">
-                                            <a
-                                                href={`https://wa.me/212605500058?text=${currentLanguage === 'ar'
-                                                    ? 'مرحبًا، أود الحجز في منطقة المسبح.'
-                                                    : currentLanguage === 'fr'
-                                                        ? 'Bonjour, je souhaite réserver pour l\'Accès Piscine.'
-                                                        : 'Hello, I would like to book for the Pool Area.'
-                                                    }`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
-                                            >
-                                                {text.pricingModal.poolAccess.book}
-                                            </a>
-                                        </div>
                                     </div>
 
                                     {/* Bungalow Stay */}
@@ -847,21 +829,6 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                                 </div>
                                                 <span className="text-2xl font-serif text-white">40 <span className="text-xs text-luxury-gold">DH</span></span>
                                             </div>
-                                        </div>
-                                        <div className="mt-auto pt-6">
-                                            <a
-                                                href={`https://wa.me/212605500058?text=${currentLanguage === 'ar'
-                                                    ? 'مرحبًا، أود حجز بعض الأنشطة.'
-                                                    : currentLanguage === 'fr'
-                                                        ? 'Bonjour, je souhaite réserver des activités.'
-                                                        : 'Hello, I would like to book some activities.'
-                                                    }`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="block w-full text-center py-3 rounded-xl bg-luxury-gold text-jungle-deep font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors"
-                                            >
-                                                {text.pricingModal.activities.book}
-                                            </a>
                                         </div>
                                     </div>
                                 </div>

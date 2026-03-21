@@ -30,7 +30,12 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             kid: "Kid",
             kids: "Kids",
             total: "Total Amount",
-            continue: "Continue to Payment",
+            addPoolQuestion: "Add Pool Access?",
+            poolAdults: "Adults (100 DH/day)",
+            poolKids: "Kids (50 DH/day)",
+            poolDays: "Days",
+            pool: "Pool",
+            continue: "Check Availability",
             selectDatesFirst: "Select Dates First",
             checkout: "Guest Checkout",
             cardName: "Cardholder Name",
@@ -62,7 +67,12 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             kid: "Enfant",
             kids: "Enfants",
             total: "Montant Total",
-            continue: "Continuer vers le Paiement",
+            addPoolQuestion: "Ajouter l'accès piscine ?",
+            poolAdults: "Adultes (100 DH/j)",
+            poolKids: "Enfants (50 DH/j)",
+            poolDays: "Jours",
+            pool: "Piscine",
+            continue: "Vérifier la Disponibilité",
             selectDatesFirst: "Sélectionnez vos dates",
             checkout: "Paiement Invité",
             cardName: "Nom du titulaire",
@@ -94,7 +104,12 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             kid: "طفل",
             kids: "أطفال",
             total: "المجموع",
-            continue: "إدخال تفاصيل الدفع",
+            addPoolQuestion: "إضافة دخول المسبح؟",
+            poolAdults: "كبار (100 درهم/ي)",
+            poolKids: "صغار (50 درهم/ي)",
+            poolDays: "أيام",
+            pool: "مسبح",
+            continue: "التحقق من التوفر",
             selectDatesFirst: "اختر التواريخ أولاً",
             checkout: "الدفع الآمن",
             cardName: "اسم حامل البطاقة",
@@ -115,6 +130,10 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     const [selectedDates, setSelectedDates] = useState<number[]>([]);
     const [addKids, setAddKids] = useState<boolean | null>(null);
     const [kidsCount, setKidsCount] = useState<1 | 2>(1);
+    const [addPool, setAddPool] = useState<boolean | null>(null);
+    const [poolAdults, setPoolAdults] = useState<number>(2);
+    const [poolKids, setPoolKids] = useState<number>(1);
+    const [poolDays, setPoolDays] = useState<number>(1);
     const [paymentData, setPaymentData] = useState({
         cardName: '',
         cardNumber: '',
@@ -161,7 +180,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     // Price Calculation
     const totalExtraKidsCost = (addKids && kidsCount > 1) ? (extraKidPrice) : 0;
     const totalPricePerNight = pricePerNight + totalExtraKidsCost;
-    const grandTotal = nights * totalPricePerNight;
+    const totalPoolCost = addPool ? (poolAdults * 100 + poolKids * 50) * poolDays : 0;
+    const grandTotal = nights * totalPricePerNight + totalPoolCost;
 
     const handlePayment = () => {
         if (!paymentData.cardName || !paymentData.cardNumber || !paymentData.expiry || !paymentData.cvv) {
@@ -344,6 +364,70 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                         </AnimatePresence>
                     </div>
 
+                    {/* Add Pool Selection */}
+                    <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-sand-gold/10 mt-4">
+                        <div className="flex justify-between items-center mb-4">
+                            <h3 className="text-sm font-bold uppercase tracking-widest text-jungle-green">{t.addPoolQuestion}</h3>
+                            <div className="flex gap-2 bg-egg-shell p-1 rounded-xl">
+                                <button
+                                    onClick={() => setAddPool(true)}
+                                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${addPool === true ? 'bg-jungle-green text-white shadow-md' : 'text-jungle-green/40 hover:text-jungle-green'}`}
+                                >
+                                    {t.yes}
+                                </button>
+                                <button
+                                    onClick={() => { setAddPool(false); setPoolAdults(2); setPoolKids(1); setPoolDays(1); }}
+                                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${addPool === false ? 'bg-jungle-green text-white shadow-md' : 'text-jungle-green/40 hover:text-jungle-green'}`}
+                                >
+                                    {t.no}
+                                </button>
+                            </div>
+                        </div>
+
+                        <AnimatePresence>
+                            {addPool && (
+                                <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    className="overflow-hidden"
+                                >
+                                    <div className="pt-4 border-t border-sand-gold/10 flex flex-col gap-3">
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-xs font-medium opacity-60">{t.poolAdults}</span>
+                                            <div className="flex items-center gap-3">
+                                                <button onClick={() => setPoolAdults(Math.max(0, poolAdults - 1))} className="w-8 h-8 rounded-lg bg-egg-shell flex items-center justify-center">-</button>
+                                                <span className="w-4 text-center text-sm font-bold">{poolAdults}</span>
+                                                <button onClick={() => setPoolAdults(poolAdults + 1)} className="w-8 h-8 rounded-lg bg-egg-shell flex items-center justify-center">+</button>
+                                            </div>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-xs font-medium opacity-60">{t.poolKids}</span>
+                                            <div className="flex items-center gap-3">
+                                                <button onClick={() => setPoolKids(Math.max(0, poolKids - 1))} className="w-8 h-8 rounded-lg bg-egg-shell flex items-center justify-center">-</button>
+                                                <span className="w-4 text-center text-sm font-bold">{poolKids}</span>
+                                                <button onClick={() => setPoolKids(poolKids + 1)} className="w-8 h-8 rounded-lg bg-egg-shell flex items-center justify-center">+</button>
+                                            </div>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-xs font-medium opacity-60">{t.poolDays}</span>
+                                            <div className="flex items-center gap-3">
+                                                <button onClick={() => setPoolDays(Math.max(1, poolDays - 1))} className="w-8 h-8 rounded-lg bg-egg-shell flex items-center justify-center">-</button>
+                                                <span className="w-4 text-center text-sm font-bold">{poolDays}</span>
+                                                <button onClick={() => setPoolDays(poolDays + 1)} className="w-8 h-8 rounded-lg bg-egg-shell flex items-center justify-center">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 text-right">
+                                        <span className="text-xs font-serif text-sand-gold italic">
+                                            + {(poolAdults * 100 + poolKids * 50) * poolDays} MAD
+                                        </span>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+
                     <div className="p-6 border-t border-sand-gold/10">
                         <div className="flex justify-between text-xs mb-2">
                             <span className="opacity-60">{t.pricePerNight}</span>
@@ -358,6 +442,13 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                             <div className="flex justify-between text-xs mb-4 text-jungle-green/80 border-t border-dashed border-jungle-green/10 pt-2">
                                 <span>{kidsCount > 1 ? "2nd Child" : "1st Child Included"} x {nights} {t.nights}</span>
                                 <span className="font-bold">+ {(kidsCount > 1 ? extraKidPrice * nights : 0)} MAD</span>
+                            </div>
+                        )}
+
+                        {addPool && (
+                            <div className="flex justify-between text-xs mb-4 text-jungle-green/80 border-t border-dashed border-jungle-green/10 pt-2">
+                                <span>{t.pool} ({poolAdults} Adult(s), {poolKids} Kid(s)) x {poolDays} {t.poolDays}</span>
+                                <span className="font-bold">+ {(poolAdults * 100 + poolKids * 50) * poolDays} MAD</span>
                             </div>
                         )}
 
@@ -376,21 +467,22 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                     disabled={nights === 0}
                     onClick={() => {
                         const arrivalDate = selectedDates.length > 0 ? Math.min(...selectedDates) : null;
-                        const message = `Bonjour, je souhaite finaliser la réservation du Bungalow Horizon Jungle.\n\n` +
+                        const message = `Bonjour, je souhaite vérifier la disponibilité du Bungalow Horizon Jungle.\n\n` +
                             `Détails :\n` +
                             `- Nuitées : ${nights}\n` +
-                            (arrivalDate ? `- Date d'arrivée : ${arrivalDate} (ce mois)\n` : '') +
+                            (arrivalDate ? `- Date d'arrivée souhaitée : ${arrivalDate} (ce mois)\n` : '') +
                             (addKids && kidsCount > 1 ? `- Enfants supplémentaires : ${kidsCount - 1}\n` : '') +
-                            `- Prix par nuit : ${totalPricePerNight} MAD\n` +
-                            `- Montant Total : ${grandTotal} MAD\n\n` +
-                            `Merci de me confirmer la disponibilité et les modalités de paiement.`;
+                            (addPool ? `- Accès Piscine : ${poolAdults} Adulte(s), ${poolKids} Enfant(s) pour ${poolDays} jour(s)\n` : '') +
+                            `- Prix par nuit (hébergement) : ${totalPricePerNight} MAD\n` +
+                            `- Montant Total Estimé : ${grandTotal} MAD\n\n` +
+                            `Merci de me confirmer la disponibilité.`;
                         
                         const whatsappUrl = `https://wa.me/212605500058?text=${encodeURIComponent(message)}`;
                         window.open(whatsappUrl, '_blank');
                     }}
                     className={`
                         w-full py-5 rounded-[2.5rem] font-bold uppercase tracking-[0.2em] text-[10px] shadow-2xl transition-all duration-500
-                        ${nights > 0 ? 'bg-jungle-green text-white' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}
+                        ${nights > 0 ? 'bg-jungle-green text-white cursor-pointer hover:bg-jungle-green/90' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}
                     `}
                 >
                     {nights === 0 ? t.selectDatesFirst : t.continue}
