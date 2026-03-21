@@ -127,7 +127,10 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
 
     const t = translations[currentLanguage];
     const [step, setStep] = useState<'details' | 'payment' | 'success'>('details');
-    const [selectedDates, setSelectedDates] = useState<number[]>([]);
+    // Calendar State
+    const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+    const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+    const [selectedDates, setSelectedDates] = useState<string[]>([]);
     const [addKids, setAddKids] = useState<boolean | null>(null);
     const [kidsCount, setKidsCount] = useState<1 | 2>(1);
     const [addPool, setAddPool] = useState<boolean | null>(null);
@@ -144,35 +147,41 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     const extraKidPrice = 150;
 
     // Simulation of occupancy
-    const bookedDates: number[] = useMemo(() => [], []);
+    const bookedDates: string[] = useMemo(() => [], []);
 
-    const today = new Date().getDate();
-    const isDayDisabled = (day: number) => day < today || bookedDates.includes(day);
+    const getDateString = (year: number, month: number, day: number) => {
+        return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    };
 
-    const toggleDate = (day: number) => {
-        if (isDayDisabled(day)) return;
+    const today = new Date();
+    const todayStr = getDateString(today.getFullYear(), today.getMonth(), today.getDate());
+
+    const isDayDisabled = (dateString: string) => {
+        return dateString < todayStr || bookedDates.includes(dateString);
+    };
+
+    const toggleDate = (dateString: string) => {
+        if (isDayDisabled(dateString)) return;
 
         setSelectedDates(prev => {
             if (prev.length === 0 || prev.length > 1) {
-                // Start a new selection
-                return [day];
-            } else {
-                // Range selection
-                const start = prev[0];
-                const end = day;
-                const range = [];
-                const [lower, upper] = start < end ? [start, end] : [end, start];
-
-                // Check if any booked dates are in the range
-                for (let i = lower; i <= upper; i++) {
-                    if (isDayDisabled(i)) {
-                        // If range includes disabled date, just select the new day
-                        return [day];
-                    }
-                    range.push(i);
-                }
-                return range;
+                return [dateString];
             }
+            
+            const start = new Date(prev[0]);
+            const end = new Date(dateString);
+            
+            const range: string[] = [];
+            const [lower, upper] = start < end ? [start, end] : [end, start];
+            
+            let current = new Date(lower);
+            while (current <= upper) {
+                const str = getDateString(current.getFullYear(), current.getMonth(), current.getDate());
+                if (isDayDisabled(str)) return [dateString];
+                range.push(str);
+                current.setDate(current.getDate() + 1);
+            }
+            return range;
         });
     };
 
@@ -271,27 +280,54 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                         </div>
                     </div>
 
-                    {/* Restricted Calendar */}
+                    {/* Monthly Calendar */}
                     <div className="bg-white rounded-[2.5rem] p-6 shadow-sm border border-sand-gold/10">
                         <div className="flex justify-between items-center mb-6">
                             <div className="flex items-center gap-2">
                                 <CalendarIcon className="w-4 h-4 text-sand-gold" />
-                                <h3 className="text-sm font-bold uppercase tracking-widest">{t.selectDates}</h3>
+                                <h3 className="text-[10px] sm:text-xs font-bold uppercase tracking-widest">{t.selectDates}</h3>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <button 
+                                    onClick={() => {
+                                        if (currentMonth === 0) { setCurrentMonth(11); setCurrentYear(currentYear - 1); }
+                                        else setCurrentMonth(currentMonth - 1);
+                                    }}
+                                    className="w-8 h-8 flex items-center justify-center bg-egg-shell rounded-xl hover:bg-sand-gold/20 transition-colors"
+                                >
+                                    <ChevronLeft className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+                                </button>
+                                <span className="text-xs font-bold uppercase tracking-widest min-w-[100px] text-center">
+                                    {new Date(currentYear, currentMonth).toLocaleString(currentLanguage, { month: 'long', year: 'numeric' })}
+                                </span>
+                                <button 
+                                    onClick={() => {
+                                        if (currentMonth === 11) { setCurrentMonth(0); setCurrentYear(currentYear + 1); }
+                                        else setCurrentMonth(currentMonth + 1);
+                                    }}
+                                    className="w-8 h-8 flex items-center justify-center bg-egg-shell rounded-xl hover:bg-sand-gold/20 transition-colors"
+                                >
+                                    <ChevronLeft className={`w-4 h-4 ${isRTL ? '' : 'rotate-180'}`} />
+                                </button>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-7 gap-1 text-center">
-                            {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map(d => (
-                                <span key={d} className="text-[10px] opacity-40 font-bold mb-2">{d}</span>
+                            {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
+                                <span key={i} className="text-[10px] opacity-40 font-bold mb-2">{d}</span>
                             ))}
-                            {Array.from({ length: 30 }, (_, i) => i + 1).map(day => {
-                                const isDisabled = isDayDisabled(day);
-                                const isSelected = selectedDates.includes(day);
+                            {Array.from({ length: (new Date(currentYear, currentMonth, 1).getDay() + 6) % 7 }).map((_, i) => (
+                                <div key={`empty-${i}`} />
+                            ))}
+                            {Array.from({ length: new Date(currentYear, currentMonth + 1, 0).getDate() }, (_, i) => i + 1).map(day => {
+                                const dateString = getDateString(currentYear, currentMonth, day);
+                                const isDisabled = isDayDisabled(dateString);
+                                const isSelected = selectedDates.includes(dateString);
                                 return (
                                     <button
                                         key={day}
                                         disabled={isDisabled}
-                                        onClick={() => toggleDate(day)}
+                                        onClick={() => toggleDate(dateString)}
                                         className={`
                                             h-10 w-10 flex items-center justify-center rounded-2xl text-xs font-serif transition-all duration-300 relative
                                             ${isDisabled ? 'bg-gray-50 text-gray-200 cursor-not-allowed' : ''}
@@ -299,7 +335,14 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                                             ${!isDisabled && !isSelected ? 'text-jungle-green/80' : ''}
                                         `}
                                     >
-                                        {day}
+                                        <span className="relative z-10">{day}</span>
+                                        {isSelected && (
+                                            <motion.div
+                                                layoutId="selected-date"
+                                                className="absolute inset-0 border border-sand-gold/50 rounded-2xl"
+                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                            />
+                                        )}
                                     </button>
                                 );
                             })}
@@ -467,11 +510,11 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                     whileTap={{ scale: 0.98 }}
                     disabled={nights === 0}
                     onClick={() => {
-                        const arrivalDate = selectedDates.length > 0 ? Math.min(...selectedDates) : null;
+                        const arrivalDate = selectedDates.length > 0 ? [...selectedDates].sort()[0] : null;
                         const message = `Bonjour, je souhaite vérifier la disponibilité du Bungalow Horizon Jungle.\n\n` +
                             `Détails :\n` +
                             `- Nuitées : ${nights}\n` +
-                            (arrivalDate ? `- Date d'arrivée souhaitée : ${arrivalDate} (ce mois)\n` : '') +
+                            (arrivalDate ? `- Date d'arrivée souhaitée : ${arrivalDate}\n` : '') +
                             (addKids && kidsCount > 1 ? `- Enfants supplémentaires : ${kidsCount - 1}\n` : '') +
                             (addPool ? `- Accès Piscine : ${poolAdults} Adulte(s), ${poolKids} Enfant(s) pour ${poolDays} jour(s)\n` : '') +
                             `- Prix par nuit (hébergement) : ${totalPricePerNight} MAD\n` +
