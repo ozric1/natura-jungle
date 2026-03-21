@@ -149,7 +149,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     perNight: "Per Night",
                     desc: "1 Couple + 1 Kid. Free animal park access & breakfast included.",
                     additional: "+150 DH / night for additional child",
-                    poolDesc: "Pool: + 100dh / day adults / 50dh/day for child",
+                    poolDesc: "Pool: + 100 dh adults / day\n+ 50 dh child / day",
                     book: "Book Now"
                 },
                 activities: {
@@ -262,7 +262,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     perNight: "Par Nuit",
                     desc: "1 Couple + 1 Enfant. Accès gratuit au parc animalier et petit-déjeuner inclus.",
                     additional: "+150 DH / nuit pour un autre enfant",
-                    poolDesc: "Piscine : + 100dh / jour adultes / 50dh/jr pour enfant.",
+                    poolDesc: "Piscine : + 100 dh adultes / jr\n+ 50 dh enfants / jr",
                     book: "Réserver"
                 },
                 activities: {
@@ -369,7 +369,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     perNight: "لليلة الواحدة",
                     desc: "زوجان + طفل واحد. دخول مجاني لمدار الحيوانات ووجبة الإفطار مشمولة.",
                     additional: "+150 درهم / ليلة لطفل إضافي",
-                    poolDesc: "المسبح: + 100 درهم / يوم للكبار / 50 درهم/ي للطفل",
+                    poolDesc: "المسبح: + 100 درهم للكبار / يوم\n+ 50 درهم للطفل / يوم",
                     book: "احجز الآن"
                 },
                 activities: {
@@ -793,7 +793,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                             <span className="text-luxury-gold/80 mt-1 block font-medium">
                                                 {text.pricingModal.bungalow.additional}
                                             </span>
-                                            <span className="text-luxury-gold/80 mt-1 block font-medium">
+                                            <span className="text-luxury-gold/80 mt-1 block font-medium whitespace-pre-wrap">
                                                 {(text.pricingModal.bungalow as any).poolDesc}
                                             </span>
                                         </p>
