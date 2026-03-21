@@ -146,7 +146,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     // Simulation of occupancy
     const bookedDates: number[] = useMemo(() => [], []);
 
-    const isDayDisabled = (day: number) => bookedDates.includes(day);
+    const today = new Date().getDate();
+    const isDayDisabled = (day: number) => day < today || bookedDates.includes(day);
 
     const toggleDate = (day: number) => {
         if (isDayDisabled(day)) return;
