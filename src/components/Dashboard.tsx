@@ -149,7 +149,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     perNight: "Per Night",
                     desc: "1 Couple + 1 Kid. Free animal park access & breakfast included.",
                     additional: "+150 DH / night for additional child",
-                    poolDesc: "Pool: 100 DH/adult & 50 DH/child per day",
+                    poolDesc: "Pool: + 100dh / day adults / 50dh/day for child",
                     book: "Book Now"
                 },
                 activities: {
@@ -262,7 +262,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     perNight: "Par Nuit",
                     desc: "1 Couple + 1 Enfant. Accès gratuit au parc animalier et petit-déjeuner inclus.",
                     additional: "+150 DH / nuit pour un autre enfant",
-                    poolDesc: "Piscine : 100 DH/adulte et 50 DH/enfant par jour",
+                    poolDesc: "Piscine : + 100dh / jour adultes / 50dh/jr pour enfant.",
                     book: "Réserver"
                 },
                 activities: {
@@ -369,7 +369,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     perNight: "لليلة الواحدة",
                     desc: "زوجان + طفل واحد. دخول مجاني لمدار الحيوانات ووجبة الإفطار مشمولة.",
                     additional: "+150 درهم / ليلة لطفل إضافي",
-                    poolDesc: "المسبح: 100 درهم/للكبير و 50 درهم/للصغير يومياً",
+                    poolDesc: "المسبح: + 100 درهم / يوم للكبار / 50 درهم/ي للطفل",
                     book: "احجز الآن"
                 },
                 activities: {
