@@ -136,7 +136,6 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     const [addPool, setAddPool] = useState<boolean | null>(null);
     const [poolAdults, setPoolAdults] = useState<number>(2);
     const [poolKids, setPoolKids] = useState<number>(1);
-    const [poolDays, setPoolDays] = useState<number>(1);
     const [paymentData, setPaymentData] = useState({
         cardName: '',
         cardNumber: '',
@@ -190,7 +189,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     // Price Calculation
     const totalExtraKidsCost = (addKids && kidsCount > 1) ? (extraKidPrice) : 0;
     const totalPricePerNight = pricePerNight + totalExtraKidsCost;
-    const totalPoolCost = addPool ? (poolAdults * 100 + poolKids * 50) * poolDays : 0;
+    const totalPoolCost = addPool ? (poolAdults * 100 + poolKids * 50) * nights : 0;
     const grandTotal = nights * totalPricePerNight + totalPoolCost;
 
     const handlePayment = () => {
@@ -420,7 +419,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                                     {t.yes}
                                 </button>
                                 <button
-                                    onClick={() => { setAddPool(false); setPoolAdults(2); setPoolKids(1); setPoolDays(1); }}
+                                    onClick={() => { setAddPool(false); setPoolAdults(2); setPoolKids(1); }}
                                     className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${addPool === false ? 'bg-jungle-green text-white shadow-md' : 'text-jungle-green/40 hover:text-jungle-green'}`}
                                 >
                                     {t.no}
@@ -453,18 +452,11 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                                                 <button onClick={() => setPoolKids(poolKids + 1)} className="w-8 h-8 rounded-lg bg-egg-shell flex items-center justify-center">+</button>
                                             </div>
                                         </div>
-                                        <div className="flex justify-between items-center">
-                                            <span className="text-xs font-medium opacity-60">{t.poolDays}</span>
-                                            <div className="flex items-center gap-3">
-                                                <button onClick={() => setPoolDays(Math.max(1, poolDays - 1))} className="w-8 h-8 rounded-lg bg-egg-shell flex items-center justify-center">-</button>
-                                                <span className="w-4 text-center text-sm font-bold">{poolDays}</span>
-                                                <button onClick={() => setPoolDays(poolDays + 1)} className="w-8 h-8 rounded-lg bg-egg-shell flex items-center justify-center">+</button>
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <div className="mt-4 text-right">
                                         <span className="text-xs font-serif text-sand-gold italic">
-                                            + {(poolAdults * 100 + poolKids * 50) * poolDays} MAD
+                                            + {(poolAdults * 100 + poolKids * 50) * nights} MAD
                                         </span>
                                     </div>
                                 </motion.div>
@@ -491,8 +483,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
 
                         {addPool && (
                             <div className="flex justify-between text-xs mb-4 text-jungle-green/80 border-t border-dashed border-jungle-green/10 pt-2">
-                                <span>{t.pool} ({poolAdults} Adult(s), {poolKids} Kid(s)) x {poolDays} {t.poolDays}</span>
-                                <span className="font-bold">+ {(poolAdults * 100 + poolKids * 50) * poolDays} MAD</span>
+                                <span>{t.pool} ({poolAdults} Adult(s), {poolKids} Kid(s)) x {nights} {t.nights}</span>
+                                <span className="font-bold">+ {(poolAdults * 100 + poolKids * 50) * nights} MAD</span>
                             </div>
                         )}
 
@@ -516,7 +508,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                             `- Nuitées : ${nights}\n` +
                             (arrivalDate ? `- Date d'arrivée souhaitée : ${arrivalDate}\n` : '') +
                             (addKids && kidsCount > 1 ? `- Enfants supplémentaires : ${kidsCount - 1}\n` : '') +
-                            (addPool ? `- Accès Piscine : ${poolAdults} Adulte(s), ${poolKids} Enfant(s) pour ${poolDays} jour(s)\n` : '') +
+                            (addPool ? `- Accès Piscine : ${poolAdults} Adulte(s), ${poolKids} Enfant(s) pour ${nights} nuit(s)\n` : '') +
                             `- Prix par nuit (hébergement) : ${totalPricePerNight} MAD\n` +
                             `- Montant Total Estimé : ${grandTotal} MAD\n\n` +
                             `Merci de me confirmer la disponibilité.`;
