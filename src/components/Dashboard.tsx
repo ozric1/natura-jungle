@@ -149,6 +149,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     perNight: "Per Night",
                     desc: "1 Couple + 1 Kid. Free animal park access & breakfast included.",
                     additional: "+150 DH / night for additional child",
+                    poolDesc: "Pool: 100 DH/adult & 50 DH/child per day",
                     book: "Book Now"
                 },
                 activities: {
@@ -261,6 +262,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     perNight: "Par Nuit",
                     desc: "1 Couple + 1 Enfant. Accès gratuit au parc animalier et petit-déjeuner inclus.",
                     additional: "+150 DH / nuit pour un autre enfant",
+                    poolDesc: "Piscine : 100 DH/adulte et 50 DH/enfant par jour",
                     book: "Réserver"
                 },
                 activities: {
@@ -367,6 +369,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     perNight: "لليلة الواحدة",
                     desc: "زوجان + طفل واحد. دخول مجاني لمدار الحيوانات ووجبة الإفطار مشمولة.",
                     additional: "+150 درهم / ليلة لطفل إضافي",
+                    poolDesc: "المسبح: 100 درهم/للكبير و 50 درهم/للصغير يومياً",
                     book: "احجز الآن"
                 },
                 activities: {
@@ -789,6 +792,9 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                             <br />
                                             <span className="text-luxury-gold/80 mt-1 block font-medium">
                                                 {text.pricingModal.bungalow.additional}
+                                            </span>
+                                            <span className="text-luxury-gold/80 mt-1 block font-medium">
+                                                {(text.pricingModal.bungalow as any).poolDesc}
                                             </span>
                                         </p>
                                         <div className="mt-auto pt-6">
