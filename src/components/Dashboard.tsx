@@ -262,7 +262,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     perNight: "Par Nuit",
                     desc: "1 Couple + 1 Enfant. Accès gratuit au parc animalier et petit-déjeuner inclus.",
                     additional: "+150 DH / nuit pour un autre enfant",
-                    poolDesc: "Piscine : + 100 dh adultes / jr\n+ 50 dh enfants / jr",
+                    poolDesc: "Piscine : + 100 dh adultes / jour\n+ 50 dh enfants / jour",
                     book: "Réserver"
                 },
                 activities: {
