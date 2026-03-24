@@ -481,14 +481,7 @@ export const DigitalMenu = ({ onBack, isRTL = false, language }: DigitalMenuProp
                                             </span>
                                         </div>
 
-                                        <div className="mb-4 lg:mb-8 min-h-[3rem]">
-                                            {['Petit Déjeuner', 'Salades', 'Tagines', 'Plats', 'Pizza'].includes(item.category) && (
-                                                <p className="text-[8px] lg:text-[10px] uppercase tracking-[0.2em] text-luxury-gold font-bold mb-1 opacity-80">{text.ingredients[language]}</p>
-                                            )}
-                                            <p className="text-xs lg:text-sm font-serif leading-relaxed text-jungle-deep/60 dark:text-pure-nature/60 italic">
-                                                {item.description[language]}
-                                            </p>
-                                        </div>
+                                        {/* Ingredients and descriptions removed per user request */}
                                     </motion.div>
                                 );
                             })}
