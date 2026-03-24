@@ -29,14 +29,14 @@ export const ParkHours = ({ onClose, isRTL = false, language }: ParkHoursProps) 
     const schedule = days.map(day => ({ day, hours }));
 
     return (
-        <div className="min-h-screen bg-egg-shell dark:bg-ink-black text-jungle-green dark:text-white p-8 flex flex-col items-center justify-center relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.1),transparent_50%)]" />
+        <div className="h-full w-full bg-egg-shell dark:bg-ink-black text-jungle-green dark:text-white p-6 flex flex-col items-center relative overflow-y-auto" dir={isRTL ? 'rtl' : 'ltr'}>
+            <div className="fixed inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(197,160,89,0.1),transparent_50%)]" />
 
             <motion.button
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={onClose}
-                className="absolute top-8 right-8 w-12 h-12 glass-morphism rounded-full flex items-center justify-center z-50 border border-sand-gold/20"
+                className="absolute top-6 right-6 lg:fixed lg:top-8 lg:right-8 w-12 h-12 glass-morphism rounded-full flex items-center justify-center z-50 border border-sand-gold/20"
             >
                 <X className="w-6 h-6" />
             </motion.button>
@@ -44,7 +44,7 @@ export const ParkHours = ({ onClose, isRTL = false, language }: ParkHoursProps) 
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="w-full max-w-md z-10 text-center"
+                className="w-full max-w-md z-10 text-center my-auto py-12"
             >
                 <div className="w-20 h-20 bg-sand-gold/10 rounded-[2rem] flex items-center justify-center mx-auto mb-8 border border-sand-gold/20">
                     <Clock className="w-10 h-10 text-sand-gold" />
