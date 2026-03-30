@@ -105,7 +105,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             subtitle: {
                 catering: 'Plan your special event with us.',
                 teambuilding: 'Organize an unforgettable team experience.',
-                school: 'Educational and fun adventures for students.'
+                school: 'Educational and fun adventures for students, Monday to Friday.'
             },
             packDay: {
                 title: "Pricing",
@@ -218,7 +218,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             subtitle: {
                 catering: 'Planifiez votre événement spécial avec nous.',
                 teambuilding: 'Organisez une expérience d\'équipe inoubliable.',
-                school: 'Aventures éducatives et ludiques pour les élèves.'
+                school: 'Aventures éducatives et ludiques pour les écoles, du Lundi au Vendredi.'
             },
             packDay: {
                 title: "Tarifs",
@@ -325,7 +325,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             subtitle: {
                 catering: 'خطط لمناسبتك معنا',
                 teambuilding: 'نظم تجربة فريق لا تُنسى',
-                school: 'مغامرات تعليمية وممتعة للطلاب'
+                school: 'مغامرات تعليمية وممتعة للمدارس، من الاثنين إلى الجمعة.'
             },
             packDay: {
                 title: "الأسعار",

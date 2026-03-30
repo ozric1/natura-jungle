@@ -48,9 +48,9 @@ export const CateringPartyservice = ({ onClose, language, eventType }: CateringP
                 ar: 'نظم تجربة فريق لا تُنسى'
             },
             school: {
-                en: 'Educational and fun adventures for students.',
-                fr: 'Aventures éducatives et ludiques pour les élèves.',
-                ar: 'مغامرات تعليمية وممتعة للطلاب'
+                en: 'Educational and fun adventures for students, Monday to Friday.',
+                fr: 'Aventures éducatives et ludiques pour les écoles, du Lundi au Vendredi.',
+                ar: 'مغامرات تعليمية وممتعة للمدارس، من الاثنين إلى الجمعة.'
             }
         },
         groupSize: {
@@ -189,7 +189,18 @@ export const CateringPartyservice = ({ onClose, language, eventType }: CateringP
                                 <input
                                     type="date"
                                     value={formData.date}
-                                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                                    onChange={(e) => {
+                                        const val = e.target.value;
+                                        if (val && eventType === 'school') {
+                                            const day = new Date(val).getDay();
+                                            if (day === 0 || day === 6) {
+                                                alert(language === 'fr' ? 'Les week-ends ne sont pas disponibles pour les sorties scolaires. Veuillez choisir du Lundi au Vendredi.' : (language === 'ar' ? 'عطلات نهاية الأسبوع غير متاحة. يرجى اختيار من الاثنين إلى الجمعة.' : 'Weekends are not available for school trips. Please choose Monday to Friday.'));
+                                                setFormData({ ...formData, date: '' });
+                                                return;
+                                            }
+                                        }
+                                        setFormData({ ...formData, date: val });
+                                    }}
                                     className="w-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl p-4 text-neutral-900 dark:text-white focus:ring-2 focus:ring-sand-gold outline-none transition-all"
                                 />
                             </div>
