@@ -45,7 +45,7 @@ export const VIPOrderTracker = ({ status: initialStatus, orderId, items, total, 
     const handleWhatsAppPayment = () => {
         const message = `Order Ref: ${orderId}\nItems: ${items.join(', ')}\nTotal: ${total}\nStatus: Payment Requested`;
         const encoded = encodeURIComponent(message);
-        window.open(`https://wa.me/212600000000?text=${encoded}`, '_blank');
+        window.open(`https://wa.me/212681813081?text=${encoded}`, '_blank');
         setIsPaid(true);
 
         // Simulate progress for demo

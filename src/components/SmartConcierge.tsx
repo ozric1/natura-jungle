@@ -49,7 +49,7 @@ export const SmartConcierge = ({ language }: SmartConciergeProps) => {
 
     const handleServiceClick = (message: string) => {
         const fullMessage = `Bungalow Service Request:%0A${message}`;
-        window.open(`https://wa.me/212605500058?text=${fullMessage}`, '_blank');
+        window.open(`https://wa.me/212681813081?text=${fullMessage}`, '_blank');
     };
 
     return (

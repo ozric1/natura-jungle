@@ -115,7 +115,7 @@ export const CateringPartyservice = ({ onClose, language, eventType }: CateringP
         // Encode the entire message to handle special characters and newlines correctly
         const encodedMessage = encodeURIComponent(message);
 
-        window.open(`https://wa.me/212605500058?text=${encodedMessage}`, '_blank');
+        window.open(`https://wa.me/212681813081?text=${encodedMessage}`, '_blank');
     };
 
     return (

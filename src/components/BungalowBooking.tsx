@@ -501,7 +501,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                             `- Montant Total Estimé : ${grandTotal} MAD\n\n` +
                             `Merci de me confirmer la disponibilité.`;
                         
-                        const whatsappUrl = `https://wa.me/212605500058?text=${encodeURIComponent(message)}`;
+                        const whatsappUrl = `https://wa.me/212681813081?text=${encodeURIComponent(message)}`;
                         window.open(whatsappUrl, '_blank');
                     }}
                     className={`
