@@ -22,7 +22,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             highDemand: "High demand for this bungalow. 70% of dates are already booked for this month. Secure yours today!",
             pricePerNight: "Price per Night",
             breakfast: "Breakfast & Animal Park access included",
-            extraKid: "2nd child +150 DH",
+            extraKid: "2nd child +200 DH",
             addKidsQuestion: "Additional Kids?",
             howMany: "How many?",
             yes: "Yes",
@@ -59,7 +59,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             highDemand: "Forte demande pour ce bungalow. 70% des dates sont déjà réservées. Sécurisez la vôtre aujourd'hui !",
             pricePerNight: "Prix par Nuit",
             breakfast: "Ptit dej et acces au Parc animalier inclus",
-            extraKid: "2ème enfant +150 DH",
+            extraKid: "2ème enfant +200 DH",
             addKidsQuestion: "Enfants supplémentaires ?",
             howMany: "Combien ?",
             yes: "Oui",
@@ -96,7 +96,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             highDemand: "تم حجز ٧٠٪ من التواريخ لهذا الشهر. احجز مبكراً لتجنب خيبة الأمل.",
             pricePerNight: "السعر لليلة",
             breakfast: "شامل الفطور والدخول إلى حديقة الحيوان",
-            extraKid: "الطفل الثاني +150 درهم",
+            extraKid: "الطفل الثاني +200 درهم",
             addKidsQuestion: "أطفال إضافيون؟",
             howMany: "كم عددهم؟",
             yes: "نعم",
@@ -142,7 +142,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
         cvv: ''
     });
     const pricePerNight = 900;
-    const extraKidPrice = 150;
+    const extraKidPrice = 200;
 
     // Simulation of occupancy
     const bookedDates: string[] = useMemo(() => [], []);

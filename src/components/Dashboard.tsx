@@ -132,7 +132,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     title: "Park Entry",
                     adults: "Adults",
                     kids: "Kids",
-                    desc: "Includes one free cold drink. Access to animal zones.",
+                    desc: "Access to animal zones.",
                     book: "Book Now"
                 },
                 footer_hours: "Daily: 10 AM - 8 PM",
@@ -148,7 +148,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     title: "Bungalow Stay",
                     perNight: "Per Night",
                     desc: "1 Couple + 1 Kid. Free animal park access & breakfast included.",
-                    additional: "+150 DH / night for additional child",
+                    additional: "+200 DH / night for additional child",
                     poolDesc: "Pool: + 100 dh adults / day\n+ 50 dh child / day",
                     book: "Book Now"
                 },
@@ -245,7 +245,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     title: "Entrée Parc",
                     adults: "Adultes",
                     kids: "Enfants",
-                    desc: "Comprend une boisson froide offerte. Accès aux zones animalières.",
+                    desc: "Accès aux zones animalières.",
                     book: "Réserver"
                 },
                 footer_hours: "Tous les jours : 10h - 20h",
@@ -261,7 +261,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     title: "Séjour en Bungalow",
                     perNight: "Par Nuit",
                     desc: "1 Couple + 1 Enfant. Accès gratuit au parc animalier et petit-déjeuner inclus.",
-                    additional: "+150 DH / nuit pour un autre enfant",
+                    additional: "+200 DH / nuit pour un autre enfant",
                     poolDesc: "Piscine : + 100 dh adultes / jour\n+ 50 dh enfants / jour",
                     book: "Réserver"
                 },
@@ -352,7 +352,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     title: "تذكرة الدخول",
                     adults: "كبار",
                     kids: "صغار",
-                    desc: "شامل مشروب بارد مجاني. دخول مناطق الحيوانات.",
+                    desc: "دخول مناطق الحيوانات.",
                     book: "احجز الآن"
                 },
                 footer_hours: "يومياً: 10 ص - 8 م",
@@ -368,7 +368,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     title: "إقامة في البنغالو",
                     perNight: "لليلة الواحدة",
                     desc: "زوجان + طفل واحد. دخول مجاني لمدار الحيوانات ووجبة الإفطار مشمولة.",
-                    additional: "+150 درهم / ليلة لطفل إضافي",
+                    additional: "+200 درهم / ليلة لطفل إضافي",
                     poolDesc: "المسبح: + 100 درهم للكبار / يوم\n+ 50 درهم للطفل / يوم",
                     book: "احجز الآن"
                 },
@@ -697,7 +697,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
-                            className="bg-[#0b1d12] w-full max-w-5xl rounded-[3rem] overflow-hidden border border-luxury-gold/20 shadow-2xl max-h-[90vh] overflow-y-auto relative"
+                            className="bg-[#0b1d12] w-full max-w-5xl rounded-[3rem] overflow-hidden border border-luxury-gold/20 shadow-2xl max-h-[90vh] overflow-y-auto no-scrollbar scroll-smooth relative"
                         >
                             {/* Texture Overlay */}
                             <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay" />
@@ -808,7 +808,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     </div>
 
                                     {/* Activities & Leisure */}
-                                    <div className="bg-white/5 rounded-[2rem] p-8 hover:bg-white/10 transition-colors border border-white/10 relative group flex flex-col h-full md:col-span-2 lg:col-span-3 xl:col-span-1">
+                                    <div className="bg-white/5 rounded-[2rem] p-8 hover:bg-white/10 transition-colors border border-white/10 relative group flex flex-col h-full md:col-span-2 lg:col-span-1 xl:col-span-1">
                                         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
                                             <Sparkles className="w-32 h-32 text-luxury-gold" />
                                         </div>
