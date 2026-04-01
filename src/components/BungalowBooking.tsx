@@ -47,7 +47,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             redirecting: "Redirecting...",
             alert: "Please enter all payment details",
             night: "Night",
-            nights: "Nights"
+            nights: "Nights",
+            depositNotice: "A 30% deposit via bank transfer is required to confirm your booking once availability is validated."
         },
         fr: {
             title: "Bungalow Horizon Jungle",
@@ -84,7 +85,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             redirecting: "Redirection...",
             alert: "Veuillez entrer tous les détails de paiement",
             night: "Nuit",
-            nights: "Nuits"
+            nights: "Nuits",
+            depositNotice: "Un acompte de 30% est requis par virement bancaire pour confirmer votre réservation après vérification de la disponibilité."
         },
         ar: {
             title: "بناغل الغابة الفاخرة",
@@ -121,7 +123,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             redirecting: "جاري العودة...",
             alert: "يرجى إدخال جميع تفاصيل الدفع",
             night: "ليلة",
-            nights: "ليالي"
+            nights: "ليالي",
+            depositNotice: "يلزم تحويل عربون بنسبة 30٪ لتأكيد حجزكم بعد التحقق من التوفر."
         }
     };
 
@@ -457,9 +460,15 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                             <span className="opacity-60">{t.pricePerNight}</span>
                             <span className="font-bold">{pricePerNight} MAD</span>
                         </div>
-                        <div className="flex justify-between text-[10px] mb-4 text-sand-gold/80">
-                            <span>{t.breakfast}</span>
-                            <span>{t.extraKid}</span>
+                        <div className="flex flex-col gap-1.5 mb-4 text-sand-gold/80">
+                            <div className="flex items-center gap-2 text-[10px]">
+                                <div className="w-1 h-1 rounded-full bg-sand-gold opacity-40 shrink-0" />
+                                <span>{t.breakfast}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-[10px]">
+                                <div className="w-1 h-1 rounded-full bg-sand-gold opacity-40 shrink-0" />
+                                <span>{t.extraKid}</span>
+                            </div>
                         </div>
 
                         {addKids && (
@@ -480,6 +489,17 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                             <span className="text-lg font-serif italic">{t.total}</span>
                             <span className="text-3xl font-serif text-sand-gold">{grandTotal} MAD</span>
                         </div>
+
+                        <motion.div 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mt-6 p-4 bg-sand-gold/5 rounded-2xl border border-sand-gold/20 flex items-start gap-3"
+                        >
+                            <Info className="w-4 h-4 text-sand-gold mt-0.5 flex-shrink-0" />
+                            <p className="text-[10px] text-jungle-green/60 font-medium leading-relaxed italic">
+                                {t.depositNotice}
+                            </p>
+                        </motion.div>
                     </div>
                 </div>
             </div>
