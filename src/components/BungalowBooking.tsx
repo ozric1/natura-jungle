@@ -47,8 +47,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             redirecting: "Redirecting...",
             alert: "Please enter all payment details",
             night: "Night",
-            nights: "Nights",
-            depositNotice: "A 30% deposit via bank transfer is required to confirm your booking once availability is validated."
+            nights: "Nights"
         },
         fr: {
             title: "Bungalow Horizon Jungle",
@@ -85,8 +84,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             redirecting: "Redirection...",
             alert: "Veuillez entrer tous les détails de paiement",
             night: "Nuit",
-            nights: "Nuits",
-            depositNotice: "Un acompte de 30% est requis par virement bancaire pour confirmer votre réservation après vérification de la disponibilité."
+            nights: "Nuits"
         },
         ar: {
             title: "بناغل الغابة الفاخرة",
@@ -123,8 +121,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             redirecting: "جاري العودة...",
             alert: "يرجى إدخال جميع تفاصيل الدفع",
             night: "ليلة",
-            nights: "ليالي",
-            depositNotice: "يلزم تحويل عربون بنسبة 30٪ لتأكيد حجزكم بعد التحقق من التوفر."
+            nights: "ليالي"
         }
     };
 
@@ -489,17 +486,6 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                             <span className="text-lg font-serif italic">{t.total}</span>
                             <span className="text-3xl font-serif text-sand-gold">{grandTotal} MAD</span>
                         </div>
-
-                        <motion.div 
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mt-6 p-4 bg-sand-gold/5 rounded-2xl border border-sand-gold/20 flex items-start gap-3"
-                        >
-                            <Info className="w-4 h-4 text-sand-gold mt-0.5 flex-shrink-0" />
-                            <p className="text-[10px] text-jungle-green/60 font-medium leading-relaxed italic">
-                                {t.depositNotice}
-                            </p>
-                        </motion.div>
                     </div>
                 </div>
             </div>
@@ -512,10 +498,6 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                     onClick={() => {
                         const arrivalDate = selectedDates.length > 0 ? [...selectedDates].sort()[0] : null;
                         
-                        // Automatic calculation of deposit (30%) and remainder (70%)
-                        const depositAmount = Math.round(grandTotal * 0.3);
-                        const balanceAmount = grandTotal - depositAmount;
-
                         const message = `Bonjour, je souhaite vérifier la disponibilité du Bungalow Horizon Jungle.\n\n` +
                             `Détails :\n` +
                             `- Nuitées : ${nights}\n` +
@@ -524,9 +506,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                             (addPool ? `- Accès Piscine : Inclus pour 2 Adultes et ${kidsCount} Enfant(s) pour ${nights} nuit(s)\n` : '') +
                             `- Prix par nuit (hébergement) : ${totalPricePerNight} MAD\n\n` +
                             `TOTAUX :\n` +
-                            `- Montant Total Estimé : ${grandTotal} MAD\n` +
-                            `- Acompte à envoyer maintenant (30%) : ${depositAmount} MAD\n` +
-                            `- Montant restant à payer plus tard (70%) : ${balanceAmount} MAD\n\n` +
+                            `- Montant Total Estimé : ${grandTotal} MAD\n\n` +
                             `Merci de me confirmer la disponibilité.`;
                         
                         const whatsappUrl = `https://wa.me/212681813081?text=${encodeURIComponent(message)}`;
