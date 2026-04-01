@@ -511,14 +511,22 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                     disabled={nights === 0}
                     onClick={() => {
                         const arrivalDate = selectedDates.length > 0 ? [...selectedDates].sort()[0] : null;
+                        
+                        // Automatic calculation of deposit (30%) and remainder (70%)
+                        const depositAmount = Math.round(grandTotal * 0.3);
+                        const balanceAmount = grandTotal - depositAmount;
+
                         const message = `Bonjour, je souhaite vérifier la disponibilité du Bungalow Horizon Jungle.\n\n` +
                             `Détails :\n` +
                             `- Nuitées : ${nights}\n` +
                             (arrivalDate ? `- Date d'arrivée souhaitée : ${arrivalDate}\n` : '') +
                             (addKids && kidsCount > 1 ? `- Enfants supplémentaires : ${kidsCount - 1}\n` : '') +
                             (addPool ? `- Accès Piscine : Inclus pour 2 Adultes et ${kidsCount} Enfant(s) pour ${nights} nuit(s)\n` : '') +
-                            `- Prix par nuit (hébergement) : ${totalPricePerNight} MAD\n` +
-                            `- Montant Total Estimé : ${grandTotal} MAD\n\n` +
+                            `- Prix par nuit (hébergement) : ${totalPricePerNight} MAD\n\n` +
+                            `TOTAUX :\n` +
+                            `- Montant Total Estimé : ${grandTotal} MAD\n` +
+                            `- Acompte à envoyer maintenant (30%) : ${depositAmount} MAD\n` +
+                            `- Montant restant à payer plus tard (70%) : ${balanceAmount} MAD\n\n` +
                             `Merci de me confirmer la disponibilité.`;
                         
                         const whatsappUrl = `https://wa.me/212681813081?text=${encodeURIComponent(message)}`;
