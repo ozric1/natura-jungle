@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Users, Star, ChevronLeft, CheckCircle2, Moon, Sparkles, Calendar as CalendarIcon, Info } from 'lucide-react';
+import { Users, Star, ChevronLeft, CheckCircle2, Moon, Sparkles, Calendar as CalendarIcon, Info, LogIn, LogOut } from 'lucide-react';
 import { useState, useMemo } from 'react';
 
 interface BungalowBookingProps {
@@ -16,8 +16,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             title: "Jungle Horizon Bungalow",
             subtitle: "Luxury Stay",
             guests: "2 Adults + 1 Kid",
-            private: "Private",
-            rest: "Rest",
+            checkIn: "Check-in 14h",
+            checkOut: "Check-out 12h",
             selectDates: "Select Dates",
             highDemand: "High demand for this bungalow. 70% of dates are already booked for this month. Secure yours today!",
             pricePerNight: "Price per Night",
@@ -53,8 +53,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             title: "Bungalow Horizon Jungle",
             subtitle: "Séjour de Luxe",
             guests: "2 Adultes + 1 Enfant",
-            private: "Privé",
-            rest: "Détente",
+            checkIn: "Arrivée 14h",
+            checkOut: "Départ Midi (12h)",
             selectDates: "Choisir les Dates",
             highDemand: "Forte demande pour ce bungalow. 70% des dates sont déjà réservées. Sécurisez la vôtre aujourd'hui !",
             pricePerNight: "Prix par Nuit",
@@ -90,8 +90,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             title: "بناغل الغابة الفاخرة",
             subtitle: "إقامة فاخرة",
             guests: "شخصين + طفل واحد",
-            private: "خاص",
-            rest: "استجمام",
+            checkIn: "وصول 14:00",
+            checkOut: "مغادرة 12:00",
             selectDates: "اختر التواريخ",
             highDemand: "تم حجز ٧٠٪ من التواريخ لهذا الشهر. احجز مبكراً لتجنب خيبة الأمل.",
             pricePerNight: "السعر لليلة",
@@ -262,19 +262,19 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                         </h1>
                     </div>
 
-                    {/* Features Row */}
-                    <div className="grid grid-cols-3 gap-3">
-                        <div className="p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm">
+                    {/* Features Row - Asymmetric Layout */}
+                    <div className="flex flex-wrap gap-2 sm:gap-4 items-stretch">
+                        <div className="flex-[1.5] min-w-[120px] p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm flex flex-col items-center justify-center">
                             <Users className="w-4 h-4 mx-auto text-sand-gold mb-1" />
-                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{t.guests}</p>
+                            <p className="text-[9px] font-bold uppercase opacity-60 tracking-tighter leading-tight">{t.guests}</p>
                         </div>
-                        <div className="p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm">
-                            <Moon className="w-4 h-4 mx-auto text-sand-gold mb-1" />
-                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{t.private}</p>
-                        </div>
-                        <div className="p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm">
+                        <div className="flex-1 min-w-[100px] p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm flex flex-col items-center justify-center">
                             <Sparkles className="w-4 h-4 mx-auto text-sand-gold mb-1" />
-                            <p className="text-[8px] font-bold uppercase opacity-60 tracking-tighter">{t.rest}</p>
+                            <p className="text-[9px] font-bold uppercase opacity-60 tracking-tighter leading-tight">{t.checkIn}</p>
+                        </div>
+                        <div className="flex-1 min-w-[100px] p-4 bg-white rounded-3xl border border-sand-gold/10 text-center shadow-sm flex flex-col items-center justify-center">
+                            <Moon className="w-4 h-4 mx-auto text-sand-gold mb-1" />
+                            <p className="text-[9px] font-bold uppercase opacity-60 tracking-tighter leading-tight">{t.checkOut}</p>
                         </div>
                     </div>
 
