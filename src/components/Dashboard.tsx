@@ -133,6 +133,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     adults: "Adults",
                     kids: "Kids",
                     desc: "Access to animal zones.",
+                    offer: "Free cold drink",
                     book: "Book Now"
                 },
                 footer_hours: "Daily: 10 AM - 8 PM",
@@ -246,6 +247,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     adults: "Adultes",
                     kids: "Enfants",
                     desc: "Accès aux zones animalières.",
+                    offer: "Boisson froide offerte",
                     book: "Réserver"
                 },
                 footer_hours: "Tous les jours : 10h - 20h",
@@ -353,6 +355,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     adults: "كبار",
                     kids: "صغار",
                     desc: "دخول مناطق الحيوانات.",
+                    offer: "مشروب بارد مجاني",
                     book: "احجز الآن"
                 },
                 footer_hours: "يومياً: 10 ص - 8 م",
@@ -748,6 +751,14 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         </div>
                                         <p className="text-xs text-white/40 leading-relaxed">
                                             {text.pricingModal.parkEntry.desc}
+                                            {text.pricingModal.parkEntry.offer && (
+                                                <>
+                                                    <br />
+                                                    <span className="text-luxury-gold font-medium mt-1 block">
+                                                        {text.pricingModal.parkEntry.offer}
+                                                    </span>
+                                                </>
+                                            )}
                                         </p>
                                     </div>
 
