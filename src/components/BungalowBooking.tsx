@@ -47,7 +47,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             redirecting: "Redirecting...",
             alert: "Please enter all payment details",
             night: "Night",
-            nights: "Nights"
+            nights: "Nights",
+            fillAllFields: "Please answer all questions first"
         },
         fr: {
             title: "Bungalow Horizon Jungle",
@@ -84,7 +85,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             redirecting: "Redirection...",
             alert: "Veuillez entrer tous les détails de paiement",
             night: "Nuit",
-            nights: "Nuits"
+            nights: "Nuits",
+            fillAllFields: "Veuillez répondre à toutes les questions"
         },
         ar: {
             title: "بناغل الغابة الفاخرة",
@@ -121,7 +123,8 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             redirecting: "جاري العودة...",
             alert: "يرجى إدخال جميع تفاصيل الدفع",
             night: "ليلة",
-            nights: "ليالي"
+            nights: "ليالي",
+            fillAllFields: "يرجى الإجابة على جميع الأسئلة"
         }
     };
 
@@ -494,30 +497,45 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
             <div className="p-6 bg-white shadow-[0_-10px_40px_rgba(0,0,0,0.05)] border-t border-sand-gold/10 relative z-30">
                 <motion.button
                     whileTap={{ scale: 0.98 }}
-                    disabled={nights === 0}
+                    disabled={false}
                     onClick={() => {
+                        const isComplete = nights > 0 && addKids !== null && addPool !== null;
+                        
+                        if (!isComplete) {
+                            alert(t.fillAllFields);
+                            return;
+                        }
+
                         const arrivalDate = selectedDates.length > 0 ? [...selectedDates].sort()[0] : null;
                         
                         const message = `Bonjour, je souhaite vérifier la disponibilité du Bungalow Horizon Jungle.\n\n` +
-                            `Détails :\n` +
-                            `- Nuitées : ${nights}\n` +
-                            (arrivalDate ? `- Date d'arrivée souhaitée : ${arrivalDate}\n` : '') +
-                            (addKids && kidsCount > 1 ? `- Enfants supplémentaires : ${kidsCount - 1}\n` : '') +
-                            (addPool ? `- Accès Piscine : Inclus pour 2 Adultes et ${kidsCount} Enfant(s) pour ${nights} nuit(s)\n` : '') +
-                            `- Prix par nuit (hébergement) : ${totalPricePerNight} MAD\n\n` +
-                            `TOTAUX :\n` +
-                            `- Montant Total Estimé : ${grandTotal} MAD\n\n` +
-                            `Merci de me confirmer la disponibilité.`;
+                            `DÉTAILS DU SÉJOUR :\n` +
+                            `📍 Bungalow : Horizon Jungle\n` +
+                            `📅 Date d'arrivée : ${arrivalDate}\n` +
+                            `🌙 Durée : ${nights} nuit(s)\n\n` +
+                            `OPTIONS :\n` +
+                            `👶 Enfants supplémentaires : ${addKids ? (kidsCount === 1 ? '1 enfant (Inclus)' : '2 enfants (+200 DH)') : 'Aucun'}\n` +
+                            `🏊 Accès Piscine : ${addPool ? 'Oui (Inclus pour toute la durée)' : 'Non'}\n\n` +
+                            `RÉSUMÉ FINANCIER :\n` +
+                            `💰 Prix Bungalow : ${pricePerNight} MAD / nuit\n` +
+                            (addKids && kidsCount > 1 ? `➕ Supplément 2ème enfant : ${extraKidPrice} MAD / nuit\n` : '') +
+                            (addPool ? `➕ Supplément Piscine : ${(2 * 100 + kidsCount * 50) * nights} MAD\n` : '') +
+                            `━━━━━━━━━━━━━━━━━━━━━\n` +
+                            `✨ MONTANT TOTAL : ${grandTotal} MAD\n` +
+                            `━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                            `Merci de me confirmer la disponibilité pour ces dates.`;
                         
                         const whatsappUrl = `https://wa.me/212681813081?text=${encodeURIComponent(message)}`;
                         window.open(whatsappUrl, '_blank');
                     }}
                     className={`
                         w-full py-5 rounded-[2.5rem] font-bold uppercase tracking-[0.2em] text-[10px] shadow-2xl transition-all duration-500
-                        ${nights > 0 ? 'bg-jungle-green text-white cursor-pointer hover:bg-jungle-green/90' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}
+                        ${(nights > 0 && addKids !== null && addPool !== null) 
+                            ? 'bg-jungle-green text-white cursor-pointer hover:bg-jungle-green/90' 
+                            : 'bg-egg-shell text-jungle-green/40 border border-jungle-green/10 cursor-pointer'}
                     `}
                 >
-                    {nights === 0 ? t.selectDatesFirst : t.continue}
+                    {nights === 0 ? t.selectDatesFirst : (addKids === null || addPool === null) ? t.fillAllFields : t.continue}
                 </motion.button>
             </div>
 
