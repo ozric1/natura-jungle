@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Users, Star, ChevronLeft, CheckCircle2, Moon, Sparkles, Calendar as CalendarIcon, Info } from 'lucide-react';
+import { Users, Star, ChevronLeft, CheckCircle2, Moon, Sparkles, Calendar as CalendarIcon, Info, Plus, Minus } from 'lucide-react';
 import { useState, useMemo } from 'react';
 
 interface BungalowBookingProps {
@@ -135,8 +135,10 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
     const [selectedDates, setSelectedDates] = useState<string[]>([]);
     const [addKids, setAddKids] = useState<boolean | null>(null);
-    const [kidsCount, setKidsCount] = useState<1 | 2>(1);
+    const [extraKidsCount, setExtraKidsCount] = useState<number>(0);
     const [addPool, setAddPool] = useState<boolean | null>(null);
+    const [poolAdultsCount, setPoolAdultsCount] = useState<number>(2);
+    const [poolKidsCount, setPoolKidsCount] = useState<number>(1);
 
     const [paymentData, setPaymentData] = useState({
         cardName: '',
@@ -187,12 +189,34 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     };
 
     const nights = selectedDates.length;
+    const extraKidPrice = 200;
 
     // Price Calculation
-    const totalExtraKidsCost = (addKids && kidsCount > 1) ? (extraKidPrice) : 0;
-    const totalPricePerNight = pricePerNight + totalExtraKidsCost;
-    const totalPoolCost = addPool ? (2 * 100 + kidsCount * 50) * nights : 0;
-    const grandTotal = nights * totalPricePerNight + totalPoolCost;
+    const totalExtraKidsCostPerNight = (addKids && extraKidsCount > 1) ? (Math.max(0, extraKidsCount - 1) * extraKidPrice) : 0;
+    const totalPricePerNight = pricePerNight + totalExtraKidsCostPerNight;
+    const totalPoolCost = addPool ? (poolAdultsCount * 100 + poolKidsCount * 50) * nights : 0;
+    const grandTotal = (nights * pricePerNight) + (nights * totalExtraKidsCostPerNight) + totalPoolCost;
+
+    const Stepper = ({ value, onChange, min = 0, max = 10, label }: { value: number, onChange: (v: number) => void, min?: number, max?: number, label?: string }) => (
+        <div className="flex items-center gap-4">
+            {label && <span className="text-[10px] font-bold uppercase tracking-widest opacity-40">{label}</span>}
+            <div className="flex items-center gap-3 bg-egg-shell p-1.5 rounded-2xl border border-sand-gold/5">
+                <button
+                    onClick={() => value > min && onChange(value - 1)}
+                    className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all ${value > min ? 'bg-white text-jungle-green shadow-sm' : 'text-jungle-green/20'}`}
+                >
+                    <Minus className="w-4 h-4" />
+                </button>
+                <span className="w-8 text-center font-bold text-sm font-serif">{value}</span>
+                <button
+                    onClick={() => value < max && onChange(value + 1)}
+                    className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all ${value < max ? 'bg-white text-jungle-green shadow-sm' : 'text-jungle-green/20'}`}
+                >
+                    <Plus className="w-4 h-4" />
+                </button>
+            </div>
+        </div>
+    );
 
     const handlePayment = () => {
         if (!paymentData.cardName || !paymentData.cardNumber || !paymentData.expiry || !paymentData.cvv) {
@@ -387,21 +411,16 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                                 >
                                     <div className="pt-4 border-t border-sand-gold/10 flex justify-between items-center">
                                         <span className="text-xs font-medium opacity-60">{t.howMany}</span>
-                                        <div className="flex gap-3">
-                                            {[1, 2].map(num => (
-                                                <button
-                                                    key={num}
-                                                    onClick={() => setKidsCount(num as 1 | 2)}
-                                                    className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm transition-all border ${kidsCount === num ? 'bg-sand-gold text-white border-sand-gold shadow-lg scale-110' : 'bg-white border-sand-gold/20 text-jungle-green/60'}`}
-                                                >
-                                                    {num}
-                                                </button>
-                                            ))}
-                                        </div>
+                                        <Stepper 
+                                            value={extraKidsCount} 
+                                            onChange={setExtraKidsCount} 
+                                            min={0}
+                                            max={5}
+                                        />
                                     </div>
                                     <div className="mt-4 text-right">
                                         <span className="text-xs font-serif text-sand-gold italic">
-                                            + {(kidsCount > 1 ? extraKidPrice : 0)} MAD / {t.night}
+                                            {extraKidsCount <= 1 ? "Inclus" : `+ ${totalExtraKidsCostPerNight} MAD / ${t.night}`}
                                         </span>
                                     </div>
                                 </motion.div>
@@ -437,17 +456,25 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                                     exit={{ height: 0, opacity: 0 }}
                                     className="overflow-hidden"
                                 >
-                                    <div className="pt-4 border-t border-sand-gold/10">
-                                        <div className="flex justify-between items-center text-xs font-medium opacity-60 mb-2">
-                                            <span>2 x {t.poolAdults}</span>
+                                    <div className="pt-4 border-t border-sand-gold/10 space-y-4">
+                                        <div className="flex justify-between items-center">
+                                            <div className="flex flex-col">
+                                                <span className="text-xs font-bold text-jungle-green uppercase tracking-wider">{t.poolAdults.split('(')[0]}</span>
+                                                <span className="text-[10px] opacity-40 font-bold uppercase">100 DH / J</span>
+                                            </div>
+                                            <Stepper value={poolAdultsCount} onChange={setPoolAdultsCount} min={1} max={10} />
                                         </div>
-                                        <div className="flex justify-between items-center text-xs font-medium opacity-60">
-                                            <span>{kidsCount} x {t.poolKids}</span>
+                                        <div className="flex justify-between items-center">
+                                            <div className="flex flex-col">
+                                                <span className="text-xs font-bold text-jungle-green uppercase tracking-wider">{t.poolKids.split('(')[0]}</span>
+                                                <span className="text-[10px] opacity-40 font-bold uppercase">50 DH / J</span>
+                                            </div>
+                                            <Stepper value={poolKidsCount} onChange={setPoolKidsCount} min={0} max={10} />
                                         </div>
                                     </div>
                                     <div className="mt-4 text-right">
                                         <span className="text-xs font-serif text-sand-gold italic">
-                                            + {(2 * 100 + kidsCount * 50) * nights} MAD
+                                            + {totalPoolCost} MAD
                                         </span>
                                     </div>
                                 </motion.div>
@@ -471,17 +498,17 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                             </div>
                         </div>
 
-                        {addKids && (
+                        {addKids && extraKidsCount > 0 && (
                             <div className="flex justify-between text-xs mb-4 text-jungle-green/80 border-t border-dashed border-jungle-green/10 pt-2">
-                                <span>{kidsCount > 1 ? "2nd Child" : "1st Child Included"} x {nights} {t.nights}</span>
-                                <span className="font-bold">+ {(kidsCount > 1 ? extraKidPrice * nights : 0)} MAD</span>
+                                <span>{extraKidsCount} {extraKidsCount > 1 ? t.kids : t.kid} x {nights} {t.nights}</span>
+                                <span className="font-bold">+ {totalExtraKidsCostPerNight * nights} MAD</span>
                             </div>
                         )}
 
                         {addPool && (
                             <div className="flex justify-between text-xs mb-4 text-jungle-green/80 border-t border-dashed border-jungle-green/10 pt-2">
-                                <span>{t.pool} x {nights} {t.nights}</span>
-                                <span className="font-bold">+ {(2 * 100 + kidsCount * 50) * nights} MAD</span>
+                                <span>{poolAdultsCount} Adu. + {poolKidsCount} Enf. x {nights} Jours</span>
+                                <span className="font-bold">+ {totalPoolCost} MAD</span>
                             </div>
                         )}
 
@@ -513,13 +540,14 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                             `📍 Bungalow : Horizon Jungle\n` +
                             `📅 Date d'arrivée : ${arrivalDate}\n` +
                             `🌙 Durée : ${nights} nuit(s)\n\n` +
-                            `OPTIONS :\n` +
-                            `👶 Enfants supplémentaires : ${addKids ? (kidsCount === 1 ? '1 enfant (Inclus)' : '2 enfants (+200 DH)') : 'Aucun'}\n` +
-                            `🏊 Accès Piscine : ${addPool ? 'Oui (Inclus pour toute la durée)' : 'Non'}\n\n` +
+                            `OCCUPATION & OPTIONS :\n` +
+                            `👶 Enfants en bungalow : ${addKids ? extraKidsCount : 0} (${extraKidsCount <= 1 ? 'Gratuit' : `dont ${extraKidsCount - 1} payant(s) : +${totalExtraKidsCostPerNight * nights} MAD`})\n` +
+                            `🏊 Accès Piscine : ${addPool ? 'Inclus' : 'Non'}\n` +
+                            (addPool ? `   └─ ${poolAdultsCount} Adultes (100 DH/j)\n` : '') +
+                            (addPool ? `   └─ ${poolKidsCount} Enfants (50 DH/j)\n` : '') +
+                            (addPool ? `   └─ Total Piscine : ${totalPoolCost} MAD\n\n` : '\n') +
                             `RÉSUMÉ FINANCIER :\n` +
                             `💰 Prix Bungalow : ${pricePerNight} MAD / nuit\n` +
-                            (addKids && kidsCount > 1 ? `➕ Supplément 2ème enfant : ${extraKidPrice} MAD / nuit\n` : '') +
-                            (addPool ? `➕ Supplément Piscine : ${(2 * 100 + kidsCount * 50) * nights} MAD\n` : '') +
                             `━━━━━━━━━━━━━━━━━━━━━\n` +
                             `✨ MONTANT TOTAL : ${grandTotal} MAD\n` +
                             `━━━━━━━━━━━━━━━━━━━━━\n\n` +
