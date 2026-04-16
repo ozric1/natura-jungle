@@ -189,11 +189,9 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
     };
 
     const nights = selectedDates.length;
-    const extraKidPrice = 200;
 
     // Price Calculation
     const totalExtraKidsCostPerNight = (addKids && extraKidsCount > 1) ? (Math.max(0, extraKidsCount - 1) * extraKidPrice) : 0;
-    const totalPricePerNight = pricePerNight + totalExtraKidsCostPerNight;
     const totalPoolCost = addPool ? (poolAdultsCount * 100 + poolKidsCount * 50) * nights : 0;
     const grandTotal = (nights * pricePerNight) + (nights * totalExtraKidsCostPerNight) + totalPoolCost;
 
@@ -393,7 +391,7 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                                     {t.yes}
                                 </button>
                                 <button
-                                    onClick={() => { setAddKids(false); setKidsCount(1); }}
+                                    onClick={() => { setAddKids(false); setExtraKidsCount(0); }}
                                     className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${addKids === false ? 'bg-jungle-green text-white shadow-md' : 'text-jungle-green/40 hover:text-jungle-green'}`}
                                 >
                                     {t.no}
