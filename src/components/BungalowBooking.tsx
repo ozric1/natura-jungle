@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Users, Star, ChevronLeft, Moon, Sparkles, Calendar as CalendarIcon, Info, Baby, Check, CheckCircle2 } from 'lucide-react';
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useRef } from 'react';
 
 interface BungalowBookingProps {
     onBack: () => void;
@@ -8,7 +8,7 @@ interface BungalowBookingProps {
     currentLanguage: 'en' | 'fr' | 'ar';
 }
 
-export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: BungalowBookingProps) => {
+export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProps) => {
     const isRTL = currentLanguage === 'ar';
 
     const translations = {
@@ -38,30 +38,30 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                 {
                     id: 1,
                     price: 1200,
-                    title: "Offre Premium",
-                    guests: "2 adultes + 1 enfant gratuit",
-                    features: ["Accès piscine", "Accès parc animalier", "Accès espace de jeux", "Petit déjeuner"]
+                    title: "👑 Offre Premium",
+                    guests: "👨‍👩‍👦 2 adultes + 1 enfant gratuit",
+                    features: ["🏊‍♂️ Accès piscine", "🦁 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
                 },
                 {
                     id: 2,
                     price: 1400,
-                    title: "Offre Famille Plus",
-                    guests: "2 adultes + 2 enfants",
-                    features: ["Accès piscine", "Accès parc animalier", "Accès espace de jeux", "Petit déjeuner"]
+                    title: "👨‍👩‍👧‍👦 Offre Famille Plus",
+                    guests: "👨‍👩‍👧‍👦 2 adultes + 2 enfants",
+                    features: ["🏊‍♂️ Accès piscine", "🦁 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
                 },
                 {
                     id: 3,
                     price: 900,
-                    title: "Offre Découverte",
-                    guests: "2 adultes + 1 enfant gratuit",
-                    features: ["Accès parc animalier", "Accès espace de jeux", "Petit déjeuner"]
+                    title: "🌿 Offre Découverte",
+                    guests: "👨‍👩‍👦 2 adultes + 1 enfant gratuit",
+                    features: ["🦁 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
                 },
                 {
                     id: 4,
                     price: 1100,
-                    title: "Offre Famille Découverte",
-                    guests: "2 adultes + 2 enfants",
-                    features: ["Accès parc animalier", "Accès espace de jeux", "Petit déjeuner"]
+                    title: "🦁 Offre Famille Découverte",
+                    guests: "👨‍👩‍👧‍👦 2 adultes + 2 enfants",
+                    features: ["🦁 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
                 }
             ]
         },
@@ -91,30 +91,30 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                 {
                     id: 1,
                     price: 1200,
-                    title: "Premium Offer",
-                    guests: "2 Adults + 1 Kid Free",
-                    features: ["Pool access", "Animal park access", "Kids play area", "Breakfast"]
+                    title: "👑 Premium Offer",
+                    guests: "👨‍👩‍👦 2 Adults + 1 Kid Free",
+                    features: ["🏊‍♂️ Pool access", "🦁 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
                 },
                 {
                     id: 2,
                     price: 1400,
-                    title: "Family Plus Offer",
-                    guests: "2 Adults + 2 Kids",
-                    features: ["Pool access", "Animal park access", "Kids play area", "Breakfast"]
+                    title: "👨‍👩‍👧‍👦 Family Plus Offer",
+                    guests: "👨‍👩‍👧‍👦 2 Adults + 2 Kids",
+                    features: ["🏊‍♂️ Pool access", "🦁 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
                 },
                 {
                     id: 3,
                     price: 900,
-                    title: "Discovery Offer",
-                    guests: "2 Adults + 1 Kid Free",
-                    features: ["Animal park access", "Kids play area", "Breakfast"]
+                    title: "🌿 Discovery Offer",
+                    guests: "👨‍👩‍👦 2 Adults + 1 Kid Free",
+                    features: ["🦁 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
                 },
                 {
                     id: 4,
                     price: 1100,
-                    title: "Discovery Family Offer",
-                    guests: "2 Adults + 2 Kids",
-                    features: ["Animal park access", "Kids play area", "Breakfast"]
+                    title: "🦁 Discovery Family Offer",
+                    guests: "👨‍👩‍👧‍👦 2 Adults + 2 Kids",
+                    features: ["🦁 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
                 }
             ]
         },
@@ -144,30 +144,30 @@ export const BungalowBooking = ({ onBack, onPaymentComplete, currentLanguage }: 
                 {
                     id: 1,
                     price: 1200,
-                    title: "العرض الشامل",
-                    guests: "شخصين + طفل واحد مجاناً",
-                    features: ["دخول المسبح", "دخول حديقة الحيوان", "منطقة ألعاب الأطفال", "فطور"]
+                    title: "👑 العرض الشامل",
+                    guests: "👨‍👩‍👦 شخصين + طفل واحد مجاناً",
+                    features: ["🏊‍♂️ دخول المسبح", "🦁 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
                 },
                 {
                     id: 2,
                     price: 1400,
-                    title: "عرض العائلة بلس",
-                    guests: "شخصين + طفلين",
-                    features: ["دخول المسبح", "دخول حديقة الحيوان", "منطقة ألعاب الأطفال", "فطور"]
+                    title: "👨‍👩‍👧‍👦 عرض العائلة بلس",
+                    guests: "👨‍👩‍👧‍👦 شخصين + طفلين",
+                    features: ["🏊‍♂️ دخول المسبح", "🦁 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
                 },
                 {
                     id: 3,
                     price: 900,
-                    title: "العرض الاستكشافي",
-                    guests: "شخصين + طفل واحد مجاناً",
-                    features: ["دخول حديقة الحيوان", "منطقة ألعاب الأطفال", "فطور"]
+                    title: "🌿 العرض الاستكشافي",
+                    guests: "👨‍👩‍👦 شخصين + طفل واحد مجاناً",
+                    features: ["🦁 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
                 },
                 {
                     id: 4,
                     price: 1100,
-                    title: "عرض العائلة الاستكشافي",
-                    guests: "شخصين + طفلين",
-                    features: ["دخول حديقة الحيوان", "منطقة ألعاب الأطفال", "فطور"]
+                    title: "🦁 عرض العائلة الاستكشافي",
+                    guests: "👨‍👩‍👧‍👦 شخصين + طفلين",
+                    features: ["🦁 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
                 }
             ]
         }
