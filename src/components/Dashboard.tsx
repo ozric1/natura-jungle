@@ -147,11 +147,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 bungalow: {
                     tag: "Best Value",
                     title: "Bungalow Stay",
-                    perNight: "Per Night",
-                    desc: "1 Couple + 1 Kid. Free animal park access & breakfast included.",
-                    additional: "+200 DH / night for additional child",
-                    poolDesc: "Pool: + 100 dh adults / day\n+ 50 dh child / day",
-                    book: "Book Now"
+                    perNight: "Starting From",
+                    desc: "Discover our exclusive offers starting from 900 DH per night.",
+                    additional: "Click below to view all available packages and book your stay.",
+                    poolDesc: "",
+                    book: "View Offers"
                 },
                 activities: {
                     title: "Activities & Leisure",
@@ -261,11 +261,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 bungalow: {
                     tag: "Meilleure Offre",
                     title: "Séjour en Bungalow",
-                    perNight: "Par Nuit",
-                    desc: "1 Couple + 1 Enfant. Accès gratuit au parc animalier et petit-déjeuner inclus.",
-                    additional: "+200 DH / nuit pour un autre enfant",
-                    poolDesc: "Piscine : + 100 dh adultes / jour\n+ 50 dh enfants / jour",
-                    book: "Réserver"
+                    perNight: "À partir de",
+                    desc: "Découvrez nos offres exclusives à partir de 900 DH par nuit.",
+                    additional: "Cliquez ci-dessous pour voir toutes nos formules.",
+                    poolDesc: "",
+                    book: "Voir les Offres"
                 },
                 activities: {
                     title: "Activités & Loisirs",
@@ -369,11 +369,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 bungalow: {
                     tag: "أفضل قيمة",
                     title: "إقامة في البنغالو",
-                    perNight: "لليلة الواحدة",
-                    desc: "زوجان + طفل واحد. دخول مجاني لمدار الحيوانات ووجبة الإفطار مشمولة.",
-                    additional: "+200 درهم / ليلة لطفل إضافي",
-                    poolDesc: "المسبح: + 100 درهم للكبار / يوم\n+ 50 درهم للطفل / يوم",
-                    book: "احجز الآن"
+                    perNight: "ابتداءً من",
+                    desc: "اكتشف عروضنا الحصرية ابتداءً من 900 درهم لليلة.",
+                    additional: "انقر أدناه لعرض جميع الباقات المتاحة.",
+                    poolDesc: "",
+                    book: "عرض الباقات"
                 },
                 activities: {
                     title: "الأنشطة والترفيه",
@@ -800,13 +800,16 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                         </div>
                                         <p className="text-xs text-white/40 leading-relaxed mb-4">
                                             {text.pricingModal.bungalow.desc}
-                                            <br />
-                                            <span className="text-luxury-gold/80 mt-1 block font-medium">
-                                                {text.pricingModal.bungalow.additional}
-                                            </span>
-                                            <span className="text-luxury-gold/80 mt-1 block font-medium whitespace-pre-wrap">
-                                                {(text.pricingModal.bungalow as any).poolDesc}
-                                            </span>
+                                            {text.pricingModal.bungalow.additional && (
+                                                <span className="text-luxury-gold/80 mt-2 block font-medium">
+                                                    {text.pricingModal.bungalow.additional}
+                                                </span>
+                                            )}
+                                            {(text.pricingModal.bungalow as any).poolDesc && (
+                                                <span className="text-luxury-gold/80 mt-1 block font-medium whitespace-pre-wrap">
+                                                    {(text.pricingModal.bungalow as any).poolDesc}
+                                                </span>
+                                            )}
                                         </p>
                                         <div className="mt-auto pt-6">
                                             <button
