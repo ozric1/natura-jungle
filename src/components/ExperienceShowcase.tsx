@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowRight } from 'lucide-react';
+import { X, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 interface ExperienceShowcaseProps {
@@ -206,13 +206,8 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
     const currentContent = content[type] || content.bungalow;
     const currentSlide = currentContent.slides[page];
 
-    // Auto-rotation
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setPage(prev => (prev + 1) % currentContent.slides.length);
-        }, 7000);
-        return () => clearInterval(interval);
-    }, [currentContent.slides.length]);
+    const handleNext = () => setPage(prev => (prev + 1) % currentContent.slides.length);
+    const handlePrev = () => setPage(prev => (prev - 1 + currentContent.slides.length) % currentContent.slides.length);
 
     // Image Preloading
     useEffect(() => {
@@ -266,6 +261,22 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     </span>
                 </div>
             </header>
+
+            {/* Navigation Arrows */}
+            <div className="absolute inset-y-0 left-0 right-0 z-20 flex items-center justify-between px-2 sm:px-6 pointer-events-none">
+                <button
+                    onClick={handlePrev}
+                    className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-black/20 hover:bg-luxury-gold/90 backdrop-blur-md flex items-center justify-center border border-white/10 hover:border-luxury-gold text-white/80 hover:text-jungle-deep transition-all duration-300 pointer-events-auto shadow-lg"
+                >
+                    <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
+                </button>
+                <button
+                    onClick={handleNext}
+                    className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-black/20 hover:bg-luxury-gold/90 backdrop-blur-md flex items-center justify-center border border-white/10 hover:border-luxury-gold text-white/80 hover:text-jungle-deep transition-all duration-300 pointer-events-auto shadow-lg"
+                >
+                    <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
+                </button>
+            </div>
 
             {/* Content Area */}
             <div className="relative z-10 flex-1 flex flex-col justify-end p-8 lg:p-16">
