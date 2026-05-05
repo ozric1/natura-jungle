@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Users, Star, ChevronLeft, Moon, Sparkles, Calendar as CalendarIcon, Info, Baby, Check, CheckCircle2 } from 'lucide-react';
+import { Users, Star, ChevronLeft, Moon, Sparkles, Calendar as CalendarIcon, Info, Check, CheckCircle2, Minus, Plus } from 'lucide-react';
 import { useState, useMemo, useRef } from 'react';
 
 interface BungalowBookingProps {
@@ -22,9 +22,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             selectArrival: "Date d'arrivée",
             selectDeparture: "Date de départ",
             highDemand: "Forte demande pour ce bungalow. 70% des dates sont déjà réservées. Sécurisez la vôtre aujourd'hui !",
-            babyCotQuestion: "Avez-vous besoin d'un lit bébé ?",
-            yes: "Oui",
-            no: "Non",
+            maxCapacityNotice: "Capacité maximale de 4 personnes par bungalow. Au-delà, un autre bungalow est requis.",
+            bungalowCount: "Nombre de bungalows",
             total: "Montant Total",
             continue: "Vérifier la Disponibilité",
             selectDatesFirst: "Sélectionnez vos dates",
@@ -40,28 +39,28 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     price: 1200,
                     title: "👑 Offre Premium",
                     guests: "👨‍👩‍👦 2 adultes + 1 enfant gratuit",
-                    features: ["🏊‍♂️ Accès piscine", "🦁 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
+                    features: ["🏊‍♂️ Accès piscine", "🦙 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
                 },
                 {
                     id: 2,
                     price: 1400,
                     title: "👨‍👩‍👧‍👦 Offre Famille Plus",
                     guests: "👨‍👩‍👧‍👦 2 adultes + 2 enfants",
-                    features: ["🏊‍♂️ Accès piscine", "🦁 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
+                    features: ["🏊‍♂️ Accès piscine", "🦙 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
                 },
                 {
                     id: 3,
                     price: 900,
                     title: "🌿 Offre Découverte",
                     guests: "👨‍👩‍👦 2 adultes + 1 enfant gratuit",
-                    features: ["🦁 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
+                    features: ["🦙 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
                 },
                 {
                     id: 4,
                     price: 1100,
-                    title: "🦁 Offre Famille Découverte",
+                    title: "🦙 Offre Famille Découverte",
                     guests: "👨‍👩‍👧‍👦 2 adultes + 2 enfants",
-                    features: ["🦁 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
+                    features: ["🦙 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
                 }
             ]
         },
@@ -75,9 +74,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             selectArrival: "Arrival Date",
             selectDeparture: "Departure Date",
             highDemand: "High demand for this bungalow. 70% of dates are already booked for this month. Secure yours today!",
-            babyCotQuestion: "Do you need a baby cot?",
-            yes: "Yes",
-            no: "No",
+            maxCapacityNotice: "Maximum capacity is 4 people per bungalow. For more, another bungalow is required.",
+            bungalowCount: "Number of bungalows",
             total: "Total Amount",
             continue: "Check Availability",
             selectDatesFirst: "Select Dates First",
@@ -93,28 +91,28 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     price: 1200,
                     title: "👑 Premium Offer",
                     guests: "👨‍👩‍👦 2 Adults + 1 Kid Free",
-                    features: ["🏊‍♂️ Pool access", "🦁 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
+                    features: ["🏊‍♂️ Pool access", "🦙 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
                 },
                 {
                     id: 2,
                     price: 1400,
                     title: "👨‍👩‍👧‍👦 Family Plus Offer",
                     guests: "👨‍👩‍👧‍👦 2 Adults + 2 Kids",
-                    features: ["🏊‍♂️ Pool access", "🦁 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
+                    features: ["🏊‍♂️ Pool access", "🦙 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
                 },
                 {
                     id: 3,
                     price: 900,
                     title: "🌿 Discovery Offer",
                     guests: "👨‍👩‍👦 2 Adults + 1 Kid Free",
-                    features: ["🦁 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
+                    features: ["🦙 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
                 },
                 {
                     id: 4,
                     price: 1100,
-                    title: "🦁 Discovery Family Offer",
+                    title: "🦙 Discovery Family Offer",
                     guests: "👨‍👩‍👧‍👦 2 Adults + 2 Kids",
-                    features: ["🦁 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
+                    features: ["🦙 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
                 }
             ]
         },
@@ -128,9 +126,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             selectArrival: "تاريخ الوصول",
             selectDeparture: "تاريخ المغادرة",
             highDemand: "تم حجز ٧٠٪ من التواريخ لهذا الشهر. احجز مبكراً لتجنب خيبة الأمل.",
-            babyCotQuestion: "هل تحتاج إلى سرير أطفال؟",
-            yes: "نعم",
-            no: "لا",
+            maxCapacityNotice: "الحد الأقصى للسعة هو 4 أشخاص لكل بنغل. لأكثر من ذلك، يلزم بنغل آخر.",
+            bungalowCount: "عدد البناغل",
             total: "المجموع",
             continue: "التحقق من التوفر",
             selectDatesFirst: "اختر التواريخ أولاً",
@@ -146,28 +143,28 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     price: 1200,
                     title: "👑 العرض الشامل",
                     guests: "👨‍👩‍👦 شخصين + طفل واحد مجاناً",
-                    features: ["🏊‍♂️ دخول المسبح", "🦁 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
+                    features: ["🏊‍♂️ دخول المسبح", "🦙 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
                 },
                 {
                     id: 2,
                     price: 1400,
                     title: "👨‍👩‍👧‍👦 عرض العائلة بلس",
                     guests: "👨‍👩‍👧‍👦 شخصين + طفلين",
-                    features: ["🏊‍♂️ دخول المسبح", "🦁 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
+                    features: ["🏊‍♂️ دخول المسبح", "🦙 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
                 },
                 {
                     id: 3,
                     price: 900,
                     title: "🌿 العرض الاستكشافي",
                     guests: "👨‍👩‍👦 شخصين + طفل واحد مجاناً",
-                    features: ["🦁 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
+                    features: ["🦙 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
                 },
                 {
                     id: 4,
                     price: 1100,
-                    title: "🦁 عرض العائلة الاستكشافي",
+                    title: "🦙 عرض العائلة الاستكشافي",
                     guests: "👨‍👩‍👧‍👦 شخصين + طفلين",
-                    features: ["🦁 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
+                    features: ["🦙 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
                 }
             ]
         }
@@ -179,7 +176,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
     const [selectedDates, setSelectedDates] = useState<string[]>([]);
-    const [needsBabyCot, setNeedsBabyCot] = useState<boolean | null>(null);
+    const [bungalowCount, setBungalowCount] = useState<number>(1);
     const calendarRef = useRef<HTMLDivElement>(null);
 
     const bookedDates: string[] = useMemo(() => [], []);
@@ -222,7 +219,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
 
     const nights = Math.max(0, selectedDates.length - 1);
     const selectedOffer = t.offers.find(o => o.id === selectedOfferId);
-    const grandTotal = selectedOffer ? (nights * selectedOffer.price) : 0;
+    const grandTotal = selectedOffer ? (nights * selectedOffer.price * bungalowCount) : 0;
 
     const handleOfferSelect = (id: number) => {
         setSelectedOfferId(id);
@@ -242,24 +239,20 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             alert(t.selectDatesFirst);
             return;
         }
-        if (needsBabyCot === null) {
-            alert(t.fillAllFields);
-            return;
-        }
 
         const arrivalDate = selectedDates[0];
         const departureDate = selectedDates[selectedDates.length - 1];
         
         const message = `*NOUVELLE DEMANDE DE RÉSERVATION BUNGALOW*\n\n` +
             `*📍 Bungalow :* Horizon Jungle\n` +
+            `*🏠 Nombre de Bungalows :* ${bungalowCount}\n` +
             `*💎 Offre choisie :* ${selectedOffer?.title}\n` +
-            `*👥 Inclus :* ${selectedOffer?.guests}\n` +
+            `*👥 Inclus par bungalow :* ${selectedOffer?.guests}\n` +
             `*📅 Arrivée :* ${arrivalDate}\n` +
             `*📅 Départ :* ${departureDate}\n` +
-            `*🌙 Durée :* ${nights} nuit(s)\n` +
-            `*👶 Lit Bébé :* ${needsBabyCot ? 'Oui' : 'Non'}\n\n` +
+            `*🌙 Durée :* ${nights} nuit(s)\n\n` +
             `*RÉSUMÉ FINANCIER :*\n` +
-            `💰 Prix par nuit : ${selectedOffer?.price} MAD\n` +
+            `💰 Prix par nuit/bungalow : ${selectedOffer?.price} MAD\n` +
             `━━━━━━━━━━━━━━━━━━━━━\n` +
             `*✨ MONTANT TOTAL : ${grandTotal} MAD*\n` +
             `━━━━━━━━━━━━━━━━━━━━━\n\n` +
@@ -487,33 +480,36 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                         )}
                     </AnimatePresence>
 
-                    {/* Baby Cot Selection */}
+                    {/* Bungalow Quantity & Capacity Notice */}
                     <AnimatePresence>
                         {nights > 0 && (
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="bg-white rounded-[2rem] p-6 shadow-sm border border-sand-gold/10"
+                                className="bg-white rounded-[2rem] p-6 shadow-sm border border-sand-gold/10 space-y-4"
                             >
-                                <div className="flex justify-between items-center">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-8 h-8 rounded-full bg-sand-gold/10 flex items-center justify-center">
-                                            <Baby className="w-4 h-4 text-sand-gold" />
-                                        </div>
-                                        <h3 className="text-xs font-bold uppercase tracking-widest text-jungle-green">{t.babyCotQuestion}</h3>
-                                    </div>
-                                    <div className="flex gap-2 bg-egg-shell p-1 rounded-xl">
+                                <div className="p-4 bg-sand-gold/10 rounded-2xl flex items-start gap-3">
+                                    <Info className="w-5 h-5 text-sand-gold shrink-0 mt-0.5" />
+                                    <p className="text-xs text-jungle-green font-medium leading-relaxed">
+                                        {t.maxCapacityNotice}
+                                    </p>
+                                </div>
+                                
+                                <div className="flex justify-between items-center pt-2">
+                                    <h3 className="text-sm font-bold uppercase tracking-widest text-jungle-green">{t.bungalowCount}</h3>
+                                    <div className="flex items-center gap-3 bg-egg-shell p-1.5 rounded-2xl border border-sand-gold/5">
                                         <button
-                                            onClick={() => setNeedsBabyCot(true)}
-                                            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${needsBabyCot === true ? 'bg-jungle-green text-white shadow-md' : 'text-jungle-green/40 hover:text-jungle-green'}`}
+                                            onClick={() => bungalowCount > 1 && setBungalowCount(bungalowCount - 1)}
+                                            className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all ${bungalowCount > 1 ? 'bg-white text-jungle-green shadow-sm' : 'text-jungle-green/20'}`}
                                         >
-                                            {t.yes}
+                                            <Minus className="w-4 h-4" />
                                         </button>
+                                        <span className="w-6 text-center font-bold text-sm font-serif">{bungalowCount}</span>
                                         <button
-                                            onClick={() => setNeedsBabyCot(false)}
-                                            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${needsBabyCot === false ? 'bg-jungle-green text-white shadow-md' : 'text-jungle-green/40 hover:text-jungle-green'}`}
+                                            onClick={() => bungalowCount < 10 && setBungalowCount(bungalowCount + 1)}
+                                            className="w-8 h-8 rounded-xl flex items-center justify-center bg-white text-jungle-green shadow-sm transition-all"
                                         >
-                                            {t.no}
+                                            <Plus className="w-4 h-4" />
                                         </button>
                                     </div>
                                 </div>
@@ -537,12 +533,12 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     onClick={handleCheckout}
                     className={`
                         w-full max-w-2xl mx-auto block py-5 rounded-[2.5rem] font-bold uppercase tracking-[0.2em] text-[10px] shadow-2xl transition-all duration-500
-                        ${(selectedOfferId && nights > 0 && needsBabyCot !== null) 
+                        ${(selectedOfferId && nights > 0) 
                             ? 'bg-jungle-green text-white cursor-pointer hover:bg-jungle-green/90' 
                             : 'bg-egg-shell text-jungle-green/40 border border-jungle-green/10 cursor-pointer'}
                     `}
                 >
-                    {!selectedOfferId ? t.selectOfferFirst : nights === 0 ? t.selectDatesFirst : needsBabyCot === null ? t.fillAllFields : t.continue}
+                    {!selectedOfferId ? t.selectOfferFirst : nights === 0 ? t.selectDatesFirst : t.continue}
                 </motion.button>
             </div>
         </div>
