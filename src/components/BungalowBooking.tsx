@@ -39,7 +39,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     id: 3,
                     price: 900,
                     title: "🌿 Offre Découverte",
-                    guests: "👥 2 Adultes / 👨‍👩‍👦 2 Adultes + 1 Enfant",
+                    guests: "👨‍👩‍👦 2 adultes + 1 enfant gratuit",
                     features: ["🦙 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
                 },
                 {
@@ -53,7 +53,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     id: 1,
                     price: 1200,
                     title: "👑 Offre Premium",
-                    guests: "👥 2 Adultes / 👨‍👩‍👦 2 Adultes + 1 Enfant",
+                    guests: "👨‍👩‍👦 2 adultes + 1 enfant gratuit",
                     features: ["🏊‍♂️ Accès piscine", "🦙 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
                 },
                 {
@@ -92,7 +92,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     id: 3,
                     price: 900,
                     title: "🌿 Discovery Offer",
-                    guests: "👥 2 Adults / 👨‍👩‍👦 2 Adults + 1 Kid",
+                    guests: "👨‍👩‍👦 2 Adults + 1 Kid Free",
                     features: ["🦙 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
                 },
                 {
@@ -106,7 +106,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     id: 1,
                     price: 1200,
                     title: "👑 Premium Offer",
-                    guests: "👥 2 Adults / 👨‍👩‍👦 2 Adults + 1 Kid",
+                    guests: "👨‍👩‍👦 2 Adults + 1 Kid Free",
                     features: ["🏊‍♂️ Pool access", "🦙 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
                 },
                 {
@@ -145,7 +145,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     id: 3,
                     price: 900,
                     title: "🌿 العرض الاستكشافي",
-                    guests: "👥 شخصين / 👨‍👩‍👦 شخصين + طفل",
+                    guests: "👨‍👩‍👦 شخصين + طفل واحد مجاناً",
                     features: ["🦙 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
                 },
                 {
@@ -159,7 +159,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     id: 1,
                     price: 1200,
                     title: "👑 العرض الشامل",
-                    guests: "👥 شخصين / 👨‍👩‍👦 شخصين + طفل",
+                    guests: "👨‍👩‍👦 شخصين + طفل واحد مجاناً",
                     features: ["🏊‍♂️ دخول المسبح", "🦙 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
                 },
                 {
