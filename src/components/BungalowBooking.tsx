@@ -33,21 +33,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             fillAllFields: "Veuillez répondre à toutes les questions",
             reserve: "Réserver",
             selected: "Sélectionné",
+            poolOffersNotice: "Offres avec accès piscine pour toute la famille",
             offers: [
-                {
-                    id: 1,
-                    price: 1200,
-                    title: "👑 Offre Premium",
-                    guests: "👨‍👩‍👦 2 adultes + 1 enfant gratuit",
-                    features: ["🏊‍♂️ Accès piscine", "🦙 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
-                },
-                {
-                    id: 2,
-                    price: 1400,
-                    title: "👨‍👩‍👧‍👦 Offre Famille Plus",
-                    guests: "👨‍👩‍👧‍👦 2 adultes + 2 enfants",
-                    features: ["🏊‍♂️ Accès piscine", "🦙 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
-                },
                 {
                     id: 3,
                     price: 900,
@@ -61,6 +48,20 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     title: "🦙 Offre Famille Découverte",
                     guests: "👨‍👩‍👧‍👦 2 adultes + 2 enfants",
                     features: ["🦙 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
+                },
+                {
+                    id: 1,
+                    price: 1200,
+                    title: "👑 Offre Premium",
+                    guests: "👨‍👩‍👦 2 adultes + 1 enfant gratuit",
+                    features: ["🏊‍♂️ Accès piscine", "🦙 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
+                },
+                {
+                    id: 2,
+                    price: 1400,
+                    title: "👨‍👩‍👧‍👦 Offre Famille Plus",
+                    guests: "👨‍👩‍👧‍👦 2 adultes + 2 enfants",
+                    features: ["🏊‍♂️ Accès piscine", "🦙 Accès parc animalier", "🎪 Accès espace de jeux", "🥐 Petit déjeuner"]
                 }
             ]
         },
@@ -85,21 +86,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             fillAllFields: "Please answer all questions first",
             reserve: "Reserve",
             selected: "Selected",
+            poolOffersNotice: "Offers with pool access for the whole family",
             offers: [
-                {
-                    id: 1,
-                    price: 1200,
-                    title: "👑 Premium Offer",
-                    guests: "👨‍👩‍👦 2 Adults + 1 Kid Free",
-                    features: ["🏊‍♂️ Pool access", "🦙 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
-                },
-                {
-                    id: 2,
-                    price: 1400,
-                    title: "👨‍👩‍👧‍👦 Family Plus Offer",
-                    guests: "👨‍👩‍👧‍👦 2 Adults + 2 Kids",
-                    features: ["🏊‍♂️ Pool access", "🦙 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
-                },
                 {
                     id: 3,
                     price: 900,
@@ -113,6 +101,20 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     title: "🦙 Discovery Family Offer",
                     guests: "👨‍👩‍👧‍👦 2 Adults + 2 Kids",
                     features: ["🦙 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
+                },
+                {
+                    id: 1,
+                    price: 1200,
+                    title: "👑 Premium Offer",
+                    guests: "👨‍👩‍👦 2 Adults + 1 Kid Free",
+                    features: ["🏊‍♂️ Pool access", "🦙 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
+                },
+                {
+                    id: 2,
+                    price: 1400,
+                    title: "👨‍👩‍👧‍👦 Family Plus Offer",
+                    guests: "👨‍👩‍👧‍👦 2 Adults + 2 Kids",
+                    features: ["🏊‍♂️ Pool access", "🦙 Animal park access", "🎪 Kids play area", "🥐 Breakfast"]
                 }
             ]
         },
@@ -137,21 +139,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             fillAllFields: "يرجى الإجابة على جميع الأسئلة",
             reserve: "حجز",
             selected: "محدد",
+            poolOffersNotice: "عروض مع دخول المسبح لجميع أفراد العائلة",
             offers: [
-                {
-                    id: 1,
-                    price: 1200,
-                    title: "👑 العرض الشامل",
-                    guests: "👨‍👩‍👦 شخصين + طفل واحد مجاناً",
-                    features: ["🏊‍♂️ دخول المسبح", "🦙 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
-                },
-                {
-                    id: 2,
-                    price: 1400,
-                    title: "👨‍👩‍👧‍👦 عرض العائلة بلس",
-                    guests: "👨‍👩‍👧‍👦 شخصين + طفلين",
-                    features: ["🏊‍♂️ دخول المسبح", "🦙 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
-                },
                 {
                     id: 3,
                     price: 900,
@@ -165,6 +154,20 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     title: "🦙 عرض العائلة الاستكشافي",
                     guests: "👨‍👩‍👧‍👦 شخصين + طفلين",
                     features: ["🦙 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
+                },
+                {
+                    id: 1,
+                    price: 1200,
+                    title: "👑 العرض الشامل",
+                    guests: "👨‍👩‍👦 شخصين + طفل واحد مجاناً",
+                    features: ["🏊‍♂️ دخول المسبح", "🦙 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
+                },
+                {
+                    id: 2,
+                    price: 1400,
+                    title: "👨‍👩‍👧‍👦 عرض العائلة بلس",
+                    guests: "👨‍👩‍👧‍👦 شخصين + طفلين",
+                    features: ["🏊‍♂️ دخول المسبح", "🦙 دخول حديقة الحيوان", "🎪 منطقة ألعاب الأطفال", "🥐 فطور"]
                 }
             ]
         }
@@ -321,9 +324,9 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                             {t.selectOffer}
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {t.offers.map(offer => {
+                            {t.offers.map((offer, index) => {
                                 const isSelected = selectedOfferId === offer.id;
-                                return (
+                                const offerCard = (
                                     <motion.div 
                                         key={offer.id}
                                         whileHover={{ scale: 1.02 }}
@@ -371,6 +374,20 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                                         </div>
                                     </motion.div>
                                 );
+
+                                if (index === 2) {
+                                    return [
+                                        <div key="pool-notice" className="col-span-1 sm:col-span-2 text-center py-4 my-2 border-y border-sand-gold/20 flex items-center justify-center gap-2">
+                                            <Sparkles className="w-4 h-4 text-sand-gold" />
+                                            <p className="text-[11px] font-bold uppercase tracking-widest text-jungle-green">
+                                                {t.poolOffersNotice}
+                                            </p>
+                                            <Sparkles className="w-4 h-4 text-sand-gold" />
+                                        </div>,
+                                        offerCard
+                                    ];
+                                }
+                                return offerCard;
                             })}
                         </div>
                     </div>
