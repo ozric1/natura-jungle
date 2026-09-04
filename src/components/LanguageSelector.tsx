@@ -16,9 +16,12 @@ export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
                     className="w-full h-full relative"
                 >
                     <img
-                        src="/assets/natura/Natura sky view MAIN PAGE BKGRND TWO.jpeg"
+                        src="/assets/natura/Natura sky view MAIN PAGE BKGRND TWO.webp"
                         className="w-full h-full object-cover opacity-80"
                         alt="Natura Jungle Entry"
+                        loading="eager"
+                        fetchPriority="high"
+                        decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 z-10" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 z-10" />

@@ -272,9 +272,11 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                 {/* Gallery Header */}
                 <div className="relative h-[35vh] w-full overflow-hidden shrink-0">
                     <img
-                        src="/assets/natura/bugalow.jpeg"
+                        src="/assets/natura/bugalow.webp"
                         className="w-full h-full object-cover"
                         alt="Bungalow"
+                        loading="lazy"
+                        decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-egg-shell via-transparent to-black/30" />
 

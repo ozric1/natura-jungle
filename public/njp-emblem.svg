@@ -1,0 +1,263 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Jungle Deep Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05140b" />
+      <stop offset="45%" stop-color="#0c2918" />
+      <stop offset="100%" stop-color="#030e07" />
+    </linearGradient>
+
+    <!-- Luxury Gold Gradient -->
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7" />
+      <stop offset="25%" stop-color="#eab308" />
+      <stop offset="50%" stop-color="#ca8a04" />
+      <stop offset="75%" stop-color="#fde047" />
+      <stop offset="100%" stop-color="#a16207" />
+    </linearGradient>
+
+    <!-- Animal Gold Silhouette Gradient -->
+    <linearGradient id="animalGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff1be" />
+      <stop offset="30%" stop-color="#e6be53" />
+      <stop offset="70%" stop-color="#c9972c" />
+      <stop offset="100%" stop-color="#8a5a12" />
+    </linearGradient>
+
+    <!-- Soft Golden Horizon Sun -->
+    <radialGradient id="sunGlow" cx="50%" cy="38%" r="48%">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.95" />
+      <stop offset="35%" stop-color="#f59e0b" stop-opacity="0.65" />
+      <stop offset="70%" stop-color="#b45309" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0c2918" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Tropical Leaves Gradient -->
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80" />
+      <stop offset="50%" stop-color="#16a34a" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+
+    <!-- Water Ripples Gradient -->
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.05" />
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.05" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <!-- Base Rounded Squircle -->
+  <rect x="6" y="6" width="500" height="500" rx="120" fill="url(#bgGrad)" stroke="url(#gold)" stroke-width="10" />
+
+  <!-- Inner Ornate Ring -->
+  <rect x="20" y="20" width="472" height="472" rx="106" fill="none" stroke="url(#gold)" stroke-width="1.8" stroke-opacity="0.4" stroke-dasharray="6 4" />
+
+
+
+  <!-- Background Birds in Flight -->
+  <path d="M 185 115 Q 191 107 197 115 Q 203 107 209 115" fill="none" stroke="url(#gold)" stroke-width="2" stroke-linecap="round" opacity="0.75" />
+  <path d="M 285 105 Q 292 96 299 105 Q 306 96 313 105" fill="none" stroke="url(#gold)" stroke-width="2.2" stroke-linecap="round" opacity="0.85" />
+  <path d="M 320 125 Q 325 118 330 125 Q 335 118 340 125" fill="none" stroke="url(#gold)" stroke-width="1.8" stroke-linecap="round" opacity="0.65" />
+
+  <!-- Outer Framing Jungle Leaves (Left) -->
+  <g fill="url(#leafGrad)" filter="url(#shadow)">
+    <path d="M 45 160 C 35 90, 105 60, 170 80 C 135 105, 120 145, 45 160 Z" opacity="0.9" />
+    <path d="M 35 210 C 25 140, 90 115, 155 130 C 120 160, 105 195, 35 210 Z" opacity="0.85" />
+    <path d="M 50 260 C 35 205, 90 175, 145 190 C 115 220, 110 250, 50 260 Z" opacity="0.75" />
+  </g>
+
+  <!-- Outer Framing Jungle Leaves (Right) -->
+  <g fill="url(#leafGrad)" filter="url(#shadow)">
+    <path d="M 467 160 C 477 90, 407 60, 342 80 C 377 105, 392 145, 467 160 Z" opacity="0.9" />
+    <path d="M 477 210 C 487 140, 422 115, 357 130 C 392 160, 407 195, 477 210 Z" opacity="0.85" />
+    <path d="M 462 260 C 477 205, 422 175, 367 190 C 397 220, 402 250, 462 260 Z" opacity="0.75" />
+  </g>
+
+  <!-- Perched Tropical Parrot (Higher on Upper Right Palm Branch, clear of all animals) -->
+  <g id="parrot" filter="url(#shadow)">
+    <!-- Palm Branch Perch -->
+    <path d="M 450 165 Q 400 175 365 190" fill="none" stroke="#522e16" stroke-width="5" stroke-linecap="round" />
+    
+    <!-- Long Tail Feathers (Hanging Down) -->
+    <path d="M 388 200 Q 396 250 402 290 Q 396 250 392 205 Z" fill="#eab308" />
+    <path d="M 386 202 Q 392 245 396 275 Q 391 240 389 205 Z" fill="#ef4444" />
+    
+    <!-- Parrot Body -->
+    <path d="M 378 180 Q 372 205 388 212 Q 396 200 392 184 Z" fill="#22c55e" />
+    <!-- Blue Wing -->
+    <path d="M 382 182 Q 377 206 390 214 Q 393 198 388 183 Z" fill="#3b82f6" />
+    
+    <!-- Parrot Head & Crest -->
+    <circle cx="380" cy="170" r="9" fill="#eab308" />
+    <path d="M 382 163 Q 386 153 392 156 Q 386 161 383 165 Z" fill="#ef4444" />
+    <!-- Curved Hooked Beak -->
+    <path d="M 373 170 Q 366 172 368 177 Q 373 175 375 172 Z" fill="#1e293b" />
+    <!-- Eye -->
+    <circle cx="378" cy="169" r="1.3" fill="#ffffff" />
+    <circle cx="378" cy="169" r="0.7" fill="#000000" />
+  </g>
+
+  <!-- Center Piece: Authentic Berber Tent -->
+  <g id="berber-tent" filter="url(#shadow)">
+    <!-- Tent Interior / Shadow -->
+    <polygon points="256,155 192,275 320,275" fill="#160d06" />
+    <!-- Left Draped Flap -->
+    <polygon points="256,155 170,282 225,282" fill="#3d2210" />
+    <!-- Right Draped Flap -->
+    <polygon points="256,155 342,282 287,282" fill="#2f1a0b" />
+    <!-- Center Main Fabric -->
+    <polygon points="256,158 215,280 297,280" fill="#522c15" />
+    <!-- Dark Doorway -->
+    <polygon points="256,188 232,280 280,280" fill="#0c0704" />
+
+    <!-- Guy Ropes to Ground Pegs -->
+    <line x1="192" y1="275" x2="160" y2="295" stroke="url(#gold)" stroke-width="2.2" stroke-linecap="round" />
+    <line x1="320" y1="275" x2="352" y2="295" stroke="url(#gold)" stroke-width="2.2" stroke-linecap="round" />
+
+    <!-- Ridge Finial & Pole -->
+    <line x1="256" y1="140" x2="256" y2="158" stroke="url(#gold)" stroke-width="4.5" stroke-linecap="round" />
+    <circle cx="256" cy="138" r="4.5" fill="url(#gold)" />
+    <!-- Gold Trim Edges -->
+    <line x1="256" y1="158" x2="170" y2="282" stroke="url(#gold)" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="256" y1="158" x2="342" y2="282" stroke="url(#gold)" stroke-width="2.5" stroke-linecap="round" />
+    <!-- Bottom Scalloped Fringe -->
+    <path d="M 170 282 Q 256 292 342 282" fill="none" stroke="url(#gold)" stroke-width="2.5" />
+  </g>
+
+  <!-- Left Wildlife: Realistic Equestrian Horse Silhouette -->
+  <g id="horse" filter="url(#shadow)">
+    <!-- Realistic Arabian horse: arched neck, refined muzzle, pointed ears, flowing mane, proud tail -->
+    <path d="M 98 322 
+             L 100 298 
+             Q 96 280 102 268 
+             Q 106 250 114 242 
+             Q 120 230 122 216 
+             L 125 210 L 128 214 L 131 209 L 133 215 
+             Q 142 218 138 227 
+             Q 133 231 126 233 
+             Q 132 245 133 260 
+             Q 146 264 160 268 
+             Q 172 274 170 292 
+             L 169 322 L 163 322 L 164 296 
+             Q 159 288 152 288 
+             L 145 322 L 139 322 L 143 288 
+             L 128 288 L 123 322 L 117 322 L 121 286 
+             Q 112 290 107 302 
+             L 104 322 Z" fill="url(#animalGold)" />
+    <!-- Flowing Horse Mane along crest of neck -->
+    <path d="M 124 214 Q 115 225 116 235 Q 110 242 113 255 Q 106 262 108 274" fill="none" stroke="#fff4cc" stroke-width="2.2" stroke-linecap="round" />
+    <!-- Flowing Tail -->
+    <path d="M 99 270 Q 88 288 90 318 Q 94 300 100 286 Z" fill="#fff4cc" />
+  </g>
+
+  <!-- Right Wildlife: Authentic Llama Silhouette (PROPORTIONAL, NOT A GIRAFFE!) -->
+  <g id="llama" filter="url(#shadow)">
+    <!-- Realistic Llama:
+         - Neck height: moderate (from y=235 to y=270, approx 35px), NOT a giraffe!
+         - Characteristic curved banana ears: distinct pair at top of head
+         - Woolly rounded body with fleece tufts along chest and rump
+         - Cute small tail pointing upwards (classic llama tail)
+         - Sturdy legs firmly grounded
+    -->
+    <path d="M 335 322 
+             L 338 298 
+             Q 336 288 340 282 
+             Q 343 268 348 252 
+             Q 350 242 353 232 
+             L 351 222 L 355 224 L 357 218 L 361 223 
+             Q 369 224 370 230 
+             Q 368 236 362 238 
+             Q 363 248 360 262 
+             Q 372 265 385 270 
+             Q 396 276 394 290 
+             L 399 285 L 401 292 
+             L 393 322 L 387 322 L 389 296 
+             Q 385 288 377 288 
+             L 374 322 L 368 322 L 371 288 
+             L 356 288 L 353 322 L 347 322 L 350 286 
+             Q 342 290 338 302 
+             L 335 322 Z" fill="url(#animalGold)" />
+    
+    <!-- Woolly chest and rump contour highlights -->
+    <path d="M 353 236 Q 361 248 362 262" fill="none" stroke="#fff4cc" stroke-width="2" stroke-linecap="round" />
+    <path d="M 390 274 Q 396 280 395 288" fill="none" stroke="#fff4cc" stroke-width="1.8" stroke-linecap="round" />
+    <!-- Characteristic curved llama ear detail -->
+    <path d="M 356 222 Q 354 216 357 214 Q 360 216 358 221 Z" fill="#fff4cc" />
+    <!-- Eye -->
+    <circle cx="364" cy="228" r="1.3" fill="#180e07" />
+  </g>
+
+  <!-- Center Water Pond & 2 Swimming Ducks -->
+  <g id="ducks-and-pond" filter="url(#shadow)">
+    <!-- Pond Water Ellipse -->
+    <ellipse cx="256" cy="316" rx="72" ry="11" fill="url(#waterGrad)" />
+    <!-- Water Ripple 1 -->
+    <ellipse cx="240" cy="317" rx="20" ry="4" fill="none" stroke="#7dd3fc" stroke-width="1.2" opacity="0.65" />
+    <!-- Water Ripple 2 -->
+    <ellipse cx="272" cy="318" rx="16" ry="3.5" fill="none" stroke="#7dd3fc" stroke-width="1" opacity="0.55" />
+
+    <!-- Duck 1 (Mother Duck, swimming gracefully) -->
+    <g transform="translate(230, 303) scale(0.85)">
+      <!-- Duck Body -->
+      <path d="M 0 10 Q 5 4 15 4 Q 25 4 27 11 Q 24 17 12 17 Q 2 17 -2 12 Z" fill="url(#animalGold)" />
+      <!-- Tail Feathers -->
+      <path d="M -2 12 L -6 8 Q -1 9 0 11 Z" fill="#8a5a12" />
+      <!-- Head & Neck -->
+      <path d="M 14 7 Q 17 1 22 1 Q 26 1 27 6 L 23 9 Z" fill="url(#animalGold)" />
+      <!-- Orange Bill -->
+      <path d="M 26 3 L 32 5 L 26 6 Z" fill="#ea580c" />
+      <!-- Eye -->
+      <circle cx="23" cy="3.5" r="0.9" fill="#180e07" />
+    </g>
+
+    <!-- Duck 2 (Duckling following, slightly smaller) -->
+    <g transform="translate(262, 306) scale(0.68)">
+      <!-- Duck Body -->
+      <path d="M 0 10 Q 5 4 15 4 Q 25 4 27 11 Q 24 17 12 17 Q 2 17 -2 12 Z" fill="url(#animalGold)" />
+      <!-- Tail -->
+      <path d="M -2 12 L -6 8 Q -1 9 0 11 Z" fill="#8a5a12" />
+      <!-- Head & Neck -->
+      <path d="M 14 7 Q 17 1 22 1 Q 26 1 27 6 L 23 9 Z" fill="url(#animalGold)" />
+      <!-- Orange Bill -->
+      <path d="M 26 3 L 32 5 L 26 6 Z" fill="#ea580c" />
+      <!-- Eye -->
+      <circle cx="23" cy="3.5" r="0.9" fill="#180e07" />
+    </g>
+  </g>
+
+  <!-- Green Ground Turf Silhouette -->
+  <path d="M 50 332 Q 256 322 462 332 L 462 355 L 50 355 Z" fill="#030e06" />
+  <!-- Grass Blades Accents -->
+  <path d="M 105 330 Q 110 316 115 330 Q 120 318 125 330 M 385 330 Q 390 316 395 330 Q 400 318 405 330" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+
+  <!-- Bottom Banner & Typography: NJP Monogram -->
+  <g filter="url(#shadow)" text-anchor="middle">
+    <!-- Decorative Gold Divider Lines with Stars -->
+    <path d="M 95 380 L 210 380 M 302 380 L 417 380" stroke="url(#gold)" stroke-width="1.8" stroke-linecap="round" opacity="0.75" />
+    <!-- Center Luxury Star -->
+    <path d="M 256 373 L 258.5 378.5 L 264.5 379 L 260 383 L 261.5 389 L 256 385.5 L 250.5 389 L 252 383 L 247.5 379 L 253.5 378.5 Z" fill="url(#gold)" />
+
+    <!-- "N J P" Main Monogram -->
+    <text x="256" y="440" 
+          font-family="Georgia, 'Times New Roman', serif" 
+          font-size="64" 
+          font-weight="900" 
+          letter-spacing="14" 
+          fill="url(#gold)">NJP</text>
+
+    <!-- Subtitle: NATURA JUNGLE PARK -->
+    <text x="256" y="472" 
+          font-family="'Segoe UI', Roboto, -apple-system, sans-serif" 
+          font-size="14" 
+          font-weight="700" 
+          letter-spacing="9" 
+          fill="#fef08a" 
+          opacity="0.95">NATURA JUNGLE PARK</text>
+  </g>
+</svg>

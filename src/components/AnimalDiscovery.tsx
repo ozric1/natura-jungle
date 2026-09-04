@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowLeft, Play, Heart, Share2, Volume2 } from 'lucide-react';
-const wallabyImg = '/assets/natura/wallaby.jpg';
-const cockatooImg = '/assets/natura/cockatoo.jpg';
+const wallabyImg = '/assets/natura/wallaby.webp';
+const cockatooImg = '/assets/natura/cockatoo.webp';
 
 interface AnimalDiscoveryProps {
     animal: {
@@ -101,10 +101,10 @@ export const AnimalDiscovery = ({ animal, onBack, isRTL = false, language = 'en'
                     <h3 className="text-2xl font-serif mb-8">{language === 'fr' ? 'Galerie des Espèces' : language === 'ar' ? 'معرض الصور' : 'Species Gallery'}</h3>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="h-48 bg-jungle-green/5 rounded-[2rem] overflow-hidden">
-                            <img src={cockatooImg} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Detail 1" />
+                            <img src={cockatooImg} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Detail 1" loading="lazy" decoding="async" />
                         </div>
                         <div className="h-48 bg-jungle-green/5 rounded-[2rem] overflow-hidden">
-                            <img src={wallabyImg} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Detail 2" />
+                            <img src={wallabyImg} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Detail 2" loading="lazy" decoding="async" />
                         </div>
                     </div>
                 </div>

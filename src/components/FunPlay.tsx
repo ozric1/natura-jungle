@@ -15,9 +15,9 @@ interface FunPlayProps {
     language: 'en' | 'fr' | 'ar';
 }
 
-const boxingImg = '/assets/natura/Jungle RESTAURANT 5.jpeg';
-const trampolineImg = '/assets/natura/pool.jpeg';
-const jumpRopeImg = '/assets/natura/park_view.jpg';
+const boxingImg = '/assets/natura/JUNGLE RESTAURANT 5.webp';
+const trampolineImg = '/assets/natura/pool.webp';
+const jumpRopeImg = '/assets/natura/park_view.webp';
 
 export const FunPlay = ({ onBack, isRTL = false, language }: FunPlayProps) => {
     const activities: Activity[] = [
@@ -76,7 +76,13 @@ export const FunPlay = ({ onBack, isRTL = false, language }: FunPlayProps) => {
                         className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}
                     >
                         <div className="w-full md:w-1/2 aspect-square rounded-[3rem] overflow-hidden shadow-2xl relative group">
-                            <img src={act.image} alt={act.name[language]} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                            <img
+                                src={act.image}
+                                alt={act.name[language]}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                loading="lazy"
+                                decoding="async"
+                            />
                             <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 to-transparent" />
                             <div className="absolute top-6 right-6 p-4 glass-dark rounded-2xl border border-white/20">
                                 <act.icon className="w-6 h-6 text-white" />

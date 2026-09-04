@@ -45,7 +45,7 @@ export const JungleConnect = ({ isRTL = false, language = 'en' }: JungleConnectP
             user: "Sarah M.",
             handle: "@sarah_jungle",
             location: "Animal Circuit",
-            image: '/assets/natura/animal circuit Lama.jpeg',
+            image: '/assets/natura/animal circuit Lama.webp',
             likes: "1.2k"
         },
         {
@@ -53,7 +53,7 @@ export const JungleConnect = ({ isRTL = false, language = 'en' }: JungleConnectP
             user: "Ahmed K.",
             handle: "@ahmed_explores",
             location: "Main Pool",
-            image: '/assets/natura/pool.jpeg',
+            image: '/assets/natura/pool.webp',
             likes: "2.4k"
         },
         {
@@ -61,7 +61,7 @@ export const JungleConnect = ({ isRTL = false, language = 'en' }: JungleConnectP
             user: "Elena G.",
             handle: "@elena_vibe",
             location: "Berber Tent",
-            image: '/assets/natura/berber tent at night.jpeg',
+            image: '/assets/natura/berber tent at night.webp',
             likes: "850"
         },
         {
@@ -69,7 +69,7 @@ export const JungleConnect = ({ isRTL = false, language = 'en' }: JungleConnectP
             user: "Karim B.",
             handle: "@karim_nature",
             location: "Equestrian Academy",
-            image: '/assets/natura/horse_update.jpg',
+            image: '/assets/natura/horse_update.webp',
             likes: "1.5k"
         },
         {
@@ -77,7 +77,7 @@ export const JungleConnect = ({ isRTL = false, language = 'en' }: JungleConnectP
             user: "Sofia L.",
             handle: "@sofia_jungle",
             location: "Wild Circuit",
-            image: '/assets/natura/peacock_update.jpg',
+            image: '/assets/natura/peacock_update.webp',
             likes: "3.1k"
         },
         {
@@ -85,7 +85,7 @@ export const JungleConnect = ({ isRTL = false, language = 'en' }: JungleConnectP
             user: "Yassine J.",
             handle: "@yassine_eat",
             location: "Jungle Restaurant",
-            image: '/assets/natura/Jungle restau 2.jpeg',
+            image: '/assets/natura/Jungle restau 2.webp',
             likes: "920"
         }
     ];
@@ -135,6 +135,8 @@ export const JungleConnect = ({ isRTL = false, language = 'en' }: JungleConnectP
                                 src={memory.image}
                                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[3000ms] group-hover/card:scale-110"
                                 alt={`Memory ${memory.id}`}
+                                loading="lazy"
+                                decoding="async"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
 

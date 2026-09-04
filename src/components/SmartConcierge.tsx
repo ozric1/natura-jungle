@@ -78,9 +78,11 @@ export const SmartConcierge = ({ language }: SmartConciergeProps) => {
                 {/* Welcoming Background Image */}
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="/assets/natura/night stays.jpeg" 
+                        src="/assets/natura/night stays.webp" 
                         className="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-1000 object-center"
                         alt="Service Express Welcome"
+                        loading="lazy"
+                        decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-[#0b1d12] via-[#0b1d12]/60 to-transparent" />
                 </div>

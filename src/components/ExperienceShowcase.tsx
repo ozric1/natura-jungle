@@ -25,27 +25,27 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         bungalow: {
             slides: [
                 {
-                    image: '/assets/natura/more bungalow at night.jpeg',
+                    image: '/assets/natura/more bungalow at night.webp',
                     title: { en: "Starry Sanctuary", fr: "Sanctuaire Étoilé", ar: "ملاذ النجوم" },
                     desc: { en: "Where luxury meets nature.", fr: "Un sanctuaire étoilé où le luxe rencontre la nature.", ar: "حيث تلتقي الفخامة بالطبيعة." }
                 },
                 {
-                    image: '/assets/natura/bugalow.jpeg',
+                    image: '/assets/natura/bugalow.webp',
                     title: { en: "Traditional Elegance", fr: "Élégance Traditionnelle", ar: "أناقة تقليدية" },
                     desc: { en: "Sculpted in the heart of the forest.", fr: "Une élégance traditionnelle sculptée au cœur de la forêt.", ar: "منحوتة في قلب الغابة." }
                 },
                 {
-                    image: '/assets/natura/night stays.jpeg',
+                    image: '/assets/natura/night stays.webp',
                     title: { en: "Night Whispers", fr: "Murmures Nocturnes", ar: "همسات الليل" },
                     desc: { en: "Wake up to the song of nature.", fr: "Réveillez-vous au murmure des feuilles et au chant de la nature.", ar: "استيقظ على أنغام الطبيعة." }
                 },
                 {
-                    image: '/assets/natura/premisses.jpeg',
+                    image: '/assets/natura/premisses.webp',
                     title: { en: "Serene Paths", fr: "Sentiers Sereins", ar: "مسارات هادئة" },
                     desc: { en: "Stunning views await your discovery.", fr: "Des vues imprenables et des sentiers sereins attendent votre découverte.", ar: "مناظر خلابة بانتظار اكتشافك." }
                 },
                 {
-                    image: '/assets/natura/WhatsApp Image 2026-02-13 at 13.42.27 (16).jpeg',
+                    image: '/assets/natura/WhatsApp Image 2026-02-13 at 13.42.27 (16).webp',
                     title: { en: "Morning Delight", fr: "Délice Matinal", ar: "صباح الخير" },
                     desc: { en: "Breakfast included in your stay.", fr: "Petit déjeuner inclus dans vos nuitées.", ar: "فطور الصباح مشمول في إقامتك." }
                 }
@@ -56,32 +56,32 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         restaurant: {
             slides: [
                 {
-                    image: '/assets/natura/catering/_DSC2419.jpg',
+                    image: '/assets/natura/catering/_DSC2419.webp',
                     title: { en: "Gourmet Garden", fr: "Jardin Gourmand", ar: "حديقة الذواقة" },
                     desc: { en: "Experience fine dining in the heart of nature.", fr: "Découvrez une cuisine raffinée au cœur de la nature.", ar: "جرب المأكولات الراقية في قلب الطبيعة." }
                 },
                 {
-                    image: '/assets/natura/JUNGLE RESTAURANT 5.jpeg',
+                    image: '/assets/natura/JUNGLE RESTAURANT 5.webp',
                     title: { en: "The Artist Kitchen", fr: "La Cuisine d'Artiste", ar: "مطبخ الفنان" },
                     desc: { en: "Where our chef prepares your gourmet meals.", fr: "Où notre chef prépare vos repas gastronomiques.", ar: "حيث يحضر الشيف وجباتك الفاخرة." }
                 },
                 {
-                    image: '/assets/natura/catering/_DSC2423.jpg',
+                    image: '/assets/natura/catering/_DSC2423.webp',
                     title: { en: "Elegant Premises", fr: "Cadre Élégant", ar: "مرافق أنيقة" },
                     desc: { en: "Dine under the stars and the trees.", fr: "Dînez sous les étoiles et les arbres.", ar: "تناول الطعام تحت النجوم والأشجار." }
                 },
                 {
-                    image: '/assets/natura/catering/_DSC2426.jpg',
+                    image: '/assets/natura/catering/_DSC2426.webp',
                     title: { en: "Atmospheric Dining", fr: "Dîner Atmosphérique", ar: "عشاء جوي" },
                     desc: { en: "A perfect blend of luxury and natural beauty.", fr: "Un mélange parfait de luxe et de beauté naturelle.", ar: "مزيج مثالي من الفخامة والجمال الطبيعي." }
                 },
                 {
-                    image: '/assets/natura/catering/_DSC2429.jpg',
+                    image: '/assets/natura/catering/_DSC2429.webp',
                     title: { en: "Culinary Excellence", fr: "Excellence Culinaire", ar: "التميز في الطهي" },
                     desc: { en: "Every dish is a masterpiece of flavors.", fr: "Chaque plat est un chef-d'œuvre de saveurs.", ar: "كل طبق هو تحفة من النكهات." }
                 },
                 {
-                    image: '/assets/natura/catering/DSC09972.jpg',
+                    image: '/assets/natura/catering/DSC09972.webp',
                     title: { en: "Sunset Soirée", fr: "Soirée au Coucher du Soleil", ar: "أمسية عند غروب الشمس" },
                     desc: { en: "Unforgettable evenings in our jungle sanctuary.", fr: "Des soirées inoubliables dans notre sanctuaire de la jungle.", ar: "أمسيات لا تنسى في محمية الغابة لدينا." }
                 }
@@ -92,27 +92,27 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         tents: {
             slides: [
                 {
-                    image: '/assets/natura/tents/_DSC4619.jpg',
+                    image: '/assets/natura/tents/_DSC4619.webp',
                     title: { en: "Berber Spirit", fr: "L'Esprit Berbère", ar: "الروح البربرية" },
                     desc: { en: "Authentic living in the heart of the jungle.", fr: "Vivre l'authentique au cœur de la jungle.", ar: "حياة أصيلة في قلب الغابة." }
                 },
                 {
-                    image: '/assets/natura/detente berber.jpeg',
+                    image: '/assets/natura/detente berber.webp',
                     title: { en: "Natural Comfort", fr: "Confort Naturel", ar: "راحة طبيعية" },
                     desc: { en: "Wake up to the sounds of nature.", fr: "Réveillez-vous aux sons de la nature.", ar: "استيقظ على أنغام الطبيعة." }
                 },
                 {
-                    image: '/assets/natura/premisses.jpeg',
+                    image: '/assets/natura/premisses.webp',
                     title: { en: "Premises View", fr: "Vue des Lieux", ar: "منظر للمرافق" },
                     desc: { en: "A beautiful daytime view of our authentic camp.", fr: "Une belle vue de jour de notre camp authentique.", ar: "منظر جميل لمخيمنا الأصيل خلال النهار." }
                 },
                 {
-                    image: '/assets/natura/berber tent at night.jpeg',
+                    image: '/assets/natura/berber tent at night.webp',
                     title: { en: "Enchanted Nights", fr: "Nuits Enchantées", ar: "ليالي ساحرة" },
                     desc: { en: "Experience the magic of the jungle after sunset.", fr: "Découvrez la magie de la jungle après le coucher du soleil.", ar: "اختبر سحر الغابة بعد غروب الشمس." }
                 },
                 {
-                    image: '/assets/natura/night tent.jpeg',
+                    image: '/assets/natura/night tent.webp',
                     title: { en: "Starry Night", fr: "Nuit Étoilée", ar: "ليلة مرصعة بالنجوم" },
                     desc: { en: "Experience the magic of the desert night.", fr: "Découvrez la magie de la nuit dans le désert.", ar: "جرب سحر الصحراء ليلاً." }
                 }
@@ -121,37 +121,37 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         park: {
             slides: [
                 {
-                    image: '/assets/natura/animals/ducks.jpg',
+                    image: '/assets/natura/animals/ducks.webp',
                     title: { en: "Animal Discovery", fr: "Découverte Animalière", ar: "اكتشاف حيواني" },
                     desc: { en: "Meet the majestic animals of Natura.", fr: "Rencontrez la faune majestueuse de Natura.", ar: "تعرف على الحيوانات المهيبة في نطورا." }
                 },
                 {
-                    image: '/assets/natura/animals/austrich.jpg',
+                    image: '/assets/natura/animals/austrich.webp',
                     title: { en: "Animal Kingdom", fr: "Royaume Animal", ar: "مملكة الحيوان" },
                     desc: { en: "Step into the heart of nature.", fr: "Entrez au cœur de la nature.", ar: "ادخل إلى قلب الطبيعة." }
                 },
                 {
-                    image: '/assets/natura/animals/DSC00006.jpg',
+                    image: '/assets/natura/animals/DSC00006.webp',
                     title: { en: "Gentle Creatures", fr: "Créatures Douces", ar: "كائنات هادئة" },
                     desc: { en: "Peaceful encounters in nature.", fr: "Rencontres paisibles dans la nature.", ar: "لقاءات هادئة في الطبيعة." }
                 },
                 {
-                    image: '/assets/natura/animals/DSC00009.jpg',
+                    image: '/assets/natura/animals/DSC00009.webp',
                     title: { en: "Nature's Wonders", fr: "Merveilles de la Nature", ar: "عجائب الطبيعة" },
                     desc: { en: "Explore the diversity of the park.", fr: "Explorez la diversité du parc.", ar: "استكشف تنوع المنتزه." }
                 },
                 {
-                    image: '/assets/natura/animals/DSC00014.jpg',
+                    image: '/assets/natura/animals/DSC00014.webp',
                     title: { en: "Natural Habitat", fr: "Habitat Naturel", ar: "موائل طبيعية" },
                     desc: { en: "Animals in their natural surroundings.", fr: "Des animaux dans leur environnement naturel.", ar: "حيوانات في محيطها الطبيعي." }
                 },
                 {
-                    image: '/assets/natura/animals/DSC00018.jpg',
+                    image: '/assets/natura/animals/DSC00018.webp',
                     title: { en: "Eco Sanctuary", fr: "Sanctuaire Eco", ar: "ملاذ بيئي" },
                     desc: { en: "A safe haven for every species.", fr: "Un refuge sûr pour chaque espèce.", ar: "ملجأ آمن لكل الأنواع." }
                 },
                 {
-                    image: '/assets/natura/animals/blackdove.jpg',
+                    image: '/assets/natura/animals/blackdove.webp',
                     title: { en: "Jungle Life", fr: "Vie dans la Jungle", ar: "حياة الغابة" },
                     desc: { en: "Experience the rhythm of the forest.", fr: "Découvrez le rythme de la forêt.", ar: "اختبر إيقاع الغابة." }
                 }
@@ -161,27 +161,27 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         kids: {
             slides: [
                 {
-                    image: '/assets/natura/gaming space/DSC00040.jpg',
+                    image: '/assets/natura/gaming space/DSC00040.webp',
                     title: { en: "Kids Adventures", fr: "Aventures Enfants", ar: "مغامرات الأطفال" },
                     desc: { en: "Fun and games in the fresh air.", fr: "Jeux et divertissements au grand air.", ar: "ألعاب ومرح في الهواء الطلق." }
                 },
                 {
-                    image: '/assets/natura/gaming space/DSC03232.jpg',
+                    image: '/assets/natura/gaming space/DSC03232.webp',
                     title: { en: "Riding Academy", fr: "Académie d'Équitation", ar: "أكاديمية الفروسية" },
                     desc: { en: "Learn to ride a horse safely.", fr: "Apprenez à monter à cheval en toute sécurité.", ar: "تعلم الفروسية في بيئة آمنة." }
                 },
                 {
-                    image: '/assets/natura/gaming space/DSC00047.jpg',
+                    image: '/assets/natura/gaming space/DSC00047.webp',
                     title: { en: "Jungle Play", fr: "Jeux de la Jungle", ar: "لعب الغابة" },
                     desc: { en: "Endless possibilities for fun.", fr: "Des possibilités de divertissement infinies.", ar: "إمكانيات لا حصر لها للمرح." }
                 },
                 {
-                    image: '/assets/natura/gaming space/DSC03228.jpg',
+                    image: '/assets/natura/gaming space/DSC03228.webp',
                     title: { en: "Outdoor Fun", fr: "Plaisir Extérieur", ar: "متعة في الخارج" },
                     desc: { en: "Safe playgrounds for all ages.", fr: "Des aires de jeux sécurisées pour tous les âges.", ar: "ملاعب آمنة لجميع الأعمار." }
                 },
                 {
-                    image: '/assets/natura/pond_update.jpg',
+                    image: '/assets/natura/pond_update.webp',
                     title: { en: "Nature's Harmony", fr: "Harmonie Naturelle", ar: "تناغم الطبيعة" },
                     desc: { en: "Enjoy the serenity of our pond area.", fr: "Profitez de la sérénité de notre espace étang.", ar: "استمتع بهدوء منطقة البركة." }
                 }
@@ -190,12 +190,12 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
         pool: {
             slides: [
                 {
-                    image: '/assets/natura/tents/Pool/DSC00017.jpg',
+                    image: '/assets/natura/tents/Pool/DSC00017.webp',
                     title: { en: "Aqua Oasis", fr: "Oasis Aqua", ar: "واحة أكوا" },
                     desc: { en: "A refreshing paradise with crystal waters.", fr: "Un paradis rafraîchissant aux eaux cristallines.", ar: "جنة منعشة بمياه كريستالية." }
                 },
                 {
-                    image: '/assets/natura/tents/Pool/DSC00056.jpg',
+                    image: '/assets/natura/tents/Pool/DSC00056.webp',
                     title: { en: "Poolside Serenity", fr: "Sérénité au Bord de l'Eau", ar: "هدوء المسبح" },
                     desc: { en: "Relax in our premium jungle pool.", fr: "Détendez-vous dans notre piscine de jungle haut de gamme.", ar: "استرخ في مسبح الغابة الفاخر." }
                 }
@@ -240,7 +240,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     }}
                     className="absolute inset-0 z-0"
                 >
-                    <img src={currentSlide.image} className="w-full h-full object-cover opacity-80" alt="Showcase" />
+                    <img src={currentSlide.image} className="w-full h-full object-cover opacity-80" alt="Showcase" decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                 </motion.div>
             </AnimatePresence>

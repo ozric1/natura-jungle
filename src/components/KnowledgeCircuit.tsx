@@ -17,7 +17,7 @@ export const KnowledgeCircuit = () => {
         personality: 'The shy sunbather',
         rating: 7,
         funFact: 'Wallabies have specially adapted feet that act like springs, allowing them to jump great distances without using much energy!',
-        image: '/assets/natura/wallaby_update.jpg'
+        image: '/assets/natura/wallaby_update.webp'
     };
 
     return (
@@ -39,6 +39,8 @@ export const KnowledgeCircuit = () => {
                         src={activeDiscovery.image}
                         className="w-full h-80 object-cover opacity-70"
                         alt={activeDiscovery.name}
+                        loading="lazy"
+                        decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
 

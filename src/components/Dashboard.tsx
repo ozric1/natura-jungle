@@ -31,14 +31,14 @@ import { FunPlay } from './FunPlay';
 import { ParkHours } from './ParkHours';
 import { CateringPartyservice } from './CateringPartyservice';
 import { ExperienceShowcase } from './ExperienceShowcase';
-const bungalowImg = '/assets/natura/bugalow.jpeg';
-const restaurantImg = '/assets/natura/Jungle Restaurant.jpeg';
-const cateringImg = '/assets/natura/Jungle Restaurant.jpeg';
-const tentDayImg = '/assets/natura/berber tent at day.jpeg';
-const lamaImg = '/assets/natura/animal circuit Lama.jpeg';
-const poolImg = '/assets/natura/pool.jpeg';
-const skyViewImg = '/assets/natura/gaming space/DSC03228.jpg';
-const packDayImg = '/assets/natura/WhatsApp Image 2026-02-13 at 13.42.27.jpeg';
+const bungalowImg = '/assets/natura/bugalow.webp';
+const restaurantImg = '/assets/natura/Jungle restaurant.webp';
+const cateringImg = '/assets/natura/Jungle restaurant.webp';
+const tentDayImg = '/assets/natura/berber tent at day.webp';
+const lamaImg = '/assets/natura/animal circuit Lama.webp';
+const poolImg = '/assets/natura/pool.webp';
+const skyViewImg = '/assets/natura/gaming space/DSC03228.webp';
+const packDayImg = '/assets/natura/WhatsApp Image 2026-02-13 at 13.42.27.webp';
 
 export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
@@ -988,7 +988,14 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                 >
                                     {bundle.image && (
                                         <div className="absolute inset-0">
-                                            <img src={bundle.image} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" alt={bundle.title} />
+                                            <img
+                                                src={bundle.image}
+                                                className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000"
+                                                alt={bundle.title}
+                                                loading={idx < 2 ? "eager" : "lazy"}
+                                                decoding="async"
+                                                fetchPriority={idx < 2 ? "high" : "low"}
+                                            />
                                         </div>
                                     )}
                                     <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep via-jungle-deep/40 to-transparent opacity-80" />
@@ -1047,6 +1054,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     src={cateringImg}
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     alt="Catering"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
                                 <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
@@ -1068,6 +1077,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     src={tentDayImg}
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     alt="Team Building"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
                                 <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
@@ -1089,6 +1100,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     src={lamaImg}
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     alt="School Trips"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
                                 <div className="absolute inset-0 p-8 flex flex-col justify-center items-start">
@@ -1114,6 +1127,8 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                 src={packDayImg}
                                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-110"
                                 alt="Pack Day"
+                                loading="lazy"
+                                decoding="async"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-jungle-deep/90 via-jungle-deep/40 to-transparent" />
 
@@ -1315,8 +1330,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         </div>
                         <div className="flex-1 w-full h-full p-4 md:p-12 flex items-center justify-center overflow-auto">
                             <img
-                                src="/assets/natura/Natura view from above MAIN PAGE BCKGRND.jpeg"
+                                src="/assets/natura/Natura view from above MAIN PAGE BCKGRND.webp"
                                 alt="Circuit"
+                                loading="lazy"
+                                decoding="async"
                                 className="max-w-none md:max-w-full max-h-none md:max-h-full w-auto h-auto object-contain shadow-2xl rounded-3xl"
                                 style={{
                                     maxWidth: '200%',
