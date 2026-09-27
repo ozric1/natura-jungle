@@ -96,7 +96,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             bundles: [
                 { id: 1, title: "Jungle Bungalow", sub: "Special Promo Stays", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "Balade à Quad", sub: "Sunset Adventure", icon: Compass, image: quadImg, action: () => { setActiveExperience('quad'); setCurrentView('experience'); } },
-                { id: 3, title: "Jungle Restaurant", sub: "New Roasted Chicken & Tagines", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
+                { id: 3, title: "Jungle Restaurant", sub: "Roasted Chicken & Tagines", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
                 { id: 4, title: "Berber Tents", sub: "Authentic Experience", icon: Tent, image: tentDayImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
                 { id: 5, title: "Animal Park", sub: "Animal Discovery", icon: Palmtree, image: lamaImg, action: () => { setActiveExperience('park'); setCurrentView('experience'); } },
                 { id: 6, title: "Kid's & Equitation", sub: "Horse, Pony & Fun Games", icon: Sparkles, image: skyViewImg, action: () => { setActiveExperience('kids'); setCurrentView('experience'); } },
@@ -471,7 +471,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
     const displayBundles = [...text.bundles, ...text.bundles, ...text.bundles];
 
     return (
-        <div className={`min-h-screen font-sans transition-colors duration-1000 ${isNightMode ? 'dark bg-[#050805] text-white' : 'bg-egg-shell text-neutral-900'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+        <div className={`min-h-screen font-sans transition-colors duration-700 ${isNightMode ? 'dark bg-[#050B07] text-[#F9F7F2]' : 'bg-[#F8F6F0] text-[#08170E]'}`} dir={isRTL ? 'rtl' : 'ltr'}>
             {/* Interactive Suggestions Widget */}
             <SmartSuggestions
                 language={currentLanguage}
@@ -502,7 +502,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     {text.brand}
                                 </span>
                                 <h2 className="text-3xl lg:text-5xl font-serif text-white">Menu</h2>
-                                <p className="text-white/40 font-bold uppercase tracking-[0.3em] text-[10px]">
+                                <p className="text-white/50 font-bold uppercase tracking-[0.3em] text-[10px]">
                                     {text.tagline}
                                 </p>
                             </div>
@@ -527,11 +527,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     onClick={() => { setIsMenuOpen(false); setShowPricing(true); }}
                                     className={`group flex items-center gap-4 text-left p-3 rounded-2xl hover:bg-white/5 transition-colors ${isRTL ? 'flex-row-reverse text-right' : ''}`}
                                 >
-                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/10 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
+                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/15 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
                                         <span className="text-lg font-bold font-serif">DH</span>
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.pricing.subtitle}</div>
+                                        <div className="text-white/50 text-[9px] font-bold uppercase tracking-widest">{text.navigation.pricing.subtitle}</div>
                                         <div className="text-xl font-serif text-white group-hover:text-sand-gold transition-colors">{text.navigation.pricing.title}</div>
                                     </div>
                                 </motion.button>
@@ -540,11 +540,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     onClick={() => { setIsMenuOpen(false); setActiveExperience('quad'); setCurrentView('experience'); }}
                                     className={`group flex items-center gap-4 text-left p-3 rounded-2xl hover:bg-white/5 transition-colors ${isRTL ? 'flex-row-reverse text-right' : ''}`}
                                 >
-                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/10 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
+                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/15 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
                                         <Compass className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.quad.subtitle}</div>
+                                        <div className="text-white/50 text-[9px] font-bold uppercase tracking-widest">{text.navigation.quad.subtitle}</div>
                                         <div className="text-xl font-serif text-white group-hover:text-sand-gold transition-colors">{text.navigation.quad.title}</div>
                                     </div>
                                 </motion.button>
@@ -553,11 +553,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     onClick={() => { setIsMenuOpen(false); setActiveExperience('bungalow'); setCurrentView('experience'); }}
                                     className={`group flex items-center gap-4 text-left p-3 rounded-2xl hover:bg-white/5 transition-colors ${isRTL ? 'flex-row-reverse text-right' : ''}`}
                                 >
-                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/10 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
+                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/15 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
                                         <Home className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.bungalow.subtitle}</div>
+                                        <div className="text-white/50 text-[9px] font-bold uppercase tracking-widest">{text.navigation.bungalow.subtitle}</div>
                                         <div className="text-xl font-serif text-white group-hover:text-sand-gold transition-colors">{text.navigation.bungalow.title}</div>
                                     </div>
                                 </motion.button>
@@ -566,11 +566,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     onClick={() => { setIsMenuOpen(false); setCurrentView('menu'); }}
                                     className={`group flex items-center gap-4 text-left p-3 rounded-2xl hover:bg-white/5 transition-colors ${isRTL ? 'flex-row-reverse text-right' : ''}`}
                                 >
-                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/10 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
+                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/15 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
                                         <Utensils className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.restaurant.subtitle}</div>
+                                        <div className="text-white/50 text-[9px] font-bold uppercase tracking-widest">{text.navigation.restaurant.subtitle}</div>
                                         <div className="text-xl font-serif text-white group-hover:text-sand-gold transition-colors">{text.navigation.restaurant.title}</div>
                                     </div>
                                 </motion.button>
@@ -579,11 +579,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     onClick={() => { setIsMenuOpen(false); setCurrentView('catering'); }}
                                     className={`group flex items-center gap-4 text-left p-3 rounded-2xl hover:bg-white/5 transition-colors ${isRTL ? 'flex-row-reverse text-right' : ''}`}
                                 >
-                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/10 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
+                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/15 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
                                         <PartyPopper className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.catering.subtitle}</div>
+                                        <div className="text-white/50 text-[9px] font-bold uppercase tracking-widest">{text.navigation.catering.subtitle}</div>
                                         <div className="text-xl font-serif text-white group-hover:text-sand-gold transition-colors">{text.navigation.catering.title}</div>
                                     </div>
                                 </motion.button>
@@ -592,11 +592,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     onClick={() => { setIsMenuOpen(false); setCurrentView('teambuilding'); }}
                                     className={`group flex items-center gap-4 text-left p-3 rounded-2xl hover:bg-white/5 transition-colors ${isRTL ? 'flex-row-reverse text-right' : ''}`}
                                 >
-                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/10 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
+                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/15 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
                                         <Users className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.teamBuilding.subtitle}</div>
+                                        <div className="text-white/50 text-[9px] font-bold uppercase tracking-widest">{text.navigation.teamBuilding.subtitle}</div>
                                         <div className="text-xl font-serif text-white group-hover:text-sand-gold transition-colors">{text.navigation.teamBuilding.title}</div>
                                     </div>
                                 </motion.button>
@@ -605,11 +605,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     onClick={() => { setIsMenuOpen(false); setCurrentView('hours'); }}
                                     className={`group flex items-center gap-4 text-left p-3 rounded-2xl hover:bg-white/5 transition-colors ${isRTL ? 'flex-row-reverse text-right' : ''}`}
                                 >
-                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/10 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
+                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/15 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
                                         <Clock className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.hours.subtitle}</div>
+                                        <div className="text-white/50 text-[9px] font-bold uppercase tracking-widest">{text.navigation.hours.subtitle}</div>
                                         <div className="text-xl font-serif text-white group-hover:text-sand-gold transition-colors">{text.navigation.hours.title}</div>
                                     </div>
                                 </motion.button>
@@ -618,11 +618,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     onClick={() => { setIsMenuOpen(false); setCurrentView('circuit-map'); }}
                                     className={`group flex items-center gap-4 text-left p-3 rounded-2xl hover:bg-white/5 transition-colors ${isRTL ? 'flex-row-reverse text-right' : ''}`}
                                 >
-                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/10 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
+                                    <div className="w-12 h-12 rounded-2xl bg-sand-gold/15 flex items-center justify-center text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-all">
                                         <Palmtree className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-[9px] font-bold uppercase tracking-widest">{text.navigation.animals.subtitle}</div>
+                                        <div className="text-white/50 text-[9px] font-bold uppercase tracking-widest">{text.navigation.animals.subtitle}</div>
                                         <div className="text-xl font-serif text-white group-hover:text-sand-gold transition-colors">{text.navigation.animals.title}</div>
                                     </div>
                                 </motion.button>
@@ -630,10 +630,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
                             {/* Contact Footer */}
                             <div className="mt-8 pt-6 border-t border-white/10 flex justify-center gap-6">
-                                <a href="https://www.instagram.com/naturajunglepark/" target="_blank" rel="noreferrer" className="text-white/50 hover:text-sand-gold transition-colors">
+                                <a href="https://www.instagram.com/naturajunglepark/" target="_blank" rel="noreferrer" className="text-white/60 hover:text-sand-gold transition-colors">
                                     <Instagram className="w-6 h-6" />
                                 </a>
-                                <a href="tel:0605500058" className="text-white/50 hover:text-sand-gold transition-colors">
+                                <a href="tel:0605500058" className="text-white/60 hover:text-sand-gold transition-colors">
                                     <Phone className="w-6 h-6" />
                                 </a>
                             </div>
@@ -655,7 +655,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                             initial={{ scale: 0.95, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.95, opacity: 0 }}
-                            className="bg-[#0b1d12] w-full max-w-5xl rounded-[2.5rem] overflow-hidden border border-sand-gold/30 shadow-2xl max-h-[90vh] overflow-y-auto no-scrollbar scroll-smooth relative"
+                            className="bg-[#08170E] w-full max-w-5xl rounded-[2.5rem] overflow-hidden border border-sand-gold/30 shadow-2xl max-h-[90vh] overflow-y-auto no-scrollbar scroll-smooth relative text-white"
                         >
                             <button
                                 onClick={() => setShowPricing(false)}
@@ -759,26 +759,26 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     </div>
 
                                     {/* 4. Bungalow Promo */}
-                                    <div className="bg-gradient-to-br from-sand-gold/20 to-black/40 rounded-[2rem] p-6 border border-sand-gold/40 flex flex-col justify-between">
+                                    <div className="bg-gradient-to-br from-sand-gold/25 via-[#183322] to-black rounded-[2rem] p-6 border border-sand-gold/40 flex flex-col justify-between shadow-xl">
                                         <div>
-                                            <span className="inline-block px-2.5 py-0.5 bg-luxury-gold text-jungle-deep text-[9px] font-bold uppercase rounded-full mb-3">
+                                            <span className="inline-block px-2.5 py-0.5 bg-luxury-gold text-jungle-deep text-[9px] font-black uppercase rounded-full mb-3 shadow-md">
                                                 {text.pricingModal.bungalow.tag}
                                             </span>
                                             <h4 className="text-xl font-serif text-sand-gold mb-2">{text.pricingModal.bungalow.title}</h4>
                                             <div className="border-y border-sand-gold/20 py-3 mb-3">
-                                                <span className="text-[10px] text-white/60 uppercase block">{text.pricingModal.bungalow.perNight}</span>
+                                                <span className="text-[10px] text-white/70 uppercase block">{text.pricingModal.bungalow.perNight}</span>
                                                 <div className="flex items-baseline gap-2">
                                                     <span className="text-2xl font-serif font-bold text-white">900 <span className="text-xs text-sand-gold">DH</span></span>
-                                                    <span className="text-xs line-through text-white/40">1200 DH</span>
+                                                    <span className="text-xs line-through text-white/50">1200 DH</span>
                                                 </div>
                                             </div>
-                                            <p className="text-[11px] text-white/80 leading-relaxed mb-4">
+                                            <p className="text-[11px] text-white/90 leading-relaxed mb-4">
                                                 {text.pricingModal.bungalow.additional}
                                             </p>
                                         </div>
                                         <button
                                             onClick={() => { setShowPricing(false); setActiveExperience('bungalow'); setCurrentView('experience'); }}
-                                            className="w-full py-2.5 rounded-xl bg-sand-gold text-jungle-deep font-bold uppercase text-[10px] tracking-wider hover:bg-white transition-colors cursor-pointer"
+                                            className="w-full py-2.5 rounded-xl bg-sand-gold text-jungle-deep font-bold uppercase text-[10px] tracking-wider hover:bg-white transition-colors cursor-pointer shadow-md"
                                         >
                                             {text.pricingModal.bungalow.book}
                                         </button>
@@ -791,46 +791,46 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             </AnimatePresence>
 
             {/* Desktop Top Navigation */}
-            <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-[60] h-14 items-center justify-center gap-8 px-8 bg-black/30 backdrop-blur-md border-b border-white/10">
-                <button onClick={() => setCurrentView('hours')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'hours' ? 'text-sand-gold' : 'text-white/70 hover:text-white'}`}>
-                    <Clock className="w-4 h-4" />
+            <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-[60] h-14 items-center justify-center gap-8 px-8 bg-[#08170E]/90 dark:bg-black/90 backdrop-blur-xl border-b border-sand-gold/20 shadow-md">
+                <button onClick={() => setCurrentView('hours')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'hours' ? 'text-sand-gold' : 'text-white/80 hover:text-sand-gold'}`}>
+                    <Clock className="w-4 h-4 text-sand-gold" />
                     {text.topNav.hours}
                 </button>
-                <button onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')} className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/70 hover:text-white transition-colors">
-                    <MapPin className="w-4 h-4" />
+                <button onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')} className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/80 hover:text-sand-gold transition-colors">
+                    <MapPin className="w-4 h-4 text-sand-gold" />
                     {text.topNav.map}
                 </button>
-                <button onClick={() => setCurrentView('circuit-map')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'circuit-map' ? 'text-sand-gold' : 'text-white/70 hover:text-white'}`}>
-                    <Palmtree className="w-4 h-4" />
+                <button onClick={() => setCurrentView('circuit-map')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'circuit-map' ? 'text-sand-gold' : 'text-white/80 hover:text-sand-gold'}`}>
+                    <Palmtree className="w-4 h-4 text-sand-gold" />
                     {text.topNav.circuit}
                 </button>
-                <button onClick={() => setCurrentView('menu')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'menu' ? 'text-sand-gold' : 'text-white/70 hover:text-white'}`}>
-                    <Utensils className="w-4 h-4" />
+                <button onClick={() => setCurrentView('menu')} className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${currentView === 'menu' ? 'text-sand-gold' : 'text-white/80 hover:text-sand-gold'}`}>
+                    <Utensils className="w-4 h-4 text-sand-gold" />
                     {text.topNav.kitchen}
                 </button>
-                <button onClick={toggleNightMode} className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/70 hover:text-white transition-colors">
-                    {isNightMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                <button onClick={toggleNightMode} className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/80 hover:text-sand-gold transition-colors">
+                    {isNightMode ? <Sun className="w-4 h-4 text-sand-gold" /> : <Moon className="w-4 h-4 text-sand-gold" />}
                     {text.topNav.theme}
                 </button>
             </nav>
 
-            {/* Header */}
-            <header className="px-6 lg:px-12 py-6 lg:pt-20 flex justify-between items-center sticky top-0 z-50 bg-inherit/80 backdrop-blur-md max-w-7xl mx-auto w-full">
+            {/* Main Header */}
+            <header className="px-6 lg:px-12 py-5 lg:pt-20 flex justify-between items-center sticky top-0 z-50 bg-[#F8F6F0]/90 dark:bg-[#050B07]/90 backdrop-blur-md max-w-7xl mx-auto w-full border-b border-sand-gold/15">
                 <div className="flex-1 flex justify-start">
                     <motion.button
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setIsMenuOpen(true)}
-                        className="w-10 h-10 flex items-center justify-center text-jungle-green dark:text-sand-gold bg-white/10 backdrop-blur-md rounded-2xl border border-sand-gold/20 hover:bg-sand-gold/20 transition-colors"
+                        className="w-10 h-10 flex items-center justify-center text-[#08170E] dark:text-sand-gold bg-white dark:bg-white/10 backdrop-blur-md rounded-2xl border border-sand-gold/25 hover:bg-sand-gold hover:text-jungle-deep transition-all shadow-sm"
                     >
                         <Menu className="w-5 h-5" />
                     </motion.button>
                 </div>
 
                 <div className="text-center flex-1">
-                    <h1 className="text-lg lg:text-3xl font-serif font-bold tracking-[0.2em] uppercase text-sand-gold drop-shadow-md">
+                    <h1 className="text-lg lg:text-3xl font-serif font-bold tracking-[0.2em] uppercase text-[#08170E] dark:text-sand-gold">
                         {text.brand}
                     </h1>
-                    <p className="text-[8px] lg:text-[10px] uppercase tracking-[0.35em] font-bold opacity-70">
+                    <p className="text-[8px] lg:text-[10px] uppercase tracking-[0.35em] font-bold text-sand-gold">
                         {text.tagline}
                     </p>
                 </div>
@@ -841,7 +841,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         <button
                             key={lang}
                             onClick={() => setLanguage(lang as any)}
-                            className="px-2.5 py-1 rounded-lg border border-sand-gold/30 bg-black/20 text-[10px] font-bold tracking-wider text-sand-gold hover:bg-sand-gold hover:text-jungle-deep transition-all uppercase"
+                            className="px-2.5 py-1 rounded-lg border border-sand-gold/30 bg-white/80 dark:bg-black/30 text-[10px] font-bold tracking-wider text-[#08170E] dark:text-sand-gold hover:bg-sand-gold hover:text-jungle-deep transition-all uppercase shadow-sm"
                         >
                             {lang === 'ar' ? 'العربية' : lang.toUpperCase()}
                         </button>
@@ -850,7 +850,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     <motion.button
                         onClick={toggleNightMode}
                         whileTap={{ scale: 0.9 }}
-                        className="w-9 h-9 flex items-center justify-center text-jungle-green dark:text-sand-gold bg-white/10 backdrop-blur-md rounded-2xl border border-sand-gold/20 ml-2"
+                        className="w-9 h-9 flex items-center justify-center text-[#08170E] dark:text-sand-gold bg-white dark:bg-white/10 backdrop-blur-md rounded-2xl border border-sand-gold/25 ml-2 shadow-sm hover:bg-sand-gold hover:text-jungle-deep transition-all"
                     >
                         {isNightMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                     </motion.button>
@@ -859,10 +859,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
             <main className="pb-28 lg:pb-16 max-w-7xl mx-auto">
                 {/* Promotional Autumn Bungalow Banner */}
-                <div className="px-6 lg:px-12 mb-8">
+                <div className="px-6 lg:px-12 my-6">
                     <motion.div
                         whileHover={{ scale: 1.01 }}
-                        className="rounded-[2.5rem] p-6 sm:p-8 bg-gradient-to-r from-[#0B1D12] via-[#1a3a24] to-[#0B1D12] text-white border border-sand-gold/40 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6"
+                        className="rounded-[2.5rem] p-6 sm:p-8 bg-gradient-to-r from-[#08170E] via-[#15301E] to-[#08170E] text-white border border-sand-gold/40 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6"
                     >
                         <div className="space-y-2 relative z-10 text-center md:text-left">
                             <div className="inline-flex items-center gap-2 px-3 py-1 bg-luxury-gold text-jungle-deep text-[10px] font-black uppercase rounded-full tracking-wider shadow-md">
@@ -921,7 +921,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                     whileHover={{ y: -8, scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     onClick={bundle.action}
-                                    className="flex-none w-[260px] sm:w-[300px] lg:w-[340px] h-[340px] lg:h-[440px] rounded-[2.5rem] relative overflow-hidden group shadow-xl border border-sand-gold/20 cursor-pointer"
+                                    className="flex-none w-[260px] sm:w-[300px] lg:w-[340px] h-[340px] lg:h-[440px] rounded-[2.5rem] relative overflow-hidden group shadow-xl border border-sand-gold/25 cursor-pointer"
                                 >
                                     <div className="absolute inset-0">
                                         <img
@@ -932,14 +932,14 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                             decoding="async"
                                         />
                                     </div>
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
 
                                     <div className="absolute inset-0 p-6 flex flex-col justify-end">
                                         <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center mb-4 border border-white/20 text-sand-gold group-hover:bg-sand-gold group-hover:text-jungle-deep transition-colors">
                                             <Icon className="w-6 h-6" />
                                         </div>
                                         <h3 className="text-xl sm:text-2xl font-serif text-white mb-1 group-hover:text-sand-gold transition-colors">{bundle.title}</h3>
-                                        <p className="text-white/70 text-[10px] font-bold uppercase tracking-wider">{bundle.sub}</p>
+                                        <p className="text-white/75 text-[10px] font-bold uppercase tracking-wider">{bundle.sub}</p>
 
                                         <div className="mt-4 flex items-center gap-1.5 text-sand-gold text-xs font-bold uppercase tracking-wider">
                                             <span>{isRTL ? 'استكشف' : 'Explorer'}</span>
@@ -953,23 +953,23 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 </div>
 
                 <div className="px-6 lg:px-12 space-y-10">
-                    {/* Quad Spotlight Card */}
+                    {/* Quad Spotlight Card - Redesigned in Luxurious Deep Forest Gold Style */}
                     <motion.div
                         whileHover={{ scale: 1.01 }}
-                        className="rounded-[2.5rem] p-6 sm:p-8 bg-white dark:bg-white/5 border border-sand-gold/25 shadow-md flex flex-col md:flex-row items-center justify-between gap-6"
+                        className="rounded-[2.5rem] p-6 sm:p-8 bg-gradient-to-r from-[#08170E] via-[#15301E] to-[#08170E] text-white border border-sand-gold/40 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6"
                     >
-                        <div className="flex items-center gap-4">
-                            <div className="w-14 h-14 rounded-2xl bg-sand-gold/20 text-sand-gold flex items-center justify-center shrink-0">
+                        <div className="flex items-center gap-5 relative z-10">
+                            <div className="w-14 h-14 rounded-2xl bg-sand-gold/20 text-sand-gold border border-sand-gold/30 flex items-center justify-center shrink-0 shadow-inner">
                                 <Compass className="w-7 h-7" />
                             </div>
-                            <div>
-                                <span className="text-[10px] font-bold uppercase text-sand-gold tracking-widest block">
+                            <div className="space-y-1 text-center md:text-left">
+                                <span className="text-[10px] font-black uppercase text-sand-gold tracking-[0.25em] block">
                                     {text.quadSpotlight.badge}
                                 </span>
-                                <h3 className="text-xl sm:text-2xl font-serif font-bold text-jungle-green dark:text-white">
+                                <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-white leading-tight">
                                     {text.quadSpotlight.title}
                                 </h3>
-                                <p className="text-xs sm:text-sm opacity-80 mt-1 max-w-xl">
+                                <p className="text-xs sm:text-sm text-white/85 max-w-xl font-medium leading-relaxed">
                                     {text.quadSpotlight.desc}
                                 </p>
                             </div>
@@ -977,7 +977,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
                         <button
                             onClick={() => { setActiveExperience('quad'); setCurrentView('experience'); }}
-                            className="px-6 py-3 rounded-2xl bg-jungle-deep text-sand-gold border border-sand-gold/30 hover:bg-sand-gold hover:text-jungle-deep transition-all text-xs font-bold uppercase tracking-wider cursor-pointer shrink-0"
+                            className="px-6 py-3.5 rounded-2xl bg-luxury-gold text-jungle-deep hover:bg-white font-bold uppercase text-xs tracking-wider transition-all shadow-xl cursor-pointer shrink-0 relative z-10"
                         >
                             {text.quadSpotlight.cta}
                         </button>
@@ -985,12 +985,13 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
                     {/* About Section */}
                     <section>
-                        <div className="bg-white/80 dark:bg-jungle-deep/40 backdrop-blur-md rounded-[2.5rem] p-8 lg:p-12 border border-sand-gold/15 shadow-lg">
+                        <div className="bg-white dark:bg-[#0B1D12] rounded-[2.5rem] p-8 lg:p-12 border border-sand-gold/25 shadow-lg relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-40 h-40 bg-sand-gold/5 rounded-full blur-3xl pointer-events-none" />
                             <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-sand-gold mb-4 flex items-center gap-2">
                                 <Sparkles className="w-4 h-4" />
                                 {text.about_title}
                             </h2>
-                            <p className="text-lg lg:text-2xl font-serif leading-relaxed text-jungle-deep dark:text-white italic">
+                            <p className="text-lg lg:text-2xl font-serif leading-relaxed text-[#08170E] dark:text-[#F8F6F0] italic font-medium">
                                 "{text.about_text}"
                             </p>
                         </div>
@@ -1071,7 +1072,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
                 {/* Footer */}
                 <div className="pt-12 pb-6 text-center flex flex-col items-center gap-2">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-sand-gold/60">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-sand-gold">
                         © 2026 Natura Jungle. All Rights Reserved.
                     </p>
                     <a href="tel:0605500058" className="text-xs font-bold text-sand-gold hover:underline">
@@ -1081,10 +1082,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             </main>
 
             {/* Bottom Mobile Navigation */}
-            <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-sm h-16 bg-black/85 backdrop-blur-xl rounded-[2rem] border border-white/10 flex lg:hidden items-center justify-around px-4 z-[90] shadow-2xl">
+            <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-sm h-16 bg-[#08170E]/95 dark:bg-black/95 backdrop-blur-xl rounded-[2rem] border border-sand-gold/30 flex lg:hidden items-center justify-around px-4 z-[90] shadow-2xl">
                 <button
                     onClick={() => setCurrentView('hours')}
-                    className={`flex flex-col items-center gap-0.5 ${currentView === 'hours' ? 'text-sand-gold' : 'text-white/40'}`}
+                    className={`flex flex-col items-center gap-0.5 ${currentView === 'hours' ? 'text-sand-gold' : 'text-white/60 hover:text-white'}`}
                 >
                     <Clock className="w-4 h-4" />
                     <span className="text-[8px] font-bold uppercase">{text.topNav.hours}</span>
@@ -1092,7 +1093,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
                 <button
                     onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=Natura+Jungle+Park+Mohammedia', '_blank')}
-                    className="flex flex-col items-center gap-0.5 text-white/40"
+                    className="flex flex-col items-center gap-0.5 text-white/60 hover:text-white"
                 >
                     <MapPin className="w-4 h-4" />
                     <span className="text-[8px] font-bold uppercase">{text.topNav.map}</span>
@@ -1100,14 +1101,14 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
                 <button
                     onClick={() => setCurrentView('circuit-map')}
-                    className="w-12 h-12 rounded-full bg-sand-gold text-jungle-deep flex items-center justify-center shadow-lg -mt-6"
+                    className="w-12 h-12 rounded-full bg-sand-gold text-jungle-deep flex items-center justify-center shadow-lg -mt-6 hover:scale-105 transition-transform"
                 >
                     <Palmtree className="w-6 h-6" />
                 </button>
 
                 <button
                     onClick={() => setCurrentView('menu')}
-                    className={`flex flex-col items-center gap-0.5 ${currentView === 'menu' ? 'text-sand-gold' : 'text-white/40'}`}
+                    className={`flex flex-col items-center gap-0.5 ${currentView === 'menu' ? 'text-sand-gold' : 'text-white/60 hover:text-white'}`}
                 >
                     <Utensils className="w-4 h-4" />
                     <span className="text-[8px] font-bold uppercase">{text.topNav.kitchen}</span>
@@ -1115,7 +1116,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
 
                 <button
                     onClick={toggleNightMode}
-                    className="flex flex-col items-center gap-0.5 text-white/40"
+                    className="flex flex-col items-center gap-0.5 text-white/60 hover:text-white"
                 >
                     {isNightMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                     <span className="text-[8px] font-bold uppercase">{text.topNav.theme}</span>
@@ -1130,7 +1131,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         animate={{ y: 0 }}
                         exit={{ y: '100%' }}
                         transition={{ type: 'spring', damping: 25 }}
-                        className="fixed inset-0 z-[200] bg-egg-shell dark:bg-ink-black overflow-y-auto"
+                        className="fixed inset-0 z-[200] bg-[#F8F6F0] dark:bg-[#050B07] overflow-y-auto"
                     >
                         <DigitalMenu language={currentLanguage} isRTL={isRTL} onBack={() => setCurrentView('base')} />
                     </motion.div>
@@ -1142,7 +1143,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 25 }}
-                        className="fixed inset-0 z-[150] bg-egg-shell dark:bg-ink-black overflow-y-auto"
+                        className="fixed inset-0 z-[150] bg-[#F8F6F0] dark:bg-[#050B07] overflow-y-auto"
                     >
                         <BungalowBooking
                             currentLanguage={currentLanguage}
@@ -1189,7 +1190,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 25 }}
-                        className="fixed inset-0 z-[190] bg-egg-shell dark:bg-ink-black overflow-y-auto"
+                        className="fixed inset-0 z-[190] bg-[#F8F6F0] dark:bg-[#050B07] overflow-y-auto"
                     >
                         <FunPlay isRTL={isRTL} language={currentLanguage} onBack={() => setCurrentView('base')} />
                     </motion.div>
