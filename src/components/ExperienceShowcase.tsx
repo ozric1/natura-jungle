@@ -66,7 +66,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                     desc: { en: "Breakfast, animal park, games & free pool included in your stay.", fr: "Petit déjeuner, parc animalier, espace jeux et piscine gratuite inclus dans vos nuitées.", ar: "فطور الصباح، حديقة الحيوان، منطقة الألعاب والمسبح مشمولة في إقامتك." }
                 }
             ],
-            actionLabel: { en: "View Promo & Book", fr: "Voir les Offres & Réserver", ar: "عرض العروض والحجز" },
+            actionLabel: { en: "View Packages & Book", fr: "Voir les Formules & Réserver", ar: "عرض الباقات والحجز" },
             actionTarget: "booking"
         },
         restaurant: {

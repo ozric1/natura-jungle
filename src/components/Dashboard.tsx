@@ -155,12 +155,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     book: "Book Now"
                 },
                 bungalow: {
-                    tag: "Promo -25%",
+                    tag: "Promo & Standard",
                     title: "Bungalow Stay",
                     perNight: "Starting From",
-                    desc: "Discovery: 900 DH (2 adults + 1 kid) | Family: 1100 DH (2 adults + 2 kids).",
-                    additional: "Breakfast, park & games included + FREE POOL ACCESS until October 10!",
-                    book: "View Offers & Book"
+                    desc: "Promo (until Oct 10): 900 DH & 1100 DH with Free Pool. From Oct 10: 4 Standard formulas (900 DH to 1400 DH).",
+                    additional: "Breakfast, animal park & kids play area included in all stays.",
+                    book: "View Packages & Book"
                 },
                 activities: {
                     title: "Activities & Leisure",
@@ -279,12 +279,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     book: "Réserver"
                 },
                 bungalow: {
-                    tag: "Promo -25%",
+                    tag: "Promo & Standards",
                     title: "Séjour Bungalow",
                     perNight: "À partir de",
-                    desc: "Découverte: 900 DH (2 ad + 1 enf) | Famille: 1100 DH (2 ad + 2 enf).",
-                    additional: "Petit-déjeuner, parc & jeux inclus + PISCINE GRATUITE jusqu'au 10 Octobre !",
-                    book: "Voir les Offres"
+                    desc: "Promo (jusqu'au 10 Oct) : 900 DH & 1100 DH avec Piscine Gratuite. Dès le 10 Oct : 4 Formules Standards (900 DH à 1400 DH).",
+                    additional: "Petit-déjeuner, parc animalier et espace jeux inclus dans toutes les formules séjour.",
+                    book: "Voir les Formules"
                 },
                 activities: {
                     title: "Activités & Loisirs",
@@ -397,12 +397,12 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     book: "احجز الآن"
                 },
                 bungalow: {
-                    tag: "خصم 25%",
+                    tag: "عروض وباقات",
                     title: "إقامة البنغالو",
                     perNight: "ابتداءً من",
-                    desc: "عرض استكشاف: 900 درهم (شخصين + طفل) | عرض عائلة: 1100 درهم (شخصين + طفلين).",
-                    additional: "فطور الصباح، الحديقة والألعاب + مسبح مجاني حتى 10 أكتوبر!",
-                    book: "عرض العروض"
+                    desc: "عرض خاص (حتى 10 أكتوبر): 900 و 1100 درهم مع مسبح مجاني. ابتداءً من 10 أكتوبر: 4 باقات عادية (من 900 إلى 1400 درهم).",
+                    additional: "فطور الصباح، حديقة الحيوان وفضاء الألعاب مشمولة في جميع صيغ الإقامة.",
+                    book: "عرض الباقات"
                 },
                 activities: {
                     title: "الأنشطة والترفيه",
