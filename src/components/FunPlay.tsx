@@ -32,7 +32,7 @@ export const FunPlay = ({ onBack, isRTL = false, language }: FunPlayProps) => {
                 fr: '1 Place : 150 DH  •  2 Places : 200 DH (30 min)',
                 ar: 'مقعد واحد: 150 درهم  •  مقعدين: 200 درهم (30 دقيقة)'
             },
-            image: '/assets/natura/park_view.webp',
+            image: '/assets/natura/quad/quad_fleet_cover.webp',
             icon: Compass,
             actionMessage: "Bonjour, je souhaite réserver une balade en Quad au Natura Jungle Park."
         },

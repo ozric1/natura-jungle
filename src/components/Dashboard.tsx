@@ -39,7 +39,7 @@ const lamaImg = '/assets/natura/animal circuit Lama.webp';
 const poolImg = '/assets/natura/pool.webp';
 const skyViewImg = '/assets/natura/gaming space/DSC03228.webp';
 const packDayImg = '/assets/natura/WhatsApp Image 2026-02-13 at 13.42.27.webp';
-const quadImg = '/assets/natura/park_view.webp';
+const quadImg = '/assets/natura/quad/quad_fleet_cover.webp';
 
 export interface DashboardProps {
     language: 'en' | 'fr' | 'ar';
@@ -956,8 +956,14 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     {/* Quad Spotlight Card - Redesigned in Luxurious Deep Forest Gold Style */}
                     <motion.div
                         whileHover={{ scale: 1.01 }}
-                        className="rounded-[2.5rem] p-6 sm:p-8 bg-gradient-to-r from-[#08170E] via-[#15301E] to-[#08170E] text-white border border-sand-gold/40 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6"
+                        className="rounded-[2.5rem] p-6 sm:p-8 bg-gradient-to-r from-[#08170E] via-[#15301E] to-[#08170E] text-white border border-sand-gold/40 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 group"
                     >
+                        {/* Background Quad Accent Image */}
+                        <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-25 pointer-events-none overflow-hidden hidden md:block">
+                            <img src="/assets/natura/quad/quad_fleet_cover.webp" alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#08170E] via-[#15301E]/80 to-transparent" />
+                        </div>
+
                         <div className="flex items-center gap-5 relative z-10">
                             <div className="w-14 h-14 rounded-2xl bg-sand-gold/20 text-sand-gold border border-sand-gold/30 flex items-center justify-center shrink-0 shadow-inner">
                                 <Compass className="w-7 h-7" />
