@@ -536,7 +536,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             `━━━━━━━━━━━━━━━━━━━━━\n\n` +
             `Bonjour, merci de bien vouloir me confirmer la disponibilité du bungalow pour ces dates.`;
 
-        const whatsappUrl = `https://wa.me/212605500058?text=${encodeURIComponent(message)}`;
+        const whatsappUrl = `https://wa.me/212681813081?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     };
 
