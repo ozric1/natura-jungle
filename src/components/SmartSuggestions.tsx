@@ -30,14 +30,14 @@ export const SmartSuggestions = ({ language, onNavigate }: SmartSuggestionsProps
         {
             id: 'bungalow',
             icon: Home,
-            badge: { en: 'Special Discount', fr: 'Offre Spéciale Séjour', ar: 'عرض الإقامة الخاص' },
-            title: { en: 'Bungalow Stay Discount', fr: 'Séjour Bungalow dès 900 DH', ar: 'إقامة البنغالو ابتداءً من 900 درهم' },
+            badge: { en: 'Family Stays', fr: 'Séjour en Famille', ar: 'إقامة عائلية' },
+            title: { en: 'Family Bungalow Stays', fr: 'Séjour Bungalow dès 900 DH', ar: 'إقامة البنغالو ابتداءً من 900 درهم' },
             text: {
-                en: 'Save up to 25% on luxury family bungalows with FREE Pool access until October 10!',
-                fr: 'Économisez jusqu\'à -25% sur nos bungalows avec Piscine Gratuite jusqu\'au 10 Octobre !',
-                ar: 'وفر حتى 25% على إقامتك في البناغل مع دخول مجاني للمسبح حتى 10 أكتوبر !'
+                en: 'Discover our 4 official bungalow packages with breakfast, animal park & pool options!',
+                fr: 'Découvrez nos 4 formules de séjour avec petit-déjeuner, parc animalier et option piscine !',
+                ar: 'اكتشف باقاتنا الـ 4 الرسمية للإقامة مع فطور الصباح، حديقة الحيوان وخيار المسبح!'
             },
-            cta: { en: 'Book Bungalow', fr: 'Voir la Promo', ar: 'احجز الآن' },
+            cta: { en: 'View Packages', fr: 'Voir les Formules', ar: 'عرض الباقات' },
             action: () => onNavigate('booking')
         },
         {

@@ -85,7 +85,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                 {
                     image: '/assets/natura/bugalow.webp',
                     title: { en: "Family Bungalow Stays", fr: "Séjour en Famille", ar: "إقامة عائلية فاخرة" },
-                    desc: { en: "Enjoy our special discount rates: 900 DH (2 adults + 1 kid) & 1100 DH (2 adults + 2 kids).", fr: "Offre Spéciale : 900 DH (2 adultes + 1 enfant) et 1100 DH (2 adultes + 2 enfants) avec piscine gratuite !", ar: "عرض خاص: 900 درهم (شخصين + طفل) و 1100 درهم (شخصين + طفلين) مع مسبح مجاني!" }
+                    desc: { en: "Our 4 stay packages starting from 900 DH: Discovery & Premium with pool options.", fr: "Nos 4 formules de séjour dès 900 DH : Offres Découverte & Premium avec option piscine.", ar: "باقاتنا الـ 4 الرسمية ابتداءً من 900 درهم: باقات الاستكشاف وباقات بريميوم شاملة المسبح." }
                 },
                 {
                     image: '/assets/natura/more bungalow at night.webp',
@@ -100,7 +100,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                 {
                     image: '/assets/natura/WhatsApp Image 2026-02-13 at 13.42.27 (16).webp',
                     title: { en: "Morning Delight", fr: "Délice Matinal", ar: "فطور الصباح" },
-                    desc: { en: "Breakfast, animal park, games & free pool included in your stay.", fr: "Petit déjeuner, parc animalier, espace jeux et piscine gratuite inclus dans vos nuitées.", ar: "فطور الصباح، حديقة الحيوان، منطقة الألعاب والمسبح مشمولة في إقامتك." }
+                    desc: { en: "Breakfast, animal park and kids play area included in all bungalow stays.", fr: "Petit-déjeuner, parc animalier et espace jeux inclus dans toutes vos nuitées.", ar: "فطور الصباح، حديقة الحيوان وفضاء الألعاب مشمولة في جميع الإقامات." }
                 }
             ],
             actionLabel: { en: "View Packages & Book", fr: "Voir les Formules & Réserver", ar: "عرض الباقات والحجز" },
@@ -194,7 +194,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                 {
                     image: '/assets/natura/tents/Pool/DSC00056.webp',
                     title: { en: "Poolside Serenity", fr: "Sérénité au Bord de l'Eau", ar: "استرخاء المسبح" },
-                    desc: { en: "Free pool access for all bungalow guests until October 10!", fr: "Piscine gratuite pour tous les clients séjournant en bungalow jusqu'au 10 Octobre !", ar: "المسبح مجاني لجميع ضيوف البناغل حتى 10 أكتوبر!" }
+                    desc: { en: "Relax by the turquoise pool in the heart of nature with sunbeds and refreshments.", fr: "Détendez-vous au bord de notre piscine turquoise au cœur de la nature avec transats confortables.", ar: "استمتع بالسباحة والاسترخاء في مسبحنا الفيروزي وسط الطبيعة الهادئة." }
                 }
             ]
         }

@@ -17,8 +17,7 @@ import {
     PartyPopper,
     X,
     Users,
-    Compass,
-    Flame
+    Compass
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { JungleConnect } from './JungleConnect';
@@ -81,11 +80,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             about_title: "Breathe in Nature | Natura Jungle Park",
             about_text: "Escape the city buzz and reconnect with nature at Natura Jungle Park—a serene eco-sanctuary just moments from Casablanca and Rabat.",
             promoBanner: {
-                badge: "Limited Time Offer",
-                title: "Autumn Family Bungalow Stay",
-                desc: "Stay from 900 DH/night (instead of 1200 DH) with Breakfast, Animal Park, Play Area & FREE POOL ACCESS until October 10!",
+                badge: "Family Stays",
+                title: "Family Stay in the Heart of Nature",
+                desc: "Discover our 4 official bungalow packages from 900 DH/night with Breakfast, Animal Park, Play Area & Pool option!",
                 cta: "Book Bungalow",
-                save: "Save up to 25%"
+                save: "4 Official Packages"
             },
             quadSpotlight: {
                 badge: "New Activity",
@@ -94,7 +93,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 cta: "Discover Quad"
             },
             bundles: [
-                { id: 1, title: "Jungle Bungalow", sub: "Special Promo Stays", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
+                { id: 1, title: "Jungle Bungalow", sub: "Family Stays", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "Balade à Quad", sub: "Sunset Adventure", icon: Compass, image: quadImg, action: () => { setActiveExperience('quad'); setCurrentView('experience'); } },
                 { id: 3, title: "Jungle Restaurant", sub: "Roasted Chicken & Tagines", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
                 { id: 4, title: "Berber Tents", sub: "Authentic Experience", icon: Tent, image: tentDayImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
@@ -125,7 +124,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             navigation: {
                 pricing: { title: "Pricing & Plans", subtitle: "Rates" },
                 quad: { title: "Balade à Quad", subtitle: "Adventure" },
-                bungalow: { title: "Bungalow Jungle", subtitle: "Promo Stay" },
+                bungalow: { title: "Bungalow Jungle", subtitle: "Family Stay" },
                 restaurant: { title: "Restaurant & Menu", subtitle: "Dining" },
                 zones: { title: "Experience Zones", subtitle: "Discover" },
                 catering: { title: "Catering & Events", subtitle: "Services" },
@@ -155,10 +154,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     book: "Book Now"
                 },
                 bungalow: {
-                    tag: "Promo & Standard",
+                    tag: "4 Packages",
                     title: "Bungalow Stay",
                     perNight: "Starting From",
-                    desc: "Promo (until Oct 10): 900 DH & 1100 DH with Free Pool. From Oct 10: 4 Standard formulas (900 DH to 1400 DH).",
+                    desc: "Discovery: 900 DH & 1100 DH (Without pool) | Premium: 1200 DH & 1400 DH (With pool).",
                     additional: "Breakfast, animal park & kids play area included in all stays.",
                     book: "View Packages & Book"
                 },
@@ -205,11 +204,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             about_title: "Respirez la Nature | Natura Jungle Park",
             about_text: "Évadez-vous de l'agitation urbaine et reconnectez avec la nature au Natura Jungle Park—un sanctuaire écologique serein à quelques pas de Casablanca et Rabat.",
             promoBanner: {
-                badge: "Offre Limitée",
+                badge: "Séjour en Famille",
                 title: "Séjour en Famille au Cœur de la Nature",
-                desc: "Bungalows à partir de 900 DH/nuit (au lieu de 1200 DH) avec Petit-déjeuner, Parc animalier, Espace jeux & PISCINE GRATUITE jusqu'au 10 Octobre !",
+                desc: "Découvrez nos 4 formules officielles de séjour en bungalow dès 900 DH/nuit avec Petit-déjeuner, Parc animalier, Espace jeux et option Piscine !",
                 cta: "Réserver mon Bungalow",
-                save: "Jusqu'à -25% de réduction"
+                save: "4 Formules Officielles"
             },
             quadSpotlight: {
                 badge: "Nouvelle Activité",
@@ -218,7 +217,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 cta: "Découvrir le Quad"
             },
             bundles: [
-                { id: 1, title: "Bungalow Jungle", sub: "Offre Promo Séjour", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
+                { id: 1, title: "Bungalow Jungle", sub: "Séjour en Famille", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "Balade à Quad", sub: "Aventure & Sunset", icon: Compass, image: quadImg, action: () => { setActiveExperience('quad'); setCurrentView('experience'); } },
                 { id: 3, title: "Restaurant Jungle", sub: "Poulet Rôti & Tagines", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
                 { id: 4, title: "Tentes Berbères", sub: "Expérience Authentique", icon: Tent, image: tentDayImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
@@ -249,7 +248,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             navigation: {
                 pricing: { title: "Tarifs & Formules", subtitle: "Prix" },
                 quad: { title: "Balade à Quad", subtitle: "Nouveauté" },
-                bungalow: { title: "Bungalow Jungle", subtitle: "Séjour Promo" },
+                bungalow: { title: "Bungalow Jungle", subtitle: "Séjour Famille" },
                 restaurant: { title: "Restaurant & Menu", subtitle: "Carte" },
                 zones: { title: "Zones d'Expérience", subtitle: "Découvrir" },
                 catering: { title: "Traiteur & Événements", subtitle: "Services" },
@@ -279,10 +278,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     book: "Réserver"
                 },
                 bungalow: {
-                    tag: "Promo & Standards",
+                    tag: "4 Formules",
                     title: "Séjour Bungalow",
                     perNight: "À partir de",
-                    desc: "Promo (jusqu'au 10 Oct) : 900 DH & 1100 DH avec Piscine Gratuite. Dès le 10 Oct : 4 Formules Standards (900 DH à 1400 DH).",
+                    desc: "Découverte : 900 DH & 1100 DH (Sans piscine) | Premium : 1200 DH & 1400 DH (Avec piscine).",
                     additional: "Petit-déjeuner, parc animalier et espace jeux inclus dans toutes les formules séjour.",
                     book: "Voir les Formules"
                 },
@@ -323,11 +322,11 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             about_title: "استنشق عبير الطبيعة | منتزه نطورا جانغل",
             about_text: "اهرب من صخب المدينة واكتشف جمال الطبيعة في منتزه ناتورا جانغل—ملاذك البيئي الهادئ على بعد دقائق من الدار البيضاء والرباط.",
             promoBanner: {
-                badge: "عرض حصري محدود",
+                badge: "إقامة عائلية",
                 title: "إقامة عائلية فاخرة في البناغل",
-                desc: "ابتداءً من 900 درهم/ليلة (بدلاً من 1200 درهم) مع فطور الصباح، حديقة الحيوان، ألعاب الأطفال ومسبح مجاني حتى 10 أكتوبر!",
+                desc: "اكتشف باقاتنا الـ 4 الرسمية للإقامة في البناغل ابتداءً من 900 درهم/ليلة مع فطور الصباح، حديقة الحيوان، ألعاب الأطفال وخيار المسبح!",
                 cta: "احجز البنغالو الآن",
-                save: "خصم يصل إلى 25%"
+                save: "4 باقات رسمية"
             },
             quadSpotlight: {
                 badge: "نشاط جديد",
@@ -336,7 +335,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                 cta: "اكتشف الكواد"
             },
             bundles: [
-                { id: 1, title: "بناغل الغابة", sub: "عرض الإقامة الخاص", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
+                { id: 1, title: "بناغل الغابة", sub: "إقامة عائلية", icon: Home, image: bungalowImg, action: () => { setActiveExperience('bungalow'); setCurrentView('experience'); } },
                 { id: 2, title: "جولة الكواد", sub: "مغامرة الغروب", icon: Compass, image: quadImg, action: () => { setActiveExperience('quad'); setCurrentView('experience'); } },
                 { id: 3, title: "مطعم الغابة", sub: "طواجن ودجاج محمر", icon: Utensils, image: restaurantImg, action: () => { setActiveExperience('restaurant'); setCurrentView('experience'); } },
                 { id: 4, title: "خيام بربرية", sub: "أصالة وراحة", icon: Tent, image: tentDayImg, action: () => { setActiveExperience('tents'); setCurrentView('experience'); } },
@@ -367,7 +366,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             navigation: {
                 pricing: { title: "الأسعار والباقات", subtitle: "تعريفة" },
                 quad: { title: "جولة الكواد", subtitle: "نشاط جديد" },
-                bungalow: { title: "بناغل الغابة", subtitle: "إقامة مخفضة" },
+                bungalow: { title: "بناغل الغابة", subtitle: "إقامة عائلية" },
                 restaurant: { title: "المطعم والقائمة", subtitle: "طعام" },
                 zones: { title: "مناطق التجربة", subtitle: "اكتشف" },
                 catering: { title: "التموين والحفلات", subtitle: "خدمات" },
@@ -397,10 +396,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     book: "احجز الآن"
                 },
                 bungalow: {
-                    tag: "عروض وباقات",
+                    tag: "4 باقات رسمية",
                     title: "إقامة البنغالو",
                     perNight: "ابتداءً من",
-                    desc: "عرض خاص (حتى 10 أكتوبر): 900 و 1100 درهم مع مسبح مجاني. ابتداءً من 10 أكتوبر: 4 باقات عادية (من 900 إلى 1400 درهم).",
+                    desc: "الاستكشاف: 900 و 1100 درهم (بدون مسبح) | بريميوم: 1200 و 1400 درهم (شامل المسبح).",
                     additional: "فطور الصباح، حديقة الحيوان وفضاء الألعاب مشمولة في جميع صيغ الإقامة.",
                     book: "عرض الباقات"
                 },
@@ -769,7 +768,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                                                 <span className="text-[10px] text-white/70 uppercase block">{text.pricingModal.bungalow.perNight}</span>
                                                 <div className="flex items-baseline gap-2">
                                                     <span className="text-2xl font-serif font-bold text-white">900 <span className="text-xs text-sand-gold">DH</span></span>
-                                                    <span className="text-xs line-through text-white/50">1200 DH</span>
+                                                    <span className="text-[10px] text-white/60 uppercase">/ nuit</span>
                                                 </div>
                                             </div>
                                             <p className="text-[11px] text-white/90 leading-relaxed mb-4">
@@ -866,7 +865,7 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     >
                         <div className="space-y-2 relative z-10 text-center md:text-left">
                             <div className="inline-flex items-center gap-2 px-3 py-1 bg-luxury-gold text-jungle-deep text-[10px] font-black uppercase rounded-full tracking-wider shadow-md">
-                                <Flame className="w-3.5 h-3.5" />
+                                <Sparkles className="w-3.5 h-3.5" />
                                 <span>{text.promoBanner.badge} • {text.promoBanner.save}</span>
                             </div>
                             <h2 className="text-2xl sm:text-3xl font-serif text-sand-gold font-bold">

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Users, Star, ChevronLeft, Moon, Sparkles, Calendar as CalendarIcon, Info, Check, CheckCircle2, Minus, Plus, Flame, Waves } from 'lucide-react';
-import { useState, useMemo, useRef, useEffect } from 'react';
+import { Users, Star, ChevronLeft, Moon, Sparkles, Calendar as CalendarIcon, Info, Check, CheckCircle2, Minus, Plus, Home } from 'lucide-react';
+import { useState, useMemo, useRef } from 'react';
 
 interface BungalowBookingProps {
     onBack: () => void;
@@ -10,12 +10,10 @@ interface BungalowBookingProps {
 
 interface BungalowOffer {
     id: string;
-    originalPrice?: number;
     price: number;
-    discount?: string;
     badge: string;
     title: string;
-    subtitle?: string;
+    subtitle: string;
     guests: string;
     hasPool: boolean;
     features: string[];
@@ -30,14 +28,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             subtitle: "Séjour en Famille au Cœur de la Nature",
             checkIn: "Arrivée 14h",
             checkOut: "Départ 12h",
-            promoBadge: "Offre Spéciale en Cours",
-            standardBadge: "Formules Standards",
-            promoTab: "🍂 Offre Promo (Jusqu'au 10 Octobre)",
-            standardTab: "🏛️ Formules Standards (Dès le 10 Octobre)",
-            poolFreeNotice: "🏊‍♂️ PISCINE GRATUITE jusqu'au 10 Octobre pour tous les clients hébergés !",
-            standardNotice: "✨ Formules Standards restaurées à partir du 10 Octobre (Options avec ou sans accès piscine).",
-            autoPromoInfo: "Séjour avant le 10 Octobre : Vous bénéficiez de l'offre promo avec piscine offerte !",
-            autoStandardInfo: "Séjour à partir du 10 Octobre : Les 4 formules standards s'appliquent.",
+            heroBadge: "Séjour en Famille",
+            bannerNotice: "✨ Nos 4 formules officielles de séjour en bungalow • Options avec ou sans accès piscine.",
             selectOffer: "Choisissez votre formule",
             selectDates: "Sélectionnez vos dates",
             selectArrival: "Date d'arrivée",
@@ -53,42 +45,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             nights: "Nuits",
             reserve: "Sélectionner",
             selected: "Sélectionné",
-            save: "Économisez",
-            promoOffers: [
-                {
-                    id: "promo-1",
-                    originalPrice: 1200,
-                    price: 900,
-                    discount: "-25%",
-                    badge: "Meilleure Vente",
-                    title: "🌿 Séjour Découverte (Promo)",
-                    guests: "👨‍👩‍👦 2 Adultes + 1 Enfant",
-                    hasPool: true,
-                    features: [
-                        "🥐 Petit-déjeuner inclus",
-                        "🦙 Accès au parc animalier inclus",
-                        "🎪 Accès à l'espace de jeux enfants inclus",
-                        "🏊‍♂️ PISCINE GRATUITE (Offre jusqu'au 10 Octobre !)"
-                    ]
-                },
-                {
-                    id: "promo-2",
-                    originalPrice: 1400,
-                    price: 1100,
-                    discount: "-21%",
-                    badge: "Offre Famille",
-                    title: "🦙 Séjour Famille Plus (Promo)",
-                    guests: "👨‍👩‍👧‍👦 2 Adultes + 2 Enfants",
-                    hasPool: true,
-                    features: [
-                        "🥐 Petit-déjeuner inclus",
-                        "🦙 Accès au parc animalier inclus",
-                        "🎪 Accès à l'espace de jeux enfants inclus",
-                        "🏊‍♂️ PISCINE GRATUITE (Offre jusqu'au 10 Octobre !)"
-                    ]
-                }
-            ] as BungalowOffer[],
-            standardOffers: [
+            officialBadge: "Formule Officielle",
+            offers: [
                 {
                     id: "std-1",
                     price: 900,
@@ -156,14 +114,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             subtitle: "Family Stay in the Heart of Nature",
             checkIn: "Check-in 14:00",
             checkOut: "Check-out 12:00",
-            promoBadge: "Special Limited Offer",
-            standardBadge: "Standard Packages",
-            promoTab: "🍂 Promo Offer (Until Oct 10)",
-            standardTab: "🏛️ Standard Packages (From Oct 10)",
-            poolFreeNotice: "🏊‍♂️ FREE POOL ACCESS until October 10 for all staying guests!",
-            standardNotice: "✨ Standard packages restored from October 10 (With or without pool access options).",
-            autoPromoInfo: "Stay before Oct 10: Special Promo with free pool access applies!",
-            autoStandardInfo: "Stay from Oct 10 onwards: Standard 4 packages apply.",
+            heroBadge: "Family Stay",
+            bannerNotice: "✨ Our 4 official bungalow stay packages • Options with or without pool access.",
             selectOffer: "Choose your package",
             selectDates: "Select your dates",
             selectArrival: "Arrival Date",
@@ -179,42 +131,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             nights: "Nights",
             reserve: "Select",
             selected: "Selected",
-            save: "Save",
-            promoOffers: [
-                {
-                    id: "promo-1",
-                    originalPrice: 1200,
-                    price: 900,
-                    discount: "-25%",
-                    badge: "Best Value",
-                    title: "🌿 Discovery Stay (Promo)",
-                    guests: "👨‍👩‍👦 2 Adults + 1 Child",
-                    hasPool: true,
-                    features: [
-                        "🥐 Breakfast included",
-                        "🦙 Animal park access included",
-                        "🎪 Kids play area access included",
-                        "🏊‍♂️ FREE POOL ACCESS (Until Oct 10!)"
-                    ]
-                },
-                {
-                    id: "promo-2",
-                    originalPrice: 1400,
-                    price: 1100,
-                    discount: "-21%",
-                    badge: "Family Special",
-                    title: "🦙 Family Plus (Promo)",
-                    guests: "👨‍👩‍👧‍👦 2 Adults + 2 Children",
-                    hasPool: true,
-                    features: [
-                        "🥐 Breakfast included",
-                        "🦙 Animal park access included",
-                        "🎪 Kids play area access included",
-                        "🏊‍♂️ FREE POOL ACCESS (Until Oct 10!)"
-                    ]
-                }
-            ] as BungalowOffer[],
-            standardOffers: [
+            officialBadge: "Official Package",
+            offers: [
                 {
                     id: "std-1",
                     price: 900,
@@ -282,14 +200,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             subtitle: "إقامة عائلية فاخرة في قلب الطبيعة",
             checkIn: "وصول 14:00",
             checkOut: "مغادرة 12:00",
-            promoBadge: "عرض ترويجي خاص",
-            standardBadge: "الباقات العادية",
-            promoTab: "🍂 عرض خاص (حتى 10 أكتوبر)",
-            standardTab: "🏛️ الباقات العادية (ابتداءً من 10 أكتوبر)",
-            poolFreeNotice: "🏊‍♂️ مسبح مجاني حتى 10 أكتوبر لجميع ضيوف الإقامة!",
-            standardNotice: "✨ استعادة الباقات الـ 4 العادية ابتداءً من 10 أكتوبر (خيارات مع أو بدون مسبح).",
-            autoPromoInfo: "إقامة قبل 10 أكتوبر: الاستفادة من العرض الترويجي مع مسبح مجاني!",
-            autoStandardInfo: "إقامة ابتداءً من 10 أكتوبر: تطبق الباقات الـ 4 العادية.",
+            heroBadge: "إقامة عائلية",
+            bannerNotice: "✨ باقاتنا الرسمية الـ 4 في بناغل الغابة • خيارات مع أو بدون دخول المسبح.",
             selectOffer: "اختر العرض المناسب",
             selectDates: "اختر تواريخ الإقامة",
             selectArrival: "تاريخ الوصول",
@@ -305,42 +217,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             nights: "ليالي",
             reserve: "اختيار",
             selected: "تم الاختيار",
-            save: "وفر",
-            promoOffers: [
-                {
-                    id: "promo-1",
-                    originalPrice: 1200,
-                    price: 900,
-                    discount: "-25%",
-                    badge: "الأكثر طلباً",
-                    title: "🌿 إقامة استكشافية (عرض خاص)",
-                    guests: "👨‍👩‍👦 شخصين بالغين + طفل واحد",
-                    hasPool: true,
-                    features: [
-                        "🥐 وجبة فطور الصباح مشمولة",
-                        "🦙 دخول حديقة الحيوانات مشمول",
-                        "🎪 دخول فضاء ألعاب الأطفال مشمول",
-                        "🏊‍♂️ دخول المسبح مجاناً (حتى 10 أكتوبر!)"
-                    ]
-                },
-                {
-                    id: "promo-2",
-                    originalPrice: 1400,
-                    price: 1100,
-                    discount: "-21%",
-                    badge: "عرض العائلة",
-                    title: "🦙 إقامة العائلة بلس (عرض خاص)",
-                    guests: "👨‍👩‍👧‍👦 شخصين بالغين + طفلين",
-                    hasPool: true,
-                    features: [
-                        "🥐 وجبة فطور الصباح مشمولة",
-                        "🦙 دخول حديقة الحيوانات مشمول",
-                        "🎪 دخول فضاء ألعاب الأطفال مشمول",
-                        "🏊‍♂️ دخول المسبح مجاناً (حتى 10 أكتوبر!)"
-                    ]
-                }
-            ] as BungalowOffer[],
-            standardOffers: [
+            officialBadge: "باقة رسمية",
+            offers: [
                 {
                     id: "std-1",
                     price: 900,
@@ -407,9 +285,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
 
     const t = translations[currentLanguage];
 
-    // State for period mode: 'promo' (<= Oct 10) vs 'standard' (> Oct 10)
-    const [pricingPeriod, setPricingPeriod] = useState<'promo' | 'standard'>('promo');
-    const [selectedOfferId, setSelectedOfferId] = useState<string>('promo-1');
+    const [selectedOfferId, setSelectedOfferId] = useState<string>("std-1");
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
     const [selectedDates, setSelectedDates] = useState<string[]>([]);
@@ -429,61 +305,33 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
         return dateString < todayStr || bookedDates.includes(dateString);
     };
 
-    // Active offers based on selected pricing period
-    const currentOffers = pricingPeriod === 'promo' ? t.promoOffers : t.standardOffers;
-
-    // Ensure selected offer is always valid in the current mode
-    useEffect(() => {
-        const exists = currentOffers.some(o => o.id === selectedOfferId);
-        if (!exists) {
-            setSelectedOfferId(currentOffers[0]?.id || 'promo-1');
-        }
-    }, [pricingPeriod, currentOffers, selectedOfferId]);
-
     const toggleDate = (dateString: string) => {
         if (isDayDisabled(dateString)) return;
 
         setSelectedDates(prev => {
-            let nextDates: string[] = [];
             if (prev.length === 0 || prev.length > 1) {
-                nextDates = [dateString];
-            } else {
-                const start = new Date(prev[0]);
-                const end = new Date(dateString);
-
-                const range: string[] = [];
-                const [lower, upper] = start < end ? [start, end] : [end, start];
-
-                const current = new Date(lower);
-                let hitDisabled = false;
-                while (current <= upper) {
-                    const str = getDateString(current.getFullYear(), current.getMonth(), current.getDate());
-                    if (isDayDisabled(str)) {
-                        hitDisabled = true;
-                        break;
-                    }
-                    range.push(str);
-                    current.setDate(current.getDate() + 1);
-                }
-                nextDates = hitDisabled ? [dateString] : range;
+                return [dateString];
             }
 
-            // Date-Aware Switch: After October 10 (from Oct 11 or >= 2026-10-10 checkout), switch to standard formulas!
-            if (nextDates.length > 0) {
-                const arrival = nextDates[0];
-                if (arrival > '2026-10-10') {
-                    setPricingPeriod('standard');
-                } else {
-                    setPricingPeriod('promo');
-                }
-            }
+            const start = new Date(prev[0]);
+            const end = new Date(dateString);
 
-            return nextDates;
+            const range: string[] = [];
+            const [lower, upper] = start < end ? [start, end] : [end, start];
+
+            const current = new Date(lower);
+            while (current <= upper) {
+                const str = getDateString(current.getFullYear(), current.getMonth(), current.getDate());
+                if (isDayDisabled(str)) return [dateString];
+                range.push(str);
+                current.setDate(current.getDate() + 1);
+            }
+            return range;
         });
     };
 
     const nights = Math.max(1, selectedDates.length > 1 ? selectedDates.length - 1 : 1);
-    const selectedOffer = currentOffers.find(o => o.id === selectedOfferId) || currentOffers[0];
+    const selectedOffer = t.offers.find(o => o.id === selectedOfferId) || t.offers[0];
     const grandTotal = selectedOffer ? (nights * selectedOffer.price * bungalowCount) : 0;
 
     const handleOfferSelect = (id: string) => {
@@ -507,18 +355,15 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
 
         const arrivalDate = selectedDates[0];
         const departureDate = selectedDates[selectedDates.length - 1];
-        const isPromo = pricingPeriod === 'promo';
 
         const poolStatusLine = selectedOffer.hasPool
-            ? (isPromo
-                ? '• 🏊‍♂️ Accès Piscine GRATUIT (Offre Spéciale jusqu\'au 10 Octobre)'
-                : '• 🏊‍♂️ Accès Piscine INCLUS')
+            ? '• 🏊‍♂️ Accès Piscine INCLUS'
             : '• 🚫 Accès Piscine NON INCLUS';
 
         const message =
-            `*🌿 DEMANDE DE RÉSERVATION BUNGALOW (${isPromo ? 'OFFRE PROMO' : 'FORMULE STANDARD'})*\n\n` +
+            `*🌿 DEMANDE DE RÉSERVATION BUNGALOW*\n\n` +
             `*📍 Établissement :* Natura Jungle Park\n` +
-            `*🏷️ Formule Choisie :* ${selectedOffer.title} ${selectedOffer.subtitle ? `(${selectedOffer.subtitle})` : ''}\n` +
+            `*🏷️ Formule Choisie :* ${selectedOffer.title} (${selectedOffer.subtitle})\n` +
             `*👥 Composition :* ${selectedOffer.guests}\n` +
             `*🏠 Nombre de Bungalows :* ${bungalowCount}\n` +
             `*📅 Date d'Arrivée :* ${arrivalDate}\n` +
@@ -530,12 +375,13 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             `• Accès à l'espace de jeux enfants inclus\n` +
             `${poolStatusLine}\n\n` +
             `*💰 TARIF :*\n` +
-            `Prix / nuit : ${selectedOffer.originalPrice ? `~${selectedOffer.originalPrice} DH~ 👉 ` : ''}*${selectedOffer.price} DH*\n` +
+            `Prix / nuit : *${selectedOffer.price} DH*\n` +
             `━━━━━━━━━━━━━━━━━━━━━\n` +
             `*✨ MONTANT TOTAL : ${grandTotal} DH*\n` +
             `━━━━━━━━━━━━━━━━━━━━━\n\n` +
             `Bonjour, merci de bien vouloir me confirmer la disponibilité du bungalow pour ces dates.`;
 
+        // Routing specifically to bungalow reservation number
         const whatsappUrl = `https://wa.me/212681813081?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     };
@@ -563,8 +409,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     </button>
 
                     <div className="absolute top-6 right-6 flex items-center gap-2 bg-luxury-gold text-jungle-deep px-3 py-1.5 rounded-full font-bold text-[10px] uppercase tracking-wider shadow-lg">
-                        {pricingPeriod === 'promo' ? <Flame className="w-3.5 h-3.5" /> : <Sparkles className="w-3.5 h-3.5" />}
-                        <span>{pricingPeriod === 'promo' ? t.promoBadge : t.standardBadge}</span>
+                        <Home className="w-3.5 h-3.5" />
+                        <span>{t.heroBadge}</span>
                     </div>
 
                     <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
@@ -584,23 +430,14 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                 </div>
 
                 <div className="px-4 sm:px-6 py-6 space-y-6 max-w-3xl mx-auto">
-                    {/* Period Switcher / Notice Banner */}
-                    <div className={`p-4 rounded-2xl border transition-all duration-300 flex items-center gap-3 ${
-                        pricingPeriod === 'promo'
-                            ? 'bg-gradient-to-r from-sand-gold/20 via-sand-gold/10 to-transparent border-sand-gold/30'
-                            : 'bg-gradient-to-r from-emerald-500/15 via-emerald-500/5 to-transparent border-emerald-500/30'
-                    }`}>
-                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-md ${
-                            pricingPeriod === 'promo' ? 'bg-sand-gold text-jungle-deep' : 'bg-emerald-600 text-white'
-                        }`}>
-                            {pricingPeriod === 'promo' ? <Waves className="w-5 h-5" /> : <Sparkles className="w-5 h-5" />}
+                    {/* Notice Banner */}
+                    <div className="p-4 rounded-2xl border transition-all duration-300 flex items-center gap-3 bg-gradient-to-r from-sand-gold/20 via-sand-gold/10 to-transparent border-sand-gold/30">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-md bg-sand-gold text-jungle-deep">
+                            <Sparkles className="w-5 h-5" />
                         </div>
                         <div className="flex-1">
                             <p className="text-xs sm:text-sm font-bold text-jungle-green dark:text-sand-gold">
-                                {pricingPeriod === 'promo' ? t.poolFreeNotice : t.standardNotice}
-                            </p>
-                            <p className="text-[10px] text-neutral-500 dark:text-neutral-400 mt-0.5">
-                                {selectedDates.length > 0 && (selectedDates[0] > '2026-10-10' ? t.autoStandardInfo : t.autoPromoInfo)}
+                                {t.bannerNotice}
                             </p>
                         </div>
                     </div>
@@ -621,45 +458,18 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                         </div>
                     </div>
 
-                    {/* Offers Section with Period Selector */}
+                    {/* The 4 Official Offers */}
                     <div>
-                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
+                        <div className="mb-4">
                             <h3 className="text-xs font-bold uppercase tracking-widest flex items-center gap-2 text-sand-gold">
                                 <Star className="w-4 h-4" />
                                 {t.selectOffer}
                             </h3>
-                            {/* Interactive Period Toggle */}
-                            <div className="flex p-1 bg-black/5 dark:bg-white/5 rounded-xl border border-sand-gold/20 w-full sm:w-auto">
-                                <button
-                                    type="button"
-                                    onClick={() => setPricingPeriod('promo')}
-                                    className={`flex-1 sm:flex-initial py-1.5 px-3 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 ${
-                                        pricingPeriod === 'promo'
-                                            ? 'bg-luxury-gold text-jungle-deep shadow-md font-black'
-                                            : 'text-jungle-green/70 dark:text-white/70 hover:text-sand-gold'
-                                    }`}
-                                >
-                                    <Flame className="w-3 h-3" />
-                                    <span>{t.promoTab}</span>
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => setPricingPeriod('standard')}
-                                    className={`flex-1 sm:flex-initial py-1.5 px-3 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 ${
-                                        pricingPeriod === 'standard'
-                                            ? 'bg-luxury-gold text-jungle-deep shadow-md font-black'
-                                            : 'text-jungle-green/70 dark:text-white/70 hover:text-sand-gold'
-                                    }`}
-                                >
-                                    <Sparkles className="w-3 h-3" />
-                                    <span>{t.standardTab}</span>
-                                </button>
-                            </div>
                         </div>
 
-                        {/* Offers Cards Grid */}
-                        <div className={`grid gap-4 ${pricingPeriod === 'standard' ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2'}`}>
-                            {currentOffers.map((offer) => {
+                        {/* Offers Cards Grid (4 Cards) */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {t.offers.map((offer) => {
                                 const isSelected = selectedOfferId === offer.id;
                                 return (
                                     <motion.div
@@ -679,7 +489,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                                             <div>
                                                 <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider mb-2 ${
                                                     offer.hasPool
-                                                        ? 'bg-sand-gold text-jungle-deep'
+                                                        ? 'bg-sand-gold text-jungle-deep font-black'
                                                         : 'bg-neutral-200 dark:bg-white/10 text-neutral-700 dark:text-neutral-300'
                                                 }`}>
                                                     {offer.badge}
@@ -689,11 +499,13 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                                                     {offer.guests}
                                                 </p>
                                             </div>
-                                            {offer.discount && (
-                                                <div className="bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 px-2 py-1 rounded-xl text-[10px] font-black">
-                                                    {offer.discount}
-                                                </div>
-                                            )}
+                                            <span className={`text-[10px] font-bold px-2 py-1 rounded-xl ${
+                                                offer.hasPool
+                                                    ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
+                                                    : 'bg-neutral-500/10 text-neutral-500 border border-neutral-500/20'
+                                            }`}>
+                                                {offer.subtitle}
+                                            </span>
                                         </div>
 
                                         <ul className="space-y-2 my-4 text-xs">
@@ -709,11 +521,6 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
 
                                         <div className="flex justify-between items-end pt-3 border-t border-sand-gold/20 mt-auto">
                                             <div>
-                                                {offer.originalPrice && (
-                                                    <span className="text-[10px] line-through text-neutral-400 block">
-                                                        {offer.originalPrice} DH
-                                                    </span>
-                                                )}
                                                 <div className="flex items-baseline gap-1">
                                                     <span className="text-2xl font-serif font-bold text-sand-gold">{offer.price} DH</span>
                                                     <span className="text-[10px] font-semibold opacity-60">/ {t.night}</span>
@@ -858,8 +665,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                         <span className="text-2xl font-serif text-sand-gold font-bold">{grandTotal} DH</span>
                     </div>
                     <div className="text-right">
-                        <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider block">
-                            {pricingPeriod === 'promo' ? `✨ ${t.promoBadge}` : `🏛️ ${t.standardBadge}`}
+                        <span className="text-[10px] text-sand-gold font-bold uppercase tracking-wider block">
+                            🏛️ {t.officialBadge}
                         </span>
                         {selectedOffer && (
                             <span className="text-[9px] text-neutral-500 dark:text-neutral-400 block">
