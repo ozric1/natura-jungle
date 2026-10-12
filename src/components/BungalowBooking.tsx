@@ -13,9 +13,9 @@ interface BungalowOffer {
     price: number;
     badge: string;
     title: string;
-    subtitle: string;
+    subtitle?: string;
     guests: string;
-    hasPool: boolean;
+    hasPool?: boolean;
     features: string[];
 }
 
@@ -29,7 +29,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             checkIn: "Arrivée 14h",
             checkOut: "Départ 12h",
             heroBadge: "Séjour en Famille",
-            bannerNotice: "✨ Nos 4 formules officielles de séjour en bungalow • Options avec ou sans accès piscine.",
+            bannerNotice: "✨ Nos formules officielles de séjour en bungalow • Petit-déjeuner, parc animalier & espace jeux inclus.",
             selectOffer: "Choisissez votre formule",
             selectDates: "Sélectionnez vos dates",
             selectArrival: "Date d'arrivée",
@@ -52,14 +52,12 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     price: 900,
                     badge: "Formule Découverte",
                     title: "🌿 Offre Découverte",
-                    subtitle: "Sans Piscine",
                     guests: "👨‍👩‍👦 2 Adultes + 1 Enfant",
                     hasPool: false,
                     features: [
                         "🥐 Petit-déjeuner inclus",
                         "🦙 Accès au parc animalier inclus",
-                        "🎪 Accès à l'espace de jeux enfants inclus",
-                        "🚫 Accès piscine non inclus"
+                        "🎪 Accès à l'espace de jeux enfants inclus"
                     ]
                 },
                 {
@@ -67,44 +65,12 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     price: 1100,
                     badge: "Famille Découverte",
                     title: "🦙 Famille Découverte",
-                    subtitle: "Sans Piscine",
                     guests: "👨‍👩‍👧‍👦 2 Adultes + 2 Enfants",
                     hasPool: false,
                     features: [
                         "🥐 Petit-déjeuner inclus",
                         "🦙 Accès au parc animalier inclus",
-                        "🎪 Accès à l'espace de jeux enfants inclus",
-                        "🚫 Accès piscine non inclus"
-                    ]
-                },
-                {
-                    id: "std-3",
-                    price: 1200,
-                    badge: "Formule Premium",
-                    title: "⭐ Offre Premium",
-                    subtitle: "Avec Piscine",
-                    guests: "👨‍👩‍👦 2 Adultes + 1 Enfant",
-                    hasPool: true,
-                    features: [
-                        "🥐 Petit-déjeuner inclus",
-                        "🦙 Accès au parc animalier inclus",
-                        "🎪 Accès à l'espace de jeux enfants inclus",
-                        "🏊‍♂️ Accès Piscine Inclus"
-                    ]
-                },
-                {
-                    id: "std-4",
-                    price: 1400,
-                    badge: "Famille Tout Inclus",
-                    title: "👑 Famille Plus",
-                    subtitle: "Avec Piscine",
-                    guests: "👨‍👩‍👧‍👦 2 Adultes + 2 Enfants",
-                    hasPool: true,
-                    features: [
-                        "🥐 Petit-déjeuner inclus",
-                        "🦙 Accès au parc animalier inclus",
-                        "🎪 Accès à l'espace de jeux enfants inclus",
-                        "🏊‍♂️ Accès Piscine Inclus"
+                        "🎪 Accès à l'espace de jeux enfants inclus"
                     ]
                 }
             ] as BungalowOffer[]
@@ -115,7 +81,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             checkIn: "Check-in 14:00",
             checkOut: "Check-out 12:00",
             heroBadge: "Family Stay",
-            bannerNotice: "✨ Our 4 official bungalow stay packages • Options with or without pool access.",
+            bannerNotice: "✨ Our official bungalow stay packages • Breakfast, animal park & kids play area included.",
             selectOffer: "Choose your package",
             selectDates: "Select your dates",
             selectArrival: "Arrival Date",
@@ -138,14 +104,12 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     price: 900,
                     badge: "Discovery Package",
                     title: "🌿 Discovery Offer",
-                    subtitle: "Without Pool",
                     guests: "👨‍👩‍👦 2 Adults + 1 Child",
                     hasPool: false,
                     features: [
                         "🥐 Breakfast included",
                         "🦙 Animal park access included",
-                        "🎪 Kids play area access included",
-                        "🚫 Pool access not included"
+                        "🎪 Kids play area access included"
                     ]
                 },
                 {
@@ -153,44 +117,12 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     price: 1100,
                     badge: "Family Discovery",
                     title: "🦙 Family Discovery",
-                    subtitle: "Without Pool",
                     guests: "👨‍👩‍👧‍👦 2 Adults + 2 Children",
                     hasPool: false,
                     features: [
                         "🥐 Breakfast included",
                         "🦙 Animal park access included",
-                        "🎪 Kids play area access included",
-                        "🚫 Pool access not included"
-                    ]
-                },
-                {
-                    id: "std-3",
-                    price: 1200,
-                    badge: "Premium Package",
-                    title: "⭐ Premium Offer",
-                    subtitle: "With Pool",
-                    guests: "👨‍👩‍👦 2 Adults + 1 Child",
-                    hasPool: true,
-                    features: [
-                        "🥐 Breakfast included",
-                        "🦙 Animal park access included",
-                        "🎪 Kids play area access included",
-                        "🏊‍♂️ Pool Access Included"
-                    ]
-                },
-                {
-                    id: "std-4",
-                    price: 1400,
-                    badge: "Family All-Inclusive",
-                    title: "👑 Family Plus",
-                    subtitle: "With Pool",
-                    guests: "👨‍👩‍👧‍👦 2 Adults + 2 Children",
-                    hasPool: true,
-                    features: [
-                        "🥐 Breakfast included",
-                        "🦙 Animal park access included",
-                        "🎪 Kids play area access included",
-                        "🏊‍♂️ Pool Access Included"
+                        "🎪 Kids play area access included"
                     ]
                 }
             ] as BungalowOffer[]
@@ -201,7 +133,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             checkIn: "وصول 14:00",
             checkOut: "مغادرة 12:00",
             heroBadge: "إقامة عائلية",
-            bannerNotice: "✨ باقاتنا الرسمية الـ 4 في بناغل الغابة • خيارات مع أو بدون دخول المسبح.",
+            bannerNotice: "✨ باقاتنا الرسمية للإقامة في بناغل الغابة • فطور الصباح، حديقة الحيوانات وفضاء الألعاب مشمولة.",
             selectOffer: "اختر العرض المناسب",
             selectDates: "اختر تواريخ الإقامة",
             selectArrival: "تاريخ الوصول",
@@ -224,14 +156,12 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     price: 900,
                     badge: "باقة الاستكشاف",
                     title: "🌿 عرض الاستكشاف",
-                    subtitle: "بدون مسبح",
                     guests: "👨‍👩‍👦 شخصين بالغين + طفل واحد",
                     hasPool: false,
                     features: [
                         "🥐 وجبة فطور الصباح مشمولة",
                         "🦙 دخول حديقة الحيوانات مشمول",
-                        "🎪 دخول فضاء ألعاب الأطفال مشمول",
-                        "🚫 المسبح غير مشمول"
+                        "🎪 دخول فضاء ألعاب الأطفال مشمول"
                     ]
                 },
                 {
@@ -239,44 +169,12 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     price: 1100,
                     badge: "عائلي استكشافي",
                     title: "🦙 باقة العائلة الاستكشافية",
-                    subtitle: "بدون مسبح",
                     guests: "👨‍👩‍👧‍👦 شخصين بالغين + طفلين",
                     hasPool: false,
                     features: [
                         "🥐 وجبة فطور الصباح مشمولة",
                         "🦙 دخول حديقة الحيوانات مشمول",
-                        "🎪 دخول فضاء ألعاب الأطفال مشمول",
-                        "🚫 المسبح غير مشمول"
-                    ]
-                },
-                {
-                    id: "std-3",
-                    price: 1200,
-                    badge: "باقة بريميوم",
-                    title: "⭐ العرض الفاخر (بريميوم)",
-                    subtitle: "شامل المسبح",
-                    guests: "👨‍👩‍👦 شخصين بالغين + طفل واحد",
-                    hasPool: true,
-                    features: [
-                        "🥐 وجبة فطور الصباح مشمولة",
-                        "🦙 دخول حديقة الحيوانات مشمول",
-                        "🎪 دخول فضاء ألعاب الأطفال مشمول",
-                        "🏊‍♂️ دخول المسبح مشمول"
-                    ]
-                },
-                {
-                    id: "std-4",
-                    price: 1400,
-                    badge: "عائلي شامل",
-                    title: "👑 باقة العائلة بلس",
-                    subtitle: "شامل المسبح",
-                    guests: "👨‍👩‍👧‍👦 شخصين بالغين + طفلين",
-                    hasPool: true,
-                    features: [
-                        "🥐 وجبة فطور الصباح مشمولة",
-                        "🦙 دخول حديقة الحيوانات مشمول",
-                        "🎪 دخول فضاء ألعاب الأطفال مشمول",
-                        "🏊‍♂️ دخول المسبح مشمول"
+                        "🎪 دخول فضاء ألعاب الأطفال مشمول"
                     ]
                 }
             ] as BungalowOffer[]
@@ -285,7 +183,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
 
     const t = translations[currentLanguage];
 
-    const [selectedOfferId, setSelectedOfferId] = useState<string>("std-1");
+    const [selectedOfferId, setSelectedOfferId] = useState<string | null>(null);
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
     const [selectedDates, setSelectedDates] = useState<string[]>([]);
@@ -331,7 +229,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
     };
 
     const nights = Math.max(1, selectedDates.length > 1 ? selectedDates.length - 1 : 1);
-    const selectedOffer = t.offers.find(o => o.id === selectedOfferId) || t.offers[0];
+    const selectedOffer = t.offers.find(o => o.id === selectedOfferId) || null;
     const grandTotal = selectedOffer ? (nights * selectedOffer.price * bungalowCount) : 0;
 
     const handleOfferSelect = (id: string) => {
@@ -356,14 +254,10 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
         const arrivalDate = selectedDates[0];
         const departureDate = selectedDates[selectedDates.length - 1];
 
-        const poolStatusLine = selectedOffer.hasPool
-            ? '• 🏊‍♂️ Accès Piscine INCLUS'
-            : '• 🚫 Accès Piscine NON INCLUS';
-
         const message =
             `*🌿 DEMANDE DE RÉSERVATION BUNGALOW*\n\n` +
             `*📍 Établissement :* Natura Jungle Park\n` +
-            `*🏷️ Formule Choisie :* ${selectedOffer.title} (${selectedOffer.subtitle})\n` +
+            `*🏷️ Formule Choisie :* ${selectedOffer.title}\n` +
             `*👥 Composition :* ${selectedOffer.guests}\n` +
             `*🏠 Nombre de Bungalows :* ${bungalowCount}\n` +
             `*📅 Date d'Arrivée :* ${arrivalDate}\n` +
@@ -372,8 +266,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
             `*📋 Inclus dans la Formule :*\n` +
             `• Petit-déjeuner inclus\n` +
             `• Accès au parc animalier inclus\n` +
-            `• Accès à l'espace de jeux enfants inclus\n` +
-            `${poolStatusLine}\n\n` +
+            `• Accès à l'espace de jeux enfants inclus\n\n` +
             `*💰 TARIF :*\n` +
             `Prix / nuit : *${selectedOffer.price} DH*\n` +
             `━━━━━━━━━━━━━━━━━━━━━\n` +
@@ -458,7 +351,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                         </div>
                     </div>
 
-                    {/* The 4 Official Offers */}
+                    {/* The 2 Official Offers */}
                     <div>
                         <div className="mb-4">
                             <h3 className="text-xs font-bold uppercase tracking-widest flex items-center gap-2 text-sand-gold">
@@ -467,7 +360,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                             </h3>
                         </div>
 
-                        {/* Offers Cards Grid (4 Cards) */}
+                        {/* Offers Cards Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {t.offers.map((offer) => {
                                 const isSelected = selectedOfferId === offer.id;
@@ -481,16 +374,16 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                                             relative rounded-[2rem] p-5 sm:p-6 cursor-pointer border transition-all duration-300 flex flex-col justify-between
                                             ${isSelected
                                                 ? 'bg-jungle-deep text-white border-sand-gold shadow-2xl ring-2 ring-sand-gold/40'
-                                                : 'bg-white dark:bg-white/5 text-jungle-green dark:text-white border-sand-gold/20 hover:border-sand-gold/60 shadow-sm'
+                                                : 'bg-white dark:bg-white/5 text-jungle-green dark:text-white border-sand-gold/20 hover:border-sand-gold/50 shadow-sm'
                                             }
                                         `}
                                     >
                                         <div className="flex justify-between items-start mb-3">
                                             <div>
-                                                <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider mb-2 ${
-                                                    offer.hasPool
-                                                        ? 'bg-sand-gold text-jungle-deep font-black'
-                                                        : 'bg-neutral-200 dark:bg-white/10 text-neutral-700 dark:text-neutral-300'
+                                                <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider mb-2 transition-colors ${
+                                                    isSelected
+                                                        ? 'bg-sand-gold text-jungle-deep font-black shadow-sm'
+                                                        : 'bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-neutral-300 border border-sand-gold/15'
                                                 }`}>
                                                     {offer.badge}
                                                 </span>
@@ -499,21 +392,12 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                                                     {offer.guests}
                                                 </p>
                                             </div>
-                                            <span className={`text-[10px] font-bold px-2 py-1 rounded-xl ${
-                                                offer.hasPool
-                                                    ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
-                                                    : 'bg-neutral-500/10 text-neutral-500 border border-neutral-500/20'
-                                            }`}>
-                                                {offer.subtitle}
-                                            </span>
                                         </div>
 
-                                        <ul className="space-y-2 my-4 text-xs">
+                                        <ul className="space-y-2.5 my-4 text-xs">
                                             {offer.features.map((feature, i) => (
                                                 <li key={i} className="flex items-start gap-2">
-                                                    <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${
-                                                        feature.includes('🚫') ? 'text-red-400' : 'text-sand-gold'
-                                                    }`} />
+                                                    <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5 text-sand-gold" />
                                                     <span className={isSelected ? 'text-white/90' : 'text-jungle-green/80 dark:text-white/80'}>{feature}</span>
                                                 </li>
                                             ))}
@@ -529,8 +413,8 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                                             <button
                                                 type="button"
                                                 className={`
-                                                    px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-colors
-                                                    ${isSelected ? 'bg-sand-gold text-jungle-deep shadow-md' : 'bg-sand-gold/10 text-sand-gold'}
+                                                    px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all duration-200
+                                                    ${isSelected ? 'bg-sand-gold text-jungle-deep shadow-md font-black' : 'bg-sand-gold/10 text-sand-gold hover:bg-sand-gold/20'}
                                                 `}
                                             >
                                                 {isSelected ? (
@@ -662,17 +546,17 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                 <div className="flex justify-between items-center mb-3 max-w-3xl mx-auto px-2">
                     <div>
                         <span className="text-[10px] font-bold uppercase opacity-60 block">{t.total} ({nights} {nights > 1 ? t.nights : t.night})</span>
-                        <span className="text-2xl font-serif text-sand-gold font-bold">{grandTotal} DH</span>
+                        <span className="text-2xl font-serif text-sand-gold font-bold">
+                            {selectedOffer ? `${grandTotal} DH` : '—'}
+                        </span>
                     </div>
                     <div className="text-right">
                         <span className="text-[10px] text-sand-gold font-bold uppercase tracking-wider block">
                             🏛️ {t.officialBadge}
                         </span>
-                        {selectedOffer && (
-                            <span className="text-[9px] text-neutral-500 dark:text-neutral-400 block">
-                                {selectedOffer.hasPool ? '🏊‍♂️ Piscine incluse' : '🚫 Sans piscine'}
-                            </span>
-                        )}
+                        <span className="text-[9px] text-neutral-500 dark:text-neutral-400 block font-medium">
+                            {selectedOffer ? selectedOffer.title : t.selectOfferFirst}
+                        </span>
                     </div>
                 </div>
 
@@ -681,7 +565,7 @@ export const BungalowBooking = ({ onBack, currentLanguage }: BungalowBookingProp
                     onClick={handleCheckout}
                     className="w-full max-w-3xl mx-auto block py-4 rounded-2xl font-bold uppercase tracking-widest text-xs shadow-xl bg-luxury-gold text-jungle-deep hover:bg-white hover:text-jungle-deep transition-all cursor-pointer"
                 >
-                    {t.continue}
+                    {selectedOffer ? t.continue : t.selectOfferFirst}
                 </motion.button>
             </div>
         </div>

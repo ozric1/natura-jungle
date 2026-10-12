@@ -85,7 +85,7 @@ export const ExperienceShowcase = ({ type, language, onClose, onAction }: Experi
                 {
                     image: '/assets/natura/bugalow.webp',
                     title: { en: "Family Bungalow Stays", fr: "Séjour en Famille", ar: "إقامة عائلية فاخرة" },
-                    desc: { en: "Our 4 stay packages starting from 900 DH: Discovery & Premium with pool options.", fr: "Nos 4 formules de séjour dès 900 DH : Offres Découverte & Premium avec option piscine.", ar: "باقاتنا الـ 4 الرسمية ابتداءً من 900 درهم: باقات الاستكشاف وباقات بريميوم شاملة المسبح." }
+                    desc: { en: "Our stay packages starting from 900 DH: Discovery Offer & Family Discovery.", fr: "Nos formules de séjour dès 900 DH : Offre Découverte & Famille Découverte.", ar: "باقات الإقامة ابتداءً من 900 درهم: عرض الاستكشاف وباقة العائلة الاستكشافية." }
                 },
                 {
                     image: '/assets/natura/more bungalow at night.webp',

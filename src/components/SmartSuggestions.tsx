@@ -33,9 +33,9 @@ export const SmartSuggestions = ({ language, onNavigate }: SmartSuggestionsProps
             badge: { en: 'Family Stays', fr: 'Séjour en Famille', ar: 'إقامة عائلية' },
             title: { en: 'Family Bungalow Stays', fr: 'Séjour Bungalow dès 900 DH', ar: 'إقامة البنغالو ابتداءً من 900 درهم' },
             text: {
-                en: 'Discover our 4 official bungalow packages with breakfast, animal park & pool options!',
-                fr: 'Découvrez nos 4 formules de séjour avec petit-déjeuner, parc animalier et option piscine !',
-                ar: 'اكتشف باقاتنا الـ 4 الرسمية للإقامة مع فطور الصباح، حديقة الحيوان وخيار المسبح!'
+                en: 'Discover our official bungalow packages with breakfast, animal park & kids play area included!',
+                fr: 'Découvrez nos formules de séjour avec petit-déjeuner, parc animalier et espace jeux inclus !',
+                ar: 'اكتشف باقاتنا الرسمية للإقامة مع فطور الصباح، حديقة الحيوان وفضاء الألعاب مشمولة!'
             },
             cta: { en: 'View Packages', fr: 'Voir les Formules', ar: 'عرض الباقات' },
             action: () => onNavigate('booking')

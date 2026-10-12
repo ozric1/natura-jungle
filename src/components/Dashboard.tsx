@@ -82,9 +82,9 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             promoBanner: {
                 badge: "Family Stays",
                 title: "Family Stay in the Heart of Nature",
-                desc: "Discover our 4 official bungalow packages from 900 DH/night with Breakfast, Animal Park, Play Area & Pool option!",
+                desc: "Discover our 2 official bungalow packages from 900 DH/night with Breakfast, Animal Park & Kids Play Area included!",
                 cta: "Book Bungalow",
-                save: "4 Official Packages"
+                save: "2 Official Packages"
             },
             quadSpotlight: {
                 badge: "New Activity",
@@ -154,10 +154,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     book: "Book Now"
                 },
                 bungalow: {
-                    tag: "4 Packages",
+                    tag: "2 Packages",
                     title: "Bungalow Stay",
                     perNight: "Starting From",
-                    desc: "Discovery: 900 DH & 1100 DH (Without pool) | Premium: 1200 DH & 1400 DH (With pool).",
+                    desc: "Discovery Offer: 900 DH (2 Adults + 1 Child) | Family Discovery: 1100 DH (2 Adults + 2 Children).",
                     additional: "Breakfast, animal park & kids play area included in all stays.",
                     book: "View Packages & Book"
                 },
@@ -206,9 +206,9 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             promoBanner: {
                 badge: "Séjour en Famille",
                 title: "Séjour en Famille au Cœur de la Nature",
-                desc: "Découvrez nos 4 formules officielles de séjour en bungalow dès 900 DH/nuit avec Petit-déjeuner, Parc animalier, Espace jeux et option Piscine !",
+                desc: "Découvrez nos 2 formules officielles de séjour en bungalow dès 900 DH/nuit avec Petit-déjeuner, Parc animalier et Espace jeux inclus !",
                 cta: "Réserver mon Bungalow",
-                save: "4 Formules Officielles"
+                save: "2 Formules Officielles"
             },
             quadSpotlight: {
                 badge: "Nouvelle Activité",
@@ -278,10 +278,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     book: "Réserver"
                 },
                 bungalow: {
-                    tag: "4 Formules",
+                    tag: "2 Formules",
                     title: "Séjour Bungalow",
                     perNight: "À partir de",
-                    desc: "Découverte : 900 DH & 1100 DH (Sans piscine) | Premium : 1200 DH & 1400 DH (Avec piscine).",
+                    desc: "Offre Découverte : 900 DH (2 Adultes + 1 Enfant) | Famille Découverte : 1100 DH (2 Adultes + 2 Enfants).",
                     additional: "Petit-déjeuner, parc animalier et espace jeux inclus dans toutes les formules séjour.",
                     book: "Voir les Formules"
                 },
@@ -324,9 +324,9 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
             promoBanner: {
                 badge: "إقامة عائلية",
                 title: "إقامة عائلية فاخرة في البناغل",
-                desc: "اكتشف باقاتنا الـ 4 الرسمية للإقامة في البناغل ابتداءً من 900 درهم/ليلة مع فطور الصباح، حديقة الحيوان، ألعاب الأطفال وخيار المسبح!",
+                desc: "اكتشف باقتينا الرسميتين للإقامة في البناغل ابتداءً من 900 درهم/ليلة مع فطور الصباح، حديقة الحيوان وفضاء الألعاب!",
                 cta: "احجز البنغالو الآن",
-                save: "4 باقات رسمية"
+                save: "باقتان رسميتان"
             },
             quadSpotlight: {
                 badge: "نشاط جديد",
@@ -396,10 +396,10 @@ export const Dashboard = ({ language: currentLanguage, setLanguage, isNightMode,
                     book: "احجز الآن"
                 },
                 bungalow: {
-                    tag: "4 باقات رسمية",
+                    tag: "باقتان رسميتان",
                     title: "إقامة البنغالو",
                     perNight: "ابتداءً من",
-                    desc: "الاستكشاف: 900 و 1100 درهم (بدون مسبح) | بريميوم: 1200 و 1400 درهم (شامل المسبح).",
+                    desc: "عرض الاستكشاف: 900 درهم (شخصين + طفل) | باقة العائلة الاستكشافية: 1100 درهم (شخصين + طفلين).",
                     additional: "فطور الصباح، حديقة الحيوان وفضاء الألعاب مشمولة في جميع صيغ الإقامة.",
                     book: "عرض الباقات"
                 },
